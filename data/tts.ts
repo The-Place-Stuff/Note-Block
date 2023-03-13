@@ -1,8 +1,4 @@
 import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection } from '@discordjs/voice';
-import { export as sayExport } from 'say';
-import { join } from 'path'
-
-const ffmpeg = require('ffmpeg-static');
 const exportAudio = require('./exporter.js')
 
 export class TTS {
@@ -20,32 +16,38 @@ export class TTS {
             speed: 1,
             pitch: 1,
             voice: voice,
-            volume: 1.25
+            volume: 1
         }
     }
 
     public async speak(text: string) {
         TTS.isPlaying = true
 
-        exportAudio(text)
-
         // Play the audio file via discord.js
-        const connection: VoiceConnection = await getVoiceConnection("741121896149549160") as VoiceConnection
+        const connection: VoiceConnection = getVoiceConnection("741121896149549160")!
+        if (!connection) {
+            TTS.isPlaying = false
+            return
+        }
 
-        const audioFile: AudioResource = createAudioResource("tts.wav", {
-            inlineVolume: true
-        })
-        audioFile.volume?.setVolume(this.ttsData.volume)
+        exportAudio(text, this.ttsData.voice)
 
         const audioPlayer: AudioPlayer = createAudioPlayer({
             behaviors: {
                 noSubscriber: NoSubscriberBehavior.Pause
             }
         })
+        audioPlayer.on("debug", (debug) => {
+            console.log(debug)
+        })
 
-        audioPlayer.play(audioFile)
+        const audioFile: AudioResource = createAudioResource('../tts.wav', {
+            inlineVolume: true
+        })
+        audioFile.volume?.setVolume(this.ttsData.volume)
 
         connection.subscribe(audioPlayer)
+        audioPlayer.play(audioFile)
 
         // @ts-ignore
         await entersState(audioPlayer, AudioPlayerStatus.Playing)

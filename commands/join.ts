@@ -27,8 +27,8 @@ export default class JoinCommand implements SlashCommand {
         return
       }
       //#endregion
-
-      const connection: VoiceConnection = joinVoiceChannel({
+      
+      joinVoiceChannel({
         channelId: guildUser.voice.channel.id,
         guildId: guildUser.guild.id,
         adapterCreator: guildUser.guild.voiceAdapterCreator as DiscordGatewayAdapterCreator

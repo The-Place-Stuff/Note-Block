@@ -2,7 +2,7 @@ import { Client, Collection, GuildMember, Role } from "discord.js";
 import { channels } from "../config.json";
 import { TTS } from "./tts";
 
-export class ttsProcessor {
+export class TTSProcessor {
     public static queue: Collection<string, TTS> = new Collection()
     private client: Client
 
@@ -37,21 +37,21 @@ export class ttsProcessor {
             //Send data to TTS API
             const tts: TTS = new TTS(voiceName)
 
-            ttsProcessor.queue.set(msg.content, tts)
+            TTSProcessor.queue.set(msg.content, tts)
         })
     }
 
     private async ttsListener() {
         if (TTS.isPlaying) return
 
-        const tts: TTS = ttsProcessor.queue.first() as TTS
+        const tts: TTS = TTSProcessor.queue.first() as TTS
 
         if (!tts) {
             setTimeout(() => this.ttsListener(), 1000)
             return
         }
 
-        const ttsContent: string = ttsProcessor.queue.firstKey() as string
+        const ttsContent: string = TTSProcessor.queue.firstKey() as string
 
         tts.speak(ttsContent)
 

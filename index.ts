@@ -2,7 +2,7 @@ require("dotenv").config()
 
 import { Client, GatewayIntentBits, Collection, Interaction, ChatInputCommandInteraction, ActivityType } from "discord.js"
 import { readdirSync } from "fs"
-import { ttsProcessor } from "./data/ttsProcessor"
+import { TTSProcessor } from "./data/ttsProcessor"
 import { SlashCommand } from "./types/basic"
 
 const client: Client = new Client({
@@ -55,8 +55,8 @@ client.on("ready", () => {
 
     client.user?.setActivity("with Roosey!", { type: ActivityType.Playing })
 
-    //Initialize the ttsProcessor
-    new ttsProcessor(client)
+    //Initialize the TTSProcessor
+    new TTSProcessor(client)
 })
 
 //#endregion
