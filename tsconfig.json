@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+      "target": "es2017",
+      "module": "Node16",
+      "strict": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true
+    }
+  }
