@@ -1,6 +1,7 @@
 import { Client, Collection, GuildMember, Role } from 'discord.js'
 import { channels } from '../config.json'
 import { TTS } from './tts'
+import { TextOverrides } from './textOverrides'
 
 export class TTSProcessor {
   public static queue: Collection<string, TTS> = new Collection()
@@ -34,10 +35,16 @@ export class TTSProcessor {
 
       const voiceName: string = voiceRole.name.split('NOTEBLOCK')[0].trimEnd()
 
+      //Apply overrides and RegEx filters
+      const overrides = new TextOverrides()
+      let msgText = msg.content.toLowerCase()
+      
+      msgText = overrides.applyOverrides(msgText)
+
       //Send data to TTS API
       const tts: TTS = new TTS(voiceName)
 
-      TTSProcessor.queue.set(msg.content, tts)
+      TTSProcessor.queue.set(msgText, tts)
     })
   }
 
