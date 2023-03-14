@@ -57,6 +57,17 @@ export class TextOverrides {
       }
     }
 
+    //Filter user mentions
+    const userMatches = text.match(/<@!?\d+>/g);
+
+    if (userMatches != null) {
+      for (const userMention of userMatches) {
+        const match = userMention.match(/\d+/)!
+
+        text = text.replaceAll(userMention, this.client.users.cache.get(match[0])!.username)
+      }
+    }
+
     //Filter code blocks
     text = text.replaceAll(/(`{3})[\S\s]+?[^\\]\1/g, '()')
 
