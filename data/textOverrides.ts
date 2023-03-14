@@ -1,23 +1,28 @@
-const overridesJson = require('./overrides.json')
+import { Client } from 'discord.js'
+import overridesJson from './overrides.json'
 
 export class TextOverrides {
-  
-  public static init(text: string) {
-    const overrides: TextOverrides = new TextOverrides()
+  private client: Client
 
-    text = overrides.applyOverrides(text)
+  constructor(client: Client) {
+    this.client = client
+  }
+
+  public static filter(text: string, client: Client) {
+    const overrides: TextOverrides = new TextOverrides(client)
+
     text = overrides.applyFilters(text)
+    text = overrides.applyOverrides(text)
 
     return text
   }
 
   public applyOverrides(text: string) {
-    for (const line of Object.keys(overridesJson)) {
-      const matchWord = overridesJson[line].match_word
-      const overrand = overridesJson[line].overrand
-      const override = overridesJson[line].override
+    for (const overrideSet of overridesJson) {
+      const overrand = overrideSet.overrand
+      const override = overrideSet.override
 
-      if (matchWord) {
+      if (overrideSet.match_word) {
         const regExp = new RegExp(`\\b${overrand}\\b`, 'g');
 
         text = text.replaceAll(regExp, override)
@@ -35,9 +40,7 @@ export class TextOverrides {
 
     if (emojiMatches != null) {
       for (const rawEmoji of emojiMatches) {
-        const match = rawEmoji.match(/\w+(?=:\d+>)/)
-
-        if (match == null) continue
+        const match = rawEmoji.match(/\w+(?=:\d+>)/)!
 
         text = text.replaceAll(rawEmoji, `(${match[0]})`)
       }
@@ -48,9 +51,7 @@ export class TextOverrides {
 
     if (urlMatches != null) {
       for (const url of urlMatches) {
-        const match = url.match(/(?<=\/)[\w-.]+/)
-
-        if (match == null) continue
+        const match = url.match(/(?<=\/)[\w-.]+/)!
 
         text = text.replaceAll(url, match[0])
       }

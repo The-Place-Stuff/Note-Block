@@ -40,7 +40,7 @@ export class TTSProcessor {
       //Apply overrides and RegEx filters
       let msgText = msg.content.toLowerCase()
 
-      msgText = TextOverrides.init(msgText)
+      msgText = TextOverrides.filter(msgText, this.client)
 
       //Send data to TTS API
       const tts: TTS = new TTS(voiceName, voiceName.endsWith('_tt'))
