@@ -1,7 +1,6 @@
 import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection } from '@discordjs/voice'
 import { dirname, join } from 'path'
-import { Client } from 'discord.js'
-const exportAudio = require('./exporter.js')
+const exporter = require('./exporter.js')
 
 export class TTS {
   public static isPlaying: boolean = false
@@ -27,7 +26,7 @@ export class TTS {
     }
   }
 
-  public async speak(text: string, client: Client) {
+  public async speak(text: string) {
     console.log('Speak ' + text)
 
     TTS.isPlaying = true
@@ -40,8 +39,8 @@ export class TTS {
       TTS.isPlaying = false
       return
     }
-
-    await exportAudio(text, this.ttsData.voice)
+    
+    await exporter.exportAudio(text, this.ttsData.voice)
 
     //@ts-ignore
     const audioPlayer: AudioPlayer = TTS.audioPlayer

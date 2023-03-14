@@ -36,11 +36,9 @@ export class TTSProcessor {
       const voiceName: string = voiceRole.name.split('NOTEBLOCK')[0].trimEnd()
 
       //Apply overrides and RegEx filters
-      const overrides = new TextOverrides()
       let msgText = msg.content.toLowerCase()
 
-      msgText = overrides.applyFilters(msgText)
-      msgText = overrides.applyOverrides(msgText)
+      msgText = TextOverrides.init(msgText)
 
       //Send data to TTS API
       const tts: TTS = new TTS(voiceName)
@@ -66,7 +64,7 @@ export class TTSProcessor {
 
     const ttsContent: string = TTSProcessor.queue.firstKey() as string
 
-    tts.speak(ttsContent, this.client)
+    tts.speak(ttsContent)
 
     TTSProcessor.queue.delete(TTSProcessor.queue.firstKey()!)
 

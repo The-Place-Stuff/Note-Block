@@ -1,7 +1,17 @@
-export class TextOverrides {
-  public applyOverrides(text: string) {
-    const overridesJson = require('./overrides.json')
+const overridesJson = require('./overrides.json')
 
+export class TextOverrides {
+  
+  public static init(text: string) {
+    const overrides: TextOverrides = new TextOverrides()
+
+    text = overrides.applyOverrides(text)
+    text = overrides.applyFilters(text)
+
+    return text
+  }
+
+  public applyOverrides(text: string) {
     for (const line of Object.keys(overridesJson)) {
       const matchWord = overridesJson[line].match_word
       const overrand = overridesJson[line].overrand
