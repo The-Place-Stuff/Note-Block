@@ -1,60 +1,74 @@
-import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection } from '@discordjs/voice';
+import {
+  AudioPlayer,
+  AudioPlayerStatus,
+  AudioResource,
+  createAudioPlayer,
+  createAudioResource,
+  entersState,
+  getVoiceConnection,
+  NoSubscriberBehavior,
+  VoiceConnection,
+} from '@discordjs/voice'
+import { dirname, join } from 'path'
+import { Client } from 'discord.js'
 const exportAudio = require('./exporter.js')
 
 export class TTS {
-    public static isPlaying: boolean = false;
+  public static isPlaying: boolean = false
 
-    private ttsData: {
-        speed: number;
-        pitch: number;
-        voice: string;
-        volume: number;
+  private ttsData: {
+    speed: number
+    pitch: number
+    voice: string
+    volume: number
+  }
+
+  constructor(voice: string) {
+    this.ttsData = {
+      speed: 1,
+      pitch: 1,
+      voice: voice,
+      volume: 1,
+    }
+  }
+
+  public async speak(text: string, client: Client) {
+    console.log('Speak ' + text)
+
+    TTS.isPlaying = true
+
+    // Play the audio file via discord.js
+    //@ts-ignore
+    const connection: VoiceConnection = client.connection
+
+    if (!connection) {
+      TTS.isPlaying = false
+      return
     }
 
-    constructor(voice: string) {
-        this.ttsData = {
-            speed: 1,
-            pitch: 1,
-            voice: voice,
-            volume: 1
-        }
-    }
+    await exportAudio(text, this.ttsData.voice)
 
-    public async speak(text: string) {
-        TTS.isPlaying = true
+    //@ts-ignore
+    const audioPlayer: AudioPlayer = client.player
 
-        // Play the audio file via discord.js
-        const connection: VoiceConnection = getVoiceConnection("741121896149549160")!
-        if (!connection) {
-            TTS.isPlaying = false
-            return
-        }
+    const audioFile: AudioResource = createAudioResource(
+      join(dirname(__dirname), 'tts.wav'),
+      {
+        inlineVolume: true,
+      }
+    )
+    audioFile.volume?.setVolume(this.ttsData.volume)
 
-        exportAudio(text, this.ttsData.voice)
+    audioPlayer.play(audioFile)
 
-        const audioPlayer: AudioPlayer = createAudioPlayer({
-            behaviors: {
-                noSubscriber: NoSubscriberBehavior.Pause
-            }
-        })
-        audioPlayer.on("debug", (debug) => {
-            console.log(debug)
-        })
+    connection.subscribe(audioPlayer)
 
-        const audioFile: AudioResource = createAudioResource('../tts.wav', {
-            inlineVolume: true
-        })
-        audioFile.volume?.setVolume(this.ttsData.volume)
+    // @ts-ignore
+    await entersState(audioPlayer, AudioPlayerStatus.Playing)
 
-        connection.subscribe(audioPlayer)
-        audioPlayer.play(audioFile)
+    // @ts-ignore
+    await entersState(audioPlayer, AudioPlayerStatus.Idle)
 
-        // @ts-ignore
-        await entersState(audioPlayer, AudioPlayerStatus.Playing)
-
-        // @ts-ignore
-        await entersState(audioPlayer, AudioPlayerStatus.Idle)
-
-        TTS.isPlaying = false
-    }
+    TTS.isPlaying = false
+  }
 }
