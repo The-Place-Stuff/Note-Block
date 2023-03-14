@@ -20,7 +20,9 @@ export class TTSProcessor {
 
       if (msg.author.bot) return
       
-      if (msg.content.startsWith('silent')) return
+      if (msg.content.startsWith("\\ ")) return
+
+      if (msg.content == '') return
 
       //Get User Roles
       const user: GuildMember = msg.member as GuildMember
