@@ -1,12 +1,7 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { CommandInteraction, Client, GuildMember, ChatInputCommandInteraction } from "discord.js";
+import { Client, ChatInputCommandInteraction } from "discord.js";
 import { SlashCommand } from "../types/basic";
-import {
-    entersState,
-  getVoiceConnection, 
-  VoiceConnection, 
-  VoiceConnectionStatus
-} from "@discordjs/voice";
+import { getVoiceConnection, VoiceConnection } from "@discordjs/voice";
 
 export default class LeaveCommand implements SlashCommand {
     data: SlashCommandBuilder = new SlashCommandBuilder()

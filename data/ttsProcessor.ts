@@ -28,12 +28,12 @@ export class TTSProcessor {
 
       //Get Voice Role
       const voiceRole: Role = userRoles.find(r =>
-        r.name.endsWith('NOTEBLOCK')
+        r.name.endsWith('_nb')
       ) as Role
 
       if (!voiceRole) return
 
-      const voiceName: string = voiceRole.name.split('NOTEBLOCK')[0].trimEnd()
+      const voiceName: string = voiceRole.name.split('_nb')[0].trimEnd()
 
       //Apply overrides and RegEx filters
       let msgText = msg.content.toLowerCase()
@@ -41,7 +41,7 @@ export class TTSProcessor {
       msgText = TextOverrides.init(msgText)
 
       //Send data to TTS API
-      const tts: TTS = new TTS(voiceName)
+      const tts: TTS = new TTS(voiceName, voiceName.endsWith('_tt'))
 
       TTSProcessor.queue.set(msgText, tts)
     })

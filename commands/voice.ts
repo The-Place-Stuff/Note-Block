@@ -1,18 +1,42 @@
-import { SlashCommandAttachmentOption, SlashCommandBuilder } from "@discordjs/builders";
-import { CommandInteraction, Client, ChatInputApplicationCommandData, ChatInputCommandInteraction, APIApplicationCommandOption, APIApplicationCommandOptionChoice, Guild, Collection, Role, GuildMember } from "discord.js";
+import { SlashCommandBuilder } from "@discordjs/builders";
+import { Client, ChatInputCommandInteraction, APIApplicationCommandOptionChoice, Guild, Collection, Role, GuildMember } from "discord.js";
 import { SlashCommand } from "../types/basic";
-import { randomUUID } from "crypto";
 
 export default class VoiceCommand implements SlashCommand {
+    // may move this to a json file soon
     private config = {
         voices: [
             {
-                name: "Chiko",
-                value: "Microsoft Zira Desktop"
+                name: "chiko",
+                value: "chiko"
             },
             {
-                name: "Outer",
-                value: "Microsoft David Desktop"
+                name: "outer",
+                value: "outer"
+            },
+            {
+                name: "narrator",
+                value: "narrator_tt"
+            },
+            {
+                name: "pirate",
+                value: "pirate_tt"
+            },
+            {
+                name: "wacky",
+                value: "wacky_tt"
+            },
+            {
+                name: "peaceful",
+                value: "peaceful_tt"
+            },
+            {
+                name: "stormtrooper",
+                value: "stormtrooper_tt"
+            },
+            {
+                name: "singing_chipmunk",
+                value: "singing_chipmunk_tt"
             }
         ] as APIApplicationCommandOptionChoice<string>[]
     }
@@ -59,7 +83,7 @@ export default class VoiceCommand implements SlashCommand {
         // Remove the old voice role
         const userRoles: Collection<string, Role> = user.roles.cache
 
-        const currentVoiceRole: Role = userRoles.find(r => r.name.endsWith("NOTEBLOCK")) as Role
+        const currentVoiceRole: Role = userRoles.find(r => r.name.endsWith("_nb")) as Role
 
         if (currentVoiceRole) {
             let roleMemberCount: number = currentVoiceRole.members.size
@@ -80,17 +104,16 @@ export default class VoiceCommand implements SlashCommand {
         //#region Add the new voice role
 
         // Check if the role already exists
-        let newVoiceRole: Role = guildRoles.find(r => r.name === `${voiceData.value} NOTEBLOCK`) as Role
+        let newVoiceRole: Role = guildRoles.find(r => r.name === `${voiceData.value}_nb`) as Role
 
         if (!newVoiceRole) {
             // Create the role & give it
             const createdRole: Role = await userGuild.roles.create({
-                name: `${voiceData.value} NOTEBLOCK`
+                name: `${voiceData.value}_nb`
             })
 
             newVoiceRole = createdRole
         }
-
         await user.roles.add(newVoiceRole)
 
         //#endregion

@@ -3,7 +3,18 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 const fs = require('fs')
 import { dirname, join } from 'path'
 
-function exportAudio(text = '', voice = '') {
+
+// evaluate whether voice is tiktok or not
+async function exportAudio(text = '', voice = '', isTikTok = false) {
+  if (isTikTok) {
+    await exportTikTok(text, voice)
+  }
+  else {
+    await exportMicrosoft(text, voice)
+  }
+}
+
+function exportMicrosoft(text = '', voice = '') {
   return new Promise(res => {
     say.export(text, voice, 1, 'tts.wav', err => {
       if (err) {
@@ -15,7 +26,8 @@ function exportAudio(text = '', voice = '') {
   })
 }
 
-async function exportTikTokAudio(text = '', voice = '') {
+// fetches audio from the tiktop tts api
+async function exportTikTok(text = '', voice = '') {
   const data = {
     text,
     voice
@@ -31,6 +43,7 @@ async function exportTikTokAudio(text = '', voice = '') {
 
   const fetchedData = await requestedData.json()
 
+  // TikTok voices don't like emojis very much, there could be a much better solution.
   try {
     fs.writeFileSync(join(dirname(__dirname), 'tts.wav'), Buffer.from(fetchedData.data, 'base64'))
   }
@@ -39,7 +52,4 @@ async function exportTikTokAudio(text = '', voice = '') {
   }
 }
 
-module.exports = {
-  exportAudio,
-  exportTikTokAudio
-}
+module.exports = exportAudio

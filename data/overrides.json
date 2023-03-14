@@ -1,7 +1,7 @@
 [
   {
     "overrand": "keke",
-    "override": "kekey"
+    "override": "key key "
   },
   {
     "overrand": "gametest",
@@ -67,7 +67,7 @@
   },
   {
     "overrand": "emoji",
-    "override": "emojey"
+    "override": "emo gee"
   },
   {
     "overrand": "hehead",
@@ -104,5 +104,10 @@
   {
     "overrand": "json",
     "override": "j-sawn"
+  },
+  {
+    "overrand": "rn",
+    "override": "right now",
+    "match_word": true
   }
 ]
