@@ -18,7 +18,7 @@ export class TTSProcessor {
       if (!channels.includes(msg.channelId)) return
 
       if (msg.author.bot) return
-
+      
       if (msg.content.startsWith('silent')) return
 
       //Get User Roles
@@ -43,16 +43,18 @@ export class TTSProcessor {
 
   private async ttsListener() {
     if (TTS.isPlaying) {
-      setTimeout(() => this.ttsListener(), 1000)
+      setTimeout(() => this.ttsListener(), 1)
       return
     }
 
     const tts: TTS = TTSProcessor.queue.first() as TTS
 
     if (!tts) {
-      setTimeout(() => this.ttsListener(), 1000)
+      setTimeout(() => this.ttsListener(), 1)
       return
     }
+    
+    this.client.channels.cache.get(channels[0])
 
     const ttsContent: string = TTSProcessor.queue.firstKey() as string
 
@@ -60,6 +62,6 @@ export class TTSProcessor {
 
     TTSProcessor.queue.delete(TTSProcessor.queue.firstKey()!)
 
-    setTimeout(() => this.ttsListener(), 1000)
+    setTimeout(() => this.ttsListener(), 1)
   }
 }

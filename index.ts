@@ -1,17 +1,9 @@
 require('dotenv').config()
 
-import {
-  Client,
-  GatewayIntentBits,
-  Collection,
-  Interaction,
-  ChatInputCommandInteraction,
-  ActivityType,
-} from 'discord.js'
+import { Client, GatewayIntentBits, Collection, Interaction, ChatInputCommandInteraction, ActivityType } from 'discord.js'
 import { readdirSync } from 'fs'
 import { TTSProcessor } from './data/ttsProcessor'
 import { SlashCommand } from './types/basic'
-import { createAudioPlayer, NoSubscriberBehavior } from '@discordjs/voice'
 
 const client: Client = new Client({
   intents: [
@@ -68,20 +60,7 @@ client.login(process.env.TOKEN)
 
 client.on('ready', () => {
   console.log('Notey Poo is online!')
-
   client.user?.setActivity('with Roosey!', { type: ActivityType.Playing })
-
-  //@ts-ignore
-  client.player = createAudioPlayer({
-    behaviors: {
-      noSubscriber: NoSubscriberBehavior.Pause,
-    },
-  })
-
-  //@ts-ignore
-  // client.player.on('debug', debug => {
-  //   console.log(debug)
-  // })
 
   //Initialize the TTSProcessor
   new TTSProcessor(client)

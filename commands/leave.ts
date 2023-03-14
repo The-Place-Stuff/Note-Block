@@ -11,7 +11,7 @@ import {
 export default class LeaveCommand implements SlashCommand {
     data: SlashCommandBuilder = new SlashCommandBuilder()
         .setName("leave")
-        .setDescription("NOTEY POO HATES U")
+        .setDescription("Leaves the voice channel Note Block is currently in")
     async execute(interaction: ChatInputCommandInteraction, client: Client) {
         const connection: VoiceConnection = getVoiceConnection(interaction.guild?.id as string) as VoiceConnection
 

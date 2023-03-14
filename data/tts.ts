@@ -1,20 +1,15 @@
-import {
-  AudioPlayer,
-  AudioPlayerStatus,
-  AudioResource,
-  createAudioPlayer,
-  createAudioResource,
-  entersState,
-  getVoiceConnection,
-  NoSubscriberBehavior,
-  VoiceConnection,
-} from '@discordjs/voice'
+import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection } from '@discordjs/voice'
 import { dirname, join } from 'path'
 import { Client } from 'discord.js'
 const exportAudio = require('./exporter.js')
 
 export class TTS {
   public static isPlaying: boolean = false
+  private static audioPlayer: AudioPlayer = createAudioPlayer({
+    behaviors: {
+      noSubscriber: NoSubscriberBehavior.Pause
+    }
+  })
 
   private ttsData: {
     speed: number
@@ -39,7 +34,7 @@ export class TTS {
 
     // Play the audio file via discord.js
     //@ts-ignore
-    const connection: VoiceConnection = client.connection
+    const connection: VoiceConnection = getVoiceConnection('741121896149549160')
 
     if (!connection) {
       TTS.isPlaying = false
@@ -49,7 +44,7 @@ export class TTS {
     await exportAudio(text, this.ttsData.voice)
 
     //@ts-ignore
-    const audioPlayer: AudioPlayer = client.player
+    const audioPlayer: AudioPlayer = TTS.audioPlayer
 
     const audioFile: AudioResource = createAudioResource(
       join(dirname(__dirname), 'tts.wav'),

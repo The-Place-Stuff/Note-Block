@@ -1,32 +1,15 @@
 import { SlashCommandBuilder } from '@discordjs/builders'
-import {
-  CommandInteraction,
-  Client,
-  GuildMember,
-  ChatInputCommandInteraction,
-} from 'discord.js'
+import { Client, GuildMember, ChatInputCommandInteraction } from 'discord.js'
 import { SlashCommand } from '../types/basic'
-import {
-  joinVoiceChannel,
-  createAudioPlayer,
-  createAudioResource,
-  AudioPlayerStatus,
-  getVoiceConnection,
-  VoiceConnectionStatus,
-  entersState,
-  DiscordGatewayAdapterCreator,
-  VoiceConnection,
-} from '@discordjs/voice'
+import { joinVoiceChannel, DiscordGatewayAdapterCreator } from '@discordjs/voice'
 
 export default class JoinCommand implements SlashCommand {
+
   public data = new SlashCommandBuilder()
     .setName('join')
-    .setDescription('NOTEY POO LOVES U')
+    .setDescription("Joins the voice channel you're currently in")
 
-  public async execute(
-    interaction: ChatInputCommandInteraction,
-    client: Client
-  ) {
+  public async execute(interaction: ChatInputCommandInteraction, client: Client) {
     const guildUser: GuildMember = (await interaction.guild?.members.fetch(
       interaction.user.id
     )) as GuildMember
@@ -41,7 +24,7 @@ export default class JoinCommand implements SlashCommand {
     //#endregion
 
     //@ts-ignore
-    client.connection = joinVoiceChannel({
+    joinVoiceChannel({
       channelId: guildUser.voice.channel.id,
       guildId: guildUser.guild.id,
       adapterCreator: guildUser.guild
