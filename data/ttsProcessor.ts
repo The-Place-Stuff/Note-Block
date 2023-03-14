@@ -38,7 +38,8 @@ export class TTSProcessor {
       //Apply overrides and RegEx filters
       const overrides = new TextOverrides()
       let msgText = msg.content.toLowerCase()
-      
+
+      msgText = overrides.applyFilters(msgText)
       msgText = overrides.applyOverrides(msgText)
 
       //Send data to TTS API
