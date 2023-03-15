@@ -34,8 +34,7 @@ export class TTS {
     TTS.isPlaying = true
 
     // Play the audio file via discord.js
-    //@ts-ignore
-    const connection: VoiceConnection = getVoiceConnection('741121896149549160')
+    const connection: VoiceConnection = getVoiceConnection('741121896149549160') as VoiceConnection
 
     if (!connection) {
       TTS.isPlaying = false
@@ -44,8 +43,7 @@ export class TTS {
     
     await exportAudio(text, this.processVoice(), this.ttsData.isTikTok)
 
-    //@ts-ignore
-    const audioPlayer: AudioPlayer = TTS.audioPlayer
+    const audioPlayer: AudioPlayer = TTS.audioPlayer as AudioPlayer
 
     const audioFile: AudioResource = createAudioResource(
       join(dirname(__dirname), 'tts.wav'),

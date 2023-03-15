@@ -7,6 +7,10 @@ export default class VoiceCommand implements SlashCommand {
     private config = {
         voices: [
             {
+                name: "none",
+                value: "none"
+            },
+            {
                 name: "chiko",
                 value: "chiko"
             },
@@ -99,6 +103,15 @@ export default class VoiceCommand implements SlashCommand {
             if (roleMemberCount === 0) {
                 await roleToDelete.delete()
             }
+        }
+
+        // None Voice Sudden Return
+        if (voiceData.value === "none") {
+            await interaction.reply({
+                content: `Removed voice!`,
+                ephemeral: true
+            })
+            return
         }
 
         //#region Add the new voice role

@@ -40,7 +40,7 @@ export class TextOverrides {
 
     if (emojiMatches != null) {
       for (const rawEmoji of emojiMatches) {
-        const match = rawEmoji.match(/\w+(?=:\d+>)/)!
+        const match: RegExpMatchArray = rawEmoji.match(/\w+(?=:\d+>)/) as RegExpMatchArray
 
         text = text.replaceAll(rawEmoji, `(${match[0]})`)
       }
@@ -51,7 +51,7 @@ export class TextOverrides {
 
     if (urlMatches != null) {
       for (const url of urlMatches) {
-        const match = url.match(/(?<=\/)[\w-.]+/)!
+        const match: RegExpMatchArray = url.match(/(?<=\/)[\w-.]+/) as RegExpMatchArray
 
         text = text.replaceAll(url, match[0])
       }
@@ -62,7 +62,7 @@ export class TextOverrides {
 
     if (userMatches != null) {
       for (const userMention of userMatches) {
-        const match = userMention.match(/\d+/)!
+        const match: RegExpMatchArray = userMention.match(/\d+/) as RegExpMatchArray
 
         text = text.replaceAll(userMention, this.client.users.cache.get(match[0])!.username)
       }

@@ -1,10 +1,11 @@
-import { Client, Collection, GuildMember, Role } from 'discord.js'
+import { Client, Collection, GuildMember, Message, Role, TextChannel } from 'discord.js'
 import { channels } from '../config.json'
 import { TTS } from './tts'
 import { TextOverrides } from './textOverrides'
+import { QueueMessageData } from '../types/basic'
 
 export class TTSProcessor {
-  public static queue: Collection<string, TTS> = new Collection()
+  public static queue: Collection<QueueMessageData, TTS> = new Collection()
   private client: Client
 
   constructor(client: Client) {
@@ -37,15 +38,13 @@ export class TTSProcessor {
 
       const voiceName: string = voiceRole.name.split('_nb')[0].trimEnd()
 
-      //Apply overrides and RegEx filters
-      let msgText = msg.content.toLowerCase()
-
-      msgText = TextOverrides.filter(msgText, this.client)
-
       //Send data to TTS API
       const tts: TTS = new TTS(voiceName, voiceName.endsWith('_tt'))
 
-      TTSProcessor.queue.set(msgText, tts)
+      TTSProcessor.queue.set({
+        messageID: msg.id,
+        channel: msg.channel as TextChannel
+      }, tts)
     })
   }
 
@@ -64,12 +63,26 @@ export class TTSProcessor {
     
     this.client.channels.cache.get(channels[0])
 
-    const ttsContent: string = TTSProcessor.queue.firstKey() as string
+    //Get Message Data & Fetch Message Content
+    const ttsMessageData: QueueMessageData = TTSProcessor.queue.firstKey() as QueueMessageData
 
-    tts.speak(ttsContent)
+    const ttsContent: string = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).content
 
-    TTSProcessor.queue.delete(TTSProcessor.queue.firstKey()!)
+    // Say it & Apply Before TTS Filters
+    tts.speak(this.beforeTTS(ttsContent))
+
+    TTSProcessor.queue.delete(TTSProcessor.queue.firstKey() as QueueMessageData)
 
     setTimeout(() => this.ttsListener(), 1)
+  }
+
+  //Add filters here
+  private beforeTTS(ttsMessage: string) {
+      //Apply overrides and RegEx filters
+      let msgText: string = ttsMessage.toLowerCase()
+
+      msgText = TextOverrides.filter(msgText, this.client)
+
+      return msgText
   }
 }
