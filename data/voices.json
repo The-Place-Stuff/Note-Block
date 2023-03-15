@@ -1,0 +1,188 @@
+[
+    {
+        "display": "Outer",
+        "alias": "outer",
+        "id": "Microsoft David Desktop",
+        "category": "microsoft"
+    },
+    {
+        "display": "Chiko",
+        "alias": "chiko",
+        "id": "Microsoft Zira Desktop",
+        "category": "microsoft"
+    },
+    {
+        "display": "Narrator",
+        "alias": "narrator_tt",
+        "id": "en_male_narration",
+        "category": "base_tiktok"
+    },
+    {
+        "display": "Wacky",
+        "alias": "wacky_tt",
+        "id": "en_male_funny",
+        "category": "base_tiktok"
+    },
+    {
+        "display": "Peaceful",
+        "alias": "peaceful_tt",
+        "id": "en_female_emotional",
+        "category": "base_tiktok"
+    },
+    {
+        "display": "Serious",
+        "alias": "serious_tt",
+        "id": "en_male_cody",
+        "category": "base_tiktok"
+    },
+    {
+        "display": "Pirate",
+        "alias": "pirate_tt",
+        "id": "en_male_pirate",
+        "category": "base_tiktok"
+    },
+    {
+        "display": "Grandma",
+        "alias": "grandma_tt",
+        "id": "en_female_grandma",
+        "category": "base_tiktok"
+    },
+    {
+        "display": "No Cookie?",
+        "alias": "no_cookie_tt",
+        "id": "en_female_samc",
+        "category": "base_tiktok"
+    },
+    {
+        "display": "Ghost Face (Scream)",
+        "alias": "ghost_face_tt",
+        "id": "en_us_ghostface",
+        "category": "media"
+    },
+    {
+        "display": "Chewbacca (Star Wars)",
+        "alias": "chewbacca_tt",
+        "id": "en_us_chewbacca",
+        "category": "media"
+    },
+    {
+        "display": "C3PO (Star Wars)",
+        "alias": "c3po_tt",
+        "id": "en_us_c3po",
+        "category": "media"
+    },
+    {
+        "display": "Stitch (Disney)",
+        "alias": "stitch_tt",
+        "id": "en_us_stitch",
+        "category": "media"
+    },
+    {
+        "display": "Stormtrooper (Star Wars)",
+        "alias": "stormtrooper_tt",
+        "id": "en_us_stormtrooper",
+        "category": "media"
+    },
+    {
+        "display": "Rocket (Marvel)",
+        "alias": "rocket_tt",
+        "id": "en_us_rocket",
+        "category": "media"
+    },
+    {
+        "display": "Madame Leota (Disney)",
+        "alias": "madame_leota_tt",
+        "id": "en_female_madam_leota",
+        "category": "media"
+    },
+    {
+        "display": "Ghost Host (Horror)",
+        "alias": "ghost_host_tt",
+        "id": "en_male_ghosthost",
+        "category": "media"
+    },
+    {
+        "display": "Grinch (Dr. Seuss)",
+        "alias": "grinch_tt",
+        "id": "en_male_grinch",
+        "category": "media"
+    },
+    {
+        "display": "Doge (Japanese)",
+        "alias": "doge_tt",
+        "id": "jp_006",
+        "category": "foreign"
+    },
+    {
+        "display": "Roosey (Japanese)",
+        "alias": "roosey_tt",
+        "id": "jp_005",
+        "category": "foreign"
+    },
+    {
+        "display": "SolvedDev (German)",
+        "alias": "solveddev_tt",
+        "id": "de_002",
+        "category": "foreign"
+    },
+    {
+        "display": "Warm (Latin Spanish)",
+        "alias": "warm_tt",
+        "id": "es_mx_002",
+        "category": "foreign"
+    },
+    {
+        "display": "Alto (Female)",
+        "alias": "alto_tt",
+        "id": "en_female_f08_salut_damour",
+        "category": "vocal"
+    },
+    {
+        "display": "Tenor (Male)",
+        "alias": "tenor_tt",
+        "id": "en_male_m03_lobby",
+        "category": "vocal"
+    },
+    {
+        "display": "Sunshine Soon (Male)",
+        "alias": "sunshine_soon_tt",
+        "id": "en_male_m03_sunshine_soon",
+        "category": "vocal"
+    },
+    {
+        "display": "Warmy Breeze (Female)",
+        "alias": "warmy_breeze_tt",
+        "id": "en_female_f08_warmy_breeze",
+        "category": "vocal"
+    },
+    {
+        "display": "Glorious (Female)",
+        "alias": "glorious_tt",
+        "id": "en_female_ht_f08_glorious",
+        "category": "vocal"
+    },
+    {
+        "display": "It Goes Up (Male)",
+        "alias": "it_goes_up_tt",
+        "id": "en_male_sing_funny_it_goes_up",
+        "category": "vocal"
+    },
+    {
+        "display": "Chipmunk (Squeaky)",
+        "alias": "chipmunk_tt",
+        "id": "en_male_m2_xhxs_m03_silly",
+        "category": "vocal"
+    },
+    {
+        "display": "Dramatic (Female)",
+        "alias": "dramatic_tt",
+        "id": "en_female_ht_f08_wonderful_world",
+        "category": "vocal"
+    },
+    {
+        "display": "Opera (Female)",
+        "alias": "opera_tt",
+        "id": "en_female_ht_f08_halloween",
+        "category": "vocal"
+    }
+]

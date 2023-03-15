@@ -1,65 +1,85 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { Client, ChatInputCommandInteraction, APIApplicationCommandOptionChoice, Guild, Collection, Role, GuildMember } from "discord.js";
 import { SlashCommand } from "../types/basic";
+import voices from '../data/voices.json'
 
 export default class VoiceCommand implements SlashCommand {
-    // may move this to a json file soon
-    private config = {
-        voices: [
-            {
-                name: "none",
-                value: "none"
-            },
-            {
-                name: "chiko",
-                value: "chiko"
-            },
-            {
-                name: "outer",
-                value: "outer"
-            },
-            {
-                name: "narrator",
-                value: "narrator_tt"
-            },
-            {
-                name: "pirate",
-                value: "pirate_tt"
-            },
-            {
-                name: "wacky",
-                value: "wacky_tt"
-            },
-            {
-                name: "peaceful",
-                value: "peaceful_tt"
-            },
-            {
-                name: "stormtrooper",
-                value: "stormtrooper_tt"
-            },
-            {
-                name: "singing_chipmunk",
-                value: "singing_chipmunk_tt"
+
+    // Grabs choices, takes in a category for each subcommand
+    private getChoices(category: string | undefined) {
+        const config: APIApplicationCommandOptionChoice<string>[] = []
+
+        for (const voice of voices) {
+            if (voice.category == category || typeof category == 'undefined') {
+                config.push({
+                    name: voice.display,
+                    value: voice.alias
+                })
             }
-        ] as APIApplicationCommandOptionChoice<string>[]
+        }
+        return config
     }
 
     public data: SlashCommandBuilder = new SlashCommandBuilder()
-        .setName("voice")
-        .setDescription("Pick a voice!")
+    .setName('voice')
+    .setDescription('Pick a voice') 
+    .addSubcommand(subCommand => {
+        return subCommand.setName("microsoft")
+        .setDescription("Pick a voice from the Microsoft category")
         .addStringOption(option => {
-            return option.setName("voice")
-            .setDescription("The voice you want to use!")
+            return option.setName('voice')
+            .setDescription('Choose a voice!')
+            .addChoices(...this.getChoices("microsoft"))
             .setRequired(true)
-            .addChoices(...this.config.voices)
-        }) as SlashCommandBuilder // shady workaround :o
+        })
+        
+    })
+    .addSubcommand(subCommand => {
+        return subCommand.setName("base_tiktok")
+        .setDescription("Pick a voice from the TikTok category")
+        .addStringOption(option => {
+            return option.setName('voice')
+            .setDescription('Choose a voice!')
+            .addChoices(...this.getChoices("base_tiktok"))
+            .setRequired(true)
+        })
+    })
+    .addSubcommand(subCommand => {
+        return subCommand.setName("media")
+        .setDescription("Pick a voice from the external media category")
+        .addStringOption(option => {
+            return option.setName('voice')
+            .setDescription('Choose a voice!')
+            .addChoices(...this.getChoices("media"))
+            .setRequired(true)
+        })
+    })
+    .addSubcommand(subCommand => {
+        return subCommand.setName("foreign")
+        .setDescription("Pick a voice from the foreign category")
+        .addStringOption(option => {
+            return option.setName('voice')
+            .setDescription('Choose a voice!')
+            .addChoices(...this.getChoices("foreign"))
+            .setRequired(true)
+        })
+    })
+    .addSubcommand(subCommand => {
+        return subCommand.setName("vocal")
+        .setDescription("Pick a voice from the vocal category")
+        .addStringOption(option => {
+            return option.setName('voice')
+            .setDescription('Choose a voice!')
+            .addChoices(...this.getChoices("vocal"))
+            .setRequired(true)
+        })
+    }) as SlashCommandBuilder
 
     public async execute(interaction: ChatInputCommandInteraction, client: Client) {
         const voice: string = interaction.options.getString("voice") as string
 
         // Check if the voice is valid
-        if (!this.config.voices.find(v => v.value === voice)) {
+        if (!this.getChoices(undefined).find(v => v.value === voice)) {
             await interaction.reply({
                 content: "That voice is not valid!",
                 ephemeral: true
@@ -67,7 +87,7 @@ export default class VoiceCommand implements SlashCommand {
             return
         }
 
-        const voiceData = this.config.voices.find(v => v.value === voice) as APIApplicationCommandOptionChoice<string>
+        const voiceData = this.getChoices(undefined).find(v => v.value === voice) as APIApplicationCommandOptionChoice<string>
 
         // User Data
         const userGuild: Guild = interaction.guild as Guild

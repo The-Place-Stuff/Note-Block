@@ -6,7 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "npx esno index.ts",
-        "deploy-commands": "npx ts-node deploy_commands.ts"
+        "deploy-commands": "npx ts-node deploy_commands.ts",
+        "voices": "npm run deploy-commands && npm run start"
     },
     "author": "",
     "license": "ISC",
