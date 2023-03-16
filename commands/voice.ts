@@ -73,36 +73,23 @@ export default class VoiceCommand implements SlashCommand {
             .addChoices(...this.getChoices("vocal"))
             .setRequired(true)
         })
+    })
+    .addSubcommand(subCommand => {
+        return subCommand.setName("vocal")
+        .setDescription("Pick a voice from the vocal category")
+        .addStringOption(option => {
+            return option.setName('voice')
+            .setDescription('Choose a voice!')
+            .addChoices(...this.getChoices("vocal"))
+            .setRequired(true)
+        })
     }) as SlashCommandBuilder
 
     public async execute(interaction: ChatInputCommandInteraction, client: Client) {
-        const voice: string = interaction.options.getString("voice") as string
-
-        // Check if the voice is valid
-        if (!this.getChoices(undefined).find(v => v.value === voice)) {
-            await interaction.reply({
-                content: "That voice is not valid!",
-                ephemeral: true
-            })
-            return
-        }
-
-        const voiceData = this.getChoices(undefined).find(v => v.value === voice) as APIApplicationCommandOptionChoice<string>
-
         // User Data
         const userGuild: Guild = interaction.guild as Guild
         const guildRoles: Collection<string, Role> = await userGuild.roles.fetch()
         const user: GuildMember = await userGuild.members.fetch(interaction.user.id)
-
-
-        // If the user already has the voice
-        if (user.roles.cache.find(r => r.name === voiceData.name)) {
-            await interaction.reply({
-                content: `You already have the **${voiceData.name}** voice!`,
-                ephemeral: true
-            })
-            return
-        }
 
         // Remove the old voice role
         const userRoles: Collection<string, Role> = user.roles.cache
@@ -125,10 +112,35 @@ export default class VoiceCommand implements SlashCommand {
             }
         }
 
-        // None Voice Sudden Return
-        if (voiceData.value === "none") {
+        // Sudden return when running the clear subcommand
+        if (interaction.options.getSubcommand(true) == 'clear') {
             await interaction.reply({
                 content: `Removed voice!`,
+                ephemeral: true
+            })
+            return
+        }
+
+        const voice: string = interaction.options.getString("voice") as string
+
+        // Check if the voice is valid
+        if (!this.getChoices(undefined).find(v => v.value === voice)) {
+            await interaction.reply({
+                content: "That voice is not valid!",
+                ephemeral: true
+            })
+            return
+        }
+
+        const voiceData = this.getChoices(undefined).find(v => v.value === voice) as APIApplicationCommandOptionChoice<string>
+
+        
+
+
+        // If the user already has the voice
+        if (user.roles.cache.find(r => r.name === voiceData.name)) {
+            await interaction.reply({
+                content: `You already have the **${voiceData.name}** voice!`,
                 ephemeral: true
             })
             return
