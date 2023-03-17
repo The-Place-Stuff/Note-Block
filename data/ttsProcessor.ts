@@ -18,8 +18,6 @@ export class TTSProcessor {
   private messageListener() {
     this.client.on('messageCreate', async msg => {
       if (!channels.includes(msg.channelId)) return
-
-      if (msg.author.bot) return
       
       if (msg.content.startsWith("\\ ")) return
 
