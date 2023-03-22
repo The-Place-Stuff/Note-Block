@@ -36,6 +36,48 @@
         "category": "base_tiktok"
     },
     {
+        "display": "Professor",
+        "alias": "professor_tt",
+        "id": "en_us_007",
+        "category": "base_tiktok"
+    },
+    {
+        "display": "Scientist",
+        "alias": "scientist_tt",
+        "id": "en_us_009",
+        "category": "base_tiktok"
+    },
+    {
+        "display": "Confident",
+        "alias": "confident_tt",
+        "id": "en_us_010",
+        "category": "base_tiktok"
+    },
+    {
+        "display": "Joe",
+        "alias": "joe_tt",
+        "id": "en_us_006",
+        "category": "base_tiktok"
+    },
+    {
+        "display": "Jess",
+        "alias": "jess_tt",
+        "id": "en_us_002",
+        "category": "base_tiktok"
+    },
+    {
+        "display": "British Narrator",
+        "alias": "british_narrator_tt",
+        "id": "en_uk_001",
+        "category": "base_tiktok"
+    },
+    {
+        "display": "Bruv",
+        "alias": "bruv_tt",
+        "id": "en_uk_003",
+        "category": "base_tiktok"
+    },
+    {
         "display": "Pirate",
         "alias": "pirate_tt",
         "id": "en_male_pirate",
@@ -123,6 +165,12 @@
         "display": "SolvedDev (German)",
         "alias": "solveddev_tt",
         "id": "de_002",
+        "category": "foreign"
+    },
+    {
+        "display": "Fry Guy (French)",
+        "alias": "fry_guy_tt",
+        "id": "fr_001",
         "category": "foreign"
     },
     {
