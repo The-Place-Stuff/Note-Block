@@ -109,5 +109,19 @@
     "overrand": "rn",
     "override": "right now",
     "match_word": true
+  },
+  {
+    "overrand": "sesse",
+    "override": "sessee"
+  },
+  {
+    "overrand": "sus",
+    "override": "suss",
+    "match_word": true
+  },
+  {
+    "overrand": "umm",
+    "override": "ummm",
+    "match_word": true
   }
 ]
