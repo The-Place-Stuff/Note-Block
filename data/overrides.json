@@ -123,5 +123,10 @@
     "overrand": "umm",
     "override": "ummm",
     "match_word": true
+  },
+  {
+    "overrand": "uwu",
+    "override": "oohwoo",
+    "match_word": true
   }
 ]
