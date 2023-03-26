@@ -5,9 +5,12 @@ import { dirname, join } from 'path'
 
 
 // evaluate whether voice is tiktok or not
-async function exportAudio(text = '', voice = '', isTikTok = false) {
-  if (isTikTok) {
+async function exportAudio(text = '', voice = '', voiceType = '') {  
+  if (voiceType == 'tiktok') {
     await exportTikTok(text, voice)
+  }
+  else if (voiceType == 'sapi') {
+    await exportSAPI(text, voice)
   }
   else {
     await exportMicrosoft(text, voice)
@@ -48,6 +51,21 @@ async function exportTikTok(text = '', voice = '') {
     fs.writeFileSync(join(dirname(__dirname), 'tts.wav'), Buffer.from(fetchedData.data, 'base64'))
   }
   catch (err) {
+    console.log("Invalid message format, Buffer only takes in string")
+  }
+}
+
+async function exportSAPI(text = '', voice = '') {
+  const requestedData = await fetch(`https://www.tetyys.com/SAPI4/SAPI4?text=${encodeURIComponent(text)}&voice=${encodeURIComponent(voice)}`)
+
+  const fetchedData = await requestedData.arrayBuffer()
+
+
+  try {
+    fs.writeFileSync(join(dirname(__dirname), 'tts.wav'), Buffer.from(fetchedData, 'base64'))
+  }
+  catch (err) {
+    console.log(err)
     console.log("Invalid message format, Buffer only takes in string")
   }
 }

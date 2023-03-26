@@ -232,5 +232,71 @@
         "alias": "opera_tt",
         "id": "en_female_ht_f08_halloween",
         "category": "vocal"
+    },
+    {
+        "display": "Sam",
+        "alias": "sam_sapi",
+        "id": "Sam",
+        "category": "alternate"
+    },
+    {
+        "display": "Mike",
+        "alias": "mike_sapi",
+        "id": "Mike",
+        "category": "alternate"
+    },
+    {
+        "display": "Mary",
+        "alias": "mary_sapi",
+        "id": "Mary",
+        "category": "alternate"
+    },
+    {
+        "display": "Stadium Mike",
+        "alias": "stadium_mike_sapi",
+        "id": "Mike in Stadium",
+        "category": "alternate"
+    },
+    {
+        "display": "Stadium Mary",
+        "alias": "stadium_mary_sapi",
+        "id": "Mary in Stadium",
+        "category": "alternate"
+    },
+    {
+        "display": "Echoing Mike",
+        "alias": "echoing_mike_sapi",
+        "id": "Mike in Space",
+        "category": "alternate"
+    },
+    {
+        "display": "Echoing Mary",
+        "alias": "echoing_mary_sapi",
+        "id": "Mary in Space",
+        "category": "alternate"
+    },
+    {
+        "display": "Quiet Outer",
+        "alias": "quiet_outer_sapi",
+        "id": "Male Whisper",
+        "category": "alternate"
+    },
+    {
+        "display": "Quiet Chiko",
+        "alias": "quiet_chiko_sapi",
+        "id": "Female Whisper",
+        "category": "alternate"
+    },
+    {
+        "display": "Robot",
+        "alias": "robot_sapi",
+        "id": "RoboSoft Five",
+        "category": "alternate"
+    },
+    {
+        "display": "Evil AI",
+        "alias": "evil_ai_sapi",
+        "id": "RoboSoft One",
+        "category": "alternate"
     }
 ]

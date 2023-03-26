@@ -35,9 +35,9 @@ export class TTSProcessor {
       if (!voiceRole) return
 
       const voiceName: string = voiceRole.name.split('_nb')[0].trimEnd()
-
+      
       //Send data to TTS API
-      const tts: TTS = new TTS(voiceName, voiceName.endsWith('_tt'))
+      const tts: TTS = new TTS(voiceName, this.determineVoiceType(voiceName))
 
       TTSProcessor.queue.set({
         messageID: msg.id,
@@ -82,5 +82,20 @@ export class TTSProcessor {
       msgText = TextOverrides.filter(msgText, this.client)
 
       return msgText
+  }
+
+  // Used to determine which group of voices we're using
+  private determineVoiceType(voiceName : string) {
+    let voiceType
+    if (voiceName.endsWith('_tt')) {
+      voiceType = "tiktok"
+    } 
+    else if (voiceName.endsWith('_sapi')) {
+      voiceType = 'sapi'
+    }
+    else {
+      voiceType = "default"
+    }
+    return voiceType
   }
 }

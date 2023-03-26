@@ -15,16 +15,16 @@ export class TTS {
     speed: number
     pitch: number
     voice: string
-    isTikTok: boolean
+    voiceType: string
     volume: number
   }
 
-  constructor(voice: string, isTikTok: boolean) {
+  constructor(voice: string, voiceType: string) {
     this.ttsData = {
       speed: 1,
       pitch: 1,
       voice: voice,
-      isTikTok: isTikTok,
+      voiceType: voiceType,
       volume: 1,
     }
   }
@@ -42,9 +42,9 @@ export class TTS {
       return
     }
     
-    await exportAudio(text, this.processVoice(), this.ttsData.isTikTok)
+    await exportAudio(text, this.processVoice(), this.ttsData.voiceType)
 
-    const audioPlayer: AudioPlayer = TTS.audioPlayer as AudioPlayer
+    const audioPlayer: AudioPlayer = TTS.audioPlayer
 
     const audioFile: AudioResource = createAudioResource(
       join(dirname(__dirname), 'tts.wav'),
@@ -79,7 +79,7 @@ export class TTS {
     }
 
     // Just in case ANYTHING fails, we use outer voice
-    this.ttsData.isTikTok = false
+    this.ttsData.voiceType = "default"
     return "Microsoft David Desktop"
   }
 }
