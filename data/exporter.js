@@ -4,7 +4,7 @@ const fs = require('fs')
 import { dirname, join } from 'path'
 
 
-// evaluate whether voice is tiktok or not
+// evaluate which type of audio to export from
 async function exportAudio(text = '', voice = '', voiceType = '') {  
   if (voiceType == 'tiktok') {
     await exportTikTok(text, voice)
@@ -46,7 +46,6 @@ async function exportTikTok(text = '', voice = '') {
 
   const fetchedData = await requestedData.json()
 
-  // TikTok voices don't like emojis very much, there could be a much better solution.
   try {
     fs.writeFileSync(join(dirname(__dirname), 'tts.wav'), Buffer.from(fetchedData.data, 'base64'))
   }
@@ -60,12 +59,10 @@ async function exportSAPI(text = '', voice = '') {
 
   const fetchedData = await requestedData.arrayBuffer()
 
-
   try {
     fs.writeFileSync(join(dirname(__dirname), 'tts.wav'), Buffer.from(fetchedData, 'base64'))
   }
   catch (err) {
-    console.log(err)
     console.log("Invalid message format, Buffer only takes in string")
   }
 }
