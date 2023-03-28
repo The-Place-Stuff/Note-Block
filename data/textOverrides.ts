@@ -31,7 +31,7 @@ export class TextOverrides {
       }
     }
 
-    return text
+    return text.replaceAll('_', ' ')
   }
 
   public applyFilters(text: string) {
@@ -71,6 +71,6 @@ export class TextOverrides {
     //Filter code blocks
     text = text.replaceAll(/(`{3})[\S\s]+?[^\\]\1/g, '()')
 
-    return text.replaceAll('_', ' ')
+    return text
   }
 }
