@@ -64,7 +64,18 @@ export class TTSProcessor {
     //Get Message Data & Fetch Message Content
     const ttsMessageData: QueueMessageData = TTSProcessor.queue.firstKey() as QueueMessageData
 
-    const ttsContent: string = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).content
+    let ttsContent: string
+
+    //If message is deleted, remove from queue
+    try {
+      ttsContent = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).content
+    } catch (error) {
+      TTSProcessor.queue.delete(TTSProcessor.queue.firstKey() as QueueMessageData)
+
+      setTimeout(() => this.ttsListener(), 1)
+      
+      return
+    }
 
     // Say it & Apply Before TTS Filters
     tts.speak(this.beforeTTS(ttsContent))
