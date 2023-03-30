@@ -1,11 +1,12 @@
 const say = require('say')
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args))
 const fs = require('fs')
+const http = require('https')
 import { dirname, join } from 'path'
 
 
 // evaluate which type of audio to export from
-async function exportAudio(text = '', voice = '', voiceType = '') {  
+async function exportAudio(text = '', voice = '', voiceType = '') {
   if (voiceType == 'tiktok') {
     await exportTikTok(text, voice)
   }
@@ -65,6 +66,47 @@ async function exportSAPI(text = '', voice = '') {
   catch (err) {
     console.log("Invalid message format, Buffer only takes in string")
   }
+}
+
+async function quack(voice, text) {
+  return new Promise(async (resolve, reject) => {
+    const generateResponse = await fetch('https://api.uberduck.ai/speak', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'uberduck-id': 'anonymous',
+        'Content-Type': 'application/json',
+        Authorization: 'Basic cHViX2ZjZWdqcXJocXZreWpjd2VwdDpwa19iMjYyMzI3MC02YTFjLTQ1M2QtYjI3Mi1iODRiYmI5YTVmNDg=',
+      },
+      body: JSON.stringify({ voice, pace: 1, speech: text }),
+    })
+    const generatedData = await generateResponse.json()
+
+    let filePath = null
+    while (!filePath) {
+      await new Promise(r => setTimeout(r, 100))
+      const requestedData = await fetch(`http://api.uberduck.ai/speak-status?uuid=${generatedData.uuid}`, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+      })
+      const fetchedData = await requestedData.json()
+
+      filePath = fetchedData.path
+    }
+
+    const file = fs.createWriteStream('tts.wav')
+    
+    http.get(filePath, function (response) {
+      response.pipe(file)
+
+      file.on('finish', () => {
+        file.close()
+        resolve()
+      })
+    })
+  })
 }
 
 module.exports = exportAudio
