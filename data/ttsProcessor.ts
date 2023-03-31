@@ -97,16 +97,17 @@ export class TTSProcessor {
 
   // Used to determine which group of voices we're using
   private determineVoiceType(voiceName : string) {
-    let voiceType
-    if (voiceName.endsWith('_tt')) {
-      voiceType = "tiktok"
+    if (voiceName.endsWith('tt')) {
+      return 'tiktok'
     } 
-    else if (voiceName.endsWith('_sapi')) {
-      voiceType = 'sapi'
+    else if (voiceName.endsWith('sapi')) {
+      return 'sapi'
+    }
+    else if (voiceName.endsWith('ud')) {
+      return 'uberduck'
     }
     else {
-      voiceType = "default"
+      return 'microsoft'
     }
-    return voiceType
   }
 }

@@ -298,5 +298,41 @@
         "alias": "evil_ai_sapi",
         "id": "RoboSoft One",
         "category": "alternate"
+    },
+    {
+        "display": "Spongebob",
+        "alias": "spongebob_ud",
+        "id": "spongebob",
+        "category": "spongebob"
+    },
+    {
+        "display": "Patrick",
+        "alias": "patrick_ud",
+        "id": "patrick",
+        "category": "spongebob"
+    },
+    {
+        "display": "Squidward",
+        "alias": "squidward_ud",
+        "id": "squidward",
+        "category": "spongebob"
+    },
+    {
+        "display": "Mr. Krabs",
+        "alias": "mr_krabs_ud",
+        "id": "mr-krabs",
+        "category": "spongebob"
+    },
+    {
+        "display": "Mermaid Man",
+        "alias": "mermaid_man_ud",
+        "id": "mermaidman-joe-whyte",
+        "category": "spongebob"
+    },
+    {
+        "display": "Barnacle Boy",
+        "alias": "barnacle_boy_ud",
+        "id": "barnacle-boy",
+        "category": "spongebob"
     }
 ]

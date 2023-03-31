@@ -85,6 +85,16 @@ export default class VoiceCommand implements SlashCommand {
         })
     })
     .addSubcommand(subCommand => {
+        return subCommand.setName("spongebob")
+        .setDescription("Pick a voice from the spongebob category")
+        .addStringOption(option => {
+            return option.setName('voice')
+            .setDescription('Choose a voice!')
+            .addChoices(...this.getChoices("spongebob"))
+            .setRequired(true)
+        })
+    })
+    .addSubcommand(subCommand => {
         return subCommand.setName("clear")
         .setDescription("Clears voice")
     }) as SlashCommandBuilder

@@ -79,7 +79,7 @@ export class TTS {
     }
 
     // Just in case ANYTHING fails, we use outer voice
-    this.ttsData.voiceType = "default"
+    this.ttsData.voiceType = 'microsoft'
     return "Microsoft David Desktop"
   }
 }

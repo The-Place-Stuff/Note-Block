@@ -6,12 +6,15 @@ import { dirname, join } from 'path'
 
 
 // evaluate which type of audio to export from
-async function exportAudio(text = '', voice = '', voiceType = '') {
-  if (voiceType == 'tiktok') {
+async function exportAudio(text = '', voice = '', voiceType) {
+  if (voiceType == "tiktok") {
     await exportTikTok(text, voice)
   }
-  else if (voiceType == 'sapi') {
+  else if (voiceType == "sapi") {
     await exportSAPI(text, voice)
+  }
+  else if (voiceType == "uberduck") {
+    await exportQuack(text, voice)
   }
   else {
     await exportMicrosoft(text, voice)
@@ -68,7 +71,7 @@ async function exportSAPI(text = '', voice = '') {
   }
 }
 
-async function quack(voice, text) {
+async function exportQuack(text = '', voice = '') {
   return new Promise(async (resolve, reject) => {
     const generateResponse = await fetch('https://api.uberduck.ai/speak', {
       method: 'POST',
