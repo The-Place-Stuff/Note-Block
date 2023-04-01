@@ -334,5 +334,35 @@
         "alias": "barnacle_boy_ud",
         "id": "barnacle-boy",
         "category": "spongebob"
+    },
+    {
+        "display": "Walter White",
+        "alias": "walter_white_ud",
+        "id": "walter-white",
+        "category": "blah"
+    },
+    {
+        "display": "VitroBot",
+        "alias": "vitrobot_sapi",
+        "id": "RoboSoft Three",
+        "category": "blah"
+    },
+    {
+        "display": "Mr. Beast",
+        "alias": "beast_ud",
+        "id": "mrbeast",
+        "category": "blah"
+    },
+    {
+        "display": "SolvedDev's Wife",
+        "alias": "solved_wife_tt",
+        "id": "de_001",
+        "category": "blah"
+    },
+    {
+        "display": "Bonzi Buddy",
+        "alias": "bonzi_buddy_sapi",
+        "id": "Adult Male #2, American English (TruVoice)",
+        "category": "blah"
     }
 ]
