@@ -21,7 +21,7 @@ async function exportAudio(text = '', voice = '', voiceType) {
 
 function exportMicrosoft(text = '', voice = '') {
     return new Promise(res => {
-        say.export(text, voice, randomNum(0.1, 8), 'tts.wav', err => {
+        say.export(text, voice, randomNum(0.5, 8), 'tts.wav', err => {
             if (err) {
                 console.log(err)
             }

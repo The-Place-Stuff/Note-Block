@@ -31,7 +31,7 @@
     },
     {
         "overrand": ":d",
-        "override": "(beaming face)"
+        "override": "(splooging face)"
     },
     {
         "overrand": "scorppuccino",
@@ -74,7 +74,7 @@
     },
     {
         "overrand": "github",
-        "override": "git-hub"
+        "override": "bitbub"
     },
     {
         "overrand": "solveddev",
@@ -111,7 +111,7 @@
     },
     {
         "overrand": "sesse",
-        "override": "sessee"
+        "override": "mister sussy"
     },
     {
         "overrand": "sus",
@@ -130,11 +130,12 @@
     },
     {
         "overrand": "fetish",
-        "override": "fehtish"
+        "override": "team abnormals has an extensive amount of fehtish, like their fire fehtish, consistency fehtish and wood fehtish"
     },
     {
         "overrand": "hi",
-        "override": "Yo yo yo yo yo yo yo yo yo yo yo yo"
+        "override": "Yo yo yo yo yo yo yo yo yo yo yo yo",
+        "match_word": true
     },
     {
         "overrand": "hello",
@@ -170,7 +171,8 @@
     },
     {
         "overrand": "sure",
-        "override": "of course my lovely little spongeboy"
+        "override": "of course my lovely little spongeboy",
+        "match_word": true
     },
     {
         "overrand": "gni",
@@ -226,7 +228,8 @@
     },
     {
         "overrand": "i",
-        "override": "glow berries"
+        "override": "glow berries",
+        "match_word": true
     },
     {
         "overrand": "April Fool's",
@@ -234,11 +237,12 @@
     },
     {
         "overrand": "aww",
-        "override": "YU YU YU YU"
+        "override": "WAH WAH WAH WAH"
     },
     {
         "overrand": "haha",
-        "override": "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRHAM, RRRRRRRRRRRHAM, RRRRRRRRRRRRHAM"
+        "override": "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRHAM, RRRRRRRRRRRHAM, RRRRRRRRRRRRHAM",
+        "match_word": true
     },
     {
         "overrand": "hmm?",
@@ -254,22 +258,24 @@
     },
     {
         "overrand": "wdym",
-        "override": "What in the flabber foo bar"
+        "override": "What in the flabber foo bar",
+        "match_word": true
     },
     {
         "overrand": "wdym?",
-        "override": "What in the flabber foo bar"
+        "override": "What in the flabber foo bar",
+        "match_word": true
     },
     {
         "overrand": "?",
-        "override": "EHHHHHHHHHHHHHHH"
+        "override": " EHHHHHHHHHHHHHHH"
     },
     {
         "overrand": "pizza",
         "override": "turkish delights bruv"
     },
     {
-        "overrand": ":bob_kawaii:",
+        "overrand": "bob_kawaii",
         "override": "me and outer love apple pie"
     },
     {
@@ -279,5 +285,15 @@
     {
         "overrand": "yins",
         "override": "yinny yanngy yin with a side of ham"
+    },
+    {
+        "overrand": "project squad",
+        "override": "p s qua",
+        "match_word": true
+    },
+    {
+        "overrand": "creeper",
+        "override": "kreeper king",
+        "match_word": true
     }
 ]
