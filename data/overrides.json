@@ -1,136 +1,136 @@
 [
-  {
-    "overrand": "keke",
-    "override": "key key "
-  },
-  {
-    "overrand": "gametest",
-    "override": "game-test"
-  },
-  {
-    "overrand": "lmao",
-    "override": "lmaow",
-    "match_word": true
-  },
-  {
-    "overrand": "lol",
-    "override": "loll",
-    "match_word": true
-  },
-  {
-    "overrand": "abado",
-    "override": "aba-do",
-    "match_word": true
-  },
-  {
-    "overrand": "bridge.",
-    "override": "bridge"
-  },
-  {
-    "overrand": "cuphead",
-    "override": "cup-head"
-  },
-  {
-    "overrand": ":d",
-    "override": "(beaming face)"
-  },
-  {
-    "overrand": "scorppuccino",
-    "override": "scorpucheeno"
-  },
-  {
-    "overrand": "hrm",
-    "override": "hurm",
-    "match_word": true
-  },
-  {
-    "overrand": "chromebook",
-    "override": "chrome-book"
-  },
-  {
-    "overrand": "thynk",
-    "override": "theenk",
-    "match_word": true
-  },
-  {
-    "overrand": "terraria",
-    "override": "turraria"
-  },
-  {
-    "overrand": "¯\\_(ツ)_/¯",
-    "override": "(shrugging face)"
-  },
-  {
-    "overrand": "monge",
-    "override": "mong-e",
-    "match_word": true
-  },
-  {
-    "overrand": "emoji",
-    "override": "emo gee"
-  },
-  {
-    "overrand": "hehead",
-    "override": "he-head"
-  },
-  {
-    "overrand": "github",
-    "override": "git-hub"
-  },
-  {
-    "overrand": "solveddev",
-    "override": "solved dev"
-  },
-  {
-    "overrand": "joel",
-    "override": "jo-el"
-  },
-  {
-    "overrand": "c'mon",
-    "override": "come on"
-  },
-  {
-    "overrand": ":p",
-    "override": "(cheeky smiley face)"
-  },
-  {
-    "overrand": "kiln",
-    "override": "kilnn"
-  },
-  {
-    "overrand": "naijei",
-    "override": "nye-gee"
-  },
-  {
-    "overrand": "json",
-    "override": "j-sawn"
-  },
-  {
-    "overrand": "rn",
-    "override": "right now",
-    "match_word": true
-  },
-  {
-    "overrand": "sesse",
-    "override": "sessee"
-  },
-  {
-    "overrand": "sus",
-    "override": "suss",
-    "match_word": true
-  },
-  {
-    "overrand": "umm",
-    "override": "ummm",
-    "match_word": true
-  },
-  {
-    "overrand": "uwu",
-    "override": "oohwoo",
-    "match_word": true
-  },
-  {
-    "overrand": "fetish",
-    "override": "fehtish"
-  }
+    {
+        "overrand": "keke",
+        "override": "key key "
+    },
+    {
+        "overrand": "gametest",
+        "override": "game-test"
+    },
+    {
+        "overrand": "lmao",
+        "override": "lmaow",
+        "match_word": true
+    },
+    {
+        "overrand": "lol",
+        "override": "loll",
+        "match_word": true
+    },
+    {
+        "overrand": "abado",
+        "override": "aba-do",
+        "match_word": true
+    },
+    {
+        "overrand": "bridge.",
+        "override": "bridge"
+    },
+    {
+        "overrand": "cuphead",
+        "override": "cup-head"
+    },
+    {
+        "overrand": ":d",
+        "override": "(beaming face)"
+    },
+    {
+        "overrand": "scorppuccino",
+        "override": "scorpucheeno"
+    },
+    {
+        "overrand": "hrm",
+        "override": "hurm",
+        "match_word": true
+    },
+    {
+        "overrand": "chromebook",
+        "override": "chrome-book"
+    },
+    {
+        "overrand": "thynk",
+        "override": "theenk",
+        "match_word": true
+    },
+    {
+        "overrand": "terraria",
+        "override": "turraria"
+    },
+    {
+        "overrand": "¯\\_(ツ)_/¯",
+        "override": "(shrugging face)"
+    },
+    {
+        "overrand": "monge",
+        "override": "mong-e",
+        "match_word": true
+    },
+    {
+        "overrand": "emoji",
+        "override": "emo gee"
+    },
+    {
+        "overrand": "hehead",
+        "override": "he-head"
+    },
+    {
+        "overrand": "github",
+        "override": "git-hub"
+    },
+    {
+        "overrand": "solveddev",
+        "override": "solved dev"
+    },
+    {
+        "overrand": "joel",
+        "override": "jo-el"
+    },
+    {
+        "overrand": "c'mon",
+        "override": "come on"
+    },
+    {
+        "overrand": ":p",
+        "override": "(cheeky smiley face)"
+    },
+    {
+        "overrand": "kiln",
+        "override": "kilnn"
+    },
+    {
+        "overrand": "naijei",
+        "override": "nye-gee"
+    },
+    {
+        "overrand": "json",
+        "override": "j-sawn"
+    },
+    {
+        "overrand": "rn",
+        "override": "right now",
+        "match_word": true
+    },
+    {
+        "overrand": "sesse",
+        "override": "sessee"
+    },
+    {
+        "overrand": "sus",
+        "override": "suss",
+        "match_word": true
+    },
+    {
+        "overrand": "umm",
+        "override": "ummm",
+        "match_word": true
+    },
+    {
+        "overrand": "uwu",
+        "override": "oohwoo",
+        "match_word": true
+    },
+    {
+        "overrand": "fetish",
+        "override": "fehtish"
+    }
 ]

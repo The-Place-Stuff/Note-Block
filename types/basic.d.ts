@@ -9,3 +9,9 @@ type QueueMessageData = {
     messageID: string,
     channel: TextChannel
 }
+
+type Override = {
+    overrand: string,
+    override: string,
+    match_word?: boolean
+}

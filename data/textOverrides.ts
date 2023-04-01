@@ -1,8 +1,11 @@
 import { Client } from 'discord.js'
-import overridesJson from './overrides.json'
+import { readFileSync } from 'fs'
+import { Override } from '../types/basic'
 
 export class TextOverrides {
   private client: Client
+
+  private overridesJson: Override[] = JSON.parse(readFileSync('./data/overrides.json', 'utf-8'))
 
   constructor(client: Client) {
     this.client = client
@@ -18,7 +21,7 @@ export class TextOverrides {
   }
 
   public applyOverrides(text: string) {
-    for (const overrideSet of overridesJson) {
+    for (const overrideSet of this.overridesJson) {
       const overrand = overrideSet.overrand
       const override = overrideSet.override
 
