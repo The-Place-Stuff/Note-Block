@@ -2,6 +2,7 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import { Client, ChatInputCommandInteraction, APIApplicationCommandOptionChoice, Guild, Collection, Role, GuildMember } from "discord.js";
 import { SlashCommand } from "../types/basic";
 import voices from '../data/voices.json'
+import { CommandReplyer } from "../data/commandReplyer";
 
 export default class VoiceCommand implements SlashCommand {
 
@@ -179,8 +180,15 @@ export default class VoiceCommand implements SlashCommand {
 
 
         await interaction.reply({
-            content: `Set the voice to **${voiceData.name}**!`,
-            ephemeral: true
+            embeds: [
+                {
+                    title: 'voice',
+                    description: CommandReplyer.getReply(interaction.user.id, 'voice'),
+                    thumbnail: {
+                        url: 'https://images-ext-2.discordapp.net/external/82cdlfs7VXGWRAznTIOpL16NR6NCU9fyOFHX2Cf9AG4/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1081717850722553906/e2704cd816d628b43e8b999c4afd2a88.png?width=671&height=671'
+                    }
+                }
+            ]
         })
     }
 }

@@ -1,7 +1,6 @@
-[
-    {
+[{
         "overrand": "keke",
-        "override": "key key "
+        "override": "bubba kil kil"
     },
     {
         "overrand": "gametest",
@@ -9,12 +8,12 @@
     },
     {
         "overrand": "lmao",
-        "override": "lmaow",
-        "match_word": true
+        "override": "YUCK YUCK YUCK!",
+        "match_word": false
     },
     {
         "overrand": "lol",
-        "override": "loll",
+        "override": "HAHAHAH! HAHAH! NICE ONE",
         "match_word": true
     },
     {
@@ -132,5 +131,153 @@
     {
         "overrand": "fetish",
         "override": "fehtish"
+    },
+    {
+        "overrand": "hi",
+        "override": "Yo yo yo yo yo yo yo yo yo yo yo yo"
+    },
+    {
+        "overrand": "hello",
+        "override": "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHELLO"
+    },
+    {
+        "overrand": "what",
+        "override": "Weh. Meh. Bong."
+    },
+    {
+        "overrand": "oh",
+        "override": "Cherrio"
+    },
+    {
+        "overrand": "wait",
+        "override": "Hold on I'm smoking"
+    },
+    {
+        "overrand": "no",
+        "override": "yes"
+    },
+    {
+        "overrand": "yes",
+        "override": "no"
+    },
+    {
+        "overrand": "but",
+        "override": "tatoid stew"
+    },
+    {
+        "overrand": "yeah",
+        "override": "Happy April Fools!"
+    },
+    {
+        "overrand": "sure",
+        "override": "of course my lovely little spongeboy"
+    },
+    {
+        "overrand": "gni",
+        "override": "i love to smother myself in peanut butter and then roll around in the mud"
+    },
+    {
+        "overrand": "😨",
+        "override": "i shit myself"
+    },
+    {
+        "overrand": "drill",
+        "override": "babwaw"
+    },
+    {
+        "overrand": "warhead",
+        "override": "Piggy"
+    },
+    {
+        "overrand": "razoid",
+        "override": "RRRRRRRRRRRRRRRRRRRRRRRAZOID"
+    },
+    {
+        "overrand": "rum",
+        "override": "baloo ballo ballo with a side of tato"
+    },
+    {
+        "overrand": "poop",
+        "override": "AAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHH IM SORRY FOR SAYING SHITTY MC SHITTERSON"
+    },
+    {
+        "overrand": "who",
+        "override": "stream?"
+    },
+    {
+        "override": "peash",
+        "overrand": "pleesh"
+    },
+    {
+        "overrand": "vitro",
+        "override": "Beep bop"
+    },
+    {
+        "overrand": "naijei",
+        "override": "Gloobeio"
+    },
+    {
+        "overrand": "oky",
+        "override": "i hate you boooooooooop"
+    },
+    {
+        "overrand": "APRIL FOOL'S DAY",
+        "override": "my favorite holiday eheh eheheh eheheheheh"
+    },
+    {
+        "overrand": "i",
+        "override": "glow berries"
+    },
+    {
+        "overrand": "April Fool's",
+        "override": "Roosey Fool's"
+    },
+    {
+        "overrand": "aww",
+        "override": "YU YU YU YU"
+    },
+    {
+        "overrand": "haha",
+        "override": "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRHAM, RRRRRRRRRRRHAM, RRRRRRRRRRRRHAM"
+    },
+    {
+        "overrand": "hmm?",
+        "override": "poop?"
+    },
+    {
+        "overrand": "hmm",
+        "override": "poop?"
+    },
+    {
+        "overrand": "my",
+        "override": "Blobert's"
+    },
+    {
+        "overrand": "wdym",
+        "override": "What in the flabber foo bar"
+    },
+    {
+        "overrand": "wdym?",
+        "override": "What in the flabber foo bar"
+    },
+    {
+        "overrand": "?",
+        "override": "EHHHHHHHHHHHHHHH"
+    },
+    {
+        "overrand": "pizza",
+        "override": "turkish delights bruv"
+    },
+    {
+        "overrand": ":bob_kawaii:",
+        "override": "me and outer love apple pie"
+    },
+    {
+        "overrand": "oh my gosh",
+        "override": "holy poop yo!"
+    },
+    {
+        "overrand": "yins",
+        "override": "yinny yanngy yin with a side of ham"
     }
 ]

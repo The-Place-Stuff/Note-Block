@@ -60,7 +60,7 @@ client.login(process.env.TOKEN)
 
 client.on('ready', () => {
   console.log('Notey Poo is online!')
-  client.user?.setActivity('with Roosey!', { type: ActivityType.Playing })
+  client.user?.setActivity('to V3!', { type: ActivityType.Listening })
 
   //Initialize the TTSProcessor
   new TTSProcessor(client)

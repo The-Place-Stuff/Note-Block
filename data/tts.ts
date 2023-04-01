@@ -1,6 +1,7 @@
 import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection } from '@discordjs/voice'
 import { dirname, join } from 'path'
 import voices from './voices.json'
+import { CommandReplyer } from './commandReplyer'
 const exportAudio = require('./exporter.js')
 
 export class TTS {
@@ -25,7 +26,7 @@ export class TTS {
       pitch: 1,
       voice: voice,
       voiceType: voiceType,
-      volume: 1,
+      volume: CommandReplyer.randomNum(0.1, 10),
     }
   }
 

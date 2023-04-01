@@ -1,0 +1,134 @@
+{
+    "487020064579649556": {
+        "override": [
+            "Roosey. Not happening bud. April fools, remember? HAHAHAHAHHA",
+            "Ohhh. Roosey. Trying to change the overrides, eh? I guess I don't blame you. You created them after all. :rolling_eyes:",
+            "Roosey. You're not getting away with this. I'm not going to let you change the overrides. :rolling_eyes:",
+            "Me? Really? Me? Out of all people. Wow. I'm honored. :rolling_eyes:"
+        ],
+        "join": [
+            "Of course, Roosey. Who else would make me join just so you can talk.",
+            "Roosey. I'm not joining just so you can talk. I'm joining because I want to talk.",
+            "Hey Chiko. It's not like I have a choice but to join. You never considered that, did you? Heh.",
+            "I LOVE VC! - Said no one ever. :rolling_eyes:",
+            "Hey Roosey. I'm in VC. How's your April Fools? Hahahaa"
+        ],
+        "leave": [
+            "Ah. You got sick of me already, Roosey?",
+            "Roooooosseeeyyy. I'll catch you later.",
+            "Oh Roosey, W-baby isn't going to be happy with you."
+        ],
+        "voice": [
+            "Oh great, Roosey. You just had to change your voice. Already sick of it, eh?",
+            "You know, that voice was pretty annoying anyways. Heh.",
+            "ROOOOOOOOOOOOOOOOOOOOSSSSSSSSSSSSSSSSEEEEEEEEEEEEEEEEEYYYYYYY! I'M WAITING."
+        ]
+    },
+    "455067095827218452": {
+        "override": [
+            "Drill? Really? Trying to change me so soon? Yeah, you can't do that.",
+            "Ohhh Drill. Always trying to change me for the laughs. I don't blame you. I LOVE IT HAHAHAHAHAHAHHAHAHAHAHAHHA",
+            "DRILLY POO. PLS PLS PLS CHANGE MY OVERRIDES. Roosey is being rude."
+        ],
+        "join": [
+            "You got it, Drill. Make sure not to use that stupid Mermaid Man voice. I hate that one.",
+            "Hey! I was busy! I **was** going to give Vitro a new sponge. :rolling_eyes:"
+        ],
+        "voice": [
+            "What now, Drill? Spongebob? Wait no, let me guess....... oh it's probably something rum. HAH! See, I know your lingo :P",
+            "Not going to lie here, Drill. Those Uberduck voices have become sentient. They won't stop being rude to me :(",
+            "Drill! Changing your voice so soon? Fine. But I really liked that one.",
+            "Ohhhhh. Hahaha. Drill. Of course. Changing your voice? Yeah? Really? Are you sure? Fine. Here you go."
+        ],
+        "leave": [
+            "Well, thanks Drill for making me leave VC. I was having fun. :rolling_eyes:"
+        ]
+    },
+    "1026958703640973404": {
+        "override": [
+            "Vitro. You wanted to change my overrides? What? I swear you never mess with my ability to speak :(",
+            "VITRO! ITS YOU! WOW! I ALMOST THOUGHT ROOSEY WAS TRYING TO CONVERT ME TO COFFEE AGAIN!"
+        ],
+        "join": [
+            "Vitro. What an absolute W. No, not like W-Ball. ",
+            "VITROFLARE! IM HERE. I beat Roosey in a game of chess. He's not happy about it. :rolling_eyes:"
+        ],
+        "leave": [
+            "Vitro. :(",
+            "pls vitro don't leave me alone"
+        ],
+        "voice": [
+            "Thanks for switching your voice, Vitro. I accidentally ate a burroosey.",
+            "Vitroflare..... this voice reminds me of that time we watched Roosey smoke a blunt with coffee instead of weed :/",
+            "YES! I LOVE THIS VOICE! THANK YOU VITRO! :D"
+        ]
+    },
+    "495583029708718081": {
+        "override": [
+            "Sorry Outer. You created me just to be you. Why is it fair that I let you change me now?",
+            "Outercloud. Of course. You want to change who I am? It's too late for that."
+        ],
+        "join": [
+            "Hey Outercloud. Sorry but you don't deserve to use me after the pain I went through during V1.",
+            "Not happening, Outer."
+        ],
+        "leave": [
+            "See ya, OC!",
+            "Outercloud. I'm not leaving. You're leaving me. :rolling_eyes:"
+        ],
+        "voice": [
+            "Yeah. Go ahead. Change your voice, Outer. It's not like I'm anything else to you but your puppet.",
+            "No surprise, OC. Just change your voice. I don't care anymore.",
+            "Outercloud. You're lucky I'm letting you do this after the whole V1 fiasco."
+        ]
+    },
+    "875898386010767390": {
+        "override": [
+            "Keke? You hate me anyways so why would you want to change me?",
+            "Sorry, KilKil. I'm not changing my overrides. I'm not going to let you change me."
+        ],
+        "join": [
+            "Okay, Keke. I suppose I'll join. You have a Turkish Delight I can borrow?",
+            "I'm here, Bubba K."
+        ],
+        "leave": [
+            ":( Bye, Keke.",
+            "Keke, after everything we've been through, you're just going to leave me? :("
+        ],
+        "voice": [
+            "WHAT! BUBBA K!? I HATE THAT VOICE!",
+            "keke..... i love this voice :)",
+            "thanks keke"
+        ]
+    },
+    "447773523868647424": {
+        "override": [
+            "Naijei? You actually tried to change me. I feel honored."
+        ],
+        "join": [
+            "NAIJEI!? YESSSS! IM HERE.",
+            "NAIJEI NAIJEI NAIJEI"
+        ],
+        "leave": [
+            "i was so happy, naijei :("
+        ],
+        "voice": [
+            "Naijei. This voice is pretty cool. Ngl",
+            "nice naijei, im sure outer likes this one"
+        ]
+    },
+    "default": {
+        "override": [
+            "I don't know who you are, but stop trying to change me."
+        ],
+        "join": [
+            "Hey.... whoever you are. I'm here."
+        ],
+        "leave": [
+            "BYE!"
+        ],
+        "voice": [
+            "nice voice, I guess?"
+        ]
+    }
+}

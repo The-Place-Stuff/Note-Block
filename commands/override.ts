@@ -3,6 +3,7 @@ import { Override, SlashCommand } from "../types/basic";
 import { compileFunction } from "vm";
 import { readFileSync, writeFileSync } from "fs";
 import path from "path";
+import { CommandReplyer } from "../data/commandReplyer";
 
 export default class OverrideCommand implements SlashCommand {
     public data: SlashCommandBuilder = new SlashCommandBuilder()
@@ -58,6 +59,24 @@ export default class OverrideCommand implements SlashCommand {
     private overridesFile: Override[] = JSON.parse(readFileSync(path.join(__dirname, '../data/overrides.json'), 'utf-8'))
 
     public async execute(interaction: ChatInputCommandInteraction, client: Client) {
+
+        await interaction.reply({
+            embeds: [
+                {
+                    title: 'Override',
+                    description: CommandReplyer.getReply(interaction.user.id, 'override'),
+                    thumbnail: {
+                        url: 'https://images-ext-2.discordapp.net/external/82cdlfs7VXGWRAznTIOpL16NR6NCU9fyOFHX2Cf9AG4/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1081717850722553906/e2704cd816d628b43e8b999c4afd2a88.png?width=671&height=671'
+                    },
+                    footer: {
+                        text: "NB V3 no longer allows this feature"
+                    }
+                }
+            ]
+        })
+
+        return
+
         const subcommand = interaction.options.getSubcommand()
         
         //Add an override
