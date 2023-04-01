@@ -8,11 +8,6 @@
         "override": "game-test"
     },
     {
-        "overrand": "lmao",
-        "override": "lmaow",
-        "match_word": true
-    },
-    {
         "overrand": "lol",
         "override": "loll",
         "match_word": true
@@ -132,5 +127,10 @@
     {
         "overrand": "fetish",
         "override": "fehtish"
+    },
+    {
+        "overrand": "lmao",
+        "override": "luhmao",
+        "match_word": true
     }
 ]
