@@ -295,5 +295,40 @@
         "overrand": "creeper",
         "override": "kreeper king",
         "match_word": true
+    },
+    {
+        "overrand": "twitter.com",
+        "override": "pooper dot com",
+        "match_word": true
+    },
+    {
+        "overrand": "tenor.com",
+        "override": "poopor dot com",
+        "match_word": true
+    },
+    {
+        "overrand": "catchphrase",
+        "override": "Better Call Saul!",
+        "match_word": true
+    },
+    {
+        "overrand": "attack",
+        "override": ". en guarde!",
+        "match_word": true
+    },
+    {
+        "overrand": "chimp",
+        "override": "monkid",
+        "match_word": true
+    },
+    {
+        "overrand": "monkey",
+        "override": "monkid",
+        "match_word": true
+    },
+    {
+        "overrand": "peashooter",
+        "override": "peasootey",
+        "match_word": true
     }
 ]
