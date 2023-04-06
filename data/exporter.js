@@ -2,7 +2,7 @@ const say = require('say')
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args))
 const fs = require('fs')
 const http = require('https')
-import { dirname, join } from 'path'
+const path = require("path")
 
 
 // evaluate which type of audio to export from
@@ -51,7 +51,7 @@ async function exportTikTok(text = '', voice = '') {
   const fetchedData = await requestedData.json()
 
   try {
-    fs.writeFileSync(join(dirname(__dirname), 'tts.wav'), Buffer.from(fetchedData.data, 'base64'))
+    fs.writeFileSync(path.join(path.dirname(__dirname), 'tts.wav'), Buffer.from(fetchedData.data, 'base64'))
   }
   catch (err) {
     console.log("Invalid message format, Buffer only takes in string")
@@ -64,7 +64,7 @@ async function exportSAPI(text = '', voice = '') {
   const fetchedData = await requestedData.arrayBuffer()
 
   try {
-    fs.writeFileSync(join(dirname(__dirname), 'tts.wav'), Buffer.from(fetchedData, 'base64'))
+    fs.writeFileSync(path.join(path.dirname(__dirname), 'tts.wav'), Buffer.from(fetchedData, 'base64'))
   }
   catch (err) {
     console.log("Invalid message format, Buffer only takes in string")

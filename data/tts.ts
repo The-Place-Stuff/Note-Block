@@ -5,7 +5,7 @@ const exportAudio = require('./exporter.js')
 
 export class TTS {
   public static isPlaying: boolean = false
-  private static audioPlayer: AudioPlayer = createAudioPlayer({
+  public static audioPlayer: AudioPlayer = createAudioPlayer({
     behaviors: {
       noSubscriber: NoSubscriberBehavior.Pause
     }
