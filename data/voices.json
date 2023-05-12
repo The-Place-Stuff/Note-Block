@@ -334,5 +334,59 @@
         "alias": "barnacle_boy_ud",
         "id": "barnacle-boy",
         "category": "spongebob"
+    },
+    {
+        "display": "Mario",
+        "alias": "mario_ud",
+        "id": "mario-3ds",
+        "category": "other"
+    },
+    {
+        "display": "Walter White",
+        "alias": "walter_white_ud",
+        "id": "walter-white",
+        "category": "other"
+    },
+    {
+        "display": "Markiplier",
+        "alias": "markiplier_ud",
+        "id": "markiplier",
+        "category": "other"
+    },
+    {
+        "display": "Wario",
+        "alias": "wario_ud",
+        "id": "wario",
+        "category": "other"
+    },
+    {
+        "display": "Sandy Cheeks",
+        "alias": "sandy_cheeks_ud",
+        "id": "sandy-cheeks",
+        "category": "other"
+    },
+    {
+        "display": "Kanye West",
+        "alias": "kanye_west_ud",
+        "id": "kanye-west-rap",
+        "category": "other"
+    },
+    {
+        "display": "Alex Jones",
+        "alias": "alex_jones_ud",
+        "id": "alex-jones",
+        "category": "other"
+    },
+    {
+        "display": "Peter Griffin",
+        "alias": "peter_griffin_ud",
+        "id": "peter-griffin",
+        "category": "other"
+    },
+    {
+        "display": "Barack Obama",
+        "alias": "barack_obama_ud",
+        "id": "barack-obama",
+        "category": "other"
     }
 ]
