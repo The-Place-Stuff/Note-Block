@@ -1,7 +1,7 @@
 [
     {
         "overrand": "keke",
-        "override": "key key "
+        "override": "key key"
     },
     {
         "overrand": "gametest",
@@ -70,7 +70,7 @@
     },
     {
         "overrand": "github",
-        "override": "git-hub"
+        "override": "git hub"
     },
     {
         "overrand": "solveddev",
@@ -132,5 +132,24 @@
         "overrand": "lmao",
         "override": "luhmao",
         "match_word": true
+    },
+    {
+        "overrand": "aos",
+        "override": "ayo s"
+    },
+    {
+        "overrand": "biden",
+        "override": "bidin",
+        "match_word": false
+    },
+    {
+        "overrand": "megalovania",
+        "override": "mega lovania",
+        "match_word": false
+    },
+    {
+        "overrand": "bruh",
+        "override": "brruh",
+        "match_word": false
     }
 ]
