@@ -1,0 +1,30 @@
+{
+    "name": "mario",
+    "description": "Choose the Mario voices, featuring Mario and Luigi",
+    "voices": [
+        {
+            "display": "Mario",
+            "alias": "mario",
+            "id": "mario-3ds",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Luigi",
+            "alias": "luigi",
+            "id": "luigi",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Wario",
+            "alias": "wario",
+            "id": "wario",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Waluigi",
+            "alias": "waluigi",
+            "id": "waluigi",
+            "exporter": "uberduck"
+        }
+    ]
+}

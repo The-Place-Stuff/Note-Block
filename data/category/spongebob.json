@@ -1,0 +1,54 @@
+{
+    "name": "spongbob",
+    "description": "Choose the Spongebob voices, featuring Spongebob, Patrick, and Squidward!",
+    "voices": [
+        {
+            "display": "Spongebob",
+            "alias": "spongebob",
+            "id": "spongebob-squarepants",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Patrick",
+            "alias": "patrick",
+            "id": "patrick",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Squidward",
+            "alias": "squidward",
+            "id": "squidward",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Mr. Krabs",
+            "alias": "mr_krabs",
+            "id": "mr-krabs",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Sandy Cheeks",
+            "alias": "sandy_cheeks",
+            "id": "sandy-cheeks",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Plankton",
+            "alias": "plankton",
+            "id": "plankton",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Mermaid Man",
+            "alias": "mermaid_man",
+            "id": "mermaidman-joe-whyte",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Barnacle Boy",
+            "alias": "barnacle_boy",
+            "id": "barnacle-boy",
+            "exporter": "uberduck"
+        }
+    ]
+}

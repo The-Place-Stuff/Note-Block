@@ -1,6 +1,7 @@
 import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection } from '@discordjs/voice'
 import { dirname, join } from 'path'
 import voices from './voices.json'
+import { Voice } from '../types/basic'
 const exportAudio = require('./exporter.js')
 
 export class TTS {
@@ -14,17 +15,15 @@ export class TTS {
   private ttsData: {
     speed: number
     pitch: number
-    voice: string
-    voiceType: string
+    voice: Voice
     volume: number
   }
 
-  constructor(voice: string, voiceType: string) {
+  constructor(voice: Voice) {
     this.ttsData = {
       speed: 1,
       pitch: 1,
       voice: voice,
-      voiceType: voiceType,
       volume: 1,
     }
   }
@@ -42,7 +41,7 @@ export class TTS {
       return
     }
     
-    await exportAudio(text, this.processVoice(), this.ttsData.voiceType)
+    await exportAudio(text, this.ttsData.voice.id, this.ttsData.voice.exporter)
 
     const audioPlayer: AudioPlayer = TTS.audioPlayer
 
@@ -53,9 +52,7 @@ export class TTS {
       }
     )
     audioFile.volume?.setVolume(this.ttsData.volume)
-
     audioPlayer.play(audioFile)
-
     connection.subscribe(audioPlayer)
 
     // @ts-ignore
@@ -65,21 +62,5 @@ export class TTS {
     await entersState(audioPlayer, AudioPlayerStatus.Idle)
 
     TTS.isPlaying = false
-  }
-
-  // Takes in the voice alias and returns the correct voice
-  private processVoice() {
-    const voiceMap = new Map<string, string>()
-    for (const voice of voices) {
-      voiceMap.set(voice.alias, voice.id)
-    }
-
-    if (voiceMap.has(this.ttsData.voice)) {
-      return voiceMap.get(this.ttsData.voice)
-    }
-
-    // Just in case ANYTHING fails, we use outer voice
-    this.ttsData.voiceType = 'microsoft'
-    return "Microsoft David Desktop"
   }
 }

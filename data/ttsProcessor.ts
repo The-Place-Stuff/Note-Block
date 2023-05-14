@@ -2,9 +2,10 @@ import { Client, Collection, GuildMember, Message, Role, TextChannel } from 'dis
 import { channels } from '../config.json'
 import { TTS } from './tts'
 import { TextOverrides } from './textOverrides'
-import { QueueMessageData } from '../types/basic'
+import { QueueMessageData, Voice } from '../types/basic'
 
 export class TTSProcessor {
+  public static voiceMap: Collection<string, Voice> = new Collection()
   public static queue: Collection<QueueMessageData, TTS> = new Collection()
   private client: Client
 
@@ -34,10 +35,10 @@ export class TTSProcessor {
 
       if (!voiceRole) return
 
-      const voiceName: string = voiceRole.name.split('_nb')[0].trimEnd()
+      const voice: Voice = TTSProcessor.voiceMap.get(voiceRole.name.split('_nb')[0].trimEnd()) as Voice
       
       //Send data to TTS API
-      const tts: TTS = new TTS(voiceName, this.determineVoiceType(voiceName))
+      const tts: TTS = new TTS(voice)
 
       TTSProcessor.queue.set({
         messageID: msg.id,
@@ -93,21 +94,5 @@ export class TTSProcessor {
       msgText = TextOverrides.filter(msgText, this.client)
 
       return msgText
-  }
-
-  // Used to determine which group of voices we're using
-  private determineVoiceType(voiceName : string) {
-    if (voiceName.endsWith('tt')) {
-      return 'tiktok'
-    } 
-    else if (voiceName.endsWith('sapi')) {
-      return 'sapi'
-    }
-    else if (voiceName.endsWith('ud')) {
-      return 'uberduck'
-    }
-    else {
-      return 'microsoft'
-    }
   }
 }

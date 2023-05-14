@@ -6,18 +6,22 @@ const path = require("path")
 
 
 // evaluate which type of audio to export from
-async function exportAudio(text = '', voice = '', voiceType) {
-  if (voiceType == "tiktok") {
-    await exportTikTok(text, voice)
-  }
-  else if (voiceType == "sapi") {
-    await exportSAPI(text, voice)
-  }
-  else if (voiceType == "uberduck") {
-    await exportQuack(text, voice)
-  }
-  else {
+async function exportAudio(text = '', voice = '', exporter = '') {
+  if (exporter == 'microsoft') {
     await exportMicrosoft(text, voice)
+    return
+  }
+  if (exporter == 'tiktok') {
+    await exportTikTok(text, voice)
+    return
+  }
+  if (exporter == 'uberduck') {
+    await exportQuack(text, voice)
+    return
+  }
+  if (exporter == 'sapi') {
+    await exportSAPI(text, voice)
+    return
   }
 }
 

@@ -15,3 +15,23 @@ type Override = {
     override: string,
     match_word?: boolean
 }
+
+type VoiceCategory = {
+    name: string,
+    description: string,
+    voices: Voice[]
+}
+
+type Voice = {
+    display: string,
+    alias: string,
+    id: string,
+    exporter: string
+}
+
+export declare enum VoiceExporter {
+    MICROSOFT = "microsoft",
+    TIKTOK = "tiktok",
+    SAPI = "sapi",
+    UBERDUCK = "uberduck"
+}

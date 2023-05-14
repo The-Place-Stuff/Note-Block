@@ -1,0 +1,72 @@
+{
+    "name": "other",
+    "description": "Choose the Other voices, a random selection of cool voices!",
+    "voices": [
+        {
+            "display": "Walter White",
+            "alias": "walter_white",
+            "id": "walter-white",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Mr. Beast",
+            "alias": "mr_beast",
+            "id": "mrbeast",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Obama",
+            "alias": "obama",
+            "id": "barack-obama",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Markiplier",
+            "alias": "markiplier",
+            "id": "markiplier-modern",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Kanye West",
+            "alias": "kanye_west",
+            "id": "kanye-west-rap",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Alex Jones",
+            "alias": "alex_jones",
+            "id": "alex-jones",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "King Dedede",
+            "alias": "king_dedede",
+            "id": "king-dedede",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Peter Griffin",
+            "alias": "peter_griffin",
+            "id": "peter-griffin",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Brian Griffin",
+            "alias": "brian_griffin",
+            "id": "brian-griffin",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Bonzi Buddy",
+            "alias": "bonzi_buddy",
+            "id": "bonzi-buddy",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Mike Wazowski",
+            "alias": "mike_wazowski",
+            "id": "mike-wazowski",
+            "exporter": "uberduck"
+        }
+    ]
+}

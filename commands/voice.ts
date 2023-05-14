@@ -1,113 +1,55 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { Client, ChatInputCommandInteraction, APIApplicationCommandOptionChoice, Guild, Collection, Role, GuildMember } from "discord.js";
-import { SlashCommand } from "../types/basic";
-import voices from '../data/voices.json'
+import { Client, ChatInputCommandInteraction, APIApplicationCommandOptionChoice, Guild, Collection, Role, GuildMember, User } from "discord.js";
+import { SlashCommand, Voice, VoiceCategory } from "../types/basic";
+import { readdirSync, readFileSync } from 'fs'
+import path from 'path'
+import { TTSProcessor } from "../data/ttsProcessor";
 
 export default class VoiceCommand implements SlashCommand {
+    private parsedVoices: Voice[] = []
 
-    // Grabs choices, takes in a category for each subcommand
-    private getChoices(category: string | undefined) {
-        const config: APIApplicationCommandOptionChoice<string>[] = []
+    // Defines the initial command
+    private buildVoiceCommand(): SlashCommandBuilder {
+        const cmd = new SlashCommandBuilder()
+        .setName('voice')
+        .setDescription('Pick a voice, any voice!')
 
-        for (const voice of voices) {
-            if (voice.category == category || typeof category == 'undefined') {
-                config.push({
-                    name: voice.display,
-                    value: voice.alias
-                })
-            }
-        }
-        return config
+        return this.buildSubCommands(cmd);
     }
 
-    public data: SlashCommandBuilder = new SlashCommandBuilder()
-    .setName('voice')
-    .setDescription('Pick a voice') 
-    .addSubcommand(subCommand => {
-        return subCommand.setName("microsoft")
-        .setDescription("Pick a voice from the Microsoft category")
-        .addStringOption(option => {
-            return option.setName('voice')
-            .setDescription('Choose a voice!')
-            .addChoices(...this.getChoices("microsoft"))
-            .setRequired(true)
+    // Builds subcommands from the category folder
+    private buildSubCommands(cmd: SlashCommandBuilder): SlashCommandBuilder {
+        const categories = readdirSync(path.join(__dirname, '../data/category'), 'utf-8')
+
+        for (const category of categories) {
+            const data: VoiceCategory = JSON.parse(readFileSync(path.join(__dirname, `../data/category/${category}`), 'utf-8'))
+            const choices = this.getOptions(data.voices)
+
+            cmd.addSubcommand(sub => {
+                return sub.setName(data.name).setDescription(data.description).addStringOption(option => {
+                    return option.setName('voice').setDescription('Choose a voice').addChoices(...choices).setRequired(true)
+                })
+            })
+        }
+        cmd.addSubcommand(subCommand => {
+            return subCommand.setName("clear")
+            .setDescription("Clears voice")
         })
-        
-    })
-    .addSubcommand(subCommand => {
-        return subCommand.setName("base_tiktok")
-        .setDescription("Pick a voice from the TikTok category")
-        .addStringOption(option => {
-            return option.setName('voice')
-            .setDescription('Choose a voice!')
-            .addChoices(...this.getChoices("base_tiktok"))
-            .setRequired(true)
+        return cmd
+    }
+
+    // Creates a list of options for a subcommand
+    private getOptions(voices: Voice[]) {
+        const options: APIApplicationCommandOptionChoice<string>[] = []
+        voices.forEach(voice => {
+            this.parsedVoices.push(voice)
+            options.push({name: voice.display, value: voice.alias})
+            TTSProcessor.voiceMap.set(voice.alias, voice)
         })
-    })
-    .addSubcommand(subCommand => {
-        return subCommand.setName("media")
-        .setDescription("Pick a voice from the external media category")
-        .addStringOption(option => {
-            return option.setName('voice')
-            .setDescription('Choose a voice!')
-            .addChoices(...this.getChoices("media"))
-            .setRequired(true)
-        })
-    })
-    .addSubcommand(subCommand => {
-        return subCommand.setName("foreign")
-        .setDescription("Pick a voice from the foreign category")
-        .addStringOption(option => {
-            return option.setName('voice')
-            .setDescription('Choose a voice!')
-            .addChoices(...this.getChoices("foreign"))
-            .setRequired(true)
-        })
-    })
-    .addSubcommand(subCommand => {
-        return subCommand.setName("vocal")
-        .setDescription("Pick a voice from the vocal category")
-        .addStringOption(option => {
-            return option.setName('voice')
-            .setDescription('Choose a voice!')
-            .addChoices(...this.getChoices("vocal"))
-            .setRequired(true)
-        })
-    })
-    .addSubcommand(subCommand => {
-        return subCommand.setName("alternate")
-        .setDescription("Pick a voice from the alternate category")
-        .addStringOption(option => {
-            return option.setName('voice')
-            .setDescription('Choose a voice!')
-            .addChoices(...this.getChoices("alternate"))
-            .setRequired(true)
-        })
-    })
-    .addSubcommand(subCommand => {
-        return subCommand.setName("spongebob")
-        .setDescription("Pick a voice from the spongebob category")
-        .addStringOption(option => {
-            return option.setName('voice')
-            .setDescription('Choose a voice!')
-            .addChoices(...this.getChoices("spongebob"))
-            .setRequired(true)
-        })
-    })
-    .addSubcommand(subCommand => {
-        return subCommand.setName("other")
-        .setDescription("Pick a voice from the other category")
-        .addStringOption(option => {
-            return option.setName('voice')
-            .setDescription('Choose a voice!')
-            .addChoices(...this.getChoices("other"))
-            .setRequired(true)
-        })
-    })
-    .addSubcommand(subCommand => {
-        return subCommand.setName("clear")
-        .setDescription("Clears voice")
-    }) as SlashCommandBuilder
+        return options
+    }
+
+    public data: SlashCommandBuilder = this.buildVoiceCommand()
 
     public async execute(interaction: ChatInputCommandInteraction, client: Client) {
         // User Data
@@ -148,23 +90,19 @@ export default class VoiceCommand implements SlashCommand {
         const voice: string = interaction.options.getString("voice") as string
 
         // Check if the voice is valid
-        if (!this.getChoices(undefined).find(v => v.value === voice)) {
+        if (!this.parsedVoices.find(v => v.alias === voice)) {
             await interaction.reply({
                 content: "That voice is not valid!",
                 ephemeral: true
             })
             return
         }
-
-        const voiceData = this.getChoices(undefined).find(v => v.value === voice) as APIApplicationCommandOptionChoice<string>
-
-        
-
+        const voiceData = this.parsedVoices.find(v => v.alias === voice) as Voice
 
         // If the user already has the voice
-        if (user.roles.cache.find(r => r.name === voiceData.name)) {
+        if (user.roles.cache.find(role => role.name === voiceData.alias)) {
             await interaction.reply({
-                content: `You already have the **${voiceData.name}** voice!`,
+                content: `You already have the **${voiceData.display}** voice!`,
                 ephemeral: true
             })
             return
@@ -173,12 +111,12 @@ export default class VoiceCommand implements SlashCommand {
         //#region Add the new voice role
 
         // Check if the role already exists
-        let newVoiceRole: Role = guildRoles.find(r => r.name === `${voiceData.value}_nb`) as Role
+        let newVoiceRole: Role = guildRoles.find(r => r.name === `${voiceData.alias}_nb`) as Role
 
         if (!newVoiceRole) {
             // Create the role & give it
             const createdRole: Role = await userGuild.roles.create({
-                name: `${voiceData.value}_nb`
+                name: `${voiceData.alias}_nb`
             })
 
             newVoiceRole = createdRole
@@ -189,8 +127,9 @@ export default class VoiceCommand implements SlashCommand {
 
 
         await interaction.reply({
-            content: `Set the voice to **${voiceData.name}**!`,
+            content: `Set the voice to **${voiceData.display}**!`,
             ephemeral: true
         })
     }
+
 }
