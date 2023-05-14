@@ -1,6 +1,5 @@
 import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection } from '@discordjs/voice'
 import { dirname, join } from 'path'
-import voices from './voices.json'
 import { Voice } from '../types/basic'
 const exportAudio = require('./exporter.js')
 
