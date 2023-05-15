@@ -5,7 +5,19 @@
         {
             "display": "Spongebob",
             "alias": "spongebob",
+            "id": "spongebob",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Spongebob (Classic)",
+            "alias": "spongebob_classic",
             "id": "spongebob-squarepants",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Spongebob (Alternate)",
+            "alias": "sponge_bob",
+            "id": "sponge-bob",
             "exporter": "uberduck"
         },
         {
@@ -36,6 +48,12 @@
             "display": "Plankton",
             "alias": "plankton",
             "id": "plankton",
+            "exporter": "uberduck"
+        },
+        {
+            "display": "Plankton (Screaming)",
+            "alias": "plankton_screaming",
+            "id": "plankton-scream",
             "exporter": "uberduck"
         },
         {
