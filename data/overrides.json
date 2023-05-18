@@ -151,5 +151,10 @@
         "overrand": "bruh",
         "override": "brruh",
         "match_word": false
+    },
+    {
+        "overrand": "rouxl",
+        "override": "rule",
+        "match_word": false
     }
 ]
