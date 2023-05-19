@@ -156,5 +156,10 @@
         "overrand": "rouxl",
         "override": "rule",
         "match_word": false
+    },
+    {
+        "overrand": "forgor",
+        "override": "for gore",
+        "match_word": true
     }
 ]
