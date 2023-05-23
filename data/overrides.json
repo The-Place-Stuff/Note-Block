@@ -161,5 +161,15 @@
         "overrand": "forgor",
         "override": "for gore",
         "match_word": true
+    },
+    {
+        "overrand": "omocat",
+        "override": "omo cat",
+        "match_word": false
+    },
+    {
+        "overrand": "route",
+        "override": "rhowte",
+        "match_word": false
     }
 ]
