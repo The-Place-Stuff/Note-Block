@@ -67,6 +67,12 @@
             "alias": "mike_wazowski",
             "id": "mike-wazowski",
             "exporter": "uberduck"
+        },
+        {
+            "display": "Elon Musk",
+            "alias": "elon_musk",
+            "id": "elon-musk",
+            "exporter": "uberduck"
         }
     ]
 }
