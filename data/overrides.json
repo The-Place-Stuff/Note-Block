@@ -1,7 +1,7 @@
 [
     {
         "overrand": "keke",
-        "override": "key key"
+        "override": "kiki"
     },
     {
         "overrand": "gametest",
@@ -170,6 +170,11 @@
     {
         "overrand": "route",
         "override": "rhowte",
+        "match_word": false
+    },
+    {
+        "overrand": "console",
+        "override": "cawnsull",
         "match_word": false
     }
 ]
