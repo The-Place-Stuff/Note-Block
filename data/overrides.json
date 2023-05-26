@@ -176,5 +176,25 @@
         "overrand": "console",
         "override": "cawnsull",
         "match_word": false
+    },
+    {
+        "overrand": "gekocaretaker",
+        "override": "gecko caretaker",
+        "match_word": false
+    },
+    {
+        "overrand": "ihategravel",
+        "override": "I hate gravel",
+        "match_word": false
+    },
+    {
+        "overrand": "pichu",
+        "override": "pee-chew",
+        "match_word": true
+    },
+    {
+        "overrand": "harass",
+        "override": "huh rass",
+        "match_word": true
     }
 ]
