@@ -196,5 +196,15 @@
         "overrand": "harass",
         "override": "huh rass",
         "match_word": true
+    },
+    {
+        "overrand": "mojang",
+        "override": "mohjang",
+        "match_word": false
+    },
+    {
+        "overrand": "mulan",
+        "override": "moolawn",
+        "match_word": false
     }
 ]
