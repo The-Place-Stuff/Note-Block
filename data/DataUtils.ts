@@ -7,13 +7,15 @@ export class Data {
     public static dataFile: VoiceData = JSON.parse(readFileSync(join(__dirname, '../data.json'), 'utf-8'))
 
     public static async saveData(client: Client) {
-        writeFileSync('../data.json', JSON.stringify(this.dataFile))
+        writeFileSync(join(__dirname, '../data.json'), JSON.stringify(Data.dataFile, null, 4))
+
+        console.log(Data.dataFile)
 
         const dataChannel: TextChannel = client.channels.cache.get('1117203482663976960') as TextChannel
 
         dataChannel.send({
             content: 'This is a Noteblock data file. Deleting this message will result in corruption of the current stored data file. Only delete this message if you know what you are doing.',
-            files: ['../data.json']
+            files: [join(__dirname, '../data.json')]
         })
     }
 
@@ -26,6 +28,7 @@ export class Data {
     }
 
     public static getUserData(id: string): VoiceEntry | undefined {
+        console.log(Data.dataFile)
         return Data.dataFile.find((entry: VoiceEntry) => entry.id === id)
     }
 

@@ -5,6 +5,7 @@ import { readdirSync, createWriteStream } from 'fs'
 import { TTSProcessor } from './data/ttsProcessor'
 import { SlashCommand } from './types/basic'
 import { get } from 'https'
+import { Data } from './data/DataUtils'
 
 const client: Client = new Client({
   intents: [
@@ -89,6 +90,8 @@ client.on('ready', async () => {
   }
 
   console.log('Notey Poo is online!')
+
+  console.log(Data.dataFile)
 })
 
 //#endregion

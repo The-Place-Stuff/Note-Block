@@ -1,4 +1,5 @@
 .env
 tts.wav
 tts.mpeg
+data.json
 /node_modules
