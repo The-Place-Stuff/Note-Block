@@ -4,15 +4,11 @@
     "voices": [
         {
             "display": "Outer",
-            "alias": "outer",
-            "id": "Microsoft David Desktop",
-            "exporter": "microsoft"
+            "name": "outer"
         },
         {
             "display": "Chiko",
-            "alias": "chiko",
-            "id": "Microsoft Zira Desktop",
-            "exporter": "microsoft"
+            "name": "chiko"
         }
     ]
 }

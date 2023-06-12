@@ -1,13 +1,13 @@
-import { Attachment, Client, Message, TextChannel } from "discord.js";
-import { VoiceData, VoiceEntry } from "../types/basic";
+import { Client, TextChannel } from "discord.js";
+import { VoiceData, User } from "../../types/basic";
 import { readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 
 export class Data {
-    public static dataFile: VoiceData = JSON.parse(readFileSync(join(__dirname, '../data.json'), 'utf-8'))
+    public static dataFile: VoiceData = JSON.parse(readFileSync(join(__dirname, '../../data.json'), 'utf-8'))
 
     public static async saveData(client: Client) {
-        writeFileSync(join(__dirname, '../data.json'), JSON.stringify(Data.dataFile, null, 4))
+        writeFileSync(join(__dirname, '../../data.json'), JSON.stringify(Data.dataFile, null, 4))
 
         console.log(Data.dataFile)
 
@@ -15,11 +15,11 @@ export class Data {
 
         dataChannel.send({
             content: 'This is a Noteblock data file. Deleting this message will result in corruption of the current stored data file. Only delete this message if you know what you are doing.',
-            files: [join(__dirname, '../data.json')]
+            files: [join(__dirname, '../../data.json')]
         })
     }
 
-    public static writeNewUser(data: VoiceEntry, client: Client) {
+    public static writeNewUser(data: User, client: Client) {
         Data.dataFile.push(data)
 
         Data.saveData(client)
@@ -27,13 +27,12 @@ export class Data {
         return data
     }
 
-    public static getUserData(id: string): VoiceEntry | undefined {
-        console.log(Data.dataFile)
-        return Data.dataFile.find((entry: VoiceEntry) => entry.id === id)
+    public static getUserData(id: string): User | undefined {
+        return Data.dataFile.find((entry: User) => entry.id === id)
     }
 
-    public static updateUserData(data: VoiceEntry, client: Client) {
-        const userIndex: number = Data.dataFile.findIndex((entry: VoiceEntry) => entry.id === data.id)
+    public static updateUserData(data: User, client: Client) {
+        const userIndex: number = Data.dataFile.findIndex((entry: User) => entry.id === data.id)
 
         Data.dataFile[userIndex] = data
 

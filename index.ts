@@ -5,7 +5,8 @@ import { readdirSync, createWriteStream } from 'fs'
 import { TTSProcessor } from './data/ttsProcessor'
 import { SlashCommand } from './types/basic'
 import { get } from 'https'
-import { Data } from './data/DataUtils'
+import { Data } from './data/utils/DataUtils'
+import { VoiceUtils } from './data/utils/VoiceUtils'
 
 const client: Client = new Client({
   intents: [
@@ -63,6 +64,9 @@ client.login(process.env.TOKEN)
 client.on('ready', async () => {
   client.user?.setActivity('with Roosey!', { type: ActivityType.Playing })
 
+  // Builds all voices
+  VoiceUtils.buildVoices()
+
   //Initialize the TTSProcessor
   new TTSProcessor(client)
 
@@ -72,8 +76,6 @@ client.on('ready', async () => {
   const JSONmsg: TextChannel = client.channels.cache.get('1117203482663976960') as TextChannel
 
   const JSONfile: string = (await JSONmsg.messages.fetch({ limit: 1 })).first()?.attachments.first()?.url as string
-
-  console.log(JSONfile)
   
   try {
     console.log('Downloading latest NB Data...')
@@ -88,10 +90,7 @@ client.on('ready', async () => {
   } catch (error) {
     console.error(error)
   }
-
   console.log('Notey Poo is online!')
-
-  console.log(Data.dataFile)
 })
 
 //#endregion

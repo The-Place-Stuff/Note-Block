@@ -1,6 +1,6 @@
 import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection } from '@discordjs/voice'
 import { dirname, join } from 'path'
-import { Voice, VoiceEntry } from '../types/basic'
+import { VoiceUtils } from './utils/VoiceUtils'
 const exportAudio = require('./exporter.js')
 
 export class TTS {
@@ -35,12 +35,13 @@ export class TTS {
     // Play the audio file via discord.js
     const connection: VoiceConnection = getVoiceConnection('741121896149549160') as VoiceConnection
 
+
     if (!connection) {
       TTS.isPlaying = false
       return
     }
     
-    await exportAudio(text, this.ttsData.voice, "microsoft")
+    await exportAudio(text, VoiceUtils.getVoice(this.ttsData.voice)?.voice, VoiceUtils.getVoice(this.ttsData.voice)?.exporter)
 
     const audioPlayer: AudioPlayer = TTS.audioPlayer
 

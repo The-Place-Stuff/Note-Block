@@ -7,19 +7,19 @@ const path = require("path")
 
 // evaluate which type of audio to export from
 async function exportAudio(text = '', voice = '', exporter = '') {
-  if (exporter == 'microsoft') {
+  if (exporter == 'MICROSOFT') {
     await exportMicrosoft(text, voice)
     return
   }
-  if (exporter == 'tiktok') {
+  if (exporter == 'TIKTOK') {
     await exportTikTok(text, voice)
     return
   }
-  if (exporter == 'uberduck') {
+  if (exporter == 'UBERDUCK') {
     await exportQuack(text, voice)
     return
   }
-  if (exporter == 'sapi') {
+  if (exporter == 'SAPI') {
     await exportSAPI(text, voice)
     return
   }
@@ -31,7 +31,6 @@ function exportMicrosoft(text = '', voice = '') {
       if (err) {
         console.log(err)
       }
-
       res()
     })
   })

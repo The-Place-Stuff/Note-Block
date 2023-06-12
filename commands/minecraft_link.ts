@@ -1,6 +1,6 @@
 import { ChatInputCommandInteraction, Client, SlashCommandBuilder } from "discord.js";
-import { SlashCommand, VoiceEntry } from "../types/basic";
-import { Data } from "../data/DataUtils";
+import { SlashCommand, User } from "../types/basic";
+import { Data } from "../data/utils/DataUtils";
 
 export default class MinecraftLinkCommand implements SlashCommand {
     public data = new SlashCommandBuilder()
@@ -18,7 +18,7 @@ export default class MinecraftLinkCommand implements SlashCommand {
     public async execute(interaction: ChatInputCommandInteraction, client: Client) {
         const minecraftUsername = interaction.options.getString('username', true)
 
-        const userData: VoiceEntry = Data.getUserData(interaction.user.id) ? Data.getUserData(interaction.user.id) as VoiceEntry : Data.writeNewUser({
+        const userData: User = Data.getUserData(interaction.user.id) ? Data.getUserData(interaction.user.id) as User : Data.writeNewUser({
             id: interaction.user.id,
             minecraft_name: false,
             voice: "none"
@@ -29,7 +29,8 @@ export default class MinecraftLinkCommand implements SlashCommand {
         Data.updateUserData(userData, client)
 
         return interaction.reply({
-            content: `Your Minecraft username has been set to **${minecraftUsername}**`
+            content: `Your Minecraft username has been set to **${minecraftUsername}**`,
+            ephemeral: true
         })
     }
 }

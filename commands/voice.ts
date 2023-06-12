@@ -1,14 +1,17 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { Client, ChatInputCommandInteraction, APIApplicationCommandOptionChoice, Guild, Collection, Role, GuildMember, User } from "discord.js";
-import { SlashCommand, Voice, VoiceCategory } from "../types/basic";
+import { Client, ChatInputCommandInteraction, APIApplicationCommandOptionChoice} from "discord.js";
+import { SlashCommand, VoiceOption, VoiceCategory, User } from "../types/basic";
 import { readdirSync, readFileSync } from 'fs'
+import { Data } from "../data/utils/DataUtils";
 import path from 'path'
-import { TTSProcessor } from "../data/ttsProcessor";
+
 
 export default class VoiceCommand implements SlashCommand {
-    private parsedVoices: Voice[] = []
+    private parsedVoices: VoiceOption[] = []
 
-    // Defines the initial command
+    //
+    // Builds the base command
+    //
     private buildVoiceCommand(): SlashCommandBuilder {
         const cmd = new SlashCommandBuilder()
         .setName('voice')
@@ -17,12 +20,14 @@ export default class VoiceCommand implements SlashCommand {
         return this.buildSubCommands(cmd);
     }
 
+    //
     // Builds subcommands from the category folder
+    //
     private buildSubCommands(cmd: SlashCommandBuilder): SlashCommandBuilder {
-        const categories = readdirSync(path.join(__dirname, '../data/category'), 'utf-8')
+        const categories = readdirSync(path.join(__dirname, '../data/assets/category'), 'utf-8')
 
         for (const category of categories) {
-            const data: VoiceCategory = JSON.parse(readFileSync(path.join(__dirname, `../data/category/${category}`), 'utf-8'))
+            const data: VoiceCategory = JSON.parse(readFileSync(path.join(__dirname, `../data/assets/category/${category}`), 'utf-8'))
             const choices = this.getOptions(data.voices)
 
             cmd.addSubcommand(sub => {
@@ -38,13 +43,13 @@ export default class VoiceCommand implements SlashCommand {
         return cmd
     }
 
-    // Creates a list of options for a subcommand
-    private getOptions(voices: Voice[]) {
+    //
+    // Creates a list of options for the subcommand builder
+    //
+    private getOptions(voiceOptions: VoiceOption[]) {
         const options: APIApplicationCommandOptionChoice<string>[] = []
-        voices.forEach(voice => {
-            this.parsedVoices.push(voice)
-            options.push({name: voice.display, value: voice.alias})
-            TTSProcessor.voiceMap.set(voice.alias, voice)
+        voiceOptions.forEach(option => {
+            options.push({name: option.display, value: option.name})
         })
         return options
     }
@@ -52,88 +57,21 @@ export default class VoiceCommand implements SlashCommand {
     public data: SlashCommandBuilder = this.buildVoiceCommand()
 
     public async execute(interaction: ChatInputCommandInteraction, client: Client) {
+        const selectedVoice = interaction.options.getString('voice', true)
+        const user = interaction.user
+        
+        const userData = Data.getUserData(user.id) ? Data.getUserData(user.id) as User : Data.writeNewUser({
+            id: user.id,
+            minecraft_name: false,
+            voice: "none"
+        }, client)
+
+        userData.voice = selectedVoice
+        Data.updateUserData(userData, client)
+
         return interaction.reply({
-            content: "This command is currently under construction! Coming back soon!"
-        })
-
-        // User Data
-        const userGuild: Guild = interaction.guild as Guild
-        const guildRoles: Collection<string, Role> = await userGuild.roles.fetch()
-        const user: GuildMember = await userGuild.members.fetch(interaction.user.id)
-
-        // Remove the old voice role
-        const userRoles: Collection<string, Role> = user.roles.cache
-
-        const currentVoiceRole: Role = userRoles.find(r => r.name.endsWith("_nb")) as Role
-
-        if (currentVoiceRole) {
-            let roleMemberCount: number = currentVoiceRole.members.size
-
-            await user.roles.remove(currentVoiceRole)
-
-            roleMemberCount--
-
-            //Check if the role has no members, then delete it
-
-            const roleToDelete: Role = guildRoles.find(r => r.name === currentVoiceRole.name) as Role
-
-            if (roleMemberCount === 0) {
-                await roleToDelete.delete()
-            }
-        }
-
-        // Sudden return when running the clear subcommand
-        if (interaction.options.getSubcommand(true) == 'clear') {
-            await interaction.reply({
-                content: `Removed voice!`,
-                ephemeral: true
-            })
-            return
-        }
-
-        const voice: string = interaction.options.getString("voice") as string
-
-        // Check if the voice is valid
-        if (!this.parsedVoices.find(v => v.alias === voice)) {
-            await interaction.reply({
-                content: "That voice is not valid!",
-                ephemeral: true
-            })
-            return
-        }
-        const voiceData = this.parsedVoices.find(v => v.alias === voice) as Voice
-
-        // If the user already has the voice
-        if (user.roles.cache.find(role => role.name === voiceData.alias)) {
-            await interaction.reply({
-                content: `You already have the **${voiceData.display}** voice!`,
-                ephemeral: true
-            })
-            return
-        }
-
-        //#region Add the new voice role
-
-        // Check if the role already exists
-        let newVoiceRole: Role = guildRoles.find(r => r.name === `${voiceData.alias}_nb`) as Role
-
-        if (!newVoiceRole) {
-            // Create the role & give it
-            const createdRole: Role = await userGuild.roles.create({
-                name: `${voiceData.alias}_nb`
-            })
-
-            newVoiceRole = createdRole
-        }
-        await user.roles.add(newVoiceRole)
-
-        //#endregion
-
-
-        await interaction.reply({
-            content: `Set the voice to **${voiceData.display}**!`,
+            content: `Your voice has been set to ${selectedVoice}!`,
             ephemeral: true
         })
     }
-
 }

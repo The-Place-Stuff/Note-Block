@@ -1,0 +1,62 @@
+{
+    "name": "tiktok",
+    "description": "Choose the TikTok voices, featuring a wide range of voices",
+    "voices": [
+        {
+            "display": "Narrator",
+            "name": "narrator"
+        },
+        {
+            "display": "Wacky",
+            "name": "wacky"
+        },
+        {
+            "display": "Peaceful",
+            "name": "peaceful"
+        },
+        {
+            "display": "Serious",
+            "name": "serious"
+        },
+        {
+            "display": "Professor",
+            "name": "professor"
+        },
+        {
+            "display": "Scientist",
+            "name": "scientist"
+        },
+        {
+            "display": "Confident",
+            "name": "confident"
+        },
+        {
+            "display": "Joe",
+            "name": "joe"
+        },
+        {
+            "display": "Jess",
+            "name": "jess"
+        },
+        {
+            "display": "British Narrator",
+            "name": "british_narrator"
+        },
+        {
+            "display": "Bruv",
+            "name": "bruv"
+        },
+        {
+            "display": "Pirate",
+            "name": "pirate"
+        },
+        {
+            "display": "Grandma",
+            "name": "grandma"
+        },
+        {
+            "display": "No Cookie?",
+            "name": "no_cookie"
+        }
+    ]
+}

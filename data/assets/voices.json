@@ -1,0 +1,146 @@
+{
+    "outer": {
+        "voice": "Microsoft David Desktop",
+        "exporter": "MICROSOFT"
+    },
+    "chiko": {
+        "voice": "Microsoft Zira Desktop",
+        "exporter": "MICROSOFT"
+    },
+    "narrator": {
+        "voice": "en_male_narration",
+        "exporter": "TIKTOK"
+    },
+    "wacky": {
+        "voice": "en_male_funny",
+        "exporter": "TIKTOK"
+    },
+    "peaceful": {
+        "voice": "en_female_emotional",
+        "exporter": "TIKTOK"
+    },
+    "serious": {
+        "voice": "en_male_cody",
+        "exporter": "TIKTOK"
+    },
+    "professor": {
+        "voice": "en_us_007",
+        "exporter": "TIKTOK"
+    },
+    "scientist": {
+        "voice": "en_us_009",
+        "exporter": "TIKTOK"
+    },
+    "confident": {
+        "voice": "en_us_010",
+        "exporter": "TIKTOK"
+    },
+    "joe": {
+        "voice": "en_us_006",
+        "exporter": "TIKTOK"
+    },
+    "jess": {
+        "voice": "en_us_002",
+        "exporter": "TIKTOK"
+    },
+    "british_narrator": {
+        "voice": "en_uk_001",
+        "exporter": "TIKTOK"
+    },
+    "bruv": {
+        "voice": "en_uk_003",
+        "exporter": "TIKTOK"
+    },
+    "pirate": {
+        "voice": "en_male_pirate",
+        "exporter": "TIKTOK"
+    },
+    "granny": {
+        "voice": "en_female_grandma",
+        "exporter": "TIKTOK"
+    },
+    "no_cookie": {
+        "voice": "en_female_samc",
+        "exporter": "TIKTOK"
+    },
+    "sam": {
+        "voice": "Sam",
+        "exporter": "SAPI"
+    },
+    "mike": {
+        "voice": "Mike",
+        "exporter": "SAPI"
+    },
+    "mary": {
+        "voice": "Mary",
+        "exporter": "SAPI"
+    },
+    "stadium_mike": {
+        "voice": "Mike in Stadium",
+        "exporter": "SAPI"
+    },
+    "stadium_mary": {
+        "voice": "Mary in Stadium",
+        "exporter": "SAPI"
+    },
+    "echoing_mike": {
+        "voice": "Mike in Space",
+        "exporter": "SAPI"
+    },
+    "echoing_mary": {
+        "voice": "Mary in Space",
+        "exporter": "SAPI"
+    },
+    "quiet_outer": {
+        "voice": "Male Whisper",
+        "exporter": "SAPI"
+    },
+    "quiet_chiko": {
+        "voice": "Female Whisper",
+        "exporter": "SAPI"
+    },
+    "robot": {
+        "voice": "RoboSoft Five",
+        "exporter": "SAPI"
+    },
+    "evil_ai": {
+        "voice": "RoboSoft One",
+        "exporter": "SAPI"
+    },
+    "ghost_face": {
+        "voice": "en_us_ghostface",
+        "exporter": "TIKTOK"
+    },
+    "chewbacca": {
+        "voice": "en_us_chewbacca",
+        "exporter": "TIKTOK"
+    },
+    "c3po": {
+        "voice": "en_us_c3po",
+        "exporter": "TIKTOK"
+    },
+    "stitch": {
+        "voice": "en_us_stitch",
+        "exporter": "TIKTOK"
+    },
+    "stormtrooper": {
+        "voice": "en_us_stormtrooper",
+        "exporter": "TIKTOK"
+    },
+    "rocket": {
+        "voice": "en_us_rocket",
+        "exporter": "TIKTOK"
+    },
+    "madame_leota": {
+        "voice": "en_female_madam_leota",
+        "exporter": "TIKTOK"
+    },
+    "ghost_host": {
+        "voice": "en_male_ghosthost",
+        "exporter": "TIKTOK"
+    },
+    "grinch": {
+        "voice": "en_male_grinch",
+        "exporter": "TIKTOK"
+    }
+}

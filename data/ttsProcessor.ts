@@ -2,9 +2,8 @@ import { Client, Collection, GuildMember, Message, Role, TextChannel } from 'dis
 import { channels } from '../config.json'
 import { TTS } from './tts'
 import { TextOverrides } from './textOverrides'
-import { QueueMessageData, Voice, VoiceEntry } from '../types/basic'
-import { registries } from '../connected_accounts.json'
-import { Data } from './DataUtils'
+import { QueueMessageData, Voice, User } from '../types/basic'
+import { Data } from './utils/DataUtils'
 
 export class TTSProcessor {
   public static voiceMap: Collection<string, Voice> = new Collection()
@@ -26,7 +25,7 @@ export class TTSProcessor {
 
       if (msg.content == '' && msg.channel.id !== "1095055405354336286") return
 
-      let userData: VoiceEntry = Data.getUserData(msg.author.id) as VoiceEntry
+      let userData: User = Data.getUserData(msg.author.id) as User
 
       console.log("Message Received")
 
@@ -42,7 +41,7 @@ export class TTSProcessor {
           console.log("Checking " + register.minecraft_name)
 
           if (msg.embeds[0].author?.name.toLowerCase() == (register.minecraft_name as string).toLowerCase()) {
-            userData = Data.getUserData(register.id) as VoiceEntry
+            userData = Data.getUserData(register.id) as User
 
             console.log("Found")
 
