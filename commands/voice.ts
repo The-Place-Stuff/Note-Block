@@ -52,6 +52,10 @@ export default class VoiceCommand implements SlashCommand {
     public data: SlashCommandBuilder = this.buildVoiceCommand()
 
     public async execute(interaction: ChatInputCommandInteraction, client: Client) {
+        return interaction.reply({
+            content: "This command is currently under construction! Coming back soon!"
+        })
+
         // User Data
         const userGuild: Guild = interaction.guild as Guild
         const guildRoles: Collection<string, Role> = await userGuild.roles.fetch()

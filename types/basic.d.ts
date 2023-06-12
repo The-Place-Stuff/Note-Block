@@ -7,7 +7,8 @@ interface SlashCommand {
 
 type QueueMessageData = {
     messageID: string,
-    channel: TextChannel
+    channel: TextChannel,
+    isMinecraft: boolean
 }
 
 type Override = {
@@ -27,6 +28,14 @@ type Voice = {
     alias: string,
     id: string,
     exporter: string
+}
+
+type VoiceData = VoiceEntry[]
+
+type VoiceEntry = {
+    id: string,
+    minecraft_name: string | boolean,
+    voice: string
 }
 
 export declare enum VoiceExporter {

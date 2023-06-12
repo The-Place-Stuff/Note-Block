@@ -2,7 +2,9 @@ import { Client, Collection, GuildMember, Message, Role, TextChannel } from 'dis
 import { channels } from '../config.json'
 import { TTS } from './tts'
 import { TextOverrides } from './textOverrides'
-import { QueueMessageData, Voice } from '../types/basic'
+import { QueueMessageData, Voice, VoiceEntry } from '../types/basic'
+import { registries } from '../connected_accounts.json'
+import { Data } from './DataUtils'
 
 export class TTSProcessor {
   public static voiceMap: Collection<string, Voice> = new Collection()
@@ -22,27 +24,45 @@ export class TTSProcessor {
       
       if (msg.content.startsWith("\\ ")) return
 
-      if (msg.content == '') return
+      if (msg.content == '' && msg.channel.id !== "1095055405354336286") return
 
-      //Get User Roles
-      const user: GuildMember = msg.member as GuildMember
-      const userRoles: Collection<string, Role> = user.roles.cache
+      let userData: VoiceEntry = Data.getUserData(msg.author.id) as VoiceEntry
 
-      //Get Voice Role
-      const voiceRole: Role = userRoles.find(r =>
-        r.name.endsWith('_nb')
-      ) as Role
+      console.log("Message Received")
 
-      if (!voiceRole) return
+      // Minecraft Server Stuff
+      if (msg.author.id === "1095051988636549241") {
 
-      const voice: Voice = TTSProcessor.voiceMap.get(voiceRole.name.split('_nb')[0].trimEnd()) as Voice
+        console.log("Minecraft Message")
+
+        for (const register of Data.dataFile) {
+          
+          if (!register.minecraft_name) continue
+
+          console.log("Checking " + register.minecraft_name)
+
+          if (msg.embeds[0].author?.name.toLowerCase() == (register.minecraft_name as string).toLowerCase()) {
+            userData = Data.getUserData(register.id) as VoiceEntry
+
+            console.log("Found")
+
+            break
+          }
+        }
+      }
+
+      if (!userData || userData.voice == "none") return
+
+      // Get User Voice
+      const voice: string = userData.voice
       
       //Send data to TTS API
       const tts: TTS = new TTS(voice)
 
       TTSProcessor.queue.set({
         messageID: msg.id,
-        channel: msg.channel as TextChannel
+        channel: msg.channel as TextChannel,
+        isMinecraft: msg.author.id === "1095051988636549241"
       }, tts)
     })
   }
@@ -69,7 +89,10 @@ export class TTSProcessor {
 
     //If message is deleted, remove from queue
     try {
-      ttsContent = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).content
+      if (!ttsMessageData.isMinecraft) ttsContent = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).content
+      
+      else ttsContent = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).embeds[0].title as string
+
     } catch (error) {
       TTSProcessor.queue.delete(TTSProcessor.queue.firstKey() as QueueMessageData)
 

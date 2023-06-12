@@ -1,9 +1,10 @@
 require('dotenv').config()
 
-import { Client, GatewayIntentBits, Collection, Interaction, ChatInputCommandInteraction, ActivityType } from 'discord.js'
-import { readdirSync } from 'fs'
+import { Client, GatewayIntentBits, Collection, Interaction, ChatInputCommandInteraction, ActivityType, TextChannel } from 'discord.js'
+import { readdirSync, createWriteStream } from 'fs'
 import { TTSProcessor } from './data/ttsProcessor'
 import { SlashCommand } from './types/basic'
+import { get } from 'https'
 
 const client: Client = new Client({
   intents: [
@@ -58,12 +59,36 @@ client.on('interactionCreate', async (interaction: Interaction) => {
 //#region Login
 client.login(process.env.TOKEN)
 
-client.on('ready', () => {
-  console.log('Notey Poo is online!')
+client.on('ready', async () => {
   client.user?.setActivity('with Roosey!', { type: ActivityType.Playing })
 
   //Initialize the TTSProcessor
   new TTSProcessor(client)
+
+  // Other
+
+  //Download latest NB Data
+  const JSONmsg: TextChannel = client.channels.cache.get('1117203482663976960') as TextChannel
+
+  const JSONfile: string = (await JSONmsg.messages.fetch({ limit: 1 })).first()?.attachments.first()?.url as string
+
+  console.log(JSONfile)
+  
+  try {
+    console.log('Downloading latest NB Data...')
+
+    get(JSONfile, (res) => {
+      const file = createWriteStream('data.json')
+      res.pipe(file)
+    })
+
+    console.log('Downloaded latest NB Data!')
+
+  } catch (error) {
+    console.error(error)
+  }
+
+  console.log('Notey Poo is online!')
 })
 
 //#endregion
