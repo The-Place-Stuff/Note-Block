@@ -142,5 +142,25 @@
     "grinch": {
         "voice": "en_male_grinch",
         "exporter": "TIKTOK"
+    },
+    "doge": {
+        "voice": "jp_006",
+        "exporter": "TIKTOK"
+    },
+    "roosey": {
+        "voice": "jp_005",
+        "exporter": "TIKTOK"
+    },
+    "solveddev": {
+        "voice": "de_002",
+        "exporter": "TIKTOK"
+    },
+    "fry_guy": {
+        "voice": "fr_001",
+        "exporter": "TIKTOK"
+    },
+    "warm": {
+        "voice": "es_mx_002",
+        "exporter": "TIKTOK"
     }
 }

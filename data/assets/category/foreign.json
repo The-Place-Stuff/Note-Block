@@ -1,0 +1,26 @@
+{
+    "name": "foreign",
+    "description": "Choose the Foreign voices, featuring Doge, SolvedDev, and Roosey",
+    "voices": [
+        {
+            "display": "Doge (Japanese)",
+            "name": "doge"
+        },
+        {
+            "display": "Roosey (Japanese)",
+            "name": "roosey"
+        },
+        {
+            "display": "SolvedDev (German)",
+            "name": "solveddev"
+        },
+        {
+            "display": "Fry Guy (French)",
+            "name": "fry_guy"
+        },
+        {
+            "display": "Warm (Latin Spanish)",
+            "name": "warm"
+        }
+    ]
+}
