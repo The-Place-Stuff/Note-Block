@@ -162,5 +162,41 @@
     "warm": {
         "voice": "es_mx_002",
         "exporter": "TIKTOK"
+    },
+    "alto": {
+        "voice": "en_female_f08_salut_damour",
+        "exporter": "TIKTOK"
+    },
+    "tenor": {
+        "voice": "en_male_m03_lobby",
+        "exporter": "TIKTOK"
+    },
+    "sunshine_soon": {
+        "voice": "en_male_m03_sunshine_soon",
+        "exporter": "TIKTOK"
+    },
+    "warmy_breeze": {
+        "voice": "en_female_f08_warmy_breeze",
+        "exporter": "TIKTOK"
+    },
+    "glorious": {
+        "voice": "en_female_ht_f08_glorious",
+        "exporter": "TIKTOK"
+    },
+    "it_goes_up": {
+        "voice": "en_male_sing_funny_it_goes_up",
+        "exporter": "TIKTOK"
+    },
+    "chipmunk": {
+        "voice": "en_male_m2_xhxs_m03_silly",
+        "exporter": "TIKTOK"
+    },
+    "dramatic": {
+        "voice": "en_female_ht_f08_wonderful_world",
+        "exporter": "TIKTOK"
+    },
+    "opera": {
+        "voice": "en_female_ht_f08_halloween",
+        "exporter": "TIKTOK"
     }
 }

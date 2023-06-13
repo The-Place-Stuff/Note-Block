@@ -1,0 +1,41 @@
+{
+    "name": "vocal",
+    "description": "Choose the Vocal voices, featuring nice little songs!",
+    "voices": [
+        {
+            "display": "Alto (Female)",
+            "name": "alto"
+        },
+        {
+            "display": "Tenor (Male)",
+            "name": "tenor"
+        },
+        {
+            "display": "Sunshine Soon (Male)",
+            "name": "sunshine_soon"
+        },
+        {
+            "display": "Warmy Breeze (Female)",
+            "name": "warmy_breeze"
+        },
+        {
+            "display": "Glorious (Female)",
+            "name": "glorious"
+        },
+        {
+            "display": "It Goes Up (Male)",
+            "name": "it_goes_up"
+        },
+        {
+            "display": "Chipmunk (Squeaky)",
+            "name": "chipmunk"
+        },
+        {
+            "display": "Dramatic (Female)"
+        },
+        {
+            "display": "Opera (Female)",
+            "name": "opera"
+        }
+    ]
+}
