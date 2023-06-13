@@ -7,10 +7,11 @@ import path from 'path'
 
 
 export default class VoiceCommand implements SlashCommand {
-    private parsedVoices: VoiceOption[] = []
+
+    public data: SlashCommandBuilder = this.buildVoiceCommand()
 
     //
-    // Builds the base command
+    // Builds the voice command
     //
     private buildVoiceCommand(): SlashCommandBuilder {
         const cmd = new SlashCommandBuilder()
@@ -54,8 +55,9 @@ export default class VoiceCommand implements SlashCommand {
         return options
     }
 
-    public data: SlashCommandBuilder = this.buildVoiceCommand()
-
+    //
+    // Command execution
+    //
     public async execute(interaction: ChatInputCommandInteraction, client: Client) {
         const selectedVoice = interaction.options.getString('voice', true)
         const user = interaction.user
