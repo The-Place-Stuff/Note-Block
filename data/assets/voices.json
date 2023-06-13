@@ -198,5 +198,37 @@
     "opera": {
         "voice": "en_female_ht_f08_halloween",
         "exporter": "TIKTOK"
+    },
+    "spongebob": {
+        "voice": "spongebob-squarepants",
+        "exporter": "UBERDUCK"
+    },
+    "patrick": {
+        "voice": "patrick",
+        "exporter": "UBERDUCK"
+    },
+    "squidward": {
+        "voice": "squidward",
+        "exporter": "UBERDUCK"
+    },
+    "mr_krabs": {
+        "voice": "mr-krabs",
+        "exporter": "UBERDUCK"
+    },
+    "sandy_cheeks": {
+        "voice": "sandy-cheeks",
+        "exporter": "UBERDUCK"
+    },
+    "plankton": {
+        "voice": "plankton",
+        "exporter": "UBERDUCK"
+    },
+    "mermaid_man": {
+        "voice": "mermaidman-joe-whyte",
+        "exporter": "UBERDUCK"
+    },
+    "barnacle_boy": {
+        "voice": "barnacle-boy",
+        "exporter": "UBERDUCK"
     }
 }
