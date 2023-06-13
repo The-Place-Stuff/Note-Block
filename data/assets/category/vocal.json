@@ -31,7 +31,8 @@
             "name": "chipmunk"
         },
         {
-            "display": "Dramatic (Female)"
+            "display": "Dramatic (Female)",
+            "name": "dramatic"
         },
         {
             "display": "Opera (Female)",
