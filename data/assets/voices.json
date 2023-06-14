@@ -230,5 +230,33 @@
     "barnacle_boy": {
         "voice": "barnacle-boy",
         "exporter": "UBERDUCK"
+    },
+    "peter_griffin": {
+        "voice": "peter-griffin",
+        "exporter": "UBERDUCK"
+    },
+    "chris_griffin": {
+        "voice": "peter-griffin",
+        "exporter": "UBERDUCK"
+    },
+    "walter_white": {
+        "voice": "walter-white",
+        "exporter": "UBERDUCK"
+    },
+    "barack_obama": {
+        "voice": "barack-obama",
+        "exporter": "UBERDUCK"
+    },
+    "benett_foddy": {
+        "voice": "benett-foddy",
+        "exporter": "UBERDUCK"
+    },
+    "mr_beast": {
+        "voice": "mrbeast",
+        "exporter": "UBERDUCK"
+    },
+    "mike_wazowski": {
+        "voice": "mike-wazowski",
+        "exporter": "UBERDUCK"
     }
 }

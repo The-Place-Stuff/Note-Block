@@ -1,0 +1,34 @@
+{
+    "name": "uberduck",
+    "description": "A wide range of voices from Uberduck!",
+    "voices": [
+        {
+            "display": "Peter Griffin (Family Guy)",
+            "name": "peter_griffin"
+        },
+        {
+            "display": "Chris Griffin (Family Guy)",
+            "name": "chris_griffin"
+        },
+        {
+            "display": "Walter White (Breaking Bad)",
+            "name": "walter_white"
+        },
+        {
+            "display": "Barack Obama (U.S.A)",
+            "name": "barack_obama"
+        },
+        {
+            "display": "Benett Foddy ",
+            "name": "benett_foddy"
+        },
+        {
+            "display": "Mr. Beast (Youtube)",
+            "name": "mr_beast"
+        },
+        {
+            "display": "Mike Wazowski (Monsters Inc)",
+            "name": "mike_wazowski"
+        }
+    ]
+}
