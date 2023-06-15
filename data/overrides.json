@@ -134,10 +134,6 @@
         "match_word": true
     },
     {
-        "overrand": "aos",
-        "override": "ayo s"
-    },
-    {
         "overrand": "biden",
         "override": "bidin",
         "match_word": false
@@ -206,5 +202,25 @@
         "overrand": "mulan",
         "override": "moolawn",
         "match_word": false
+    },
+    {
+        "overrand": "cyden",
+        "override": "kyden",
+        "match_word": false
+    },
+    {
+        "overrand": "aos",
+        "override": "a o s",
+        "match_word": true
+    },
+    {
+        "overrand": ":3",
+        "override": "(cat face)",
+        "match_word": true
+    },
+    {
+        "overrand": "bow",
+        "override": "boe",
+        "match_word": true
     }
 ]
