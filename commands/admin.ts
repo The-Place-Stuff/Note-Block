@@ -1,7 +1,6 @@
-import { SlashCommandBuilder, ChatInputCommandInteraction, Client, GuildMember, User } from "discord.js";
+import { SlashCommandBuilder, ChatInputCommandInteraction, Client, GuildMember } from "discord.js";
 import { SlashCommand } from "../types/basic";
 import { Data } from "../data/utils/DataUtils";
-
 
 export default class AdminCommand implements SlashCommand {
 
@@ -75,5 +74,13 @@ export default class AdminCommand implements SlashCommand {
             content: `Cleared voice of ${user.username}!`,
             ephemeral: true
         })
+    }
+
+    private async addOverride() {
+
+    }
+
+    private async removeOverride() {
+        
     }
 }

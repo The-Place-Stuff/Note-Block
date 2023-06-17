@@ -1,6 +1,5 @@
-import { CacheType, ChatInputCommandInteraction, Client, InteractionResponse, SlashCommandBuilder } from "discord.js";
+import { ChatInputCommandInteraction, Client, InteractionResponse, SlashCommandBuilder } from "discord.js";
 import { Override, SlashCommand } from "../types/basic";
-import { compileFunction } from "vm";
 import { readFileSync, writeFileSync } from "fs";
 import path from "path";
 
@@ -55,7 +54,7 @@ export default class OverrideCommand implements SlashCommand {
             }
         ) as SlashCommandBuilder
 
-    private overridesFile: Override[] = JSON.parse(readFileSync(path.join(__dirname, '../data/overrides.json'), 'utf-8'))
+    private overridesFile: Override[] = JSON.parse(readFileSync(path.join(__dirname, '../data/assets/overrides.json'), 'utf-8'))
 
     public async execute(interaction: ChatInputCommandInteraction, client: Client) {
         const subcommand = interaction.options.getSubcommand()

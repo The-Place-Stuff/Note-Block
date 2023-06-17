@@ -25,6 +25,9 @@ async function exportAudio(text = '', voice = '', exporter = '') {
   }
 }
 
+//
+// Exports audio using Microsoft's built-in voices
+//
 function exportMicrosoft(text = '', voice = '') {
   return new Promise(res => {
     say.export(text, voice, 1, 'tts.wav', err => {
@@ -36,7 +39,9 @@ function exportMicrosoft(text = '', voice = '') {
   })
 }
 
-// fetches audio from the tiktop tts api
+//
+// Exports audio using Tiktok's API
+//
 async function exportTikTok(text = '', voice = '') {
   const data = {
     text,
@@ -61,6 +66,9 @@ async function exportTikTok(text = '', voice = '') {
   }
 }
 
+//
+// Exports audio using Sam API
+//
 async function exportSAPI(text = '', voice = '') {
   const requestedData = await fetch(`https://www.tetyys.com/SAPI4/SAPI4?text=${encodeURIComponent(text)}&voice=${encodeURIComponent(voice)}`)
 
@@ -74,6 +82,9 @@ async function exportSAPI(text = '', voice = '') {
   }
 }
 
+//
+// Export audio using Uberduck's API
+//
 async function exportQuack(text = '', voice = '') {
   return new Promise(async (resolve, reject) => {
     const generateResponse = await fetch('https://api.uberduck.ai/speak', {

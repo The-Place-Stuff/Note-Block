@@ -5,7 +5,7 @@ import { Override } from '../types/basic'
 export class TextOverrides {
   private client: Client
 
-  private overridesJson: Override[] = JSON.parse(readFileSync('./data/overrides.json', 'utf-8'))
+  private overridesJson: Override[] = JSON.parse(readFileSync('./data/assets/overrides.json', 'utf-8'))
 
   constructor(client: Client) {
     this.client = client

@@ -239,6 +239,10 @@
         "voice": "chris-griffin",
         "exporter": "UBERDUCK"
     },
+    "mario": {
+        "voice": "mario-3ds",
+        "exporter": "UBERDUCK"
+    },
     "walter_white": {
         "voice": "walter-white",
         "exporter": "UBERDUCK"
