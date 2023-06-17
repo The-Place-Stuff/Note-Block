@@ -222,5 +222,10 @@
         "overrand": "bow",
         "override": "boe",
         "match_word": true
+    },
+    {
+        "overrand": "ngl",
+        "override": "not gonna lie",
+        "match_word": false
     }
 ]
