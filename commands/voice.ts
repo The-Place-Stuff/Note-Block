@@ -62,11 +62,7 @@ export default class VoiceCommand implements SlashCommand {
         const selectedVoice = interaction.options.getString('voice', true)
         const user = interaction.user
         
-        const userData = Data.getUserData(user.id) ? Data.getUserData(user.id) as User : Data.writeNewUser({
-            id: user.id,
-            minecraft_name: false,
-            voice: "none"
-        }, client)
+        const userData = Data.getOrCreateUser(user.id, client)
 
         userData.voice = selectedVoice
         Data.updateUserData(userData, client)

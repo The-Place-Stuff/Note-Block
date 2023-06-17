@@ -31,6 +31,13 @@ export class Data {
         return Data.dataFile.find((entry: User) => entry.id === id)
     }
 
+    public static getOrCreateUser(id: string, client: Client): User {
+        if (!Data.getUserData(id)) {
+            return Data.writeNewUser({id: id, minecraft_name: false, voice: 'none'}, client)
+        }
+        return Data.getUserData(id) as User
+    }
+
     public static updateUserData(data: User, client: Client) {
         const userIndex: number = Data.dataFile.findIndex((entry: User) => entry.id === data.id)
 

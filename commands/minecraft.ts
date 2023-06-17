@@ -19,13 +19,7 @@ export default class MinecraftLinkCommand implements SlashCommand {
 
     public async execute(interaction: ChatInputCommandInteraction, client: Client) {
         const selectedCommand = interaction.options.getSubcommand(true)
-        console.log(selectedCommand)
-        
-        const userData: User = Data.getUserData(interaction.user.id) ? Data.getUserData(interaction.user.id) as User : Data.writeNewUser({
-            id: interaction.user.id,
-            minecraft_name: false,
-            voice: "none"
-        }, client)
+        const userData: User = Data.getOrCreateUser(interaction.user.id, client)
 
         return selectedCommand == 'link' ? this.onLink(interaction, userData, client) : this.onUnlink(interaction, userData, client)
     }
