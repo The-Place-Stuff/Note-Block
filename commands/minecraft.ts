@@ -33,7 +33,8 @@ export default class MinecraftLinkCommand implements SlashCommand {
 
         if (minecraftName == userData.minecraft_name) {
             return interaction.reply({
-                content: `Failed to link Minecraft account, **${minecraftName}** is already linked!`
+                content: `Failed to link Minecraft account, **${minecraftName}** is already linked!`,
+                ephemeral: true
             })
         }
 

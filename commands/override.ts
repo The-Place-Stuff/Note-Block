@@ -133,6 +133,6 @@ export default class OverrideCommand implements SlashCommand {
 
     private saveOverrides(overrides: Override[]): void {
         // Save the overrides to the file
-        writeFileSync(path.join(__dirname, '../data/overrides.json'), JSON.stringify(overrides, null, 4))
+        writeFileSync(path.join(__dirname, '../data/assets/overrides.json'), JSON.stringify(overrides, null, 4))
     }
 }
