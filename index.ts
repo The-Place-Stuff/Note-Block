@@ -1,12 +1,13 @@
 require('dotenv').config()
 
 import { Client, GatewayIntentBits, Collection, Interaction, ChatInputCommandInteraction, ActivityType, TextChannel } from 'discord.js'
-import { readdirSync, createWriteStream } from 'fs'
+import { readdirSync, createWriteStream, readFileSync } from 'fs'
 import { TTSProcessor } from './data/ttsProcessor'
 import { SlashCommand } from './types/basic'
 import { get } from 'https'
 import { Data } from './data/utils/DataUtils'
 import { VoiceUtils } from './data/utils/VoiceUtils'
+import { join } from 'path'
 
 const client: Client = new Client({
   intents: [
@@ -85,11 +86,14 @@ client.on('ready', async () => {
       res.pipe(file)
     })
 
-    console.log('Downloaded latest NB Data!')
+    Data.dataFile = JSON.parse(readFileSync(join(__dirname, '../../data.json'), 'utf-8'))
 
   } catch (error) {
     console.error(error)
   }
+
+  console.log('Downloaded latest NB Data!')
+  
   console.log('Notey Poo is online!')
 })
 

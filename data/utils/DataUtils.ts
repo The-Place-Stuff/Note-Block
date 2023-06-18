@@ -4,7 +4,7 @@ import { readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 
 export class Data {
-    public static dataFile: VoiceData = JSON.parse(readFileSync(join(__dirname, '../../data.json'), 'utf-8'))
+    public static dataFile: VoiceData
 
     public static async saveData(client: Client) {
         writeFileSync(join(__dirname, '../../data.json'), JSON.stringify(Data.dataFile, null, 4))
