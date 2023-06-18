@@ -86,14 +86,14 @@ client.on('ready', async () => {
       res.pipe(file)
     })
 
-    Data.dataFile = JSON.parse(readFileSync(join(__dirname, '../../data.json'), 'utf-8'))
+    Data.dataFile = JSON.parse(readFileSync(join(__dirname, 'data.json'), 'utf-8'))
 
   } catch (error) {
     console.error(error)
   }
 
   console.log('Downloaded latest NB Data!')
-  
+
   console.log('Notey Poo is online!')
 })
 
