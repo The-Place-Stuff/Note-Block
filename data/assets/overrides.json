@@ -226,6 +226,6 @@
     {
         "overrand": "ngl",
         "override": "not gonna lie",
-        "match_word": false
+        "match_word": true
     }
 ]
