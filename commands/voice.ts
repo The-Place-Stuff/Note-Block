@@ -97,7 +97,7 @@ export default class VoiceCommand implements SlashCommand {
             ephemeral: true
         })
 
-        userData.voice = selectedVoice
+        userData.voice = subCommand != 'clear' ? selectedVoice : 'none'
         Data.updateUserData(userData, client)
 
         return interaction.reply({
