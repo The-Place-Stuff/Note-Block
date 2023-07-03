@@ -1,6 +1,7 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction, Client, GuildMember } from "discord.js";
 import { SlashCommand } from "../types/basic";
 import { Data } from "../data/utils/DataUtils";
+import { VoiceUtils } from "../data/utils/VoiceUtils";
 
 export default class AdminCommand implements SlashCommand {
 
@@ -14,6 +15,24 @@ export default class AdminCommand implements SlashCommand {
         command.addSubcommandGroup(group => {
             group.setName('voice')
             group.setDescription('Manage user voices')
+            group.addSubcommand(subCmd => {
+                subCmd.setName('set')
+                subCmd.setDescription('Set a user\'s voice')
+                
+                subCmd.addUserOption(option => {
+                    option.setName('user')
+                    option.setDescription('The user to target')
+                    option.setRequired(true)
+                    return option
+                })
+                subCmd.addStringOption(option => {
+                    option.setName('voice')
+                    option.setDescription('Choose a voice')
+                    option.setRequired(true)
+                    return option
+                })
+                return subCmd
+            })
             group.addSubcommand(subCmd => {
                 subCmd.setName('clear')
                 subCmd.setDescription('Clear a user\'s voice')
@@ -46,7 +65,9 @@ export default class AdminCommand implements SlashCommand {
                 ephemeral: true
             })
         }
-
+        if (subGroup == 'voice' && subCmd == 'set') {
+            return this.voiceSet(interaction, client)
+        }
         if (subGroup == 'voice' && subCmd == 'clear') {
             return this.voiceClear(interaction, client)
         }
@@ -55,6 +76,29 @@ export default class AdminCommand implements SlashCommand {
             ephemeral: true
         })
     }
+
+    //
+    // Group: voice, Command: set
+    private async voiceSet(interaction: ChatInputCommandInteraction, client: Client) {
+        const user = interaction.options.getUser('user', true)
+        const voice = interaction.options.getString('voice', true)
+        const userData = Data.getOrCreateUser(user.id, client)
+
+        if (!VoiceUtils.voiceMap.get(voice)) {
+            return interaction.reply({
+                content: `${voice} isn't a valid voice!`,
+                ephemeral: true
+            })
+        }
+        userData.voice = voice
+        Data.updateUserData(userData, client)
+
+        return interaction.reply({
+            content: `Cleared voice of ${user.username}!`,
+            ephemeral: true
+        })
+    }
+    //
     
     //
     // Group: voice, Command: clear
@@ -77,7 +121,7 @@ export default class AdminCommand implements SlashCommand {
     }
 
     private async addOverride() {
-
+        
     }
 
     private async removeOverride() {

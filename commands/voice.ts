@@ -87,17 +87,25 @@ export default class VoiceCommand implements SlashCommand {
     //
     public async execute(interaction: ChatInputCommandInteraction, client: Client) {
         const subCommand = interaction.options.getSubcommand(true)
-        const selectedVoice = interaction.options.getString('voice', true)
         const user = interaction.user
-        
         const userData = Data.getOrCreateUser(user.id, client)
 
+        if (subCommand == 'clear') {
+            userData.voice = 'none'
+            Data.updateUserData(userData, client)
+
+            return interaction.reply({
+                content: 'Voice has been removed',
+                ephemeral: true
+            })
+        }
+
+        const selectedVoice = interaction.options.getString('voice', true)
         if (subCommand == 'set' && !VoiceUtils.voiceMap.get(selectedVoice)) return interaction.reply({
             content: `${selectedVoice} isn't a valid voice!`,
             ephemeral: true
         })
-
-        userData.voice = subCommand != 'clear' ? selectedVoice : 'none'
+        userData.voice = selectedVoice
         Data.updateUserData(userData, client)
 
         return interaction.reply({
