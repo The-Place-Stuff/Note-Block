@@ -227,5 +227,15 @@
         "overrand": "ngl",
         "override": "not gonna lie",
         "match_word": true
+    },
+    {
+        "overrand": "scute",
+        "override": "scoot",
+        "match_word": false
+    },
+    {
+        "overrand": "pls",
+        "override": "please",
+        "match_word": true
     }
 ]
