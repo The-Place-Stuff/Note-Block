@@ -278,5 +278,17 @@
     "screaming_plankton": {
         "voice": "plankton-scream",
         "exporter": "UBERDUCK"
+    },
+    "optimus_prime": {
+        "voice": "en_us_male_transformer",
+        "exporter": "TIKTOK"
+    },
+    "optimo_primo": {
+        "voice": "es_mx_male_transformer",
+        "exporter": "TIKTOK"
+    },
+    "cool": {
+        "voice": "es_mx_female_supermom",
+        "exporter": "TIKTOK"
     }
 }

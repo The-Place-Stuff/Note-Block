@@ -21,6 +21,14 @@
         {
             "display": "Warm (Latin Spanish)",
             "name": "warm"
+        },
+        {
+            "display": "Cool (Latin Spanish)",
+            "name": "cool"
+        },
+        {
+            "display": "Óptimo Primo (Latin Spanish)",
+            "name": "optimo_primo"
         }
     ]
 }
