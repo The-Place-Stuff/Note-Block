@@ -262,5 +262,21 @@
     "mike_wazowski": {
         "voice": "mike-wazowski",
         "exporter": "UBERDUCK"
+    },
+    "smash_bros": {
+        "voice": "ssbb-announcer",
+        "exporter": "UBERDUCK"
+    },
+    "muscle_man": {
+        "voice": "muscle-man",
+        "exporter": "UBERDUCK"
+    },
+    "glamrock_freddy": {
+        "voice": "glamrock-freddy",
+        "exporter": "UBERDUCK"
+    },
+    "screaming_plankton": {
+        "voice": "plankton-scream",
+        "exporter": "UBERDUCK"
     }
 }
