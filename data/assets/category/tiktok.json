@@ -27,6 +27,10 @@
             "name": "scientist"
         },
         {
+            "display": "Wizard",
+            "name": "wizard"
+        },
+        {
             "display": "Confident",
             "name": "confident"
         },
@@ -57,6 +61,14 @@
         {
             "display": "No Cookie?",
             "name": "no_cookie"
+        },
+        {
+            "display": "Santa Claus",
+            "name": "santa"
+        },
+        {
+            "display": "Cupid",
+            "name": "cupid"
         }
     ]
 }

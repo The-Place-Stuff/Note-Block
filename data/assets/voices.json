@@ -280,7 +280,7 @@
         "exporter": "UBERDUCK"
     },
     "optimus_prime": {
-        "voice": "en_us_male_transformer",
+        "voice": "transformer",
         "exporter": "TIKTOK"
     },
     "optimo_primo": {
@@ -289,6 +289,18 @@
     },
     "cool": {
         "voice": "es_mx_female_supermom",
+        "exporter": "TIKTOK"
+    },
+    "santa": {
+        "voice": "en_male_santa",
+        "exporter": "TIKTOK"
+    },
+    "cupid": {
+        "voice": "en_male_cupid",
+        "exporter": "TIKTOK"
+    },
+    "wizard": {
+        "voice": "en_male_wizard",
         "exporter": "TIKTOK"
     }
 }

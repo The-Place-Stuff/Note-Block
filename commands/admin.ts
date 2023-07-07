@@ -45,6 +45,11 @@ export default class AdminCommand implements SlashCommand {
                 })                
                 return subCmd
             })
+            group.addSubcommand(subCmd => {
+                subCmd.setName('build')
+                subCmd.setDescription('Rebuilds voices')
+                return subCmd
+            })
             return group
         })
         return command
@@ -65,11 +70,16 @@ export default class AdminCommand implements SlashCommand {
                 ephemeral: true
             })
         }
-        if (subGroup == 'voice' && subCmd == 'set') {
-            return this.voiceSet(interaction, client)
-        }
-        if (subGroup == 'voice' && subCmd == 'clear') {
-            return this.voiceClear(interaction, client)
+        if (subGroup == 'voice') {
+            if (subCmd == 'set') {
+                return this.voiceSet(interaction, client)
+            }
+            if (subCmd == 'voice') {
+                return this.voiceClear(interaction, client)
+            }
+            if (subCmd == 'build') {
+                return this.voiceBuild(interaction, client)
+            }
         }
         return interaction.reply({
             content: "under construction",
@@ -79,6 +89,7 @@ export default class AdminCommand implements SlashCommand {
 
     //
     // Group: voice, Command: set
+    //
     private async voiceSet(interaction: ChatInputCommandInteraction, client: Client) {
         const user = interaction.options.getUser('user', true)
         const voice = interaction.options.getString('voice', true)
@@ -94,11 +105,10 @@ export default class AdminCommand implements SlashCommand {
         Data.updateUserData(userData, client)
 
         return interaction.reply({
-            content: `Cleared voice of ${user.username}!`,
+            content: `Set voice of ${user} to ${voice}!`,
             ephemeral: true
         })
     }
-    //
     
     //
     // Group: voice, Command: clear
@@ -116,6 +126,19 @@ export default class AdminCommand implements SlashCommand {
 
         return interaction.reply({
             content: `Cleared voice of ${user.username}!`,
+            ephemeral: true
+        })
+    }
+
+    //
+    // Group: voice, Command: build
+    //
+    private async voiceBuild(interaction: ChatInputCommandInteraction, client: Client) {
+        VoiceUtils.voiceMap.clear()
+        VoiceUtils.buildVoices()
+
+        return interaction.reply({
+            content: `Successfully rebuilt voices!`,
             ephemeral: true
         })
     }
