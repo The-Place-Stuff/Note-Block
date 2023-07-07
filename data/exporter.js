@@ -1,9 +1,8 @@
 const say = require('say')
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args))
 const fs = require('fs')
-const http = require('https')
+const https = require('https')
 const path = require("path")
-
 
 // evaluate which type of audio to export from
 async function exportAudio(text = '', voice = '', exporter = '') {
@@ -21,6 +20,10 @@ async function exportAudio(text = '', voice = '', exporter = '') {
   }
   if (exporter == 'SAPI') {
     await exportSAPI(text, voice)
+    return
+  }
+  if (exporter == 'STREAMLABS') {
+    await exportStreamlabs(text, voice)
     return
   }
 }
@@ -114,15 +117,53 @@ async function exportQuack(text = '', voice = '') {
     }
 
     const file = fs.createWriteStream('tts.wav')
-    
-    http.get(filePath, function (response) {
-      response.pipe(file)
-
-      file.on('finish', () => {
-        file.close()
-        resolve()
+    try {
+      https.get(filePath, function (response) {
+        response.pipe(file)
+  
+        file.on('finish', () => {
+          file.close()
+          resolve()
+        })
       })
-    })
+    }
+    catch (err) {
+      console.log(err)
+      reject()
+    }
+  })
+}
+ 
+async function exportStreamlabs(text = '', voice = '') {
+  const data = {
+    voice: voice,
+    text: text
+  }
+  const requestedData = await fetch('https://streamlabs.com/polly/speak', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  const fetchedData = await requestedData.json()
+
+  return new Promise(async (resolve, reject) => {
+    try {
+      https.get(fetchedData.speak_url, (res) => {
+        const file = fs.createWriteStream(path.join(path.dirname(__dirname), 'tts.wav'))
+        res.pipe(file)
+        file.on('finish', () => {
+          file.close()
+          resolve()
+        })
+      })
+    }
+    catch (err) {
+      console.log(err)
+      reject()
+    }
   })
 }
 

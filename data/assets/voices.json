@@ -302,5 +302,37 @@
     "wizard": {
         "voice": "en_male_wizard",
         "exporter": "TIKTOK"
+    },
+    "joey": {
+        "voice": "Joey",
+        "exporter": "STREAMLABS"
+    },
+    "brian": {
+        "voice": "Brian",
+        "exporter": "STREAMLABS"
+    },
+    "amy": {
+        "voice": "Amy",
+        "exporter": "STREAMLABS"
+    },
+    "russell": {
+        "voice": "Russell",
+        "exporter": "STREAMLABS"
+    },
+    "kendra": {
+        "voice": "Kendra",
+        "exporter": "STREAMLABS"
+    },
+    "justin": {
+        "voice": "Justin",
+        "exporter": "STREAMLABS"
+    },
+    "ivy": {
+        "voice": "Ivy",
+        "exporter": "STREAMLABS"
+    },
+    "raveena": {
+        "voice": "Raveena",
+        "exporter": "STREAMLABS"
     }
 }

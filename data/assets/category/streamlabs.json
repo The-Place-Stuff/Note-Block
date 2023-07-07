@@ -1,0 +1,38 @@
+{
+    "name": "streamlabs",
+    "description": "Choose the Streamlabs voices, featuring Justin and Brian",
+    "voices": [
+        {
+            "display": "Brian",
+            "name": "brian"
+        },
+        {
+            "display": "Joey",
+            "name": "joey"
+        },
+        {
+            "display": "Amy",
+            "name": "amy"
+        },
+        {
+            "display": "Russell",
+            "name": "russell"
+        },
+        {
+            "display": "Kendra",
+            "name": "kendra"
+        },
+        {
+            "display": "Justin",
+            "name": "justin"
+        },
+        {
+            "display": "Ivy",
+            "name": "ivy"
+        },
+        {
+            "display": "Raveena",
+            "name": "raveena"
+        }
+    ]
+}
