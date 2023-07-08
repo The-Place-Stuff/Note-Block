@@ -101,7 +101,7 @@ async function exportUberduck(text = '', voice = '') {
       'Accept': 'application/json',
       'uberduck-id': 'anonymous',
       'Content-Type': 'application/json',
-      Authorization: 'Basic cHViX21yYm5uaWFhb2VobmNxbWVrYjpwa19jYzEzMzc3NS0wZjQ2LTQ2YmQtODE5Yi1hZTAyY2M0Y2EyZWU='
+      Authorization: 'Basic cHViX2ZjZWdqcXJocXZreWpjd2VwdDpwa19iMjYyMzI3MC02YTFjLTQ1M2QtYjI3Mi1iODRiYmI5YTVmNDg='
     },
     body: JSON.stringify(data)
   })
