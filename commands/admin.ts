@@ -2,6 +2,8 @@ import { SlashCommandBuilder, ChatInputCommandInteraction, Client, GuildMember }
 import { SlashCommand } from "../types/basic";
 import { Data } from "../data/utils/DataUtils";
 import { VoiceUtils } from "../data/utils/VoiceUtils";
+import { TTS } from "../data/tts";
+import { TTSProcessor } from "../data/ttsProcessor";
 
 export default class AdminCommand implements SlashCommand {
 
@@ -52,6 +54,21 @@ export default class AdminCommand implements SlashCommand {
             })
             return group
         })
+        command.addSubcommandGroup(group => {
+            group.setName('queue')
+            group.setDescription('Manage the TTS queue')
+            group.addSubcommand(subCmd => {
+                subCmd.setName('skip')
+                subCmd.setDescription('Skips the currently playing TTS')
+                return subCmd
+            })
+            group.addSubcommand(subCmd => {
+                subCmd.setName('clear')
+                subCmd.setDescription('Clears the TTS queue completely')
+                return subCmd
+            })
+            return group
+        })
         return command
     }
     
@@ -70,6 +87,7 @@ export default class AdminCommand implements SlashCommand {
                 ephemeral: true
             })
         }
+        // Voice group
         if (subGroup == 'voice') {
             if (subCmd == 'set') {
                 return this.voiceSet(interaction, client)
@@ -81,8 +99,18 @@ export default class AdminCommand implements SlashCommand {
                 return this.voiceBuild(interaction, client)
             }
         }
+        // Queue group
+        if (subGroup == 'queue') {
+            if (subCmd == 'skip') {
+                return this.queueSkip(interaction, client)
+            }
+            if (subCmd == 'clear') {
+                return this.queueClear(interaction, client)
+            }
+        }
+
         return interaction.reply({
-            content: "under construction",
+            content: "how did you get here?",
             ephemeral: true
         })
     }
@@ -143,11 +171,42 @@ export default class AdminCommand implements SlashCommand {
         })
     }
 
-    private async addOverride() {
-        
+    //
+    // Group: queue, Command: skip
+    //
+    private async queueSkip(interaction: ChatInputCommandInteraction, client: Client) {
+        TTS.audioPlayer.stop()
+
+        return interaction.reply({
+            content: `Successfully skipped the current TTS!`,
+            ephemeral: true
+        })
     }
 
+    //
+    // Group: queue, Command: clear
+    //
+    private async queueClear(interaction: ChatInputCommandInteraction, client: Client) {
+        TTS.audioPlayer.stop()
+        TTSProcessor.queue.clear()
+
+        return interaction.reply({
+            content: `Successfully cleared the TTS queue!`,
+            ephemeral: true
+        })
+    }
+
+    //
+    // Group: override, Command: add
+    //
+    private async addOverride() {
+        // WIP
+    }
+
+    //
+    // Group: override, Command: remove
+    //
     private async removeOverride() {
-        
+        // WIP
     }
 }
