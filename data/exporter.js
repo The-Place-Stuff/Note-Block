@@ -89,42 +89,29 @@ async function exportSAPI(text = '', voice = '') {
 // Export audio using Uberduck's API
 //
 async function exportUberduck(text = '', voice = '') {
+  const url = 'https://api.uberduck.ai/speak-synchronous'
   const data = {
     voice,
     speech: text,
     pace: 1
   }
-
-  const requestedData = await fetch('https://api.uberduck.ai/speak', {
+  const dataRequest = await fetch(url, {
     method: 'POST',
     headers: {
-      Accept: 'application/json',
+      'Accept': 'application/json',
       'uberduck-id': 'anonymous',
       'Content-Type': 'application/json',
-      Authorization: 'Basic cHViX2ZjZWdqcXJocXZreWpjd2VwdDpwa19iMjYyMzI3MC02YTFjLTQ1M2QtYjI3Mi1iODRiYmI5YTVmNDg='
+      Authorization: 'Basic cHViX21yYm5uaWFhb2VobmNxbWVrYjpwa19jYzEzMzc3NS0wZjQ2LTQ2YmQtODE5Yi1hZTAyY2M0Y2EyZWU='
     },
     body: JSON.stringify(data)
   })
-  const fetchedData = await requestedData.json()
-  
-  // Uberduck sends over the json data when the path is null, so we need to ping their services multiple times.
-  let url = null
-  let tries = 0
-  while (!url) {
-    await new Promise(res => setTimeout(res, 100))
-    if (tries > 30) return
-
-    const audioRequest = await fetch(`http://api.uberduck.ai/speak-status?uuid=${fetchedData.uuid}`, {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json'
-      }
-    })
-    const audioData = await audioRequest.json()
-    url = audioData.path
-    tries++
+  const bufferData = await dataRequest.arrayBuffer()
+  try {
+    fs.writeFileSync(path.join(path.dirname(__dirname), 'tts.wav'), Buffer.from(bufferData, 'base64'))
   }
-  await downloadAudio(url)
+  catch (err) {
+    console.log(err)
+  }
 }
 
 //
