@@ -124,7 +124,6 @@ async function exportUberduck(text = '', voice = '') {
     url = audioData.path
     tries++
   }
-  console.log(tries)
   await downloadAudio(url)
 }
 
@@ -149,6 +148,7 @@ async function exportStreamlabs(text = '', voice = '') {
   await downloadAudio(fetchedData.speak_url)
 }
 
+// Used to download audio to tts.wav, takes in a url.
 async function downloadAudio(url) {
   return new Promise((resolve, reject) => {
     try {
