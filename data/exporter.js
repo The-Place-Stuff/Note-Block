@@ -15,7 +15,7 @@ async function exportAudio(text = '', voice = '', exporter = '') {
     return
   }
   if (exporter == 'UBERDUCK') {
-    await exportQuack(text, voice)
+    await exportUberduck(text, voice)
     return
   }
   if (exporter == 'SAPI') {
@@ -24,7 +24,6 @@ async function exportAudio(text = '', voice = '', exporter = '') {
   }
   if (exporter == 'STREAMLABS') {
     await exportStreamlabs(text, voice)
-    return
   }
 }
 
@@ -32,12 +31,13 @@ async function exportAudio(text = '', voice = '', exporter = '') {
 // Exports audio using Microsoft's built-in voices
 //
 function exportMicrosoft(text = '', voice = '') {
-  return new Promise(res => {
+  return new Promise((resolve, reject) => {
     say.export(text, voice, 1, 'tts.wav', err => {
       if (err) {
         console.log(err)
+        reject()
       }
-      res()
+      resolve()
     })
   })
 }
@@ -88,52 +88,49 @@ async function exportSAPI(text = '', voice = '') {
 //
 // Export audio using Uberduck's API
 //
-async function exportQuack(text = '', voice = '') {
-  return new Promise(async (resolve, reject) => {
-    const generateResponse = await fetch('https://api.uberduck.ai/speak', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'uberduck-id': 'anonymous',
-        'Content-Type': 'application/json',
-        Authorization: 'Basic cHViX2ZjZWdqcXJocXZreWpjd2VwdDpwa19iMjYyMzI3MC02YTFjLTQ1M2QtYjI3Mi1iODRiYmI5YTVmNDg=',
-      },
-      body: JSON.stringify({ voice, pace: 1, speech: text }),
-    })
-    const generatedData = await generateResponse.json()
+async function exportUberduck(text = '', voice = '') {
+  const data = {
+    voice,
+    speech: text,
+    pace: 1
+  }
 
-    let filePath = null
-    while (!filePath) {
-      await new Promise(r => setTimeout(r, 100))
-      const requestedData = await fetch(`http://api.uberduck.ai/speak-status?uuid=${generatedData.uuid}`, {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-        },
-      })
-      const fetchedData = await requestedData.json()
-
-      filePath = fetchedData.path
-    }
-
-    const file = fs.createWriteStream('tts.wav')
-    try {
-      https.get(filePath, function (response) {
-        response.pipe(file)
-  
-        file.on('finish', () => {
-          file.close()
-          resolve()
-        })
-      })
-    }
-    catch (err) {
-      console.log(err)
-      reject()
-    }
+  const requestedData = await fetch('https://api.uberduck.ai/speak', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'uberduck-id': 'anonymous',
+      'Content-Type': 'application/json',
+      Authorization: 'Basic cHViX2ZjZWdqcXJocXZreWpjd2VwdDpwa19iMjYyMzI3MC02YTFjLTQ1M2QtYjI3Mi1iODRiYmI5YTVmNDg='
+    },
+    body: JSON.stringify(data)
   })
+  const fetchedData = await requestedData.json()
+  
+  // Uberduck sends over the json data when the path is null, so we need to ping their services multiple times.
+  let url = null
+  let tries = 0
+  while (!url) {
+    await new Promise(res => setTimeout(res, 100))
+    if (tries > 30) return
+
+    const audioRequest = await fetch(`http://api.uberduck.ai/speak-status?uuid=${fetchedData.uuid}`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json'
+      }
+    })
+    const audioData = await audioRequest.json()
+    url = audioData.path
+    tries++
+  }
+  console.log(tries)
+  await downloadAudio(url)
 }
- 
+
+//
+// Export audio using Steamlabs Polly API
+//
 async function exportStreamlabs(text = '', voice = '') {
   const data = {
     voice: voice,
@@ -149,11 +146,16 @@ async function exportStreamlabs(text = '', voice = '') {
   })
   const fetchedData = await requestedData.json()
 
-  return new Promise(async (resolve, reject) => {
+  await downloadAudio(fetchedData.speak_url)
+}
+
+async function downloadAudio(url) {
+  return new Promise((resolve, reject) => {
     try {
-      https.get(fetchedData.speak_url, (res) => {
+      https.get(url, (res) => {
         const file = fs.createWriteStream(path.join(path.dirname(__dirname), 'tts.wav'))
         res.pipe(file)
+  
         file.on('finish', () => {
           file.close()
           resolve()
@@ -162,7 +164,7 @@ async function exportStreamlabs(text = '', voice = '') {
     }
     catch (err) {
       console.log(err)
-      reject()
+      reject(err)
     }
   })
 }
