@@ -1,69 +1,62 @@
-import { Client, Collection, GuildMember, Message, Role, TextChannel } from 'discord.js'
+import { Client, Collection, Message, TextChannel } from 'discord.js'
 import { channels } from '../config.json'
 import { TTS } from './tts'
 import { TextOverrides } from './textOverrides'
 import { QueueMessageData, Voice, User } from '../types/basic'
 import { Data } from './utils/DataUtils'
+import { VoiceUtils } from './utils/VoiceUtils'
 
 export class TTSProcessor {
-  public static voiceMap: Collection<string, Voice> = new Collection()
   public static queue: Collection<QueueMessageData, TTS> = new Collection()
   private client: Client
 
   constructor(client: Client) {
     this.client = client
 
-    this.messageListener()
+    this.client.on('messageCreate', this.messageListener)
     this.ttsListener()
   }
 
-  private messageListener() {
-    this.client.on('messageCreate', async msg => {
-      if (!channels.includes(msg.channelId)) return
-      
-      if (msg.content.startsWith("\\ ")) return
+  private async messageListener(msg: Message) {
+    if (!channels.includes(msg.channelId)) return
+    if (msg.content.startsWith("\\ ")) return
+    if (msg.content == '' && msg.channel.id !== "1095055405354336286") return
+    console.log("Message Received")
 
-      if (msg.content == '' && msg.channel.id !== "1095055405354336286") return
+    let user: User | undefined = Data.getUserData(msg.author.id)
 
-      let userData: User = Data.getUserData(msg.author.id) as User
+    // Minecraft Server Stuff
+    if (msg.author.id === "1095051988636549241") {
+      user = this.minecraftListener(msg)
+    }
+    if (!user || user.voice == "none") return
 
-      console.log("Message Received")
+    // Get User Voice
+    const voice: Voice = VoiceUtils.getVoice(user.voice)
+    
+    //Send data to TTS API
+    const tts: TTS = new TTS(voice)
 
-      // Minecraft Server Stuff
-      if (msg.author.id === "1095051988636549241") {
+    TTSProcessor.queue.set({
+      messageID: msg.id,
+      channel: msg.channel as TextChannel,
+      isMinecraft: msg.author.id === "1095051988636549241"
+    }, tts)
+  }
 
-        console.log("Minecraft Message")
+  private minecraftListener(msg: Message): User | undefined {
+    console.log('Minecraft message sent.')
+    for (const user of Data.dataFile) {
+      if (!user.minecraft_name) continue
 
-        for (const register of Data.dataFile) {
-          
-          if (!register.minecraft_name) continue
+      console.log(`Checking ${user.minecraft_name}`)
 
-          console.log("Checking " + register.minecraft_name)
-
-          if (msg.embeds[0].author?.name.toLowerCase() == (register.minecraft_name as string).toLowerCase()) {
-            userData = Data.getUserData(register.id) as User
-
-            console.log("Found")
-
-            break
-          }
-        }
+      if (msg.embeds[0].author?.name.toLowerCase() == (user.minecraft_name as string).toLowerCase()) {
+        console.log(`Found ${user.minecraft_name}!`)
+        return Data.getUserData(user.id) as User
       }
-
-      if (!userData || userData.voice == "none") return
-
-      // Get User Voice
-      const voice: string = userData.voice
-      
-      //Send data to TTS API
-      const tts: TTS = new TTS(voice)
-
-      TTSProcessor.queue.set({
-        messageID: msg.id,
-        channel: msg.channel as TextChannel,
-        isMinecraft: msg.author.id === "1095051988636549241"
-      }, tts)
-    })
+    }
+    return undefined
   }
 
   private async ttsListener() {
@@ -96,7 +89,6 @@ export class TTSProcessor {
       TTSProcessor.queue.delete(TTSProcessor.queue.firstKey() as QueueMessageData)
 
       setTimeout(() => this.ttsListener(), 1)
-      
       return
     }
 

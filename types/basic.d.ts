@@ -17,7 +17,7 @@ type Override = {
     match_word?: boolean
 }
 
-type VoiceData = User[]
+type UserBase = User[]
 
 type User = {
     id: string,
@@ -37,6 +37,6 @@ type VoiceOption = {
 }
 
 type Voice = {
-    voice: string,
-    exporter: string
+    id: string,
+    service: string
 }

@@ -5,26 +5,12 @@ const https = require('https')
 const path = require("path")
 
 // evaluate which type of audio to export from
-async function exportAudio(text = '', voice = '', exporter = '') {
-  if (exporter == 'MICROSOFT') {
-    await exportMicrosoft(text, voice)
-    return
-  }
-  if (exporter == 'TIKTOK') {
-    await exportTikTok(text, voice)
-    return
-  }
-  if (exporter == 'UBERDUCK') {
-    await exportUberduck(text, voice)
-    return
-  }
-  if (exporter == 'SAPI') {
-    await exportSAPI(text, voice)
-    return
-  }
-  if (exporter == 'STREAMLABS') {
-    await exportStreamlabs(text, voice)
-  }
+async function exportAudio(text = '', voice = '', service = '') {
+  if (service == 'MICROSOFT') return exportMicrosoft(text, voice)
+  if (service == 'TIKTOK') return exportTikTok(text, voice)
+  if (service == 'UBERDUCK') return exportUberduck(text, voice)
+  if (service == 'SAPI') return exportSAPI(text, voice)
+  if (service == 'STREAMLABS') return exportStreamlabs(text, voice)
 }
 
 //
@@ -148,8 +134,7 @@ async function downloadAudio(url) {
           resolve()
         })
       })
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err)
       reject(err)
     }

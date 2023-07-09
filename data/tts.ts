@@ -1,6 +1,6 @@
 import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection } from '@discordjs/voice'
 import { dirname, join } from 'path'
-import { VoiceUtils } from './utils/VoiceUtils'
+import { Voice } from '../types/basic'
 const exportAudio = require('./exporter.js')
 
 export class TTS {
@@ -14,11 +14,11 @@ export class TTS {
   private ttsData: {
     speed: number
     pitch: number
-    voice: string
+    voice: Voice
     volume: number
   }
 
-  constructor(voice: string) {
+  constructor(voice: Voice) {
     this.ttsData = {
       speed: 1,
       pitch: 1,
@@ -40,8 +40,7 @@ export class TTS {
       TTS.isPlaying = false
       return
     }
-    
-    await exportAudio(text, VoiceUtils.getVoice(this.ttsData.voice)?.voice, VoiceUtils.getVoice(this.ttsData.voice)?.exporter)
+    await exportAudio(text, this.ttsData.voice.id, this.ttsData.voice.service)
 
     const audioPlayer: AudioPlayer = TTS.audioPlayer
 

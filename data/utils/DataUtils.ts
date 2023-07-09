@@ -1,15 +1,15 @@
 import { Client, TextChannel } from "discord.js";
-import { VoiceData, User } from "../../types/basic";
-import { readFileSync, writeFileSync } from "fs";
+import { User, UserBase } from "../../types/basic";
+import { writeFileSync } from "fs";
 import { join } from "path";
 
 export class Data {
-    public static dataFile: VoiceData
+    public static dataFile: UserBase
 
     public static async saveData(client: Client) {
         writeFileSync(join(__dirname, '../../data.json'), JSON.stringify(Data.dataFile, null, 4))
 
-        console.log(Data.dataFile)
+        //console.log(Data.dataFile)
 
         const dataChannel: TextChannel = client.channels.cache.get('1117203482663976960') as TextChannel
 
@@ -46,7 +46,7 @@ export class Data {
         Data.saveData(client)
     }
 
-    public static replaceAllData(data: VoiceData, client: Client) {
+    public static replaceAllData(data: UserBase, client: Client) {
         Data.dataFile = data
 
         Data.saveData(client)
