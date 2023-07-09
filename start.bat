@@ -1,6 +1,5 @@
-:: Fires both deploy-commands and start, just in case any changes are made to the voices.json file
 @echo off
-npm run launch || (
+npm run start || (
     echo Note Block crashed!
     PAUSE
 )

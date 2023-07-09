@@ -1,338 +1,90 @@
 {
-    "outer": {
-        "voice": "Microsoft David Desktop",
-        "exporter": "MICROSOFT"
-    },
-    "chiko": {
-        "voice": "Microsoft Zira Desktop",
-        "exporter": "MICROSOFT"
-    },
-    "narrator": {
-        "voice": "en_male_narration",
-        "exporter": "TIKTOK"
-    },
-    "wacky": {
-        "voice": "en_male_funny",
-        "exporter": "TIKTOK"
-    },
-    "peaceful": {
-        "voice": "en_female_emotional",
-        "exporter": "TIKTOK"
-    },
-    "serious": {
-        "voice": "en_male_cody",
-        "exporter": "TIKTOK"
-    },
-    "professor": {
-        "voice": "en_us_007",
-        "exporter": "TIKTOK"
-    },
-    "scientist": {
-        "voice": "en_us_009",
-        "exporter": "TIKTOK"
-    },
-    "confident": {
-        "voice": "en_us_010",
-        "exporter": "TIKTOK"
-    },
-    "joe": {
-        "voice": "en_us_006",
-        "exporter": "TIKTOK"
-    },
-    "jess": {
-        "voice": "en_us_002",
-        "exporter": "TIKTOK"
-    },
-    "british_narrator": {
-        "voice": "en_uk_001",
-        "exporter": "TIKTOK"
-    },
-    "bruv": {
-        "voice": "en_uk_003",
-        "exporter": "TIKTOK"
-    },
-    "pirate": {
-        "voice": "en_male_pirate",
-        "exporter": "TIKTOK"
-    },
-    "granny": {
-        "voice": "en_female_grandma",
-        "exporter": "TIKTOK"
-    },
-    "no_cookie": {
-        "voice": "en_female_samc",
-        "exporter": "TIKTOK"
-    },
-    "sam": {
-        "voice": "Sam",
-        "exporter": "SAPI"
-    },
-    "mike": {
-        "voice": "Mike",
-        "exporter": "SAPI"
-    },
-    "mary": {
-        "voice": "Mary",
-        "exporter": "SAPI"
-    },
-    "stadium_mike": {
-        "voice": "Mike in Stadium",
-        "exporter": "SAPI"
-    },
-    "stadium_mary": {
-        "voice": "Mary in Stadium",
-        "exporter": "SAPI"
-    },
-    "echoing_mike": {
-        "voice": "Mike in Space",
-        "exporter": "SAPI"
-    },
-    "echoing_mary": {
-        "voice": "Mary in Space",
-        "exporter": "SAPI"
-    },
-    "quiet_outer": {
-        "voice": "Male Whisper",
-        "exporter": "SAPI"
-    },
-    "quiet_chiko": {
-        "voice": "Female Whisper",
-        "exporter": "SAPI"
-    },
-    "robot": {
-        "voice": "RoboSoft Five",
-        "exporter": "SAPI"
-    },
-    "evil_ai": {
-        "voice": "RoboSoft One",
-        "exporter": "SAPI"
-    },
-    "ghost_face": {
-        "voice": "en_us_ghostface",
-        "exporter": "TIKTOK"
-    },
-    "chewbacca": {
-        "voice": "en_us_chewbacca",
-        "exporter": "TIKTOK"
-    },
-    "c3po": {
-        "voice": "en_us_c3po",
-        "exporter": "TIKTOK"
-    },
-    "stitch": {
-        "voice": "en_us_stitch",
-        "exporter": "TIKTOK"
-    },
-    "stormtrooper": {
-        "voice": "en_us_stormtrooper",
-        "exporter": "TIKTOK"
-    },
-    "rocket": {
-        "voice": "en_us_rocket",
-        "exporter": "TIKTOK"
-    },
-    "madame_leota": {
-        "voice": "en_female_madam_leota",
-        "exporter": "TIKTOK"
-    },
-    "ghost_host": {
-        "voice": "en_male_ghosthost",
-        "exporter": "TIKTOK"
-    },
-    "grinch": {
-        "voice": "en_male_grinch",
-        "exporter": "TIKTOK"
-    },
-    "doge": {
-        "voice": "jp_006",
-        "exporter": "TIKTOK"
-    },
-    "roosey": {
-        "voice": "jp_005",
-        "exporter": "TIKTOK"
-    },
-    "solveddev": {
-        "voice": "de_002",
-        "exporter": "TIKTOK"
-    },
-    "fry_guy": {
-        "voice": "fr_001",
-        "exporter": "TIKTOK"
-    },
-    "warm": {
-        "voice": "es_mx_002",
-        "exporter": "TIKTOK"
-    },
-    "alto": {
-        "voice": "en_female_f08_salut_damour",
-        "exporter": "TIKTOK"
-    },
-    "tenor": {
-        "voice": "en_male_m03_lobby",
-        "exporter": "TIKTOK"
-    },
-    "sunshine_soon": {
-        "voice": "en_male_m03_sunshine_soon",
-        "exporter": "TIKTOK"
-    },
-    "warmy_breeze": {
-        "voice": "en_female_f08_warmy_breeze",
-        "exporter": "TIKTOK"
-    },
-    "glorious": {
-        "voice": "en_female_ht_f08_glorious",
-        "exporter": "TIKTOK"
-    },
-    "it_goes_up": {
-        "voice": "en_male_sing_funny_it_goes_up",
-        "exporter": "TIKTOK"
-    },
-    "chipmunk": {
-        "voice": "en_male_m2_xhxs_m03_silly",
-        "exporter": "TIKTOK"
-    },
-    "dramatic": {
-        "voice": "en_female_ht_f08_wonderful_world",
-        "exporter": "TIKTOK"
-    },
-    "opera": {
-        "voice": "en_female_ht_f08_halloween",
-        "exporter": "TIKTOK"
-    },
-    "spongebob": {
-        "voice": "spongebob-squarepants",
-        "exporter": "UBERDUCK"
-    },
-    "patrick": {
-        "voice": "patrick",
-        "exporter": "UBERDUCK"
-    },
-    "squidward": {
-        "voice": "squidward",
-        "exporter": "UBERDUCK"
-    },
-    "mr_krabs": {
-        "voice": "mr-krabs",
-        "exporter": "UBERDUCK"
-    },
-    "sandy_cheeks": {
-        "voice": "sandy-cheeks",
-        "exporter": "UBERDUCK"
-    },
-    "plankton": {
-        "voice": "plankton",
-        "exporter": "UBERDUCK"
-    },
-    "mermaid_man": {
-        "voice": "mermaidman-joe-whyte",
-        "exporter": "UBERDUCK"
-    },
-    "barnacle_boy": {
-        "voice": "barnacle-boy",
-        "exporter": "UBERDUCK"
-    },
-    "peter_griffin": {
-        "voice": "peter-griffin",
-        "exporter": "UBERDUCK"
-    },
-    "chris_griffin": {
-        "voice": "chris-griffin",
-        "exporter": "UBERDUCK"
-    },
-    "mario": {
-        "voice": "mario-3ds",
-        "exporter": "UBERDUCK"
-    },
-    "walter_white": {
-        "voice": "walter-white",
-        "exporter": "UBERDUCK"
-    },
-    "barack_obama": {
-        "voice": "barack-obama",
-        "exporter": "UBERDUCK"
-    },
-    "benett_foddy": {
-        "voice": "benett-foddy",
-        "exporter": "UBERDUCK"
-    },
-    "mr_beast": {
-        "voice": "mrbeast",
-        "exporter": "UBERDUCK"
-    },
-    "mike_wazowski": {
-        "voice": "mike-wazowski",
-        "exporter": "UBERDUCK"
-    },
-    "smash_bros": {
-        "voice": "ssbb-announcer",
-        "exporter": "UBERDUCK"
-    },
-    "muscle_man": {
-        "voice": "muscle-man",
-        "exporter": "UBERDUCK"
-    },
-    "glamrock_freddy": {
-        "voice": "glamrock-freddy",
-        "exporter": "UBERDUCK"
-    },
-    "screaming_plankton": {
-        "voice": "plankton-scream",
-        "exporter": "UBERDUCK"
-    },
-    "optimus_prime": {
-        "voice": "transformer",
-        "exporter": "TIKTOK"
-    },
-    "optimo_primo": {
-        "voice": "es_mx_male_transformer",
-        "exporter": "TIKTOK"
-    },
-    "cool": {
-        "voice": "es_mx_female_supermom",
-        "exporter": "TIKTOK"
-    },
-    "santa": {
-        "voice": "en_male_santa",
-        "exporter": "TIKTOK"
-    },
-    "cupid": {
-        "voice": "en_male_cupid",
-        "exporter": "TIKTOK"
-    },
-    "wizard": {
-        "voice": "en_male_wizard",
-        "exporter": "TIKTOK"
-    },
-    "joey": {
-        "voice": "Joey",
-        "exporter": "STREAMLABS"
-    },
-    "brian": {
-        "voice": "Brian",
-        "exporter": "STREAMLABS"
-    },
-    "amy": {
-        "voice": "Amy",
-        "exporter": "STREAMLABS"
-    },
-    "russell": {
-        "voice": "Russell",
-        "exporter": "STREAMLABS"
-    },
-    "kendra": {
-        "voice": "Kendra",
-        "exporter": "STREAMLABS"
-    },
-    "justin": {
-        "voice": "Justin",
-        "exporter": "STREAMLABS"
-    },
-    "ivy": {
-        "voice": "Ivy",
-        "exporter": "STREAMLABS"
-    },
-    "raveena": {
-        "voice": "Raveena",
-        "exporter": "STREAMLABS"
-    }
+    "outer": { "voice": "Microsoft David Desktop", "exporter": "MICROSOFT" },
+    "chiko": { "voice": "Microsoft Zira Desktop", "exporter": "MICROSOFT" },
+
+    "narrator": { "voice": "en_male_narration", "exporter": "TIKTOK" },
+    "wacky": { "voice": "en_male_funny", "exporter": "TIKTOK" },
+    "peaceful": { "voice": "en_female_emotional", "exporter": "TIKTOK" },
+    "serious": { "voice": "en_male_cody", "exporter": "TIKTOK" },
+    "professor": { "voice": "en_us_007", "exporter": "TIKTOK" },
+    "scientist": { "voice": "en_us_009", "exporter": "TIKTOK" },
+    "confident": { "voice": "en_us_010", "exporter": "TIKTOK" },
+    "joe": { "voice": "en_us_006", "exporter": "TIKTOK" },
+    "jess": { "voice": "en_us_002", "exporter": "TIKTOK" },
+    "british_narrator": { "voice": "en_uk_001", "exporter": "TIKTOK" },
+    "bruv": { "voice": "en_uk_003", "exporter": "TIKTOK" },
+    "pirate": { "voice": "en_male_pirate", "exporter": "TIKTOK" },
+    "granny": { "voice": "en_female_grandma", "exporter": "TIKTOK" },
+    "no_cookie": { "voice": "en_female_samc", "exporter": "TIKTOK" },
+    "sam": { "voice": "Sam", "exporter": "SAPI" },
+    "mike": { "voice": "Mike", "exporter": "SAPI" },
+    "mary": { "voice": "Mary", "exporter": "SAPI" },
+    "stadium_mike": { "voice": "Mike in Stadium", "exporter": "SAPI" },
+    "stadium_mary": { "voice": "Mary in Stadium", "exporter": "SAPI" },
+    "echoing_mike": { "voice": "Mike in Space", "exporter": "SAPI" },
+    "echoing_mary": { "voice": "Mary in Space", "exporter": "SAPI" },
+    "quiet_outer": { "voice": "Male Whisper", "exporter": "SAPI" },
+    "quiet_chiko": { "voice": "Female Whisper", "exporter": "SAPI" },
+    "robot": { "voice": "RoboSoft Five", "exporter": "SAPI" },
+    "evil_ai": { "voice": "RoboSoft One", "exporter": "SAPI" },
+    "ghost_face": { "voice": "en_us_ghostface", "exporter": "TIKTOK" },
+    "chewbacca": { "voice": "en_us_chewbacca", "exporter": "TIKTOK" },
+    "c3po": { "voice": "en_us_c3po", "exporter": "TIKTOK" },
+    "stitch": { "voice": "en_us_stitch", "exporter": "TIKTOK" },
+    "stormtrooper": { "voice": "en_us_stormtrooper", "exporter": "TIKTOK" },
+    "rocket": { "voice": "en_us_rocket", "exporter": "TIKTOK" },
+    "madame_leota": { "voice": "en_female_madam_leota", "exporter": "TIKTOK" },
+    "ghost_host": { "voice": "en_male_ghosthost", "exporter": "TIKTOK" },
+    "grinch": { "voice": "en_male_grinch", "exporter": "TIKTOK" },
+    "doge": { "voice": "jp_006", "exporter": "TIKTOK" },
+    "roosey": { "voice": "jp_005", "exporter": "TIKTOK" },
+    "solveddev": { "voice": "de_002", "exporter": "TIKTOK" },
+    "fry_guy": { "voice": "fr_001", "exporter": "TIKTOK" },
+    "warm": { "voice": "es_mx_002", "exporter": "TIKTOK" },
+    "alto": { "voice": "en_female_f08_salut_damour", "exporter": "TIKTOK" },
+    "tenor": { "voice": "en_male_m03_lobby", "exporter": "TIKTOK" },
+    "sunshine_soon": { "voice": "en_male_m03_sunshine_soon", "exporter": "TIKTOK" },
+    "warmy_breeze": { "voice": "en_female_f08_warmy_breeze", "exporter": "TIKTOK" },
+    "glorious": { "voice": "en_female_ht_f08_glorious", "exporter": "TIKTOK" },
+    "it_goes_up": { "voice": "en_male_sing_funny_it_goes_up", "exporter": "TIKTOK" },
+    "chipmunk": { "voice": "en_male_m2_xhxs_m03_silly", "exporter": "TIKTOK" },
+    "dramatic": { "voice": "en_female_ht_f08_wonderful_world", "exporter": "TIKTOK" },
+    "opera": { "voice": "en_female_ht_f08_halloween", "exporter": "TIKTOK" },
+    "optimus_prime": { "voice": "transformer", "exporter": "TIKTOK" },
+    "optimo_primo": { "voice": "es_mx_male_transformer", "exporter": "TIKTOK" },
+    "cool": { "voice": "es_mx_female_supermom", "exporter": "TIKTOK" },
+    "santa": { "voice": "en_male_santa", "exporter": "TIKTOK" },
+    "cupid": { "voice": "en_male_cupid", "exporter": "TIKTOK" },
+    "wizard": { "voice": "en_male_wizard", "exporter": "TIKTOK" },
+
+    "spongebob": { "voice": "spongebob-squarepants", "exporter": "UBERDUCK" },
+    "patrick": { "voice": "patrick", "exporter": "UBERDUCK" },
+    "squidward": { "voice": "squidward", "exporter": "UBERDUCK" },
+    "mr_krabs": { "voice": "mr-krabs", "exporter": "UBERDUCK" },
+    "sandy_cheeks": { "voice": "sandy-cheeks", "exporter": "UBERDUCK" },
+    "plankton": { "voice": "plankton", "exporter": "UBERDUCK" },
+    "mermaid_man": { "voice": "mermaidman-joe-whyte", "exporter": "UBERDUCK" },
+    "barnacle_boy": { "voice": "barnacle-boy", "exporter": "UBERDUCK" },
+    "peter_griffin": { "voice": "peter-griffin", "exporter": "UBERDUCK" },
+    "chris_griffin": { "voice": "chris-griffin", "exporter": "UBERDUCK" },
+    "mario": { "voice": "mario-3ds", "exporter": "UBERDUCK" },
+    "walter_white": { "voice": "walter-white", "exporter": "UBERDUCK" },
+    "chuck_mcgill": { "voice": "chuck-mcgill", "exporter": "UBERDUCK" },
+    "barack_obama": { "voice": "barack-obama", "exporter": "UBERDUCK" },
+    "benett_foddy": { "voice": "benett-foddy", "exporter": "UBERDUCK" },
+    "mr_beast": { "voice": "mrbeast", "exporter": "UBERDUCK" },
+    "mike_wazowski": { "voice": "mike-wazowski", "exporter": "UBERDUCK" },
+    "smash_bros": { "voice": "ssbb-announcer", "exporter": "UBERDUCK" },
+    "muscle_man": { "voice": "muscle-man", "exporter": "UBERDUCK" },
+    "glamrock_freddy": { "voice": "glamrock-freddy", "exporter": "UBERDUCK" },
+    "screaming_plankton": { "voice": "plankton-scream", "exporter": "UBERDUCK" },
+    
+    "joey": { "voice": "Joey", "exporter": "STREAMLABS"},
+    "brian": { "voice": "Brian", "exporter": "STREAMLABS" },
+    "amy": { "voice": "Amy", "exporter": "STREAMLABS" },
+    "russell": { "voice": "Russell", "exporter": "STREAMLABS" },
+    "kendra": { "voice": "Kendra", "exporter": "STREAMLABS" },
+    "justin": { "voice": "Justin", "exporter": "STREAMLABS" },
+    "ivy": { "voice": "Ivy", "exporter": "STREAMLABS" },
+    "raveena": { "voice": "Raveena", "exporter": "STREAMLABS" }
 }
