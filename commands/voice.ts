@@ -92,7 +92,7 @@ export default class VoiceCommand implements SlashCommand {
         VoiceUtils.buildVoices()
         voices.forEach(id => {
             const voice = VoiceUtils.getVoice(id)
-            options.push({name: voice.name, value: voice.id})
+            options.push({name: voice.name, value: id})
         })
         return options
     }
