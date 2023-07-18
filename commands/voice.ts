@@ -138,14 +138,14 @@ export default class VoiceCommand implements SlashCommand {
 
         const selectedVoice = interaction.options.getString('voice', true)
         if (subCommand == 'set' && !VoiceUtils.voiceMap.get(selectedVoice)) return interaction.reply({
-            content: `${selectedVoice} isn't a valid voice!`,
+            content: `\`${selectedVoice}\` is not a valid voice!`,
             ephemeral: true
         })
         userData.voice = selectedVoice
         Data.updateUserData(userData, client)
 
         return interaction.reply({
-            content: `Your voice has been set to ${selectedVoice}!`,
+            content: `Your voice has been set to **${VoiceUtils.getVoice(selectedVoice).name}**!`,
             ephemeral: true
         })
     }
