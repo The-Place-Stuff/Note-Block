@@ -92,7 +92,7 @@ export default class AdminCommand implements SlashCommand {
             if (subCmd == 'set') {
                 return this.voiceSet(interaction, client)
             }
-            if (subCmd == 'voice') {
+            if (subCmd == 'clear') {
                 return this.voiceClear(interaction, client)
             }
             if (subCmd == 'build') {
