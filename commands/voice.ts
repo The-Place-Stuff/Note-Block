@@ -68,6 +68,19 @@ export default class VoiceCommand implements SlashCommand {
             subCmd.setDescription('Clears your voice')
             return subCmd
         })
+
+        // Creates get subcommand
+        cmd.addSubcommand(subCmd => {
+            subCmd.setName('get')
+            subCmd.setDescription('Gets the voice ID of a user.')
+            subCmd.addUserOption(option => {
+                option.setName('user')
+                option.setDescription('Target user')
+                option.setRequired(true)
+                return option
+            })
+            return subCmd
+        })
         return cmd
     }
 
@@ -97,6 +110,24 @@ export default class VoiceCommand implements SlashCommand {
 
             return interaction.reply({
                 content: 'Voice has been removed',
+                ephemeral: true
+            })
+        }
+
+        if (subCommand == 'get') {
+            const getUser = interaction.options.getUser('user', true)
+            const getData = Data.getOrCreateUser(getUser.id, client)
+            const getVoice: string = getData.voice
+            let content: string
+            if (getVoice == 'none') {
+                content = `<@${getUser.id}> has no assigned voice.`
+            } else if (getUser == user) {
+                content = `Your voice is set to \`${getVoice}\`.`
+            } else {
+                content = `<@${getUser.id}> set their voice to \`${getVoice}\`.`
+            }
+            return interaction.reply({
+                content: content,
                 ephemeral: true
             })
         }

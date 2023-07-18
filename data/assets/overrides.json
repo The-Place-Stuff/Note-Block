@@ -237,5 +237,10 @@
         "overrand": "pls",
         "override": "please",
         "match_word": true
+    },
+    {
+        "overrand": "xor",
+        "override": "zore",
+        "match_word": true
     }
 ]
