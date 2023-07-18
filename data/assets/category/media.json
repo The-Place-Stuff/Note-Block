@@ -37,6 +37,30 @@
         {
             "display": "Grinch (Dr. Seuss)",
             "name": "grinch"
+        },
+        {
+            "display": "Jarvis (Marvel)",
+            "name": "jarvis"
+        },
+        {
+            "display": "Deadpool (Marvel)",
+            "name": "deadpool"
+        },
+        {
+            "display": "Optimus Prime (Transformers)",
+            "name": "optimus_prime"
+        },
+        {
+            "display": "Santa (Christmas)",
+            "name": "santa"
+        },
+        {
+            "display": "Holy Santa (Christmas)",
+            "name": "holy_santa"
+        },
+        {
+            "display": "Cupid (Valentine's Day)",
+            "name": "cupid"
         }
     ]
 }

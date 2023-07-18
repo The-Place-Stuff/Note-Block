@@ -63,12 +63,40 @@
             "name": "no_cookie"
         },
         {
-            "display": "Santa Claus",
-            "name": "santa"
+            "display": "Trevor",
+            "name": "trevor"
         },
         {
-            "display": "Cupid",
-            "name": "cupid"
+            "display": "Shenna",
+            "name": "shenna"
+        },
+        {
+            "display": "Betty",
+            "name": "betty"
+        },
+        {
+            "display": "Author",
+            "name": "author"
+        },
+        {
+            "display": "Beauty",
+            "name": "beauty"
+        },
+        {
+            "display": "Bestie",
+            "name": "bestie"
+        },
+        {
+            "display": "Butler",
+            "name": "butler"
+        },
+        {
+            "display": "Varsity",
+            "name": "varsity"
+        },
+        {
+            "display": "Neighbor",
+            "name": "neighbor"
         }
     ]
 }
