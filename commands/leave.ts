@@ -6,14 +6,14 @@ import { getVoiceConnection, VoiceConnection } from "@discordjs/voice";
 export default class LeaveCommand implements SlashCommand {
     data: SlashCommandBuilder = new SlashCommandBuilder()
         .setName("leave")
-        .setDescription("Leaves the voice channel Note Block is currently in")
+        .setDescription("Leaves the voice channel Note Block is currently in.")
     async execute(interaction: ChatInputCommandInteraction, client: Client) {
         const connection: VoiceConnection = getVoiceConnection(interaction.guild?.id as string) as VoiceConnection
 
         //#region Pre Command Errors
         if (!connection) {
             await interaction.reply({
-                content: "I'm not in a voice channel!",
+                content: "Note Block is not in a voice channel.",
                 ephemeral: true
             })
             return
@@ -24,8 +24,8 @@ export default class LeaveCommand implements SlashCommand {
         connection.destroy()
 
         await interaction.reply({
-            content: "Left the voice channel!",
-            ephemeral: true
+            content: "Note Block left the voice channel!",
+            ephemeral: false
         })
     }
 }

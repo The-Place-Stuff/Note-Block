@@ -4,6 +4,7 @@ import { Data } from "../data/utils/DataUtils";
 import { VoiceUtils } from "../data/utils/VoiceUtils";
 import { TTS } from "../data/tts";
 import { TTSProcessor } from "../data/ttsProcessor";
+import { AudioPlayerStatus } from "@discordjs/voice";
 
 export default class AdminCommand implements SlashCommand {
 
@@ -13,13 +14,13 @@ export default class AdminCommand implements SlashCommand {
         const command = new SlashCommandBuilder()
         
         command.setName('admin')
-        command.setDescription('Requires Noteblock Admin role to use')
+        command.setDescription('Runs various admin commands that require the Noteblock Admin role.')
         command.addSubcommandGroup(group => {
             group.setName('voice')
-            group.setDescription('Manage user voices')
+            group.setDescription('Manages users\' voices.')
             group.addSubcommand(subCmd => {
                 subCmd.setName('set')
-                subCmd.setDescription('Set a user\'s voice')
+                subCmd.setDescription('Sets a user\'s voice.')
                 
                 subCmd.addUserOption(option => {
                     option.setName('user')
@@ -29,7 +30,7 @@ export default class AdminCommand implements SlashCommand {
                 })
                 subCmd.addStringOption(option => {
                     option.setName('voice')
-                    option.setDescription('Choose a voice')
+                    option.setDescription('Voice ID')
                     option.setRequired(true)
                     return option
                 })
@@ -37,7 +38,7 @@ export default class AdminCommand implements SlashCommand {
             })
             group.addSubcommand(subCmd => {
                 subCmd.setName('clear')
-                subCmd.setDescription('Clear a user\'s voice')
+                subCmd.setDescription('Clears a user\'s voice.')
                 
                 subCmd.addUserOption(option => {
                     option.setName('user')
@@ -49,22 +50,22 @@ export default class AdminCommand implements SlashCommand {
             })
             group.addSubcommand(subCmd => {
                 subCmd.setName('build')
-                subCmd.setDescription('Rebuilds voices')
+                subCmd.setDescription('Rebuilds all voices.')
                 return subCmd
             })
             return group
         })
         command.addSubcommandGroup(group => {
             group.setName('queue')
-            group.setDescription('Manage the TTS queue')
+            group.setDescription('Manages the text-to-speech queue.')
             group.addSubcommand(subCmd => {
                 subCmd.setName('skip')
-                subCmd.setDescription('Skips the currently playing TTS')
+                subCmd.setDescription('Skips the current text-to-speech message.')
                 return subCmd
             })
             group.addSubcommand(subCmd => {
                 subCmd.setName('clear')
-                subCmd.setDescription('Clears the TTS queue completely')
+                subCmd.setDescription('Clears the entire text-to-speech queue.')
                 return subCmd
             })
             return group
@@ -83,7 +84,7 @@ export default class AdminCommand implements SlashCommand {
 
         if (highestRole.name != "Noteblock Admin") {
             return interaction.reply({
-                content: "Insufficient permissions to run this command!",
+                content: "You do not have permission to use admin commands!",
                 ephemeral: true
             })
         }
@@ -110,7 +111,7 @@ export default class AdminCommand implements SlashCommand {
         }
 
         return interaction.reply({
-            content: "how did you get here?",
+            content: "There was an error running the command!",
             ephemeral: true
         })
     }
@@ -125,7 +126,7 @@ export default class AdminCommand implements SlashCommand {
 
         if (!VoiceUtils.voiceMap.get(voice)) {
             return interaction.reply({
-                content: `${voice} isn't a valid voice!`,
+                content: `\`${voice}\` is not a valid voice!`,
                 ephemeral: true
             })
         }
@@ -133,7 +134,7 @@ export default class AdminCommand implements SlashCommand {
         Data.updateUserData(userData, client)
 
         return interaction.reply({
-            content: `Set voice of ${user} to ${voice}!`,
+            content: `The voice of ${user} has been set to **${VoiceUtils.getVoice(voice).name}**!`,
             ephemeral: true
         })
     }
@@ -146,14 +147,14 @@ export default class AdminCommand implements SlashCommand {
         const userData = Data.getUserData(user.id)
 
         if (!userData) return interaction.reply({
-            content: 'That user doesn\'t exist in Noteblock\'s database',
+            content: `${user} does not have a selected voice.`,
             ephemeral: true
         })
         userData.voice = 'none'
         Data.updateUserData(userData, client)
 
         return interaction.reply({
-            content: `Cleared voice of ${user.username}!`,
+            content: `The voice of ${user} has been cleared.`,
             ephemeral: true
         })
     }
@@ -166,7 +167,7 @@ export default class AdminCommand implements SlashCommand {
         VoiceUtils.buildVoices()
 
         return interaction.reply({
-            content: `Successfully rebuilt voices!`,
+            content: 'All voices were successfully rebuilt!',
             ephemeral: true
         })
     }
@@ -175,10 +176,16 @@ export default class AdminCommand implements SlashCommand {
     // Group: queue, Command: skip
     //
     private async queueSkip(interaction: ChatInputCommandInteraction, client: Client) {
-        TTS.audioPlayer.stop()
+        let content: string
+        if (TTS.audioPlayer.state.status == AudioPlayerStatus.Idle) {
+            content = 'There is no text-to-speech currently playing.'
+        } else {
+            content = 'The current text-to-speech message was skipped!'
+            TTS.audioPlayer.stop()
+        }
 
         return interaction.reply({
-            content: `Successfully skipped the current TTS!`,
+            content: content,
             ephemeral: true
         })
     }
@@ -187,11 +194,17 @@ export default class AdminCommand implements SlashCommand {
     // Group: queue, Command: clear
     //
     private async queueClear(interaction: ChatInputCommandInteraction, client: Client) {
-        TTS.audioPlayer.stop()
-        TTSProcessor.queue.clear()
+        let content: string
+        if (TTS.audioPlayer.state.status == AudioPlayerStatus.Idle) {
+            content = 'There is no text-to-speech currently playing.'
+        } else {
+            content = 'The text-to-speech queue was cleared!'
+            TTS.audioPlayer.stop()
+            TTSProcessor.queue.clear()
+        }
 
         return interaction.reply({
-            content: `Successfully cleared the TTS queue!`,
+            content: content,
             ephemeral: true
         })
     }

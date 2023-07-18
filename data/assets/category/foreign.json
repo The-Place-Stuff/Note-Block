@@ -1,6 +1,6 @@
 {
     "name": "foreign",
-    "description": "Choose the Foreign voices, featuring Doge, SolvedDev, and Roosey",
+    "description": "Select a foreign voice, including the voices of Doge, solvedDev, and Roosey.",
     "voices": [
         "doge",
         "roosey",

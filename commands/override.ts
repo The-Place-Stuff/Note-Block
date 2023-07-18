@@ -6,12 +6,12 @@ import path from "path";
 export default class OverrideCommand implements SlashCommand {
     public data: SlashCommandBuilder = new SlashCommandBuilder()
         .setName('override')
-        .setDescription('Edit NoteBlock overrides')
+        .setDescription('Modifies Note Block\'s registered overrides.')
         .addSubcommand(subcommand =>
             {
                 return subcommand
                 .setName('add')
-                .setDescription('Add a new override')
+                .setDescription('Adds a new override to Note Block.')
                 .addStringOption(option =>
                     {
                         return option
@@ -42,7 +42,7 @@ export default class OverrideCommand implements SlashCommand {
             {
                 return subcommand
                 .setName('remove')
-                .setDescription('Remove an override')
+                .setDescription('Removes an override from Note Block.')
                 .addStringOption(option =>
                     {
                         return option
@@ -91,7 +91,7 @@ export default class OverrideCommand implements SlashCommand {
             this.saveOverrides(this.overridesFile)
 
             return await interaction.reply({
-                content: `Successfully replaced override for ${overrand}\n\n**Overrand:** ${overrand}\n**Override:** ${override}\n**Match Word:** ${match_word}`,
+                content: `Successfully replaced override for **${overrand}**.\n\n**Overrand:** ${overrand}\n**Override:** ${override}\n**Match Word:** ${match_word}`,
             })
         }
 
@@ -106,7 +106,7 @@ export default class OverrideCommand implements SlashCommand {
         this.saveOverrides(this.overridesFile)
 
         return await interaction.reply({
-            content: `Successfully added overrand\n\n**Overrand:** ${overrand}\n**Override:** ${override}\n**Match Word:** ${match_word}`,
+            content: `Successfully added override for **${overrand}**.\n\n**Overrand:** ${overrand}\n**Override:** ${override}\n**Match Word:** ${match_word}`,
         })
     }
 
@@ -116,7 +116,7 @@ export default class OverrideCommand implements SlashCommand {
 
         if (!index) {
             return await interaction.reply({
-                content: `Override for ${overrand} does not exist`,
+                content: `There is no registered override for **${overrand}**.`,
             })
         }
 
@@ -127,7 +127,7 @@ export default class OverrideCommand implements SlashCommand {
         this.saveOverrides(this.overridesFile)
 
         return await interaction.reply({
-            content: `Successfully removed override for ${overrand}`
+            content: `Successfully removed override for **${overrand}**.`
         })
     }
 

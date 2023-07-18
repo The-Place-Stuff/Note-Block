@@ -1,6 +1,6 @@
 {
     "name": "microsoft",
-    "description": "Choose the Microsoft voices, featuring classics such as Outer and Chiko",
+    "description": "Select a Microsoft voice, including the original two Note Block voices.",
     "voices": [
         "outer",
         "chiko"

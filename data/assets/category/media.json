@@ -1,6 +1,6 @@
 {
     "name": "media",
-    "description": "Choose the Media voices, featuring voices from various pieces of media",
+    "description": "Select among various voices from TV series and films.",
     "voices": [
         "ghost_face",
         "chewbacca",

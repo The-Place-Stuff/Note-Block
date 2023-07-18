@@ -17,7 +17,7 @@ export default class VoiceCommand implements SlashCommand {
     private buildVoiceCommand(): SlashCommandBuilder {
         const cmd = new SlashCommandBuilder()
         cmd.setName('voice')
-        cmd.setDescription('Pick a voice, any voice!')
+        cmd.setDescription('Sets your voice used in text-to-speech.')
         
         return this.buildSubCommands(cmd);
     }
@@ -39,7 +39,7 @@ export default class VoiceCommand implements SlashCommand {
 
                 subCmd.addStringOption(option => {
                     option.setName('voice')
-                    option.setDescription('Choose a voice')
+                    option.setDescription('New voice')
                     option.addChoices(...choices)
                     option.setRequired(true)
 
@@ -52,10 +52,10 @@ export default class VoiceCommand implements SlashCommand {
         // Creates set subcommand
         cmd.addSubcommand(subCmd => {
             subCmd.setName('set')
-            subCmd.setDescription('Set a voice manually')
+            subCmd.setDescription('Sets your voice based on voice ID.')
             subCmd.addStringOption(option => {
                 option.setName('voice')
-                option.setDescription('Choose a voice')
+                option.setDescription('Voice ID')
                 option.setRequired(true)
                 return option
             })
@@ -65,17 +65,17 @@ export default class VoiceCommand implements SlashCommand {
         // Creates clear subcommand
         cmd.addSubcommand(subCmd => {
             subCmd.setName('clear')
-            subCmd.setDescription('Clears your voice')
+            subCmd.setDescription('Clears your current voice.')
             return subCmd
         })
 
         // Creates get subcommand
         cmd.addSubcommand(subCmd => {
             subCmd.setName('get')
-            subCmd.setDescription('Gets the voice ID of a user.')
+            subCmd.setDescription('Gets the voice name and ID of a user.')
             subCmd.addUserOption(option => {
                 option.setName('user')
-                option.setDescription('Target user')
+                option.setDescription('The user to check')
                 option.setRequired(true)
                 return option
             })
@@ -110,7 +110,7 @@ export default class VoiceCommand implements SlashCommand {
             Data.updateUserData(userData, client)
 
             return interaction.reply({
-                content: 'Voice has been removed',
+                content: 'Your voice has been cleared.',
                 ephemeral: true
             })
         }

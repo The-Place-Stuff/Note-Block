@@ -5,15 +5,15 @@ import { Data } from "../data/utils/DataUtils";
 export default class MinecraftLinkCommand implements SlashCommand {
     public data = new SlashCommandBuilder()
         .setName('minecraft')
-        .setDescription("Link your Minecraft account to your Discord account")
+        .setDescription("Manages the connection between your Discord and Minecraft accounts.")
         .addSubcommand(linkCmd => {
-            return linkCmd.setName('link').setDescription('Pair a Minecraft account to your discord user')
+            return linkCmd.setName('link').setDescription('Pairs your Minecraft: Java Edition and Discord accounts.')
             .addStringOption(option => {
-                return option.setName('username').setDescription('Input your username!').setRequired(true)
+                return option.setName('username').setDescription('Minecraft: Java Edition username').setRequired(true)
             })
         })
         .addSubcommand(unlinkCmd => {
-            return unlinkCmd.setName('unlink').setDescription("Unpair your Minecraft account from your discord user")
+            return unlinkCmd.setName('unlink').setDescription("Removes your Minecraft account from your Discord account.")
         }
     ) as SlashCommandBuilder
 
@@ -33,7 +33,7 @@ export default class MinecraftLinkCommand implements SlashCommand {
 
         if (minecraftName == userData.minecraft_name) {
             return interaction.reply({
-                content: `Failed to link Minecraft account, **${minecraftName}** is already linked!`,
+                content: `Your Discord account is already paired with **${minecraftName}**.`,
                 ephemeral: true
             })
         }
@@ -42,7 +42,7 @@ export default class MinecraftLinkCommand implements SlashCommand {
         Data.updateUserData(userData, client)
 
         return interaction.reply({
-            content: `Successfully linked **${minecraftName}** to **${user.username}**`,
+            content: `Your Discord account has been paired with **${minecraftName}**!`,
             ephemeral: true
         })
     }
@@ -56,7 +56,7 @@ export default class MinecraftLinkCommand implements SlashCommand {
 
         if (!userData.minecraft_name) {
             return interaction.reply({
-                content: `Failed to unlink Minecraft account, you are not linked to begin with!`,
+                content: `Your Discord account is not paired with a Minecraft account.`,
                 ephemeral: true
             })
         }
@@ -64,7 +64,7 @@ export default class MinecraftLinkCommand implements SlashCommand {
         Data.updateUserData(userData, client)
 
         return interaction.reply({
-            content: `Successfully unlinked **${minecraftName}** from **${user.username}**`,
+            content: `Your Discord account has been unpaired from **${minecraftName}**.`,
             ephemeral: true
         })
     }

@@ -1,6 +1,6 @@
 {
     "name": "streamlabs",
-    "description": "Choose the Streamlabs voices, featuring Justin and Brian",
+    "description": "Select a Streamlabs voice, including the voices of Justin and Brian.",
     "voices": [
         "joey",
         "brian",

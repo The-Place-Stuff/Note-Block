@@ -1,6 +1,6 @@
 {
     "name": "alternate",
-    "description": "Choose the Alternate voices, featuring classics like Sam, Mike, and Mary!",
+    "description": "Select an Alternate voice, including the voices of Sam, Mike, and Mary.",
     "voices": [
         "sam",
         "mike",

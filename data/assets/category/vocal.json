@@ -1,6 +1,6 @@
 {
     "name": "vocal",
-    "description": "Choose the Vocal voices, featuring nice little songs!",
+    "description": "Select a vocal that creates text-to-speech songs.",
     "voices": [
         "alto",
         "classical",

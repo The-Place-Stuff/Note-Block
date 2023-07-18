@@ -1,6 +1,6 @@
 {
     "name": "spongebob",
-    "description": "Choose the Spongebob voices, featuring Spongebob, Patrick, and Squidward!",
+    "description": "Select a voice among the Spongebob characters.",
     "voices": [
         "spongebob",
         "patrick",

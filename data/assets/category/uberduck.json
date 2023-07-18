@@ -1,6 +1,6 @@
 {
     "name": "uberduck",
-    "description": "A wide range of voices from Uberduck!",
+    "description": "Select among a wide range of Uberduck voices.",
     "voices": [
         "super_mario",
         "peter_griffin",
