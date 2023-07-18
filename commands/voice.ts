@@ -122,10 +122,13 @@ export default class VoiceCommand implements SlashCommand {
             let content: string
             if (getVoice == 'none') {
                 content = `<@${getUser.id}> has no assigned voice.`
-            } else if (getUser == user) {
-                content = `Your voice is set to \`${getVoice}\`.`
             } else {
-                content = `<@${getUser.id}> set their voice to \`${getVoice}\`.`
+                const getVoiceName = VoiceUtils.getVoice(getVoice).name
+                if (getUser == user) {
+                    content = `Your voice is set to **${getVoiceName}** (\`${getVoice}\`).`
+                } else {
+                    content = `<@${getUser.id}> set their voice to **${getVoiceName}** (\`${getVoice}\`).`
+                }
             }
             return interaction.reply({
                 content: content,
