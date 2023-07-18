@@ -12,7 +12,6 @@ const commandFiles = readdirSync("./commands").filter(file => file.endsWith(".ts
 let commands: RESTPostAPIApplicationCommandsJSONBody[] = []
 
 async function registerCommands() {
-  VoiceUtils.buildVoices()
   for (const file of commandFiles) {
     const Command = (await import(`./commands/${file}`)).default
 

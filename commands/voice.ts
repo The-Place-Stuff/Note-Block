@@ -89,6 +89,7 @@ export default class VoiceCommand implements SlashCommand {
     //
     private getOptions(voices: string[]) {
         const options: APIApplicationCommandOptionChoice<string>[] = []
+        VoiceUtils.buildVoices()
         voices.forEach(id => {
             const voice = VoiceUtils.getVoice(id)
             options.push({name: voice.name, value: voice.id})
