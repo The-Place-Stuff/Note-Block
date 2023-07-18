@@ -2,65 +2,20 @@
     "name": "media",
     "description": "Choose the Media voices, featuring voices from various pieces of media",
     "voices": [
-        {
-            "display": "Ghost Face (Scream)",
-            "name": "ghost_face"
-        },
-        {
-            "display": "Chewbacca (Star Wars)",
-            "name": "chewbacca"
-        },
-        {
-            "display": "C3PO (Star Wars)",
-            "name": "c3po"
-        },
-        {
-            "display": "Stitch (Disney)",
-            "name": "stitch"
-        },
-        {
-            "display": "Stormtrooper (Star Wars)",
-            "name": "stormtrooper"
-        },
-        {
-            "display": "Rocket (Marvel)",
-            "name": "rocket"
-        },
-        {
-            "display": "Madame Leota (Disney)",
-            "name": "madame_leota"
-        },
-        {
-            "display": "Ghost Host (Horror)",
-            "name": "ghost_host"
-        },
-        {
-            "display": "Grinch (Dr. Seuss)",
-            "name": "grinch"
-        },
-        {
-            "display": "Jarvis (Marvel)",
-            "name": "jarvis"
-        },
-        {
-            "display": "Deadpool (Marvel)",
-            "name": "deadpool"
-        },
-        {
-            "display": "Optimus Prime (Transformers)",
-            "name": "optimus_prime"
-        },
-        {
-            "display": "Santa (Christmas)",
-            "name": "santa"
-        },
-        {
-            "display": "Holy Santa (Christmas)",
-            "name": "holy_santa"
-        },
-        {
-            "display": "Cupid (Valentine's Day)",
-            "name": "cupid"
-        }
+        "ghost_face",
+        "chewbacca",
+        "c3po",
+        "stitch",
+        "stormtrooper",
+        "rocket",
+        "madame_leota",
+        "ghost_host",
+        "grinch",
+        "jarvis",
+        "deadpool",
+        "optimus_prime",
+        "santa",
+        "holy_santa",
+        "cupid"
     ]
 }

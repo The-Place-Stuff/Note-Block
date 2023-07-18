@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { Client, ChatInputCommandInteraction, APIApplicationCommandOptionChoice} from "discord.js";
-import { SlashCommand, VoiceOption, VoiceCategory, User } from "../types/basic";
+import { SlashCommand, VoiceCategory } from "../types/basic";
 import { readdirSync, readFileSync } from 'fs'
 import { Data } from "../data/utils/DataUtils";
 import path from 'path'
@@ -74,10 +74,11 @@ export default class VoiceCommand implements SlashCommand {
     //
     // Creates a list of options for the subcommand builder
     //
-    private getOptions(voiceOptions: VoiceOption[]) {
+    private getOptions(voices: string[]) {
         const options: APIApplicationCommandOptionChoice<string>[] = []
-        voiceOptions.forEach(option => {
-            options.push({name: option.display, value: option.name})
+        voices.forEach(id => {
+            const voice = VoiceUtils.getVoice(id)
+            options.push({name: voice.name, value: voice.id})
         })
         return options
     }

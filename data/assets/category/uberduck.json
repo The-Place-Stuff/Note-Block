@@ -2,53 +2,13 @@
     "name": "uberduck",
     "description": "A wide range of voices from Uberduck!",
     "voices": [
-        {
-            "display": "Peter Griffin (Family Guy)",
-            "name": "peter_griffin"
-        },
-        {
-            "display": "Chris Griffin (Family Guy)",
-            "name": "chris_griffin"
-        },
-        {
-            "display": "Mario (Super Mario Bros)",
-            "name": "mario"
-        },
-        {
-            "display": "Walter White (Breaking Bad)",
-            "name": "walter_white"
-        },
-        {
-            "display": "Chuck McGill (Better Call Saul)",
-            "name": "chuck_mcgill"
-        },
-        {
-            "display": "Barack Obama (U.S.A)",
-            "name": "barack_obama"
-        },
-        {
-            "display": "Muscle Man (Regular Show)",
-            "name": "muscle_man"
-        },
-        {
-            "display": "Announcer (SSBB)",
-            "name": "smash_bros"
-        },
-        {
-            "display": "Glamrock Freddy (FNAF)",
-            "name": "glamrock_freddy"
-        },
-        {
-            "display": "Screaming Plankton (Spongebob)",
-            "name": "screaming_plankton"
-        },
-        {
-            "display": "Mr. Beast (Youtube)",
-            "name": "mr_beast"
-        },
-        {
-            "display": "Mike Wazowski (Monsters Inc)",
-            "name": "mike_wazowski"
-        }
+        "super_mario",
+        "peter_griffin",
+        "chris_griffin",
+        "muscle_man",
+        "walter_white",
+        "chuck_mcgill",
+        "barack_obama",
+        "mr_beast"
     ]
 }

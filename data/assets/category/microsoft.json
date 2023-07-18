@@ -2,13 +2,7 @@
     "name": "microsoft",
     "description": "Choose the Microsoft voices, featuring classics such as Outer and Chiko",
     "voices": [
-        {
-            "display": "Outer",
-            "name": "outer"
-        },
-        {
-            "display": "Chiko",
-            "name": "chiko"
-        }
+        "outer",
+        "chiko"
     ]
 }

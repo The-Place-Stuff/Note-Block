@@ -2,37 +2,14 @@
     "name": "spongebob",
     "description": "Choose the Spongebob voices, featuring Spongebob, Patrick, and Squidward!",
     "voices": [
-        {
-            "display": "Spongebob",
-            "name": "spongebob"
-        },
-        {
-            "display": "Patrick",
-            "name": "patrick"
-        },
-        {
-            "display": "Squidward",
-            "name": "squidward"
-        },
-        {
-            "display": "Mr. Krabs",
-            "name": "mr_krabs"
-        },
-        {
-            "display": "Sandy Cheeks",
-            "name": "sandy_cheeks"
-        },
-        {
-            "display": "Plankton",
-            "name": "plankton"
-        },
-        {
-            "display": "Mermaid Man",
-            "name": "mermaid_man"
-        },
-        {
-            "display": "Barnacle Boy",
-            "name": "barnacle_boy"
-        }
+        "spongebob",
+        "patrick",
+        "squidward",
+        "mr_krabs",
+        "sandy_cheeks",
+        "plankton",
+        "larry_the_lobster",
+        "mermaid_man",
+        "barnacle_boy"
     ]
 }

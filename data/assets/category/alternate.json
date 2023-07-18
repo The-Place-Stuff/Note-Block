@@ -2,49 +2,16 @@
     "name": "alternate",
     "description": "Choose the Alternate voices, featuring classics like Sam, Mike, and Mary!",
     "voices": [
-        {
-            "display": "Sam",
-            "name": "sam"
-        },
-        {
-            "display": "Mike",
-            "name": "mike"
-        },
-        {
-            "display": "Mary",
-            "name": "mary"
-        },
-        {
-            "display": "Stadium Mike",
-            "name": "stadium_mike"
-        },
-        {
-            "display": "Stadium Mary",
-            "name": "stadium_mary"
-        },
-        {
-            "display": "Echoing Mike",
-            "name": "echoing_mike"
-        },
-        {
-            "display": "Echoing Mary",
-            "name": "echoing_mary"
-        },
-        {
-            "display": "Quiet Outer",
-            "name": "quiet_outer"
-        },
-        {
-            "display": "Quiet Chiko",
-            "name": "quiet_chiko"
-        },
-        {
-            "display": "Robot",
-            "name": "robot"
-        },
-        {
-            "display": "Evil AI",
-            "name": "evil_ai"
-        }
+        "sam",
+        "mike",
+        "mary",
+        "loud_mike",
+        "loud_mary",
+        "echoing_mike",
+        "echoing_mary",
+        "quiet_outer",
+        "quiet_chiko",
+        "robot",
+        "evil_ai"
     ]
 }

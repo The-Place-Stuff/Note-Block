@@ -2,65 +2,20 @@
     "name": "vocal",
     "description": "Choose the Vocal voices, featuring nice little songs!",
     "voices": [
-        {
-            "display": "Carols (Male)",
-            "name": "carols"
-        },
-        {
-            "display": "Classical (Male)",
-            "name": "classical"
-        },
-        {
-            "display": "Alto (Female)",
-            "name": "alto"
-        },
-        {
-            "display": "Holiday Cheer (Male)",
-            "name": "holiday_cheer"
-        },
-        {
-            "display": "Warmy Breeze (Female)",
-            "name": "warmy_breeze"
-        },
-        {
-            "display": "Opera (Female)",
-            "name": "opera"
-        },
-        {
-            "display": "Glorious (Female)",
-            "name": "glorious"
-        },
-        {
-            "display": "It Goes Up (Male)",
-            "name": "it_goes_up"
-        },
-        {
-            "display": "Tenor (Male)",
-            "name": "tenor"
-        },
-        {
-            "display": "Dramatic (Female)",
-            "name": "dramatic"
-        },
-        {
-            "display": "New Year (Female)",
-            "name": "new_year"
-        },
-        {
-            "display": "Thanksgiving (Male)",
-            "name": "thanksgiving"
-        },
-        {
-            "display": "Sunshine Soon (Male)",
-            "name": "sunshine_soon"
-        },
-        {
-            "display": "Lullaby (Femaly)",
-            "name": "lullaby"
-        },
-        {
-            "display": "Chipmunk (Squeaky)",
-            "name": "chipmunk"
-        }
+        "alto",
+        "classical",
+        "warmy_breeze",
+        "glorious",
+        "it_goes_up",
+        "sunshine_soon",
+        "tenor",
+        "dramatic",
+        "lullaby",
+        "christmas",
+        "carols",
+        "holiday_cheer",
+        "thanksgiving",
+        "halloween",
+        "chipmunk"
     ]
 }

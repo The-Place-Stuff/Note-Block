@@ -2,101 +2,27 @@
     "name": "tiktok",
     "description": "Choose the TikTok voices, featuring a wide range of voices",
     "voices": [
-        {
-            "display": "Narrator",
-            "name": "narrator"
-        },
-        {
-            "display": "Wacky",
-            "name": "wacky"
-        },
-        {
-            "display": "Peaceful",
-            "name": "peaceful"
-        },
-        {
-            "display": "Serious",
-            "name": "serious"
-        },
-        {
-            "display": "Professor",
-            "name": "professor"
-        },
-        {
-            "display": "Scientist",
-            "name": "scientist"
-        },
-        {
-            "display": "Wizard",
-            "name": "wizard"
-        },
-        {
-            "display": "Confident",
-            "name": "confident"
-        },
-        {
-            "display": "Joe",
-            "name": "joe"
-        },
-        {
-            "display": "Jess",
-            "name": "jess"
-        },
-        {
-            "display": "British Narrator",
-            "name": "british_narrator"
-        },
-        {
-            "display": "Bruv",
-            "name": "bruv"
-        },
-        {
-            "display": "Pirate",
-            "name": "pirate"
-        },
-        {
-            "display": "Grandma",
-            "name": "grandma"
-        },
-        {
-            "display": "No Cookie?",
-            "name": "no_cookie"
-        },
-        {
-            "display": "Trevor",
-            "name": "trevor"
-        },
-        {
-            "display": "Shenna",
-            "name": "shenna"
-        },
-        {
-            "display": "Betty",
-            "name": "betty"
-        },
-        {
-            "display": "Author",
-            "name": "author"
-        },
-        {
-            "display": "Beauty",
-            "name": "beauty"
-        },
-        {
-            "display": "Bestie",
-            "name": "bestie"
-        },
-        {
-            "display": "Butler",
-            "name": "butler"
-        },
-        {
-            "display": "Varsity",
-            "name": "varsity"
-        },
-        {
-            "display": "Neighbor",
-            "name": "neighbor"
-        }
+        "joe",
+        "jess",
+        "betty",
+        "narrator",
+        "scientist",
+        "professor",
+        "peaceful",
+        "serious",
+        "confident",
+        "wacky",
+        "author",
+        "make_up",
+        "rich_girl",
+        "shenna",
+        "granny",
+        "neighbor",
+        "butler",
+        "pirate",
+        "wizard",
+        "pansino",
+        "bruv",
+        "british_man"
     ]
 }

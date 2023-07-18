@@ -28,7 +28,7 @@ type User = {
 type VoiceCategory = {
     name: string,
     description: string,
-    voices: VoiceOption[]
+    voices: string[]
 }
 
 type VoiceOption = {
@@ -38,5 +38,6 @@ type VoiceOption = {
 
 type Voice = {
     id: string,
+    name: string,
     service: string
 }
