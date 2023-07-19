@@ -1,0 +1,17 @@
+{
+    "name": "alternate",
+    "description": "Select an Alternate voice, including the voices of Sam, Mike, and Mary.",
+    "voices": [
+        "sam",
+        "mike",
+        "mary",
+        "loud_mike",
+        "loud_mary",
+        "echoing_mike",
+        "echoing_mary",
+        "quiet_outer",
+        "quiet_chiko",
+        "robot",
+        "evil_ai"
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "name": "foreign",
+    "description": "Select a foreign voice, including the voices of Doge, solvedDev, and Roosey.",
+    "voices": [
+        "doge",
+        "roosey",
+        "solveddev",
+        "warm",
+        "cool",
+        "epic"
+    ]
+}

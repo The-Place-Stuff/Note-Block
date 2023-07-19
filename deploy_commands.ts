@@ -5,6 +5,7 @@ import { clientId } from "./config.json"
 import { REST } from "discord.js"
 import { RESTPostAPIApplicationCommandsJSONBody, Routes } from "discord-api-types/v10"
 import { SlashCommand } from "./types/basic"
+import { VoiceUtils } from "./data/utils/VoiceUtils"
 
 const commandFiles = readdirSync("./commands").filter(file => file.endsWith(".ts" || ".js"))
 

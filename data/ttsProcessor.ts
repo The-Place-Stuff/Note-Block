@@ -1,50 +1,62 @@
-import { Client, Collection, GuildMember, Message, Role, TextChannel } from 'discord.js'
+import { Client, Collection, Message, TextChannel } from 'discord.js'
 import { channels } from '../config.json'
 import { TTS } from './tts'
 import { TextOverrides } from './textOverrides'
-import { QueueMessageData, Voice } from '../types/basic'
+import { QueueMessageData, Voice, User } from '../types/basic'
+import { Data } from './utils/DataUtils'
+import { VoiceUtils } from './utils/VoiceUtils'
 
 export class TTSProcessor {
-  public static voiceMap: Collection<string, Voice> = new Collection()
   public static queue: Collection<QueueMessageData, TTS> = new Collection()
   private client: Client
 
   constructor(client: Client) {
     this.client = client
 
-    this.messageListener()
+    this.client.on('messageCreate', this.messageListener)
     this.ttsListener()
   }
 
-  private messageListener() {
-    this.client.on('messageCreate', async msg => {
-      if (!channels.includes(msg.channelId)) return
-      
-      if (msg.content.startsWith("\\ ")) return
+  private async messageListener(msg: Message) {
+    if (!channels.includes(msg.channelId)) return
+    if (msg.content.startsWith("\\ ")) return
+    if (msg.content == '' && msg.channel.id !== "1095055405354336286") return
+    console.log("Message Received")
 
-      if (msg.content == '') return
+    let user: User | undefined = Data.getUserData(msg.author.id)
 
-      //Get User Roles
-      const user: GuildMember = msg.member as GuildMember
-      const userRoles: Collection<string, Role> = user.roles.cache
+    // Minecraft Server Stuff
+    if (msg.author.id === "1095051988636549241") {
+      user = this.minecraftListener(msg)
+    }
+    if (!user || user.voice == "none") return
 
-      //Get Voice Role
-      const voiceRole: Role = userRoles.find(r =>
-        r.name.endsWith('_nb')
-      ) as Role
+    // Get User Voice
+    const voice: Voice = VoiceUtils.getVoice(user.voice)
+    
+    //Send data to TTS API
+    const tts: TTS = new TTS(voice)
 
-      if (!voiceRole) return
+    TTSProcessor.queue.set({
+      messageID: msg.id,
+      channel: msg.channel as TextChannel,
+      isMinecraft: msg.author.id === "1095051988636549241"
+    }, tts)
+  }
 
-      const voice: Voice = TTSProcessor.voiceMap.get(voiceRole.name.split('_nb')[0].trimEnd()) as Voice
-      
-      //Send data to TTS API
-      const tts: TTS = new TTS(voice)
+  private minecraftListener(msg: Message): User | undefined {
+    console.log('Minecraft message sent.')
+    for (const user of Data.dataFile) {
+      if (!user.minecraft_name) continue
 
-      TTSProcessor.queue.set({
-        messageID: msg.id,
-        channel: msg.channel as TextChannel
-      }, tts)
-    })
+      console.log(`Checking ${user.minecraft_name}`)
+
+      if (msg.embeds[0].author?.name.toLowerCase() == (user.minecraft_name as string).toLowerCase()) {
+        console.log(`Found ${user.minecraft_name}!`)
+        return Data.getUserData(user.id) as User
+      }
+    }
+    return undefined
   }
 
   private async ttsListener() {
@@ -69,17 +81,19 @@ export class TTSProcessor {
 
     //If message is deleted, remove from queue
     try {
-      ttsContent = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).content
+      if (!ttsMessageData.isMinecraft) ttsContent = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).content
+      
+      else ttsContent = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).embeds[0].title as string
+
     } catch (error) {
       TTSProcessor.queue.delete(TTSProcessor.queue.firstKey() as QueueMessageData)
 
       setTimeout(() => this.ttsListener(), 1)
-      
       return
     }
 
     // Say it & Apply Before TTS Filters
-    tts.speak(this.beforeTTS(ttsContent))
+    tts.speak(await this.beforeTTS(ttsContent))
 
     TTSProcessor.queue.delete(TTSProcessor.queue.firstKey() as QueueMessageData)
 
@@ -87,11 +101,11 @@ export class TTSProcessor {
   }
 
   //Add filters here
-  private beforeTTS(ttsMessage: string) {
+  private async beforeTTS(ttsMessage: string) {
       //Apply overrides and RegEx filters
       let msgText: string = ttsMessage.toLowerCase()
 
-      msgText = TextOverrides.filter(msgText, this.client)
+      msgText = await TextOverrides.filter(msgText, this.client)
 
       return msgText
   }

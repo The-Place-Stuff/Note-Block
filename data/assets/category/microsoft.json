@@ -1,0 +1,8 @@
+{
+    "name": "microsoft",
+    "description": "Select a Microsoft voice, including the original two Note Block voices.",
+    "voices": [
+        "outer",
+        "chiko"
+    ]
+}

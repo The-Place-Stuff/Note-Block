@@ -130,10 +130,6 @@
         "match_word": true
     },
     {
-        "overrand": "aos",
-        "override": "ayo s"
-    },
-    {
         "overrand": "biden",
         "override": "bidin",
         "match_word": false
@@ -209,6 +205,46 @@
         "match_word": false
     },
     {
+        "overrand": "cyden",
+        "override": "kyden",
+        "match_word": false
+    },
+    {
+        "overrand": "aos",
+        "override": "a o s",
+        "match_word": true
+    },
+    {
+        "overrand": ":3",
+        "override": "(cat face)",
+        "match_word": true
+    },
+    {
+        "overrand": "bow",
+        "override": "boe",
+        "match_word": true
+    },
+    {
+        "overrand": "ngl",
+        "override": "not gonna lie",
+        "match_word": true
+    },
+    {
+        "overrand": "scute",
+        "override": "scoot",
+        "match_word": false
+    },
+    {
+        "overrand": "pls",
+        "override": "please",
+        "match_word": true
+    },
+    {
+        "overrand": "xor",
+        "override": "zore",
+        "match_word": true
+    },
+    {
         "overrand": "ost",
         "override": "o'esstee",
         "match_word": true
@@ -217,5 +253,10 @@
         "overrand": "emoji",
         "override": "emowji",
         "match_word": false
+    },
+    {
+        "overrand": "no",
+        "override": "know",
+        "match_word": true
     }
 ]

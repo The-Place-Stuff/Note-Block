@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionBase, ChatInputCommandInteraction, Client, SlashCommandBuilder, SlashCommandStringOption, TextChannel } from "discord.js";
+import { ChatInputCommandInteraction, Client, SlashCommandBuilder, SlashCommandStringOption, TextChannel } from "discord.js";
 
 interface SlashCommand {
     data: SlashCommandBuilder,
@@ -7,7 +7,8 @@ interface SlashCommand {
 
 type QueueMessageData = {
     messageID: string,
-    channel: TextChannel
+    channel: TextChannel,
+    isMinecraft: boolean
 }
 
 type Override = {
@@ -16,22 +17,27 @@ type Override = {
     match_word?: boolean
 }
 
+type UserBase = User[]
+
+type User = {
+    id: string,
+    minecraft_name: string | boolean,
+    voice: string
+}
+
 type VoiceCategory = {
     name: string,
     description: string,
-    voices: Voice[]
+    voices: string[]
+}
+
+type VoiceOption = {
+    display: string,
+    name: string
 }
 
 type Voice = {
-    display: string,
-    alias: string,
     id: string,
-    exporter: string
-}
-
-export declare enum VoiceExporter {
-    MICROSOFT = "microsoft",
-    TIKTOK = "tiktok",
-    SAPI = "sapi",
-    UBERDUCK = "uberduck"
+    name: string,
+    service: string
 }

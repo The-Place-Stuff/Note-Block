@@ -1,20 +1,20 @@
-import { Client } from 'discord.js'
+import { Channel, Client, GuildChannel, User } from 'discord.js'
 import { readFileSync } from 'fs'
 import { Override } from '../types/basic'
 
 export class TextOverrides {
   private client: Client
 
-  private overridesJson: Override[] = JSON.parse(readFileSync('./data/overrides.json', 'utf-8'))
+  private overridesJson: Override[] = JSON.parse(readFileSync('./data/assets/overrides.json', 'utf-8'))
 
-  constructor(client: Client) {
+  private constructor(client: Client) {
     this.client = client
   }
 
-  public static filter(text: string, client: Client) {
+  public static async filter(text: string, client: Client) {
     const overrides: TextOverrides = new TextOverrides(client)
 
-    text = overrides.applyFilters(text)
+    text = await overrides.applyFilters(text)
     text = overrides.applyOverrides(text)
 
     return text
@@ -37,7 +37,7 @@ export class TextOverrides {
     return text.replaceAll('_', ' ')
   }
 
-  public applyFilters(text: string) {
+  public async applyFilters(text: string) {
     //Filter emoji
     const emojiMatches = text.match(/<a*:\w+:\d+>/g);
 
@@ -66,8 +66,21 @@ export class TextOverrides {
     if (userMatches != null) {
       for (const userMention of userMatches) {
         const match: RegExpMatchArray = userMention.match(/\d+/) as RegExpMatchArray
+        const user: User = await this.client.users.fetch(match[0])
 
-        text = text.replaceAll(userMention, this.client.users.cache.get(match[0])!.username)
+        text = text.replaceAll(userMention, user.username)
+      }
+    }
+
+    //Filter channel links
+    const channels = text.match(/<#\d+>/g);
+
+    if (channels != null) {
+      for (const id of channels) {
+        const match: RegExpMatchArray = id.match(/\d+/) as RegExpMatchArray
+        const channel: GuildChannel = await this.client.channels.fetch(match[0]) as GuildChannel
+
+        text = text.replaceAll(id, channel.name ?? id)
       }
     }
 

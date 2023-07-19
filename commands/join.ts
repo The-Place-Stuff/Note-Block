@@ -7,7 +7,7 @@ export default class JoinCommand implements SlashCommand {
 
   public data = new SlashCommandBuilder()
     .setName('join')
-    .setDescription("Joins the voice channel you're currently in")
+    .setDescription("Connects Note Block to the voice channel you are in.")
 
   public async execute(interaction: ChatInputCommandInteraction, client: Client) {
     const guildUser: GuildMember = (await interaction.guild?.members.fetch(
@@ -16,9 +16,10 @@ export default class JoinCommand implements SlashCommand {
 
     //#region Pre Command Errors
     if (!guildUser.voice.channel) {
-      await interaction.reply(
-        'You must be in a voice channel to use this command!'
-      )
+      await interaction.reply({
+        content: 'You must be in a voice channel to use this command!',
+        ephemeral: true
+      })
       return
     }
     //#endregion
@@ -32,8 +33,8 @@ export default class JoinCommand implements SlashCommand {
     })
 
     await interaction.reply({
-      content: `Joined <#${guildUser.voice.channel.id}>!`,
-      ephemeral: true,
+      content: `Note Block has joined <#${guildUser.voice.channel.id}>!`,
+      ephemeral: false,
     })
   }
 }

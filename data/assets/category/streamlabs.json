@@ -1,0 +1,14 @@
+{
+    "name": "streamlabs",
+    "description": "Select a Streamlabs voice, including the voices of Justin and Brian.",
+    "voices": [
+        "joey",
+        "brian",
+        "amy",
+        "russell",
+        "kendra",
+        "justin",
+        "ivy",
+        "raveena"
+    ]
+}

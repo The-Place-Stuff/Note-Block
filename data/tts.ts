@@ -35,12 +35,12 @@ export class TTS {
     // Play the audio file via discord.js
     const connection: VoiceConnection = getVoiceConnection('741121896149549160') as VoiceConnection
 
+
     if (!connection) {
       TTS.isPlaying = false
       return
     }
-    
-    await exportAudio(text, this.ttsData.voice.id, this.ttsData.voice.exporter)
+    await exportAudio(text, this.ttsData.voice.id, this.ttsData.voice.service, 'tts.wav')
 
     const audioPlayer: AudioPlayer = TTS.audioPlayer
 

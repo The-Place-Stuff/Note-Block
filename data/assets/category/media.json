@@ -1,0 +1,21 @@
+{
+    "name": "media",
+    "description": "Select among various voices from TV series and films.",
+    "voices": [
+        "ghost_face",
+        "chewbacca",
+        "c3po",
+        "stitch",
+        "stormtrooper",
+        "rocket",
+        "madame_leota",
+        "ghost_host",
+        "grinch",
+        "jarvis",
+        "deadpool",
+        "optimus_prime",
+        "santa",
+        "holy_santa",
+        "cupid"
+    ]
+}
