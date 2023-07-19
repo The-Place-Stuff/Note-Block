@@ -77,6 +77,17 @@ export default class AdminCommand implements SlashCommand {
                 .setDescription('Modifies Note Block\'s registered overrides.')
                 .addSubcommand(subcommand => {
                     return subcommand
+                        .setName('get')
+                        .setDescription('Gets the override for a specified word.')
+                        .addStringOption(option => {
+                            return option
+                                .setName('overrand')
+                                .setDescription('The word to check')
+                                .setRequired(true)
+                        })
+                })
+                .addSubcommand(subcommand => {
+                    return subcommand
                         .setName('add')
                         .setDescription('Adds a new override to Note Block.')
                         .addStringOption(option => {

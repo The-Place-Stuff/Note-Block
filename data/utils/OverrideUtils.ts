@@ -9,6 +9,25 @@ export class OverrideUtils {
     public static async execute(interaction: ChatInputCommandInteraction) {
         const subcommand = interaction.options.getSubcommand()
 
+        //Get an override
+        if (subcommand == 'get') {
+            const overrand: string = interaction.options.getString('overrand', true)
+            const index: number = OverrideUtils.overridesFile.findIndex((o: any) => o.overrand == overrand)
+            const override: Override = this.overridesFile[index]
+
+            if (override == null) {
+                return interaction.reply({
+                    content: `There is no registered override for **${overrand}**.`,
+                    ephemeral: true
+                })
+            } else {
+                return interaction.reply({
+                    content: `The override for **${overrand}** was fetched successfully.\n\n**Overrand:** ${overrand}\n**Override:** ${override.override}\n**Match Word:** ${override.match_word}`,
+                    ephemeral: true
+                })
+            }
+        }
+
         //Add an override
         if (subcommand == 'add') {
             const overrand = interaction.options.getString('overrand', true)
