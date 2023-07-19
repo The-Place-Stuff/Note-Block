@@ -40,7 +40,7 @@ export class TTS {
       TTS.isPlaying = false
       return
     }
-    await exportAudio(text, this.ttsData.voice.id, this.ttsData.voice.service)
+    await exportAudio(text, this.ttsData.voice.id, this.ttsData.voice.service, 'tts.wav')
 
     const audioPlayer: AudioPlayer = TTS.audioPlayer
 

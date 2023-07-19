@@ -5,20 +5,20 @@ const https = require('https')
 const path = require("path")
 
 // evaluate which type of audio to export from
-async function exportAudio(text = '', voice = '', service = '') {
-  if (service == 'MICROSOFT') return exportMicrosoft(text, voice)
-  if (service == 'TIKTOK') return exportTikTok(text, voice)
-  if (service == 'UBERDUCK') return exportUberduck(text, voice)
-  if (service == 'SAPI') return exportSAPI(text, voice)
-  if (service == 'STREAMLABS') return exportStreamlabs(text, voice)
+async function exportAudio(text = '', voice = '', service = '', filepath = '') {
+  if (service == 'MICROSOFT') return exportMicrosoft(text, voice, filepath)
+  if (service == 'TIKTOK') return exportTikTok(text, voice, filepath)
+  if (service == 'UBERDUCK') return exportUberduck(text, voice, filepath)
+  if (service == 'SAPI') return exportSAPI(text, voice, filepath)
+  if (service == 'STREAMLABS') return exportStreamlabs(text, voice, filepath)
 }
 
 //
 // Exports audio using Microsoft's built-in voices
 //
-function exportMicrosoft(text = '', voice = '') {
+function exportMicrosoft(text = '', voice = '', filepath = '') {
   return new Promise((resolve, reject) => {
-    say.export(text, voice, 1, 'tts.wav', err => {
+    say.export(text, voice, 1, filepath, err => {
       if (err) {
         console.log(err)
         reject()
@@ -31,12 +31,12 @@ function exportMicrosoft(text = '', voice = '') {
 //
 // Exports audio using Tiktok's API
 //
-async function exportTikTok(text = '', voice = '') {
+async function exportTikTok(text = '', voice = '', filepath = '') {
   const data = {
     text,
     voice
   }
-  
+
   const requestedData = await fetch('https://tiktok-tts.weilnet.workers.dev/api/generation', {
     method: 'POST',
     headers: {
@@ -48,7 +48,7 @@ async function exportTikTok(text = '', voice = '') {
   const fetchedData = await requestedData.json()
 
   try {
-    fs.writeFileSync(path.join(path.dirname(__dirname), 'tts.wav'), Buffer.from(fetchedData.data, 'base64'))
+    fs.writeFileSync(path.join(path.dirname(__dirname), filepath), Buffer.from(fetchedData.data, 'base64'))
   }
   catch (err) {
     console.log("Invalid message format, Buffer only takes in string")
@@ -58,13 +58,13 @@ async function exportTikTok(text = '', voice = '') {
 //
 // Exports audio using Sam API
 //
-async function exportSAPI(text = '', voice = '') {
+async function exportSAPI(text = '', voice = '', filepath = '') {
   const requestedData = await fetch(`https://www.tetyys.com/SAPI4/SAPI4?text=${encodeURIComponent(text)}&voice=${encodeURIComponent(voice)}`)
 
   const fetchedData = await requestedData.arrayBuffer()
 
   try {
-    fs.writeFileSync(path.join(path.dirname(__dirname), 'tts.wav'), Buffer.from(fetchedData, 'base64'))
+    fs.writeFileSync(path.join(path.dirname(__dirname), filepath), Buffer.from(fetchedData, 'base64'))
   }
   catch (err) {
     console.log("Invalid message format, Buffer only takes in string")
@@ -74,7 +74,7 @@ async function exportSAPI(text = '', voice = '') {
 //
 // Export audio using Uberduck's API
 //
-async function exportUberduck(text = '', voice = '') {
+async function exportUberduck(text = '', voice = '', filepath = '') {
   const url = 'https://api.uberduck.ai/speak-synchronous'
   const data = {
     voice,
@@ -93,7 +93,7 @@ async function exportUberduck(text = '', voice = '') {
   })
   const bufferData = await dataRequest.arrayBuffer()
   try {
-    fs.writeFileSync(path.join(path.dirname(__dirname), 'tts.wav'), Buffer.from(bufferData, 'base64'))
+    fs.writeFileSync(path.join(path.dirname(__dirname), filepath), Buffer.from(bufferData, 'base64'))
   }
   catch (err) {
     console.log(err)
@@ -103,7 +103,7 @@ async function exportUberduck(text = '', voice = '') {
 //
 // Export audio using Steamlabs Polly API
 //
-async function exportStreamlabs(text = '', voice = '') {
+async function exportStreamlabs(text = '', voice = '', filepath = '') {
   const data = {
     voice: voice,
     text: text
@@ -118,17 +118,17 @@ async function exportStreamlabs(text = '', voice = '') {
   })
   const fetchedData = await requestedData.json()
 
-  await downloadAudio(fetchedData.speak_url)
+  await downloadAudio(fetchedData.speak_url, filepath)
 }
 
 // Used to download audio to tts.wav, takes in a url.
-async function downloadAudio(url) {
+async function downloadAudio(url, filepath = '') {
   return new Promise((resolve, reject) => {
     try {
       https.get(url, (res) => {
-        const file = fs.createWriteStream(path.join(path.dirname(__dirname), 'tts.wav'))
+        const file = fs.createWriteStream(path.join(path.dirname(__dirname), filepath))
         res.pipe(file)
-  
+
         file.on('finish', () => {
           file.close()
           resolve()
