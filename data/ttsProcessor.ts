@@ -93,7 +93,7 @@ export class TTSProcessor {
     }
 
     // Say it & Apply Before TTS Filters
-    tts.speak(this.beforeTTS(ttsContent))
+    tts.speak(await this.beforeTTS(ttsContent))
 
     TTSProcessor.queue.delete(TTSProcessor.queue.firstKey() as QueueMessageData)
 
@@ -101,11 +101,11 @@ export class TTSProcessor {
   }
 
   //Add filters here
-  private beforeTTS(ttsMessage: string) {
+  private async beforeTTS(ttsMessage: string) {
       //Apply overrides and RegEx filters
       let msgText: string = ttsMessage.toLowerCase()
 
-      msgText = TextOverrides.filter(msgText, this.client)
+      msgText = await TextOverrides.filter(msgText, this.client)
 
       return msgText
   }
