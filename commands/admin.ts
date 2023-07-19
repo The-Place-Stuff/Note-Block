@@ -165,8 +165,7 @@ export default class AdminCommand implements SlashCommand {
         }
         // Override group
         if (subGroup == 'overrides') {
-            OverrideUtils.execute(interaction)
-            return
+            return OverrideUtils.execute(interaction)
         }
 
         return interaction.reply({

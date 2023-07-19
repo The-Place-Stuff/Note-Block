@@ -1,4 +1,4 @@
-import { Channel, Client, User } from 'discord.js'
+import { Channel, Client, GuildChannel, User } from 'discord.js'
 import { readFileSync } from 'fs'
 import { Override } from '../types/basic'
 
@@ -78,9 +78,9 @@ export class TextOverrides {
     if (channels != null) {
       for (const id of channels) {
         const match: RegExpMatchArray = id.match(/\d+/) as RegExpMatchArray
-        const channel: Channel = await this.client.channels.fetch(match[0]) as Channel
+        const channel: GuildChannel = await this.client.channels.fetch(match[0]) as GuildChannel
 
-        text = text.replaceAll(id, (channel.toJSON() as any).name ?? id)
+        text = text.replaceAll(id, channel.name ?? id)
       }
     }
 
