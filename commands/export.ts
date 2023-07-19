@@ -36,12 +36,15 @@ export default class ExportCommand implements SlashCommand {
             })
         }
 
+        interaction.deferReply({
+            ephemeral: true
+        })
+
         await exportAudio(text, voice.id, voice.service, 'export.wav')
 
         try {
-            await interaction.reply({
-                content: `The text-to-speech file was exported successfully!`,
-                ephemeral: true,
+            await interaction.editReply({
+                content: 'The text-to-speech file was exported successfully!',
                 files: [
                     {
                         attachment: fs.readFileSync('./export.wav'),
