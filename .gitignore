@@ -1,4 +1,5 @@
 .env
+export.wav
 tts.wav
 tts.mpeg
 data.json
