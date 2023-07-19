@@ -5,6 +5,7 @@ import { VoiceUtils } from "../data/utils/VoiceUtils";
 import { TTS } from "../data/tts";
 import { TTSProcessor } from "../data/ttsProcessor";
 import { AudioPlayerStatus } from "@discordjs/voice";
+import { OverrideUtils } from "../data/utils/OverrideUtils";
 
 export default class AdminCommand implements SlashCommand {
 
@@ -12,7 +13,7 @@ export default class AdminCommand implements SlashCommand {
 
     private buildVoiceCommand() {
         const command = new SlashCommandBuilder()
-        
+
         command.setName('admin')
         command.setDescription('Runs various admin commands that require the Noteblock Admin role.')
         command.addSubcommandGroup(group => {
@@ -21,7 +22,7 @@ export default class AdminCommand implements SlashCommand {
             group.addSubcommand(subCmd => {
                 subCmd.setName('set')
                 subCmd.setDescription('Sets a user\'s voice.')
-                
+
                 subCmd.addUserOption(option => {
                     option.setName('user')
                     option.setDescription('The user to target')
@@ -39,13 +40,13 @@ export default class AdminCommand implements SlashCommand {
             group.addSubcommand(subCmd => {
                 subCmd.setName('clear')
                 subCmd.setDescription('Clears a user\'s voice.')
-                
+
                 subCmd.addUserOption(option => {
                     option.setName('user')
                     option.setDescription('The user to target')
                     option.setRequired(true)
                     return option
-                })                
+                })
                 return subCmd
             })
             group.addSubcommand(subCmd => {
@@ -70,9 +71,51 @@ export default class AdminCommand implements SlashCommand {
             })
             return group
         })
+        command.addSubcommandGroup(group => {
+            return group
+                .setName('overrides')
+                .setDescription('Modifies Note Block\'s registered overrides.')
+                .addSubcommand(subcommand => {
+                    return subcommand
+                        .setName('add')
+                        .setDescription('Adds a new override to Note Block.')
+                        .addStringOption(option => {
+                            return option
+                                .setName('overrand')
+                                .setDescription('The word to override')
+                                .setRequired(true)
+                        }
+                        )
+                        .addStringOption(option => {
+                            return option
+                                .setName('override')
+                                .setDescription('The override')
+                                .setRequired(true)
+                        }
+                        )
+                        .addBooleanOption(option => {
+                            return option
+                                .setName('match_word')
+                                .setDescription('Match the word exactly')
+                                .setRequired(false)
+                        }
+                        )
+                })
+                .addSubcommand(subcommand => {
+                    return subcommand
+                        .setName('remove')
+                        .setDescription('Removes an override from Note Block.')
+                        .addStringOption(option => {
+                            return option
+                                .setName('overrand')
+                                .setDescription('The word to remove')
+                                .setRequired(true)
+                        })
+                })
+        })
         return command
     }
-    
+
     public async execute(interaction: ChatInputCommandInteraction, client: Client) {
         const member = await interaction.guild?.members.fetch({
             user: interaction.user
@@ -109,6 +152,11 @@ export default class AdminCommand implements SlashCommand {
                 return this.queueClear(interaction, client)
             }
         }
+        // Override group
+        if (subGroup == 'overrides') {
+            OverrideUtils.execute(interaction)
+            return
+        }
 
         return interaction.reply({
             content: "There was an error running the command!",
@@ -138,7 +186,7 @@ export default class AdminCommand implements SlashCommand {
             ephemeral: true
         })
     }
-    
+
     //
     // Group: voice, Command: clear
     //
