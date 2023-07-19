@@ -61,10 +61,6 @@
         "match_word": true
     },
     {
-        "overrand": "emoji",
-        "override": "emo gee"
-    },
-    {
         "overrand": "hehead",
         "override": "he-head"
     },
@@ -241,6 +237,26 @@
     {
         "overrand": "xor",
         "override": "zore",
+        "match_word": true
+    },
+    {
+        "overrand": "vitro",
+        "override": "veetro",
+        "match_word": false
+    },
+    {
+        "overrand": "ost",
+        "override": "o'esstee",
+        "match_word": true
+    },
+    {
+        "overrand": "emoji",
+        "override": "emowji",
+        "match_word": false
+    },
+    {
+        "overrand": "no",
+        "override": "know",
         "match_word": true
     }
 ]
