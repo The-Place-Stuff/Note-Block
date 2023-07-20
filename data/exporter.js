@@ -48,7 +48,7 @@ async function exportTikTok(text = '', voice = '', filepath = '') {
   const fetchedData = await requestedData.json()
 
   try {
-    fs.writeFileSync(path.join(path.dirname(__dirname), filepath), Buffer.from(fetchedData.data, 'base64'))
+    fs.writeFileSync(filepath, Buffer.from(fetchedData.data, 'base64'))
   }
   catch (err) {
     console.log("Invalid message format, Buffer only takes in string")
