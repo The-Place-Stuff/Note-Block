@@ -64,7 +64,7 @@ async function exportSAPI(text = '', voice = '', filepath = '') {
   const fetchedData = await requestedData.arrayBuffer()
 
   try {
-    fs.writeFileSync(path.join(path.dirname(__dirname), filepath), Buffer.from(fetchedData, 'base64'))
+    fs.writeFileSync(filepath, Buffer.from(fetchedData, 'base64'))
   }
   catch (err) {
     console.log("Invalid message format, Buffer only takes in string")
@@ -93,7 +93,7 @@ async function exportUberduck(text = '', voice = '', filepath = '') {
   })
   const bufferData = await dataRequest.arrayBuffer()
   try {
-    fs.writeFileSync(filepath), Buffer.from(bufferData, 'base64')
+    fs.writeFileSync(filepath, Buffer.from(bufferData, 'base64'))
   }
   catch (err) {
     console.log(err)
