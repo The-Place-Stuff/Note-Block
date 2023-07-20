@@ -4,3 +4,4 @@ tts.wav
 tts.mpeg
 data.json
 /node_modules
+/data/audios
