@@ -26,7 +26,6 @@ export class TTSProcessor {
     if (!channels.includes(msg.channelId)) return
     if (msg.content.startsWith("\\ ")) return
     if (msg.content == '' && msg.channel.id !== "1095055405354336286") return
-    if (msg.author.bot) return
 
     console.log("Message Received")
 
