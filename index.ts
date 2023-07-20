@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 import { Client, GatewayIntentBits, Collection, Interaction, ChatInputCommandInteraction, ActivityType, TextChannel } from 'discord.js'
-import { readdirSync, createWriteStream, readFileSync } from 'fs'
+import { readdirSync, createWriteStream, readFileSync, unlinkSync } from 'fs'
 import { TTSProcessor } from './data/ttsProcessor'
 import { SlashCommand } from './types/basic'
 import { get } from 'https'
@@ -64,6 +64,11 @@ client.login(process.env.TOKEN)
 
 client.on('ready', async () => {
   client.user?.setActivity('with Roosey!', { type: ActivityType.Playing })
+
+  // Clear the queue folder of previous audio files
+  for (const file of readdirSync('./data/audios/queue')) {
+    unlinkSync(join(__dirname, `/data/audios/queue/${file}`))
+  }
 
   // Builds all voices
   VoiceUtils.buildVoices()

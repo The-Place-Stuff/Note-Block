@@ -93,7 +93,7 @@ async function exportUberduck(text = '', voice = '', filepath = '') {
   })
   const bufferData = await dataRequest.arrayBuffer()
   try {
-    fs.writeFileSync(path.join(path.dirname(__dirname), filepath), Buffer.from(bufferData, 'base64'))
+    fs.writeFileSync(filepath), Buffer.from(bufferData, 'base64')
   }
   catch (err) {
     console.log(err)
@@ -126,7 +126,7 @@ async function downloadAudio(url, filepath = '') {
   return new Promise((resolve, reject) => {
     try {
       https.get(url, (res) => {
-        const file = fs.createWriteStream(path.join(path.dirname(__dirname), filepath))
+        const file = fs.createWriteStream(filepath)
         res.pipe(file)
 
         file.on('finish', () => {

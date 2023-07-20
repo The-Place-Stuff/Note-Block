@@ -1,11 +1,13 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction, Client, GuildMember } from "discord.js";
-import { SlashCommand } from "../types/basic";
+import { QueueMessageData, SlashCommand } from "../types/basic";
 import { Data } from "../data/utils/DataUtils";
 import { VoiceUtils } from "../data/utils/VoiceUtils";
 import { TTS } from "../data/tts";
 import { TTSProcessor } from "../data/ttsProcessor";
 import { AudioPlayerStatus } from "@discordjs/voice";
 import { OverrideUtils } from "../data/utils/OverrideUtils";
+import { unlinkSync } from "fs";
+import { dirname, join } from "path";
 
 export default class AdminCommand implements SlashCommand {
 
@@ -240,6 +242,7 @@ export default class AdminCommand implements SlashCommand {
         } else {
             content = 'The current text-to-speech message was skipped!'
             TTS.audioPlayer.stop()
+            unlinkSync(join(dirname(__dirname), `/data/audios/queue/${(TTSProcessor.queue.firstKey() as QueueMessageData).messageID}.wav`) as string)
         }
 
         return interaction.reply({
@@ -258,7 +261,13 @@ export default class AdminCommand implements SlashCommand {
         } else {
             content = 'The text-to-speech queue was cleared!'
             TTS.audioPlayer.stop()
+            
+            for (let file of TTSProcessor.queue.keys()) {
+                unlinkSync(join(dirname(__dirname), `/data/audios/queue/${file.messageID}.wav`) as string)
+            }
+
             TTSProcessor.queue.clear()
+            
         }
 
         return interaction.reply({
