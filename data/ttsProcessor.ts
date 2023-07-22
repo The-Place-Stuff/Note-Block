@@ -27,13 +27,25 @@ export class TTSProcessor {
 
     // Minecraft Server Stuff
     if (msg.author.id === "1095051988636549241") {
-      user = this.minecraftListener(msg)
+      console.log('Minecraft message sent.')
+      user = undefined
+      for (const userData of Data.dataFile) {
+        if (!userData.minecraft_name) continue
+
+        console.log(`Checking ${userData.minecraft_name}`)
+
+        if (msg.embeds[0].author?.name.toLowerCase() == (userData.minecraft_name as string).toLowerCase()) {
+          console.log(`Found ${userData.minecraft_name}!`)
+          user = Data.getUserData(userData.id)
+          break
+        }
+      }
     }
     if (!user || user.voice == "none") return
 
     // Get User Voice
     const voice: Voice = VoiceUtils.getVoice(user.voice)
-    
+
     //Send data to TTS API
     const tts: TTS = new TTS(voice)
 
@@ -42,21 +54,6 @@ export class TTSProcessor {
       channel: msg.channel as TextChannel,
       isMinecraft: msg.author.id === "1095051988636549241"
     }, tts)
-  }
-
-  private minecraftListener(msg: Message): User | undefined {
-    console.log('Minecraft message sent.')
-    for (const user of Data.dataFile) {
-      if (!user.minecraft_name) continue
-
-      console.log(`Checking ${user.minecraft_name}`)
-
-      if (msg.embeds[0].author?.name.toLowerCase() == (user.minecraft_name as string).toLowerCase()) {
-        console.log(`Found ${user.minecraft_name}!`)
-        return Data.getUserData(user.id) as User
-      }
-    }
-    return undefined
   }
 
   private async ttsListener() {
@@ -71,7 +68,7 @@ export class TTSProcessor {
       setTimeout(() => this.ttsListener(), 1)
       return
     }
-    
+
     this.client.channels.cache.get(channels[0])
 
     //Get Message Data & Fetch Message Content
@@ -82,7 +79,7 @@ export class TTSProcessor {
     //If message is deleted, remove from queue
     try {
       if (!ttsMessageData.isMinecraft) ttsContent = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).content
-      
+
       else ttsContent = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).embeds[0].title as string
 
     } catch (error) {
@@ -102,11 +99,11 @@ export class TTSProcessor {
 
   //Add filters here
   private async beforeTTS(ttsMessage: string) {
-      //Apply overrides and RegEx filters
-      let msgText: string = ttsMessage.toLowerCase()
+    //Apply overrides and RegEx filters
+    let msgText: string = ttsMessage.toLowerCase()
 
-      msgText = await TextOverrides.filter(msgText, this.client)
+    msgText = await TextOverrides.filter(msgText, this.client)
 
-      return msgText
+    return msgText
   }
 }
