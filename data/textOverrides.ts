@@ -56,7 +56,7 @@ export class TextOverrides {
       for (const url of urlMatches) {
         const match: RegExpMatchArray = url.match(/(?<=\/)[\w-.]+/) as RegExpMatchArray
 
-        text = text.replaceAll(url, match[0])
+        text = text.replaceAll(url, match[0].replaceAll('.', ' dot '))
       }
     }
 
