@@ -255,8 +255,13 @@
         "match_word": false
     },
     {
-        "overrand": "no",
-        "override": "know",
+        "overrand": "wii",
+        "override": "we",
+        "match_word": false
+    },
+    {
+        "overrand": "vs.",
+        "override": "versus",
         "match_word": true
     }
 ]
