@@ -263,5 +263,15 @@
         "overrand": "vs.",
         "override": "versus",
         "match_word": true
+    },
+    {
+        "overrand": "rly",
+        "override": "really",
+        "match_word": true
+    },
+    {
+        "overrand": "vegan",
+        "override": "veeghin",
+        "match_word": false
     }
 ]
