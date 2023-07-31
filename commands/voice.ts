@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { Client, ChatInputCommandInteraction, APIApplicationCommandOptionChoice} from "discord.js";
+import { Client, ChatInputCommandInteraction, APIApplicationCommandOptionChoice } from "discord.js";
 import { SlashCommand, VoiceCategory } from "../types/basic";
 import { readdirSync, readFileSync } from 'fs'
 import { Data } from "../data/utils/DataUtils";
@@ -18,7 +18,7 @@ export default class VoiceCommand implements SlashCommand {
         const cmd = new SlashCommandBuilder()
         cmd.setName('voice')
         cmd.setDescription('Sets your voice used in text-to-speech.')
-        
+
         return this.buildSubCommands(cmd);
     }
 
@@ -81,6 +81,19 @@ export default class VoiceCommand implements SlashCommand {
             })
             return subCmd
         })
+
+        // Creates copy subcommand
+        cmd.addSubcommand(subCmd => {
+            subCmd.setName('copy')
+            subCmd.setDescription('Sets your voice to the voice of another user.')
+            subCmd.addUserOption(option => {
+                option.setName('user')
+                option.setDescription('The user to copy')
+                option.setRequired(true)
+                return option
+            })
+            return subCmd
+        })
         return cmd
     }
 
@@ -92,7 +105,7 @@ export default class VoiceCommand implements SlashCommand {
         VoiceUtils.buildVoices()
         voices.forEach(id => {
             const voice = VoiceUtils.getVoice(id)
-            options.push({name: voice.name, value: id})
+            options.push({ name: voice.name, value: id })
         })
         return options
     }
@@ -115,7 +128,7 @@ export default class VoiceCommand implements SlashCommand {
             })
         }
 
-        if (subCommand == 'get') {
+        if (subCommand == 'get' || subCommand == 'copy') {
             const getUser = interaction.options.getUser('user', true)
             const getData = Data.getOrCreateUser(getUser.id, client)
             const getVoice: string = getData.voice
@@ -123,15 +136,22 @@ export default class VoiceCommand implements SlashCommand {
             if (getVoice == 'none') {
                 content = `<@${getUser.id}> has no assigned voice.`
             } else {
-                const getVoiceName = VoiceUtils.getVoice(getVoice).name
-                if (getUser == user) {
-                    content = `Your voice is set to **${getVoiceName}** (\`${getVoice}\`).`
-                } else {
-                    content = `<@${getUser.id}> set their voice to **${getVoiceName}** (\`${getVoice}\`).`
+                if (subCommand == 'get') {
+                    const getVoiceName = VoiceUtils.getVoice(getVoice).name
+                    if (getUser == user) {
+                        content = `Your voice is set to **${getVoiceName}** (\`${getVoice}\`).`
+                    } else {
+                        content = `<@${getUser.id}> set their voice to **${getVoiceName}** (\`${getVoice}\`).`
+                    }
+                } else if (subCommand == 'copy') {
+                    userData.voice = getVoice
+                    Data.updateUserData(userData, client)
+
+                    content = `Your voice has been set to **${VoiceUtils.getVoice(getVoice).name}**!`
                 }
             }
             return interaction.reply({
-                content: content,
+                content: content!,
                 ephemeral: true
             })
         }
