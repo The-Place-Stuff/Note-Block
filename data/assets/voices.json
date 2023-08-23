@@ -94,6 +94,8 @@
     "barack_obama": { "id": "barack-obama", "name": "Barack Obama", "service": "UBERDUCK" },
     "mr_beast": { "id": "mrbeast", "name": "Mr. Beast", "service": "UBERDUCK" },
     "muscle_man": { "id": "muscle-man", "name": "Muscle Man", "service": "UBERDUCK" },
+
+    "angus": { "id": "angus-pleading", "name": "Angus", "service": "UBERDUCK" },
     
     "joey": { "id": "Joey", "name": "Joey", "service": "STREAMLABS"},
     "brian": { "id": "Brian", "name": "Brian", "service": "STREAMLABS" },

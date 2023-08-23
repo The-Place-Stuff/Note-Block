@@ -1,0 +1,14 @@
+{
+    "name": "uberduck",
+    "description": "Select among a wide range of Uberduck voices.",
+    "voices": [
+        "super_mario",
+        "peter_griffin",
+        "chris_griffin",
+        "muscle_man",
+        "walter_white",
+        "chuck_mcgill",
+        "barack_obama",
+        "mr_beast"
+    ]
+}

@@ -1,14 +1,7 @@
 {
     "name": "uberduck",
-    "description": "Select among a wide range of Uberduck voices.",
+    "description": "Select a uberduck voice, featuring voices such as Angus.",
     "voices": [
-        "super_mario",
-        "peter_griffin",
-        "chris_griffin",
-        "muscle_man",
-        "walter_white",
-        "chuck_mcgill",
-        "barack_obama",
-        "mr_beast"
+        "angus"
     ]
 }
