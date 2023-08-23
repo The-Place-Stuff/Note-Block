@@ -33,7 +33,7 @@ export class Data {
 
     public static getOrCreateUser(id: string, client: Client): User {
         if (!Data.getUserData(id)) {
-            return Data.writeNewUser({id: id, minecraft_name: false, voice: 'none'}, client)
+            return Data.writeNewUser({favorites: [], id: id, minecraft_name: false, voice: 'none'}, client)
         }
         return Data.getUserData(id) as User
     }

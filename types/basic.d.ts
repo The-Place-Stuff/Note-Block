@@ -20,6 +20,7 @@ type Override = {
 type UserBase = User[]
 
 type User = {
+    favorites: string[],
     id: string,
     minecraft_name: string | boolean,
     voice: string

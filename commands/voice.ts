@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { Client, ChatInputCommandInteraction, APIApplicationCommandOptionChoice } from "discord.js";
-import { SlashCommand, VoiceCategory } from "../types/basic";
+import { ActionRowBuilder, APIApplicationCommandOptionChoice, CacheType, ChatInputCommandInteraction, Client, Interaction, SelectMenuBuilder, StringSelectMenuBuilder, StringSelectMenuInteraction, StringSelectMenuOptionBuilder } from "discord.js";
+import { SlashCommand, User, Voice, VoiceCategory } from "../types/basic";
 import { readdirSync, readFileSync } from 'fs'
 import { Data } from "../data/utils/DataUtils";
 import path from 'path'
@@ -48,6 +48,15 @@ export default class VoiceCommand implements SlashCommand {
                 return subCmd
             })
         }
+
+        // Creates favorites subcommand
+        cmd.addSubcommand(subCmd => {
+            subCmd
+                .setName('favorites')
+                .setDescription('Select a voice from among your favorites via a dropdown menu.')
+
+            return subCmd
+        })
 
         // Creates set subcommand
         cmd.addSubcommand(subCmd => {
@@ -118,6 +127,22 @@ export default class VoiceCommand implements SlashCommand {
         const user = interaction.user
         const userData = Data.getOrCreateUser(user.id, client)
 
+        if (subCommand == 'favorites') {
+            const content: string = await this.selectFavorite(interaction, client, userData)
+
+            if (interaction.replied) {
+                return interaction.editReply({
+                    content: content,
+                    components: []
+                })
+            } else {
+                return interaction.reply({
+                    content: content,
+                    components: []
+                })
+            }
+        }
+
         if (subCommand == 'clear') {
             userData.voice = 'none'
             Data.updateUserData(userData, client)
@@ -156,17 +181,65 @@ export default class VoiceCommand implements SlashCommand {
             })
         }
 
-        const selectedVoice = interaction.options.getString('voice', true)
-        if (subCommand == 'set' && !VoiceUtils.voiceMap.get(selectedVoice)) return interaction.reply({
-            content: `\`${selectedVoice}\` is not a valid voice!`,
+        const voice = interaction.options.getString('voice', true)
+        if (subCommand == 'set' && !VoiceUtils.voiceMap.get(voice)) return interaction.reply({
+            content: `\`${voice}\` is not a valid voice!`,
             ephemeral: true
         })
-        userData.voice = selectedVoice
+        userData.voice = voice
         Data.updateUserData(userData, client)
 
         return interaction.reply({
-            content: `Your voice has been set to **${VoiceUtils.getVoice(selectedVoice).name}**!`,
+            content: `Your voice has been set to **${VoiceUtils.getVoice(voice).name}**!`,
             ephemeral: true
         })
+    }
+
+    private async selectFavorite(interaction: ChatInputCommandInteraction, client: Client, user: User) {
+        const favorites: string[] = user.favorites
+
+        if (favorites.length == 0) return 'You have no favorited voices. Get started by using `/favorites add`!'
+
+        const selectMenu = new StringSelectMenuBuilder()
+            .setCustomId('favorites')
+            .setPlaceholder('—')
+
+        for (const element of favorites) {
+            const voice: Voice = VoiceUtils.getVoice(element)
+
+            // failsafe
+            if (!voice) {
+                user.favorites.splice(user.favorites.indexOf(element))
+                Data.updateUserData(user, client)
+                continue
+            }
+
+            selectMenu.addOptions(
+                new StringSelectMenuOptionBuilder()
+                    .setLabel(voice.name)
+                    .setDescription(element)
+                    .setValue(element)
+            )
+        }
+
+        const reply = await interaction.reply({
+            content: 'Select a voice from the dropdown menu!',
+            ephemeral: true,
+            components: [
+                new ActionRowBuilder<SelectMenuBuilder>().addComponents(selectMenu)
+            ]
+        })
+
+        try {
+            const confirmation = await reply.awaitMessageComponent()
+
+            user.voice = (confirmation.toJSON() as any).values[0]
+            Data.updateUserData(user, client)
+
+            return `Your voice has been set to **${VoiceUtils.getVoice(user.voice).name}**!`
+        } catch (error) {
+            console.error(error)
+            return 'There was an error running the command.'
+        }
     }
 }

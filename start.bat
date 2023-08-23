@@ -1,5 +1,5 @@
 @echo off
-npm run start || (
+npm run launch || (
     echo Note Block crashed!
     PAUSE
 )

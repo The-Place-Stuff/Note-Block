@@ -65,10 +65,6 @@
         "override": "he-head"
     },
     {
-        "overrand": "github",
-        "override": "git hub"
-    },
-    {
         "overrand": "solveddev",
         "override": "solved dev"
     },
@@ -273,5 +269,25 @@
         "overrand": "vegan",
         "override": "veeghin",
         "match_word": false
+    },
+    {
+        "overrand": "grimace",
+        "override": "grim miss",
+        "match_word": false
+    },
+    {
+        "overrand": "fnaf",
+        "override": "fuh naff",
+        "match_word": true
+    },
+    {
+        "overrand": "github",
+        "override": "git hub",
+        "match_word": false
+    },
+    {
+        "overrand": "imo",
+        "override": "in my opinion",
+        "match_word": true
     }
 ]
