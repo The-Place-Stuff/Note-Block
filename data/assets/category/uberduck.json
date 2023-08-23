@@ -2,6 +2,13 @@
     "name": "uberduck",
     "description": "Select a uberduck voice, featuring voices such as Angus.",
     "voices": [
-        "angus"
+        "angus",
+        "bertie",
+        "damon",
+        "zeus",
+        "movie_trailer_guy",
+        "nerd",
+        "fat_tony",
+        "kiwi"
     ]
 }

@@ -97,7 +97,6 @@
 
     "angus": { "id": "angus-pleading", "name": "Angus", "service": "UBERDUCK" },
     "bertie": { "id": "bertie-angry", "name": "Bertie", "service": "UBERDUCK" },
-    "blab": { "id": "b-la-b", "name": "B-LA-B", "service": "UBERDUCK" },
     "damon": { "id": "damon-deepvoice", "name": "Damon", "service": "UBERDUCK" },
     "zeus": { "id": "zeus", "name": "Zeus", "service": "UBERDUCK" },
     "movie_trailer_guy": { "id": "movie-trailer-guy", "name": "Movie Trailer Guy", "service": "UBERDUCK" },
