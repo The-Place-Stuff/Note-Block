@@ -196,7 +196,7 @@ export default class VoiceCommand implements SlashCommand {
     }
 
     private async selectFavorite(interaction: ChatInputCommandInteraction, client: Client, user: User) {
-        const favorites: string[] = user.favorites
+        const favorites: string[] = user.favorites ?? []
 
         if (favorites.length == 0) return 'You have no favorited voices. Get started by using `/favorites add`!'
 
