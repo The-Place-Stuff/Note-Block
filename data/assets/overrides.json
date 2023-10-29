@@ -289,5 +289,50 @@
         "overrand": "imo",
         "override": "in my opinion",
         "match_word": true
+    },
+    {
+        "overrand": "thx",
+        "override": "thanks",
+        "match_word": true
+    },
+    {
+        "overrand": "pkmn",
+        "override": "Pokemon",
+        "match_word": true
+    },
+    {
+        "overrand": "godot",
+        "override": "guhdoe",
+        "match_word": false
+    },
+    {
+        "overrand": "qol",
+        "override": "quality-of-life",
+        "match_word": true
+    },
+    {
+        "overrand": "dino",
+        "override": "dyno",
+        "match_word": true
+    },
+    {
+        "overrand": "abt",
+        "override": "about",
+        "match_word": true
+    },
+    {
+        "overrand": "diff.",
+        "override": "different",
+        "match_word": true
+    },
+    {
+        "overrand": "cya",
+        "override": "see ya",
+        "match_word": true
+    },
+    {
+        "overrand": "ofc",
+        "override": "of course",
+        "match_word": true
     }
 ]
