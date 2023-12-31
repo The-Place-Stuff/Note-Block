@@ -98,10 +98,6 @@
         "match_word": true
     },
     {
-        "overrand": "sesse",
-        "override": "sessee"
-    },
-    {
         "overrand": "sus",
         "override": "suss",
         "match_word": true
@@ -333,6 +329,21 @@
     {
         "overrand": "ofc",
         "override": "of course",
+        "match_word": true
+    },
+    {
+        "overrand": "btw",
+        "override": "by the way",
+        "match_word": true
+    },
+    {
+        "overrand": "stw",
+        "override": "save the world",
+        "match_word": true
+    },
+    {
+        "overrand": "kubejs",
+        "override": "cube JS",
         "match_word": true
     }
 ]
