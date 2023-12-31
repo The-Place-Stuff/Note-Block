@@ -14,7 +14,14 @@ export class TTSProcessor {
     this.client = client
 
     this.client.on('messageCreate', this.messageListener)
+    this.client.on('messageUpdate', (oldMsg, newMsg) => this.listenForInspirobot(newMsg as Message))
     this.ttsListener()
+  }
+
+  private async listenForInspirobot(msg: Message) {
+    if (msg.author.id == '1015325910762799114') {
+      this.messageListener(msg)
+    }
   }
 
   private async messageListener(msg: Message) {
