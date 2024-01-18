@@ -3,6 +3,8 @@
     "description": "Select a Spongebob voice, including voices such as Plankton or Patrick Star.",
     "voices": [
         "patrick",
+        "squidward",
+        "mr_krabs",
         "plankton"
     ]
 }
