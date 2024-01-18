@@ -3,6 +3,7 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 const fs = require('fs')
 const https = require('https')
 const path = require("path")
+const fakeYou = require('fakeyou.js')
 
 // evaluate which type of audio to export from
 async function exportAudio(text = '', voice = '', service = '', filepath = '') {
@@ -11,6 +12,7 @@ async function exportAudio(text = '', voice = '', service = '', filepath = '') {
   if (service == 'UBERDUCK') return exportUberduck(text, voice, filepath)
   if (service == 'SAPI') return exportSAPI(text, voice, filepath)
   if (service == 'STREAMLABS') return exportStreamlabs(text, voice, filepath)
+  if (service == 'FAKEYOU') return exportFakeYou(text, voice, filepath)
 }
 
 //
@@ -119,6 +121,32 @@ async function exportStreamlabs(text = '', voice = '', filepath = '') {
   const fetchedData = await requestedData.json()
 
   await downloadAudio(fetchedData.speak_url, filepath)
+}
+
+//
+// Export audio using FakeYou API
+//
+async function exportFakeYou(text = '', voice = '', filepath = '') {
+
+  const fy = new fakeYou.Client({
+    usernameOrEmail: 'warheadaidungeon@gmail.com',
+    password: 'theplace'
+  })
+
+  await fy.start()
+
+  const searchedModels = fy.searchModel(voice);
+
+  let model = searchedModels.first()
+
+  const result = await model.request(text)
+
+  try {
+    fs.writeFileSync(path.join(path.dirname(__dirname), filepath), Buffer.from(await result.getAudio(), 'base64'))
+  }
+  catch (err) {
+    console.log(err)
+  }
 }
 
 // Used to download audio to tts.wav, takes in a url.

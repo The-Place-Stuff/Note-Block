@@ -111,5 +111,7 @@
     "kendra": { "id": "Kendra", "name": "Kendra", "service": "STREAMLABS" },
     "justin": { "id": "Justin", "name": "Justin", "service": "STREAMLABS" },
     "ivy": { "id": "Ivy", "name": "Ivy", "service": "STREAMLABS" },
-    "raveena": { "id": "Raveena", "name": "Raveena", "service": "STREAMLABS" }
+    "raveena": { "id": "Raveena", "name": "Raveena", "service": "STREAMLABS" },
+
+    "plankton": {"id": "Plankton V2", "name": "Plankton", "service": "FAKEYOU"}
 }
