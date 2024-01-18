@@ -77,23 +77,8 @@
     "robot": { "id": "RoboSoft Five", "name": "Robot", "service": "SAPI" },
     "evil_ai": { "id": "RoboSoft One", "name": "Evil AI", "service": "SAPI" },
 
-    "spongebob": { "id": "spongebob-squarepants", "name": "Spongebob", "service": "UBERDUCK" },
-    "patrick": { "id": "patrick", "name": "Patrick", "service": "UBERDUCK" },
-    "squidward": { "id": "squidward", "name": "Squidward", "service": "UBERDUCK" },
-    "mr_krabs": { "id": "mr-krabs", "name": "Mr. Krabs", "service": "UBERDUCK" },
-    "sandy_cheeks": { "id": "sandy-cheeks", "name": "Sandy Cheeks", "service": "UBERDUCK" },
-    "plankton": { "id": "plankton", "name": "Plankton", "service": "UBERDUCK" },
-    "larry_the_lobster": { "id": "larry-the-lobster", "name": "Larry the Lobster", "service": "UBERDUCK" },
-    "mermaid_man": { "id": "mermaidman-joe-whyte", "name": "Mermaid Man", "service": "UBERDUCK" },
-    "barnacle_boy": { "id": "barnacle-boy", "name": "Barnacle Boy", "service": "UBERDUCK" },
-    "peter_griffin": { "id": "peter-griffin", "name": "Peter Griffin", "service": "UBERDUCK" },
-    "chris_griffin": { "id": "chris-griffin", "name": "Chris Griffin", "service": "UBERDUCK" },
-    "super_mario": { "id": "mario-3ds", "name": "Super Mario", "service": "UBERDUCK" },
-    "walter_white": { "id": "walter-white", "name": "Walter White", "service": "UBERDUCK" },
-    "chuck_mcgill": { "id": "chuck-mcgill", "name": "Chuck McGill", "service": "UBERDUCK" },
-    "barack_obama": { "id": "barack-obama", "name": "Barack Obama", "service": "UBERDUCK" },
-    "mr_beast": { "id": "mrbeast", "name": "Mr. Beast", "service": "UBERDUCK" },
-    "muscle_man": { "id": "muscle-man", "name": "Muscle Man", "service": "UBERDUCK" },
+    "patrick": { "id": "Patrick Star", "name": "Patrick Star", "service": "FAKEYOU" },
+    "plankton": {"id": "Plankton v2", "name": "Plankton", "service": "FAKEYOU"},
 
     "angus": { "id": "angus-pleading", "name": "Angus", "service": "UBERDUCK" },
     "bertie": { "id": "bertie-angry", "name": "Bertie", "service": "UBERDUCK" },
@@ -111,7 +96,5 @@
     "kendra": { "id": "Kendra", "name": "Kendra", "service": "STREAMLABS" },
     "justin": { "id": "Justin", "name": "Justin", "service": "STREAMLABS" },
     "ivy": { "id": "Ivy", "name": "Ivy", "service": "STREAMLABS" },
-    "raveena": { "id": "Raveena", "name": "Raveena", "service": "STREAMLABS" },
-
-    "plankton": {"id": "Plankton V2", "name": "Plankton", "service": "FAKEYOU"}
+    "raveena": { "id": "Raveena", "name": "Raveena", "service": "STREAMLABS" }
 }
