@@ -99,6 +99,7 @@
     "patrick": { "id": "Patrick Star", "name": "Patrick Star", "service": "FAKEYOU" },
     "squidward": { "id": "Squidward Tentacles", "name": "Squidward Tentacles", "service": "FAKEYOU"},
     "mr_krabs": {"id": "Mr. Krabs (Clancy Brown)", "name": "Mr. Krabs", "service": "FAKEYOU"},
+    "sandy": {"id": "Sandy Cheeks", "name": "Sandy Cheeks", "service": "FAKEYOU"},
     "plankton": {"id": "Plankton v2", "name": "Plankton", "service": "FAKEYOU"},
     "joe_biden": {"id": "Joe Biden (46th U.S. President)", "name": "Joe Biden", "service": "FAKEYOU"},
     "mario": {"id": "Mario (Charles Martinet, 1994-2023) (New!)", "name": "Super Mario", "service": "FAKEYOU"},
