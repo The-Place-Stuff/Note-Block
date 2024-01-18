@@ -345,5 +345,15 @@
         "overrand": "kubejs",
         "override": "cube JS",
         "match_word": true
+    },
+    {
+        "overrand": "pikachu",
+        "override": "peeka chew",
+        "match_word": false
+    },
+    {
+        "overrand": "giygas",
+        "override": "guygas",
+        "match_word": false
     }
 ]
