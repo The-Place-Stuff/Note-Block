@@ -3,6 +3,8 @@
     "description": "Voices from the FakeYou category.",
     "voices": [
         "joe_biden",
+        "mario",
+        "mickey_mouse",
         "peter_griffin"
     ]
 }
