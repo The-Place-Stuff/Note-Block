@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "patternProperties": {
+        ".*": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "service": {
+                    "type": "string",
+                    "enum": [
+                        "MICROSOFT",
+                        "TIKTOK",
+                        "SAPI",
+                        "UBERDUCK",
+                        "STREAMLABS",
+                        "FAKEYOU"
+                    ]
+                }
+            }
+        }
+    }
+}

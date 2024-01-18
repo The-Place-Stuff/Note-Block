@@ -1,0 +1,8 @@
+{
+    "name": "spongebob",
+    "description": "Select a Spongebob voice, including voices such as Plankton or Patrick Star.",
+    "voices": [
+        "patrick",
+        "plankton"
+    ]
+}

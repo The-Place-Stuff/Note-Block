@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "voices": {
+            "type": "array",
+            "maxItems": 25,
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}
