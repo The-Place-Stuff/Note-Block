@@ -1,0 +1,8 @@
+{
+    "name": "fakeyou",
+    "description": "Voices from the FakeYou category.",
+    "voices": [
+        "joe_biden",
+        "peter_griffin"
+    ]
+}
