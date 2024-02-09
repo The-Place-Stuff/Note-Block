@@ -5,22 +5,24 @@ const https = require('https')
 const path = require("path")
 const fakeYou = require('fakeyou.js')
 
+
+
 // evaluate which type of audio to export from
-async function exportAudio(text = '', voice = '', service = '', filepath = '') {
-  if (service == 'MICROSOFT') return exportMicrosoft(text, voice, filepath)
-  if (service == 'TIKTOK') return exportTikTok(text, voice, filepath)
-  if (service == 'UBERDUCK') return exportUberduck(text, voice, filepath)
-  if (service == 'SAPI') return exportSAPI(text, voice, filepath)
-  if (service == 'STREAMLABS') return exportStreamlabs(text, voice, filepath)
-  if (service == 'FAKEYOU') return exportFakeYou(text, voice, filepath)
+async function exportAudio(text = '', voice = '', service = '', outputPath = '') {
+  if (service == 'MICROSOFT') return exportMicrosoft(text, voice, outputPath)
+  if (service == 'TIKTOK') return exportTikTok(text, voice, outputPath)
+  if (service == 'UBERDUCK') return exportUberduck(text, voice, outputPath)
+  if (service == 'SAPI') return exportSAPI(text, voice, outputPath)
+  if (service == 'STREAMLABS') return exportStreamlabs(text, voice, outputPath)
+  if (service == 'FAKEYOU') return exportFakeYou(text, voice, outputPath)
 }
 
 //
 // Exports audio using Microsoft's built-in voices
 //
-function exportMicrosoft(text = '', voice = '', filepath = '') {
+function exportMicrosoft(text = '', voice = '', outputPath = '') {
   return new Promise((resolve, reject) => {
-    say.export(text, voice, 1, filepath, err => {
+    say.export(text, voice, 1, outputPath, err => {
       if (err) {
         console.log(err)
         reject()
@@ -33,7 +35,7 @@ function exportMicrosoft(text = '', voice = '', filepath = '') {
 //
 // Exports audio using Tiktok's API
 //
-async function exportTikTok(text = '', voice = '', filepath = '') {
+async function exportTikTok(text = '', voice = '', outputPath = '') {
   const data = {
     text,
     voice
@@ -46,37 +48,24 @@ async function exportTikTok(text = '', voice = '', filepath = '') {
     },
     body: JSON.stringify(data)
   })
-
   const fetchedData = await requestedData.json()
-
-  try {
-    fs.writeFileSync(path.join(path.dirname(__dirname), filepath), Buffer.from(fetchedData.data, 'base64'))
-  }
-  catch (err) {
-    console.log("Invalid message format, Buffer only takes in string")
-  }
+  fs.writeFileSync(path.join(path.dirname(__dirname), outputPath), Buffer.from(fetchedData.data, 'base64'))
 }
 
 //
 // Exports audio using Sam API
 //
-async function exportSAPI(text = '', voice = '', filepath = '') {
+async function exportSAPI(text = '', voice = '', outputPath = '') {
   const requestedData = await fetch(`https://www.tetyys.com/SAPI4/SAPI4?text=${encodeURIComponent(text)}&voice=${encodeURIComponent(voice)}`)
-
   const fetchedData = await requestedData.arrayBuffer()
 
-  try {
-    fs.writeFileSync(path.join(path.dirname(__dirname), filepath), Buffer.from(fetchedData, 'base64'))
-  }
-  catch (err) {
-    console.log("Invalid message format, Buffer only takes in string")
-  }
+  fs.writeFileSync(path.join(path.dirname(__dirname), outputPath), Buffer.from(fetchedData, 'base64'))
 }
 
 //
 // Export audio using Uberduck's API
 //
-async function exportUberduck(text = '', voice = '', filepath = '') {
+async function exportUberduck(text = '', voice = '', outputPath = '') {
   const url = 'https://api.uberduck.ai/speak-synchronous'
   const data = {
     voice,
@@ -94,18 +83,13 @@ async function exportUberduck(text = '', voice = '', filepath = '') {
     body: JSON.stringify(data)
   })
   const bufferData = await dataRequest.arrayBuffer()
-  try {
-    fs.writeFileSync(path.join(path.dirname(__dirname), filepath), Buffer.from(bufferData, 'base64'))
-  }
-  catch (err) {
-    console.log(err)
-  }
+  fs.writeFileSync(path.join(path.dirname(__dirname), outputPath), Buffer.from(bufferData, 'base64'))
 }
 
 //
 // Export audio using Steamlabs Polly API
 //
-async function exportStreamlabs(text = '', voice = '', filepath = '') {
+async function exportStreamlabs(text = '', voice = '', outputPath = '') {
   const data = {
     voice: voice,
     text: text
@@ -120,41 +104,31 @@ async function exportStreamlabs(text = '', voice = '', filepath = '') {
   })
   const fetchedData = await requestedData.json()
 
-  await downloadAudio(fetchedData.speak_url, filepath)
+  await downloadAudio(fetchedData.speak_url, outputPath)
 }
 
 //
 // Export audio using FakeYou API
 //
-async function exportFakeYou(text = '', voice = '', filepath = '') {
-
-  const fy = new fakeYou.Client({
+async function exportFakeYou(text = '', voice = '', outputPath = '') {
+  const client = new fakeYou.Client({
     usernameOrEmail: 'warheadaidungeon@gmail.com',
     password: 'theplace'
   })
-
-  await fy.start()
-
+  await client.start()
   const searchedModels = fy.searchModel(voice);
-
   let model = searchedModels.first()
 
   const result = await model.request(text)
-
-  try {
-    fs.writeFileSync(path.join(path.dirname(__dirname), filepath), Buffer.from(await result.getAudio(), 'base64'))
-  }
-  catch (err) {
-    console.log(err)
-  }
+  fs.writeFileSync(path.join(path.dirname(__dirname), outputPath), Buffer.from(await result.getAudio(), 'base64'))
 }
 
 // Used to download audio to tts.wav, takes in a url.
-async function downloadAudio(url, filepath = '') {
+async function downloadAudio(url, outputPath = '') {
   return new Promise((resolve, reject) => {
     try {
       https.get(url, (res) => {
-        const file = fs.createWriteStream(path.join(path.dirname(__dirname), filepath))
+        const file = fs.createWriteStream(path.join(path.dirname(__dirname), outputPath))
         res.pipe(file)
 
         file.on('finish', () => {

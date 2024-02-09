@@ -40,8 +40,14 @@ export class TTS {
       TTS.isPlaying = false
       return
     }
-    await exportAudio(text, this.ttsData.voice.id, this.ttsData.voice.service, 'tts.wav')
-
+    try {
+      await exportAudio(text, this.ttsData.voice.id, this.ttsData.voice.service, 'tts.wav') as Promise<void>
+    }
+    catch (error) {
+      console.warn(`Error produced by '${text}': ${error}`)
+      TTS.isPlaying = false
+      return
+    }
     const audioPlayer: AudioPlayer = TTS.audioPlayer
 
     const audioFile: AudioResource = createAudioResource(
