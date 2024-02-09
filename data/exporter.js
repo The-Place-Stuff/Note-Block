@@ -124,6 +124,9 @@ async function exportFakeYou(text = '', voice = '', outputPath = '') {
   fs.writeFileSync(path.join(path.dirname(__dirname), outputPath), Buffer.from(await result.getAudio(), 'base64'))
 }
 
+//
+// Export audio using ElevenLabs API
+//
 async function exportElevenLabs(text = '', voice = '', outputPath = '') {
   const data = {
     text,
