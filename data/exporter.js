@@ -15,6 +15,7 @@ async function exportAudio(text = '', voice = '', service = '', outputPath = '')
   if (service == 'SAPI') return exportSAPI(text, voice, outputPath)
   if (service == 'STREAMLABS') return exportStreamlabs(text, voice, outputPath)
   if (service == 'FAKEYOU') return exportFakeYou(text, voice, outputPath)
+  if (service == 'ELEVENLABS') return exportElevenLabs(text, voice, outputPath)
 }
 
 //
@@ -123,23 +124,49 @@ async function exportFakeYou(text = '', voice = '', outputPath = '') {
   fs.writeFileSync(path.join(path.dirname(__dirname), outputPath), Buffer.from(await result.getAudio(), 'base64'))
 }
 
+async function exportElevenLabs(text = '', voice = '', outputPath = '') {
+  const data = {
+    text,
+    voice_settings: {
+      stability: 0.5,
+      similarity_boost: 1,
+      style: 1
+    }
+  }
+  const request = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  const resultJson = await request.json()
+
+  if (resultJson) {
+    throw Error(JSON.stringify(resultJson, null, 4))
+  }
+  const resultBuffer = await request.arrayBuffer()
+  fs.writeFileSync(path.join(path.dirname(__dirname), outputPath), Buffer.from(resultBuffer, 'base64'))
+}
+
+
 // Used to download audio to tts.wav, takes in a url.
 async function downloadAudio(url, outputPath = '') {
   return new Promise((resolve, reject) => {
-    try {
-      https.get(url, (res) => {
-        const file = fs.createWriteStream(path.join(path.dirname(__dirname), outputPath))
-        res.pipe(file)
+    https.get(url, (res) => {
+      const file = fs.createWriteStream(path.join(path.dirname(__dirname), outputPath))
+      res.pipe(file)
 
-        file.on('finish', () => {
-          file.close()
-          resolve()
-        })
+      file.on('finish', () => {
+        file.close()
+        resolve()
       })
-    } catch (err) {
-      console.log(err)
-      reject(err)
-    }
+      file.on('error', (err) => {
+        console.log(err)
+        file.close()
+        reject(err)
+      })
+    })
   })
 }
 

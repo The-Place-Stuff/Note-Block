@@ -104,5 +104,7 @@
     "joe_biden": {"id": "Joe Biden (46th U.S. President)", "name": "Joe Biden", "service": "FAKEYOU"},
     "mario": {"id": "Mario (Charles Martinet, 1994-2023) (New!)", "name": "Super Mario", "service": "FAKEYOU"},
     "mickey_mouse": {"id": "Mickey Mouse", "name": "Mickey", "service": "FAKEYOU"},
-    "peter_griffin": {"id": "Peter Griffin (Classic, Version 1.0)", "name": "Peter Griffin", "service": "FAKEYOU"}
+    "peter_griffin": {"id": "Peter Griffin (Classic, Version 1.0)", "name": "Peter Griffin", "service": "FAKEYOU"},
+
+    "adam": { "id": "pNInz6obpgDQGcFmaJgB", "name": "Adam", "service": "ELEVENLABS"}
 }
