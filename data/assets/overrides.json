@@ -355,5 +355,20 @@
         "overrand": "giygas",
         "override": "guygas",
         "match_word": false
+    },
+    {
+        "overrand": "par",
+        "override": "parr",
+        "match_word": true
+    },
+    {
+        "overrand": "afaik",
+        "override": "as far as I know",
+        "match_word": true
+    },
+    {
+        "overrand": "asgore",
+        "override": "aszgoar",
+        "match_word": true
     }
 ]
