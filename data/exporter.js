@@ -117,7 +117,7 @@ async function exportFakeYou(text = '', voice = '', outputPath = '') {
     password: 'theplace'
   })
   await client.start()
-  const searchedModels = fy.searchModel(voice);
+  const searchedModels = client.searchModel(voice);
   let model = searchedModels.first()
 
   const result = await model.request(text)
