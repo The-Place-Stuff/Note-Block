@@ -143,11 +143,9 @@ async function exportElevenLabs(text = '', voice = '', outputPath = '') {
     },
     body: JSON.stringify(data)
   })
-  const resultJson = await request.json()
+  
+  console.log(request.type)
 
-  if (resultJson) {
-    throw Error(JSON.stringify(resultJson, null, 4))
-  }
   const resultBuffer = await request.arrayBuffer()
   fs.writeFileSync(path.join(path.dirname(__dirname), outputPath), Buffer.from(resultBuffer, 'base64'))
 }
