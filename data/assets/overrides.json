@@ -370,5 +370,10 @@
         "overrand": "asgore",
         "override": "aszgoar",
         "match_word": true
+    },
+    {
+        "overrand": "touché",
+        "override": "tooshay",
+        "match_word": true
     }
 ]
