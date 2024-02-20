@@ -1,0 +1,12 @@
+{
+    "name": "misc",
+    "description": "Miscellaneous voices.",
+    "voices": [
+        "joe_biden",
+        "mario",
+        "mickey_mouse",
+        "peter_griffin",
+        "chris_griffin",
+        "aeiou_paul"
+    ]
+}

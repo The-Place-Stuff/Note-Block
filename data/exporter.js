@@ -4,10 +4,12 @@ const fs = require('fs')
 const https = require('https')
 const path = require("path")
 const fakeYou = require('fakeyou.js')
+const decTalk = require('dectalk')
 
 
-
-// evaluate which type of audio to export from
+//
+// evaluate which audio service to export from
+//
 async function exportAudio(text = '', voice = '', service = '', outputPath = '') {
   if (service == 'MICROSOFT') return exportMicrosoft(text, voice, outputPath)
   if (service == 'TIKTOK') return exportTikTok(text, voice, outputPath)
@@ -16,6 +18,7 @@ async function exportAudio(text = '', voice = '', service = '', outputPath = '')
   if (service == 'STREAMLABS') return exportStreamlabs(text, voice, outputPath)
   if (service == 'FAKEYOU') return exportFakeYou(text, voice, outputPath)
   if (service == 'ELEVENLABS') return exportElevenLabs(text, voice, outputPath)
+  if (service == 'DECTALK') return exportDECTalk(text, outputPath)
 }
 
 //
@@ -150,6 +153,15 @@ async function exportElevenLabs(text = '', voice = '', outputPath = '') {
   fs.writeFileSync(path.join(path.dirname(__dirname), outputPath), Buffer.from(resultBuffer, 'base64'))
 }
 
+//
+// Export audio using DECTalk 
+//
+async function exportDECTalk(text = '', outputPath = '') {
+  const data = await decTalk.say(text, {
+    EnableCommands: true
+  })
+  fs.writeFileSync(path.join(path.dirname(__dirname), outputPath), data)
+}
 
 // Used to download audio to tts.wav, takes in a url.
 async function downloadAudio(url, outputPath = '') {

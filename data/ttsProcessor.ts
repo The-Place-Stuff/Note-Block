@@ -53,6 +53,11 @@ export class TTSProcessor {
     // Get User Voice
     const voice: Voice = VoiceUtils.getVoice(user.voice)
 
+    if (!voice) {
+      console.log(`${user.voice} is NOT a valid voice.`)
+      return
+    }
+
     //Send data to TTS API
     const tts: TTS = new TTS(voice)
 

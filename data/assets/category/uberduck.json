@@ -1,6 +1,6 @@
 {
     "name": "uberduck",
-    "description": "Select a uberduck voice, featuring voices such as Angus.",
+    "description": "Voices from UberDuck.",
     "voices": [
         "angus",
         "bertie",

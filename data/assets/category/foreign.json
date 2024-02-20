@@ -1,6 +1,6 @@
 {
     "name": "foreign",
-    "description": "Select a foreign voice, including the voices of Doge, solvedDev, and Roosey.",
+    "description": "Voices from TikTok, specifically ones that don't speak english.",
     "voices": [
         "doge",
         "roosey",

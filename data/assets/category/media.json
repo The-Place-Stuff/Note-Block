@@ -1,6 +1,6 @@
 {
     "name": "media",
-    "description": "Select among various voices from TV series and films.",
+    "description": "Voices from TikTok, specifically ones pertaining to media like films and shows.",
     "voices": [
         "ghost_face",
         "chewbacca",
@@ -13,7 +13,6 @@
         "grinch",
         "jarvis",
         "deadpool",
-        "optimus_prime",
         "santa",
         "holy_santa",
         "cupid"

@@ -1,6 +1,6 @@
 {
-    "name": "alternate",
-    "description": "Select an Alternate voice, including the voices of Sam, Mike, and Mary.",
+    "name": "sapi",
+    "description": "Voices from SAPI.",
     "voices": [
         "sam",
         "mike",

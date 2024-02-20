@@ -1,6 +1,6 @@
 {
     "name": "vocal",
-    "description": "Select a vocal that creates text-to-speech songs.",
+    "description": "Voices from TikTok, specifically the singing voices.",
     "voices": [
         "alto",
         "classical",

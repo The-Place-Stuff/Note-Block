@@ -1,12 +1,14 @@
 {
     "name": "spongebob",
-    "description": "Select a Spongebob voice, including voices such as Plankton or Patrick Star.",
+    "description": "Voices from Spongebob.",
     "voices": [
         "spongebob",
         "patrick",
         "squidward",
         "mr_krabs",
         "sandy",
-        "plankton"
+        "plankton",
+        "larry_the_lobster",
+        "mermaid_man"
     ]
 }

@@ -1,14 +1,11 @@
 {
     "name": "tiktok",
-    "description": "Select among a wide range of TikTok voices.",
+    "description": "Voices from TikTok.",
     "voices": [
         "joe",
         "jess",
         "betty",
-        "narrator",
-        "scientist",
         "professor",
-        "peaceful",
         "serious",
         "confident",
         "wacky",
@@ -17,13 +14,11 @@
         "rich_girl",
         "shenna",
         "granny",
-        "neighbor",
         "butler",
         "pirate",
         "wizard",
         "pansino",
         "bruv",
-        "british_man",
-        "no_cookie"
+        "british_man"
     ]
 }
