@@ -99,6 +99,7 @@
     "mickey_mouse": {"id": "Mickey Mouse", "name": "Mickey", "service": "FAKEYOU"},
     "peter_griffin": {"id": "Peter Griffin (Classic, Version 1.0)", "name": "Peter Griffin", "service": "FAKEYOU"},
     "chris_griffin": {"id": "Chris Griffin (Classic)", "name": "Chris Griffin", "service": "FAKEYOU"},
+    "muscle_man": {"id": "MuscleMan", "name": "Muscle Man", "service": "FAKEYOU"},
 
     "adam": { "id": "pNInz6obpgDQGcFmaJgB", "name": "Adam", "service": "ELEVENLABS"},
     "aeiou_paul": { "id": "0", "name": "Paul (AEIOU)", "service": "DECTALK"},
