@@ -375,5 +375,10 @@
         "overrand": "touché",
         "override": "tooshay",
         "match_word": true
+    },
+    {
+        "overrand": "cthulhu",
+        "override": "cuhthooloo",
+        "match_word": false
     }
 ]
