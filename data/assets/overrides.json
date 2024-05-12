@@ -380,5 +380,30 @@
         "overrand": "cthulhu",
         "override": "cuhthooloo",
         "match_word": false
+    },
+    {
+        "overrand": "plantera",
+        "override": "plan terra",
+        "match_word": false
+    },
+    {
+        "overrand": "chisc",
+        "override": "chisk",
+        "match_word": true
+    },
+    {
+        "overrand": "wdym",
+        "override": "what do you mean",
+        "match_word": true
+    },
+    {
+        "overrand": "yk",
+        "override": "ya know",
+        "match_word": true
+    },
+    {
+        "overrand": "👍",
+        "override": "(thumbsup)",
+        "match_word": false
     }
 ]
