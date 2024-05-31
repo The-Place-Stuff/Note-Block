@@ -1,0 +1,17 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "/data/assets/category/*.json"
+            ],
+            "url": "/.vscode/schema/category.json"
+        },
+        {
+            "fileMatch": [
+                "/data/assets/voices.json"
+            ],
+            "url": "/.vscode/schema/voices.json"
+        }
+    ],
+    "editor.tabSize": 4
+}
