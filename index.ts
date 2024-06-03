@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-import { Client, GatewayIntentBits, Collection, Interaction, ChatInputCommandInteraction, ActivityType, TextChannel } from 'discord.js'
+import { Client, GatewayIntentBits, Collection, Interaction, ChatInputCommandInteraction, ActivityType, TextChannel, Message } from 'discord.js'
 import { readdirSync, createWriteStream, readFileSync } from 'fs'
 import { TTSProcessor } from './data/ttsProcessor'
 import { SlashCommand } from './types/basic'
@@ -73,26 +73,10 @@ client.on('ready', async () => {
 
   // Other
 
-  //Download latest NB Data
-  const JSONmsg: TextChannel = client.channels.cache.get('1117203482663976960') as TextChannel
+  //Fetch latest NB Data
+  const dataMessage: Message = await (client.channels.cache.get('1117203482663976960') as TextChannel).messages.fetch('1247211751062110299') as Message
 
-  const JSONfile: string = (await JSONmsg.messages.fetch({ limit: 1 })).first()?.attachments.first()?.url as string
-  
-  try {
-    console.log('Downloading latest NB Data...')
-
-    get(JSONfile, (res) => {
-      const file = createWriteStream('data.json')
-      res.pipe(file)
-    })
-
-    Data.dataFile = JSON.parse(readFileSync(join(__dirname, 'data.json'), 'utf-8'))
-
-  } catch (error) {
-    console.error(error)
-  }
-
-  console.log('Downloaded latest NB Data!')
+  Data.dataFile = JSON.parse(dataMessage.content)
 
   console.log('Notey Poo is online!')
 })

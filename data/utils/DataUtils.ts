@@ -1,4 +1,4 @@
-import { Client, TextChannel } from "discord.js";
+import { Client, Message, TextChannel } from "discord.js";
 import { User, UserBase } from "../../types/basic";
 import { writeFileSync } from "fs";
 import { join } from "path";
@@ -7,16 +7,9 @@ export class Data {
     public static dataFile: UserBase
 
     public static async saveData(client: Client) {
-        writeFileSync(join(__dirname, '../../data.json'), JSON.stringify(Data.dataFile, null, 4))
+        const dataMessage: Message = await (client.channels.cache.get('1117203482663976960') as TextChannel).messages.fetch('1247211751062110299') as Message
 
-        //console.log(Data.dataFile)
-
-        const dataChannel: TextChannel = client.channels.cache.get('1117203482663976960') as TextChannel
-
-        dataChannel.send({
-            content: 'This is a Noteblock data file. Deleting this message will result in corruption of the current stored data file. Only delete this message if you know what you are doing.',
-            files: [join(__dirname, '../../data.json')]
-        })
+        dataMessage.edit(JSON.stringify(Data.dataFile))
     }
 
     public static writeNewUser(data: User, client: Client) {
