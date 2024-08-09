@@ -1,7 +1,7 @@
 import { AudioService } from "../../types/basic";
 import ExporterUtils from "../utils/ExporterUtils";
 import * as Crypto from 'crypto'
-const fetch = (url: string, object: object) => import('node-fetch').then(({ default: fetch }) => fetch(url, object))
+import fetch from 'node-fetch'
 
 export default class FakeYouService implements AudioService {
     public id: string = 'FAKEYOU'

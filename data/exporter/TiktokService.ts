@@ -1,7 +1,6 @@
 import { AudioService } from "../../types/basic";
 import ExporterUtils from "../utils/ExporterUtils";
-
-const fetch = (url: string, object: object) => import('node-fetch').then(({ default: fetch }) => fetch(url, object))
+import fetch from 'node-fetch'
 
 export default class TiktokService implements AudioService {
     public id: string = 'TIKTOK'
