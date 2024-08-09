@@ -19,6 +19,7 @@
         "dotenv": "^16.0.3",
         "esno": "^0.16.3",
         "fakeyou.js": "^1.1.1",
+        "fakeyou.ts": "^3.6.1",
         "ffmpeg-static": "^5.1.0",
         "libsodium-wrappers": "^0.7.11",
         "node-fetch": "^3.3.1",
