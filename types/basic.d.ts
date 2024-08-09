@@ -5,6 +5,11 @@ interface SlashCommand {
     execute: (interaction: ChatInputCommandInteraction, client: Client) => void
 }
 
+interface AudioService {
+    id: string,
+    export: (text: string, voice: string, outputDir: string) => Promise<void>
+}
+
 type QueueMessageData = {
     messageID: string,
     channel: TextChannel,
