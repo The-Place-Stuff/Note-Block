@@ -77,14 +77,11 @@
     "robot": { "id": "RoboSoft Five", "name": "Robot", "service": "SAPI" },
     "evil_ai": { "id": "RoboSoft One", "name": "Evil AI", "service": "SAPI" },
 
-    "angus": { "id": "angus-pleading", "name": "Angus", "service": "UBERDUCK" },
-    "bertie": { "id": "bertie-angry", "name": "Bertie", "service": "UBERDUCK" },
-    "damon": { "id": "damon-deepvoice", "name": "Damon", "service": "UBERDUCK" },
     "zeus": { "id": "zeus", "name": "Zeus", "service": "UBERDUCK" },
-    "movie_trailer_guy": { "id": "movie-trailer-guy", "name": "Movie Trailer Guy", "service": "UBERDUCK" },
-    "nerd": { "id": "loser-boy-upbeat", "name": "Nerd", "service": "UBERDUCK" },
     "fat_tony": { "id": "fat-tony-fed-up", "name": "Fat Tony", "service": "UBERDUCK" },
-    "kiwi": { "id": "kiwi", "name": "Kiwi", "service": "UBERDUCK" },
+    "preacher": { "id": "preacher", "name": "Preacher", "service": "UBERDUCK" },
+    "quackmaster": { "id": "quackmaster", "name": "QuackMaster", "service": "UBERDUCK" },
+    "unhinged_creature": { "id": "spongebob", "name": "Unhinged Creature", "service": "UBERDUCK" },
     
     "spongebob": { "id": "weight_tq6pwerrbr4mvbjmtyhbsqe6t", "name": "Spongebob Squarepants", "service": "FAKEYOU"},
     "patrick": { "id": "weight_154man2fzg19nrtc15drner7t", "name": "Patrick Star", "service": "FAKEYOU" },
@@ -104,7 +101,6 @@
     "muscle_man": {"id": "weight_6k4tkg2nsec6ha2j1zg1xygdc", "name": "Muscle Man", "service": "FAKEYOU"},
     "baldi": {"id": "weight_a60e9yew8d4k0a14fzjr8qa56", "name": "Baldi", "service": "FAKEYOU"},
 
-    "adam": { "id": "pNInz6obpgDQGcFmaJgB", "name": "Adam", "service": "ELEVENLABS"},
     "aeiou_paul": { "id": "0", "name": "Paul (AEIOU)", "service": "DECTALK"},
 
     "joey": { "id": "Joey", "name": "Joey", "service": "STREAMLABS"},

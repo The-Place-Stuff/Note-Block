@@ -2,13 +2,10 @@
     "name": "uberduck",
     "description": "Voices from UberDuck.",
     "voices": [
-        "angus",
-        "bertie",
-        "damon",
         "zeus",
-        "movie_trailer_guy",
-        "nerd",
         "fat_tony",
-        "kiwi"
+        "preacher",
+        "quackmaster",
+        "unhinged_creature"
     ]
 }

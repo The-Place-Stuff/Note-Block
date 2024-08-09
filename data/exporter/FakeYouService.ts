@@ -8,8 +8,6 @@ export default class FakeYouService implements AudioService {
 
     public async export(text: string, voice: string, outputDir: string): Promise<void> {
         const inferenceResponse = await this.fetchInference(text, voice)
-        console.log(JSON.stringify(inferenceResponse, null, 4))
-
         if (!inferenceResponse.success) {
             throw Error('Failed to infer text.')
         }
@@ -20,7 +18,6 @@ export default class FakeYouService implements AudioService {
 
     private async fetchAudioUrl(inferenceToken: string): Promise<string> {
         let urlSuffix = undefined
-        
         while (true) {
             const pollRequest = await fetch(`https://api.fakeyou.com/tts/job/${inferenceToken}`, {
                 method: 'GET',

@@ -3,7 +3,8 @@ import { Client, ChatInputCommandInteraction } from 'discord.js'
 import { SlashCommand, User, Voice } from '../types/basic'
 import { Data } from "../data/utils/DataUtils"
 import { VoiceUtils } from '../data/utils/VoiceUtils'
-const exportAudio = require('../data/exporter.js')
+import { audioServices } from '..'
+import ExporterUtils from '../data/utils/ExporterUtils'
 const fs = require('fs')
 
 export default class ExportCommand implements SlashCommand {
@@ -40,14 +41,25 @@ export default class ExportCommand implements SlashCommand {
             ephemeral: true
         })
 
-        await exportAudio(text, voice.id, voice.service, 'export.wav')
-
+        try {
+            const service = audioServices.get(voice.service)
+            if (service) {
+                await service.export(text, voice.id, 'export.wav')
+            }
+            else {
+                throw Error(`Service '${service}' doesn't exist LOL!`)
+            }
+        }
+        catch (error) {
+            await interaction.editReply({ content: `Error: ${error}` })
+            return
+        }
         try {
             await interaction.editReply({
                 content: 'The text-to-speech file was exported successfully!',
                 files: [
                     {
-                        attachment: fs.readFileSync('./export.wav'),
+                        attachment: fs.readFileSync(ExporterUtils.getExportDirectory('export.wav')),
                         name: 'export.wav'
                     }
                 ]
