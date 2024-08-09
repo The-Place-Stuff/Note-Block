@@ -1,7 +1,7 @@
 import { AudioService } from "../../types/basic";
 import ExporterUtils from "../utils/ExporterUtils";
 import * as Crypto from 'crypto'
-import fetch from 'node-fetch'
+import axios from 'axios'
 
 export default class FakeYouService implements AudioService {
     public id: string = 'FAKEYOU'
@@ -19,14 +19,15 @@ export default class FakeYouService implements AudioService {
     private async fetchAudioUrl(inferenceToken: string): Promise<string> {
         let urlSuffix = undefined
         while (true) {
-            const pollRequest = await fetch(`https://api.fakeyou.com/tts/job/${inferenceToken}`, {
-                method: 'GET',
+            const request = await axios({
+                url: `https://api.fakeyou.com/tts/job/${inferenceToken}`,
+                method: 'get',
                 headers: {
                     'Accept': 'application/json'
                 }
             })
-            const pollResponse: any = await pollRequest.json()
-            const path = pollResponse.state.maybe_public_bucket_wav_audio_path
+            const response = request.data
+            const path = response.state.maybe_public_bucket_wav_audio_path
             
             if (typeof path != 'string') {
                 await new Promise(res => setTimeout(res, 1000))
@@ -45,14 +46,15 @@ export default class FakeYouService implements AudioService {
             tts_model_token: voice,
             inference_text: text
         }
-        const inferenceRequest = await fetch('https://api.fakeyou.com/tts/inference', {
-            method: 'POST',
+        const request = await axios({
+            url: 'https://api.fakeyou.com/tts/inference',
+            method: 'post',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            data
         })
-        return inferenceRequest.json() as any
+        return request.data
     }
 }
