@@ -6,7 +6,7 @@ export default class DecTalkService implements AudioService {
     public id: string = 'DECTALK'
     
     public async export(text: string, voice: string, outputDir: string): Promise<void> {
-        const data = say(text, {
+        const data = await say(text, {
             EnableCommands: true
         })
         ExporterUtils.writeFile(outputDir, data)
