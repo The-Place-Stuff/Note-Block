@@ -405,5 +405,50 @@
         "overrand": "👍",
         "override": "(thumbsup)",
         "match_word": false
+    },
+    {
+        "overrand": "dr. jr.",
+        "override": "doctor junior",
+        "match_word": false
+    },
+    {
+        "overrand": "mr. jr.",
+        "override": "mister junior",
+        "match_word": true
+    },
+    {
+        "overrand": "ms. jr.",
+        "override": "miss junior",
+        "match_word": true
+    },
+    {
+        "overrand": "jr. jr.",
+        "override": "junior junior",
+        "match_word": true
+    },
+    {
+        "overrand": "datagen",
+        "override": "data gen",
+        "match_word": false
+    },
+    {
+        "overrand": "skibidi",
+        "override": "skibidee",
+        "match_word": true
+    },
+    {
+        "overrand": "ut",
+        "override": "undertale",
+        "match_word": true
+    },
+    {
+        "overrand": "niche",
+        "override": "neesh",
+        "match_word": true
+    },
+    {
+        "overrand": "nunchuck",
+        "override": "nun chuck",
+        "match_word": false
     }
 ]
