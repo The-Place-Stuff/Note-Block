@@ -14,7 +14,8 @@ export default class StreamlabsPollyService implements AudioService {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Referer': 'https://streamlabs.com'
             },
             body: JSON.stringify(data)
         })
