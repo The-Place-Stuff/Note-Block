@@ -1,7 +1,7 @@
 import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection } from '@discordjs/voice'
 import { dirname, join } from 'path'
 import { Voice } from '../types/basic'
-const exportAudio = require('./exporter.js')
+import { audioServices } from '..'
 
 export class TTS {
     public static isPlaying: boolean = false
@@ -41,7 +41,12 @@ export class TTS {
             return
         }
         try {
-            await exportAudio(text, this.ttsData.voice.id, this.ttsData.voice.service, 'tts.wav') as Promise<void>
+            const serviceId = this.ttsData.voice.service
+            const service = audioServices.get(serviceId)
+            if (service) {
+                await service.export(text, this.ttsData.voice.id, 'tts.wav')
+            }
+            else throw Error(`Service '${serviceId}' does not exist.`)
         }
         catch (error) {
             console.warn(`Error produced by '${text}': ${error}`)

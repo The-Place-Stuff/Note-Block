@@ -1,6 +1,6 @@
 {
     "name": "streamlabs",
-    "description": "Voices from StreamLabs, these currently don't work.",
+    "description": "Voices from StreamLabs",
     "enabled": false,
     "voices": [
         "joey",
