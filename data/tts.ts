@@ -46,9 +46,7 @@ export class TTS {
             if (service) {
                 await service.export(text, this.ttsData.voice.id, 'tts.wav')
             }
-            else {
-                console.warn(`Service '${serviceId}' does not exist.`)
-            }
+            else throw Error(`Service '${serviceId}' does not exist.`)
         }
         catch (error) {
             console.warn(`Error produced by '${text}': ${error}`)
