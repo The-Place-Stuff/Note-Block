@@ -1,6 +1,6 @@
 {
-    "name": "misc",
-    "description": "Miscellaneous voices.",
+    "name": "fakeyou",
+    "description": "Voices from FakeYou",
     "voices": [
         "joe_biden",
         "mario",
@@ -10,7 +10,6 @@
         "peter_griffin",
         "chris_griffin",
         "muscle_man",
-        "aeiou_paul",
         "baldi"
     ]
 }

@@ -1,0 +1,7 @@
+{
+    "name": "extras",
+    "description": "Extra voices",
+    "voices": [
+        "aeiou_paul"
+    ]
+}

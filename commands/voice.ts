@@ -28,8 +28,9 @@ export default class VoiceCommand implements SlashCommand {
     private buildSubCommands(cmd: SlashCommandBuilder): SlashCommandBuilder {
         const categories = readdirSync(path.join(__dirname, '../data/assets/category'), 'utf-8')
 
-        // Creates a subcommand based off a JSON defined category
+        // Creates subcommands based off JSON defined categories
         for (const category of categories) {
+            console.log(`Category: ${category}`)
             const data: VoiceCategory = JSON.parse(readFileSync(path.join(__dirname, `../data/assets/category/${category}`), 'utf-8'))
             const choices = this.getOptions(data.voices)
 
@@ -113,6 +114,7 @@ export default class VoiceCommand implements SlashCommand {
         const options: APIApplicationCommandOptionChoice<string>[] = []
         VoiceUtils.buildVoices()
         voices.forEach(id => {
+            console.log(`Added ${id}!`)
             const voice = VoiceUtils.getVoice(id)
             options.push({ name: voice.name, value: id })
         })

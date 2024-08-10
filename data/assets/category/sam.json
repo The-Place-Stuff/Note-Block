@@ -1,6 +1,6 @@
 {
-    "name": "sapi",
-    "description": "Voices from SAPI.",
+    "name": "sam",
+    "description": "Voices from Sam API.",
     "voices": [
         "sam",
         "mike",

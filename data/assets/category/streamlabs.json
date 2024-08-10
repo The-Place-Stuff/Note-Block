@@ -3,7 +3,7 @@
     "description": "Voices from StreamLabs",
     "enabled": false,
     "voices": [
-        "joey",
+        "joe",
         "brian",
         "amy",
         "russell",

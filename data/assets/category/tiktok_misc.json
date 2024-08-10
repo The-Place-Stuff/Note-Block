@@ -1,0 +1,26 @@
+{
+    "name": "tiktok_misc",
+    "description": "TikTok voices that are far more silly and crazy.",
+    "voices": [
+        "neighbor",
+        "sports_announcer",
+        "granny",
+        "wizard",
+        "butler",
+        "pirate",
+        "pansino",
+        "comedian",
+        "gingerchime",
+        "betty",
+        "chris",
+        "shenna",
+        "rich_girl",
+        "santa",
+        "santa_effect",
+        "santa_corey",
+        "adam_elf",
+        "werewolf",
+        "witch",
+        "zombie"
+    ]
+}

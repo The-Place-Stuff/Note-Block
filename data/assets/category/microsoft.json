@@ -1,0 +1,8 @@
+{
+    "name": "microsoft",
+    "description": "Voices from Microsoft",
+    "voices": [
+        "outer",
+        "chiko"
+    ]
+}
