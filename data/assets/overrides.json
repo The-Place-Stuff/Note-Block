@@ -118,7 +118,7 @@
     },
     {
         "overrand": "lmao",
-        "override": "luhmao",
+        "override": "lum ow",
         "match_word": true
     },
     {
@@ -449,6 +449,36 @@
     {
         "overrand": "nunchuck",
         "override": "nun chuck",
+        "match_word": false
+    },
+    {
+        "overrand": "pokémon",
+        "override": "pokemon",
+        "match_word": false
+    },
+    {
+        "overrand": "fav",
+        "override": "favorite",
+        "match_word": true
+    },
+    {
+        "overrand": "mc",
+        "override": "minecraft",
+        "match_word": true
+    },
+    {
+        "overrand": "b/c",
+        "override": "because",
+        "match_word": true
+    },
+    {
+        "overrand": "bullethell",
+        "override": "bullet hell",
+        "match_word": false
+    },
+    {
+        "overrand": "d&t",
+        "override": "dungeons and taverns",
         "match_word": false
     }
 ]
