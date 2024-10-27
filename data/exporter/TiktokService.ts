@@ -8,14 +8,12 @@ export default class TiktokService implements AudioService {
     public async export(text: string, voice: string, outputDir: string): Promise<void> {
         const data = { text, voice, base64: true }
     
-        const request = await fetch('https://tiktok-tts.weilbyte.dev/api/generate', {
-            method: 'POST',
+        const request = await axios.post('https://tiktok-tts.weilbyte.dev/api/generate', data, {
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
+            }
         })
-        const response = await request.text()
+        const response = request.data
         ExporterUtils.writeFile(outputDir, response)
     }
 }
