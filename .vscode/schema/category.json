@@ -3,17 +3,24 @@
     "type": "object",
     "properties": {
         "name": {
+            "title": "Name",
+            "description": "Defines the name of the category.",
             "type": "string"
         },
         "description": {
+            "title": "Description",
+            "description": "Defines the description of the category.",
             "type": "string"
         },
         "voices": {
+            "title": "Voices",
+            "description": "Defines the list of voices that are tied to this category.",
             "type": "array",
             "maxItems": 25,
             "items": {
                 "type": "string"
             }
         }
-    }
+    },
+    "required": ["name", "description", "voices"]
 }
