@@ -94,12 +94,6 @@
     "whispering_mary": { "id": "Female Whisper", "name": "Whispering Mary", "service": "SAPI" },
     "robot": { "id": "RoboSoft Five", "name": "Robot", "service": "SAPI" },
     "evil_ai": { "id": "RoboSoft One", "name": "Evil AI", "service": "SAPI" },
-
-    "zeus": { "id": "zeus", "name": "Zeus", "service": "UBERDUCK" },
-    "fat_tony": { "id": "fat-tony-fed-up", "name": "Fat Tony", "service": "UBERDUCK" },
-    "preacher": { "id": "preacher", "name": "Preacher", "service": "UBERDUCK" },
-    "quackmaster": { "id": "quackmaster", "name": "QuackMaster", "service": "UBERDUCK" },
-    "unhinged_creature": { "id": "spongebob", "name": "Unhinged Creature", "service": "UBERDUCK" },
     
     "spongebob": { "id": "weight_tq6pwerrbr4mvbjmtyhbsqe6t", "name": "Spongebob Squarepants", "service": "FAKEYOU"},
     "patrick": { "id": "weight_154man2fzg19nrtc15drner7t", "name": "Patrick Star", "service": "FAKEYOU" },
