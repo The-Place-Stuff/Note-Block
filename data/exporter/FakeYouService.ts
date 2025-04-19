@@ -28,6 +28,10 @@ export default class FakeYouService implements AudioService {
             })
             const response = request.data
             const path = response.state.maybe_public_bucket_wav_audio_path
+
+            if (response.state) {
+                console.log(`FakeYou TTS response status: ${JSON.stringify(response.state, null, 4)}`)
+            }
             
             if (typeof path != 'string') {
                 await new Promise(res => setTimeout(res, 1000))
