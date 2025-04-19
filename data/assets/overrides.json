@@ -480,5 +480,20 @@
         "overrand": "d&t",
         "override": "dungeons and taverns",
         "match_word": false
+    },
+    {
+        "overrand": "ikr",
+        "override": "I know right",
+        "match_word": true
+    },
+    {
+        "overrand": "p&b",
+        "override": "plates & blades",
+        "match_word": true
+    },
+    {
+        "overrand": "fr",
+        "override": "for real",
+        "match_word": true
     }
 ]
