@@ -41,7 +41,7 @@ export default class FakeYouService implements AudioService {
                 break
             }
         }
-        return `https://storage.googleapis.com/vocodes-public${urlSuffix}`
+        return `https://cdn-2.fakeyou.com${urlSuffix}`
     }
 
     private async fetchInference(text: string, voice: string): Promise<any> {
