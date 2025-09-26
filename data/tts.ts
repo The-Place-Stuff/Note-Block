@@ -1,7 +1,8 @@
 import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection } from '@discordjs/voice'
 import { dirname, join } from 'path'
-import { Voice } from '../types/basic'
+import { FileGeneratingStatus, Voice } from '../types/basic'
 import { audioServices } from '..'
+import { unlinkSync, existsSync } from 'fs'
 
 export class TTS {
     public static isPlaying: boolean = false
@@ -11,53 +12,72 @@ export class TTS {
         }
     })
 
-    private ttsData: {
+    public fileGenerating: FileGeneratingStatus = "generating" 
+
+    public ttsData: {
         speed: number
         pitch: number
         voice: Voice
-        volume: number
+        volume: number,
+        uuid: string
     }
 
-    constructor(voice: Voice) {
+    constructor(voice: Voice, uuid: string) {
         this.ttsData = {
             speed: 1,
             pitch: 1,
             voice: voice,
             volume: 1,
+            uuid: uuid
         }
     }
 
-    public async speak(text: string) {
-        console.log('Speak ' + text)
-
-        TTS.isPlaying = true
-
-        // Play the audio file via discord.js
-        const connection: VoiceConnection = getVoiceConnection('741121896149549160') as VoiceConnection
-
-
-        if (!connection) {
-            TTS.isPlaying = false
-            return
-        }
+    public async generateAudioFile(text: string) {
         try {
             const serviceId = this.ttsData.voice.service
             const service = audioServices.get(serviceId)
             if (service) {
-                await service.export(text, this.ttsData.voice.id, 'tts.wav')
-                console.log(`Exporting finished! Now playing: ${text}`)
+                console.log("Generating audio..")
+                await service.export(text, this.ttsData.voice.id, serviceId != "MICROSOFT" ? `/data/queue/${this.ttsData.uuid}.wav` : join(dirname(__dirname), `/data/queue/${this.ttsData.uuid}.wav`))
+                console.log(`Exporting finished! Generated file for: ${text}`)
+                this.fileGenerating = 'ready'
             }
             else throw Error(`Service '${serviceId}' does not exist.`)
         }
         catch (error) {
             console.warn(`Error produced by '${text}': ${error}`)
+            this.fileGenerating = 'error'
+            return
+        }
+    }
+
+    public async speak() {
+        if (this.fileGenerating == 'error') {
             TTS.isPlaying = false
             return
         }
+
+        TTS.isPlaying = true
+
+        if (this.fileGenerating == 'generating') {
+            setTimeout(() => this.speak(), 1)
+            return
+        }
+
+        console.log('ready')
+
+        // Play the audio file via discord.js
+        const connection: VoiceConnection = getVoiceConnection('741121896149549160') as VoiceConnection
+
+        if (!connection) {
+            TTS.isPlaying = false
+            return
+        }
+
         const audioPlayer: AudioPlayer = TTS.audioPlayer
 
         const audioFile: AudioResource = createAudioResource(
-            join(dirname(__dirname), 'tts.wav'),
+            join(dirname(__dirname), `/data/queue/${this.ttsData.uuid}.wav`),
             {
                 inlineVolume: true,
             }
@@ -73,5 +93,7 @@ export class TTS {
         await entersState(audioPlayer, AudioPlayerStatus.Idle)
 
         TTS.isPlaying = false
+
+        unlinkSync(join(dirname(__dirname), `/data/queue/${this.ttsData.uuid}.wav`))
     }
 }

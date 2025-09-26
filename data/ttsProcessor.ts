@@ -5,6 +5,7 @@ import { TextOverrides } from './textOverrides'
 import { QueueMessageData, Voice, User } from '../types/basic'
 import { Data } from './utils/DataUtils'
 import { VoiceUtils } from './utils/VoiceUtils'
+import { randomUUID } from 'crypto'
 
 export class TTSProcessor {
     public static queue: Collection<QueueMessageData, TTS> = new Collection()
@@ -13,7 +14,7 @@ export class TTSProcessor {
     constructor(client: Client) {
         this.client = client
 
-        this.client.on('messageCreate', this.messageListener)
+        this.client.on('messageCreate', (msg) => this.messageListener(msg))
         this.client.on('messageUpdate', (oldMsg, newMsg) => this.listenForInspirobot(newMsg as Message))
         this.ttsListener()
     }
@@ -59,13 +60,32 @@ export class TTSProcessor {
         }
 
         //Send data to TTS API
-        const tts: TTS = new TTS(voice)
+        const tts: TTS = new TTS(voice, randomUUID())
 
-        TTSProcessor.queue.set({
+        const queueData: QueueMessageData = {
             messageID: msg.id,
             channel: msg.channel as TextChannel,
             isMinecraft: msg.author.id === "1095051988636549241"
-        }, tts)
+        }
+
+        //this.client.channels.cache.get(channels[0])
+
+        let ttsContent: string = ""
+
+        //If message is deleted, remove from queue
+        try {
+            if (!queueData.isMinecraft) ttsContent = (await queueData.channel.messages.fetch(queueData.messageID)).content
+
+            else ttsContent = (await queueData.channel.messages.fetch(queueData.messageID)).embeds[0].title as string
+
+        } catch (error) {
+            return
+        }
+
+        // Generate audio file
+        await tts.generateAudioFile(await this.beforeTTS(ttsContent))
+
+        TTSProcessor.queue.set(queueData, tts)
     }
 
     private async ttsListener() {
@@ -81,28 +101,7 @@ export class TTSProcessor {
             return
         }
 
-        this.client.channels.cache.get(channels[0])
-
-        //Get Message Data & Fetch Message Content
-        const ttsMessageData: QueueMessageData = TTSProcessor.queue.firstKey() as QueueMessageData
-
-        let ttsContent: string
-
-        //If message is deleted, remove from queue
-        try {
-            if (!ttsMessageData.isMinecraft) ttsContent = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).content
-
-            else ttsContent = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).embeds[0].title as string
-
-        } catch (error) {
-            TTSProcessor.queue.delete(TTSProcessor.queue.firstKey() as QueueMessageData)
-
-            setTimeout(() => this.ttsListener(), 1)
-            return
-        }
-
-        // Say it & Apply Before TTS Filters
-        tts.speak(await this.beforeTTS(ttsContent))
+        tts.speak()
 
         TTSProcessor.queue.delete(TTSProcessor.queue.firstKey() as QueueMessageData)
 

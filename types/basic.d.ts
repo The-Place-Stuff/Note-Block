@@ -1,5 +1,7 @@
 import { ChatInputCommandInteraction, Client, SlashCommandBuilder, SlashCommandStringOption, TextChannel } from "discord.js";
 
+type FileGeneratingStatus = "error" | "generating" | "ready"
+
 interface SlashCommand {
     data: SlashCommandBuilder,
     execute: (interaction: ChatInputCommandInteraction, client: Client) => void
