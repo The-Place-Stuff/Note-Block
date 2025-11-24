@@ -38,55 +38,61 @@ export class TextOverrides {
     }
 
     public async applyFilters(text: string) {
-        //Filter emoji
-        const emojiMatches = text.match(/<a*:\w+:\d+>/g);
+        text = text.replaceAll(/(`{3})[\S\s]+?[^\\]\1/g, '()')
+        text = this.filterURLs(text)
+        text = this.filterEmojis(text)
+        text = await this.filterUserMentions(text)
+        text = await this.filterChannelLinks(text)
+        return text
+    }
 
-        if (emojiMatches != null) {
-            for (const rawEmoji of emojiMatches) {
-                const match: RegExpMatchArray = rawEmoji.match(/\w+(?=:\d+>)/) as RegExpMatchArray
-
-                text = text.replaceAll(rawEmoji, `(${match[0]})`)
-            }
-        }
-
-        //Filter URL links
-        const urlMatches = text.match(/https?:\/\/[^\s]+/g);
-
-        if (urlMatches != null) {
-            for (const url of urlMatches) {
+    private filterURLs(text: string) {
+        const matches = text.match(/https?:\/\/[^\s]+/g);
+        if (matches) {
+            for (const url of matches) {
                 const match: RegExpMatchArray = url.match(/(?<=\/)[\w-.]+/) as RegExpMatchArray
 
                 text = text.replaceAll(url, match[0].replaceAll('.', ' dot '))
             }
         }
+        return text
+    }
 
-        //Filter user mentions
-        const userMatches = text.match(/<@!?\d+>/g);
+    private filterEmojis(text: string) {
+        const matches = text.match(/<a*:\w+:\d+>/g);
+        if (matches) {
+            for (const emoji of matches) {
+                const match: RegExpMatchArray = emoji.match(/\w+(?=:\d+>)/) as RegExpMatchArray
 
-        if (userMatches != null) {
-            for (const userMention of userMatches) {
+                text = text.replaceAll(emoji, `(${match[0]})`)
+            }
+        }
+        return text
+    }
+
+    private async filterUserMentions(text: string) {
+        const matches = text.match(/<@!?\d+>/g);
+        if (matches != null) {
+            for (const userMention of matches) {
                 const match: RegExpMatchArray = userMention.match(/\d+/) as RegExpMatchArray
                 const user: User = await this.client.users.fetch(match[0])
 
                 text = text.replaceAll(userMention, user.username)
             }
         }
+        return text
+    }
 
-        //Filter channel links
-        const channels = text.match(/<#\d+>/g);
-
-        if (channels != null) {
-            for (const id of channels) {
-                const match: RegExpMatchArray = id.match(/\d+/) as RegExpMatchArray
+    private async filterChannelLinks(text: string) {
+        const matches = text.match(/<#\d+>/g);
+        if (matches != null) {
+            for (const channelLink of matches) {
+                const match: RegExpMatchArray = channelLink.match(/\d+/) as RegExpMatchArray
                 const channel: GuildChannel = await this.client.channels.fetch(match[0]) as GuildChannel
 
-                text = text.replaceAll(id, channel.name ?? id)
+                text = text.replaceAll(channelLink, channel.name ?? channelLink)
             }
         }
-
-        //Filter code blocks
-        text = text.replaceAll(/(`{3})[\S\s]+?[^\\]\1/g, '()')
-
         return text
     }
 }
