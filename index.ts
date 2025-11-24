@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 import { Client, GatewayIntentBits, Collection, Interaction, ChatInputCommandInteraction, ActivityType, TextChannel, Message } from 'discord.js'
+import { Voice } from "./types/basic";
 import { readdirSync, createWriteStream, readFileSync } from 'fs'
 import { TTSProcessor } from './data/ttsProcessor'
 import { AudioService, SlashCommand } from './types/basic'
@@ -90,6 +91,14 @@ client.on('ready', async () => {
     const dataMessage: Message = await (client.channels.cache.get('1117203482663976960') as TextChannel).messages.fetch('1247211751062110299') as Message
 
     Data.dataFile = JSON.parse(dataMessage.content)
+
+    // Clear slow voices - ideally this is removed in the future when the queue is improved
+    Data.dataFile.forEach(user => {
+        const voice: Voice = VoiceUtils.getVoice(user.voice)
+        if (voice && voice.service == 'FAKEYOU') {
+            user.voice = 'none'
+        }
+    })
 
     console.log('Notey Poo is online!')
 })
