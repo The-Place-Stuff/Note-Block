@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 import { Client, GatewayIntentBits, Collection, Interaction, ChatInputCommandInteraction, ActivityType, TextChannel, Message } from 'discord.js'
-import { Voice } from "./types/basic";
+import { Voice } from './types/basic'
 import { readdirSync, createWriteStream, readFileSync } from 'fs'
 import { TTSProcessor } from './data/ttsProcessor'
 import { AudioService, SlashCommand } from './types/basic'
@@ -9,6 +9,7 @@ import { get } from 'https'
 import { Data } from './data/utils/DataUtils'
 import { VoiceUtils } from './data/utils/VoiceUtils'
 import { join } from 'path'
+import * as IDConstants from './data/utils/IDConstants'
 
 const client: Client = new Client({
     intents: [
@@ -88,7 +89,7 @@ client.on('ready', async () => {
     // Other
 
     //Fetch latest NB Data
-    const dataMessage: Message = await (client.channels.cache.get('1117203482663976960') as TextChannel).messages.fetch('1247211751062110299') as Message
+    const dataMessage: Message = await (client.channels.cache.get(IDConstants.NOTEBLOCK_DB_CHANNEL) as TextChannel).messages.fetch(IDConstants.USER_DATABASE_MESSAGE) as Message
 
     Data.dataFile = JSON.parse(dataMessage.content)
 

@@ -2,12 +2,13 @@ import { Client, Message, TextChannel } from "discord.js";
 import { User, UserBase } from "../../types/basic";
 import { writeFileSync } from "fs";
 import { join } from "path";
+import * as IDConstants from "../utils/IDConstants";
 
 export class Data {
     public static dataFile: UserBase
 
     public static async saveData(client: Client) {
-        const dataMessage: Message = await (client.channels.cache.get('1117203482663976960') as TextChannel).messages.fetch('1247211751062110299') as Message
+        const dataMessage: Message = await (client.channels.cache.get(IDConstants.NOTEBLOCK_DB_CHANNEL) as TextChannel).messages.fetch(IDConstants.USER_DATABASE_MESSAGE) as Message
 
         dataMessage.edit(JSON.stringify(Data.dataFile))
     }

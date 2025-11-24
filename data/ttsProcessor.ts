@@ -5,6 +5,7 @@ import { TextOverrides } from './textOverrides'
 import { QueueMessageData, Voice, User } from '../types/basic'
 import { Data } from './utils/DataUtils'
 import { VoiceUtils } from './utils/VoiceUtils'
+import * as IDConstants from './utils/IDConstants'
 
 export class TTSProcessor {
     public static queue: Collection<QueueMessageData, TTS> = new Collection()
@@ -19,7 +20,7 @@ export class TTSProcessor {
     }
 
     private async listenForInspirobot(msg: Message) {
-        if (msg.author.id == '1015325910762799114') {
+        if (msg.author.id === IDConstants.INSPIROBOT_USER) {
             this.messageListener(msg)
         }
     }
@@ -27,13 +28,13 @@ export class TTSProcessor {
     private async messageListener(msg: Message) {
         if (!channels.includes(msg.channelId)) return
         if (msg.content.startsWith("\\ ")) return
-        if (msg.content == '' && msg.channel.id !== "1095055405354336286") return
+        if (msg.content == '' && msg.channel.id !== IDConstants.SERVER_CHAT_CHANNEL) return
         console.log("Message Received")
 
         let user: User | undefined = Data.getUserData(msg.author.id)
 
         // Minecraft Server Stuff
-        if (msg.author.id === "1095051988636549241") {
+        if (msg.author.id === IDConstants.THE_PLACE_BOT_USER) {
             console.log('Minecraft message sent.')
             user = undefined
             for (const userData of Data.dataFile) {
@@ -64,7 +65,7 @@ export class TTSProcessor {
         TTSProcessor.queue.set({
             messageID: msg.id,
             channel: msg.channel as TextChannel,
-            isMinecraft: msg.author.id === "1095051988636549241"
+            isMinecraft: msg.author.id === IDConstants.THE_PLACE_BOT_USER
         }, tts)
     }
 

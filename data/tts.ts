@@ -2,6 +2,7 @@ import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, creat
 import { dirname, join } from 'path'
 import { Voice } from '../types/basic'
 import { audioServices } from '..'
+import * as IDConstants from '../data/utils/IDConstants'
 
 export class TTS {
     public static isPlaying: boolean = false
@@ -33,8 +34,7 @@ export class TTS {
         TTS.isPlaying = true
 
         // Play the audio file via discord.js
-        const connection: VoiceConnection = getVoiceConnection('741121896149549160') as VoiceConnection
-
+        const connection: VoiceConnection = getVoiceConnection(IDConstants.THE_PLACE_SERVER) as VoiceConnection
 
         if (!connection) {
             TTS.isPlaying = false
