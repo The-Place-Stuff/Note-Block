@@ -6,6 +6,7 @@ import { TTS } from "../data/tts";
 import { TTSProcessor } from "../data/ttsProcessor";
 import { AudioPlayerStatus } from "@discordjs/voice";
 import { OverrideUtils } from "../data/utils/OverrideUtils";
+import { adminRoles } from '../config.json'
 
 export default class AdminCommand implements SlashCommand {
 
@@ -128,20 +129,28 @@ export default class AdminCommand implements SlashCommand {
     }
 
     public async execute(interaction: ChatInputCommandInteraction, client: Client) {
-        const member = await interaction.guild?.members.fetch({
+        const guild = await interaction.guild
+        if (!guild) return interaction.reply({
+            content: 'Command must be executed in a server!',
+            ephemeral: true
+        })
+
+        const member = await guild.members.fetch({
             user: interaction.user
         }) as GuildMember
-        const highestRole = member.roles.highest
 
-        const subGroup = interaction.options.getSubcommandGroup()
-        const subCmd = interaction.options.getSubcommand()
+        const role = member.roles.cache.find((role) => adminRoles.includes(role.id));
 
-        if (highestRole.name != "Noteblock Admin") {
+        if (role === undefined) {
             return interaction.reply({
                 content: "You do not have permission to use admin commands!",
                 ephemeral: true
             })
         }
+
+        const subGroup = interaction.options.getSubcommandGroup()
+        const subCmd = interaction.options.getSubcommand()
+
         // Voice group
         if (subGroup == 'voice') {
             if (subCmd == 'set') {
