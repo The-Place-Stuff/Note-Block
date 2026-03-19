@@ -33,7 +33,8 @@ type User = {
 type VoiceCategory = {
     name: string,
     description: string,
-    voices: string[]
+    voices: string[],
+    enabled?: boolean
 }
 
 type VoiceOption = {

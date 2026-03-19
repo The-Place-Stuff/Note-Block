@@ -10,5 +10,6 @@
         "plankton",
         "larry_the_lobster",
         "mermaid_man"
-    ]
+    ],
+    "enabled": false
 }
