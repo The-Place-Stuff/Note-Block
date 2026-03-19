@@ -35,9 +35,10 @@ export class TTS {
         TTS.isPlaying = true
 
         // Play the audio file via discord.js
-        const connection: VoiceConnection = getVoiceConnection(IDConstants.THE_PLACE_SERVER) as VoiceConnection
+        const connection: VoiceConnection = getVoiceConnection(guildId) as VoiceConnection
 
         if (!connection) {
+            console.log("Valid connection not found")
             TTS.isPlaying = false
             return
         }
