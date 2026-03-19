@@ -1,4 +1,4 @@
-import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection } from '@discordjs/voice'
+import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection, VoiceConnectionStatus } from '@discordjs/voice'
 import { dirname, join } from 'path'
 import { Voice } from '../types/basic'
 import { audioServices } from '..'
@@ -28,7 +28,8 @@ export class TTS {
         }
     }
 
-    public async speak(text: string) {
+    public async speak(text: string, guildId: string) {
+        console.log(guildId)
         console.log('Speak ' + text)
 
         TTS.isPlaying = true
@@ -62,10 +63,11 @@ export class TTS {
                 inlineVolume: true,
             }
         )
+
         audioFile.volume?.setVolume(this.ttsData.volume)
         audioPlayer.play(audioFile)
         connection.subscribe(audioPlayer)
-
+        
         // @ts-ignore
         await entersState(audioPlayer, AudioPlayerStatus.Playing)
 
@@ -73,5 +75,7 @@ export class TTS {
         await entersState(audioPlayer, AudioPlayerStatus.Idle)
 
         TTS.isPlaying = false
+
+        console.log("finish")
     }
 }

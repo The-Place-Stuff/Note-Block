@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, Client, SlashCommandBuilder, SlashCommandStringOption, TextChannel } from "discord.js";
+import { ChatInputCommandInteraction, Client, Message, SlashCommandBuilder, SlashCommandStringOption, TextChannel } from "discord.js";
 
 interface SlashCommand {
     data: SlashCommandBuilder,
@@ -11,8 +11,7 @@ interface AudioService {
 }
 
 type QueueMessageData = {
-    messageID: string,
-    channel: TextChannel,
+    message: Message,
     isMinecraft: boolean
 }
 

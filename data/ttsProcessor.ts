@@ -1,4 +1,4 @@
-import { Client, Collection, Message, TextChannel } from 'discord.js'
+import { Channel, Client, ClientUser, Collection, Message, TextChannel } from 'discord.js'
 import { channels } from '../config.json'
 import { TTS } from './tts'
 import { TextOverrides } from './textOverrides'
@@ -29,6 +29,7 @@ export class TTSProcessor {
         if (!channels.includes(msg.channelId)) return
         if (msg.content.startsWith("\\ ")) return
         if (msg.content == '' && msg.channel.id !== IDConstants.SERVER_CHAT_CHANNEL) return
+
         console.log("Message Received")
 
         let user: User | undefined = Data.getUserData(msg.author.id)
@@ -63,26 +64,23 @@ export class TTSProcessor {
         const tts: TTS = new TTS(voice)
 
         TTSProcessor.queue.set({
-            messageID: msg.id,
-            channel: msg.channel as TextChannel,
+            message: msg,
             isMinecraft: msg.author.id === IDConstants.THE_PLACE_BOT_USER
         }, tts)
     }
 
     private async ttsListener() {
         if (TTS.isPlaying) {
-            setTimeout(() => this.ttsListener(), 1)
+            setTimeout(() => this.ttsListener(), 50)
             return
         }
 
         const tts: TTS = TTSProcessor.queue.first() as TTS
 
         if (!tts) {
-            setTimeout(() => this.ttsListener(), 1)
+            setTimeout(() => this.ttsListener(), 50)
             return
         }
-
-        this.client.channels.cache.get(channels[0])
 
         //Get Message Data & Fetch Message Content
         const ttsMessageData: QueueMessageData = TTSProcessor.queue.firstKey() as QueueMessageData
@@ -91,23 +89,23 @@ export class TTSProcessor {
 
         //If message is deleted, remove from queue
         try {
-            if (!ttsMessageData.isMinecraft) ttsContent = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).content
+            if (!ttsMessageData.isMinecraft) ttsContent = (await ttsMessageData.message.channel.messages.fetch(ttsMessageData.message.id)).content
 
-            else ttsContent = (await ttsMessageData.channel.messages.fetch(ttsMessageData.messageID)).embeds[0].title as string
+            else ttsContent = (await ttsMessageData.message.channel.messages.fetch(ttsMessageData.message.id)).embeds[0].title as string
 
         } catch (error) {
             TTSProcessor.queue.delete(TTSProcessor.queue.firstKey() as QueueMessageData)
 
-            setTimeout(() => this.ttsListener(), 1)
+            setTimeout(() => this.ttsListener(), 50)
             return
         }
 
         // Say it & Apply Before TTS Filters
-        tts.speak(await this.beforeTTS(ttsContent))
+        await tts.speak(await this.beforeTTS(ttsContent), ttsMessageData.message.guildId as string)
 
         TTSProcessor.queue.delete(TTSProcessor.queue.firstKey() as QueueMessageData)
 
-        setTimeout(() => this.ttsListener(), 1)
+        setTimeout(() => this.ttsListener(), 50)
     }
 
     //Add filters here
