@@ -65,7 +65,7 @@
     "roosey": { "id": "jp_005", "name": "Roosey (Japanese)", "service": "TIKTOK" },
     "solveddev": { "id": "de_002", "name": "solvedDev (German)", "service": "TIKTOK" },
     "pizza_man": { "id": "it_male_m18", "name": "Pizza Man (Italian)", "service": "TIKTOK" },
-    "id_female_noor": { "id": "id_female_noor", "name": "Noor (Indonesian)", "service": "TIKTOK" },
+    "noor": { "id": "id_female_noor", "name": "Noor (Indonesian)", "service": "TIKTOK" },
     "warm": { "id": "es_mx_002", "name": "Warm (Spanish)", "service": "TIKTOK" },
     "cool": { "id": "es_mx_female_supermom", "name": "Cool (Spanish)", "service": "TIKTOK" },
     
