@@ -495,5 +495,10 @@
         "overrand": "fr",
         "override": "for real",
         "match_word": true
+    },
+    {
+        "overrand": "ig",
+        "override": "i guess",
+        "match_word": true
     }
 ]

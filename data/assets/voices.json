@@ -61,11 +61,13 @@
     "madame_leota": { "id": "en_female_madam_leota", "name": "Madame Leota", "service": "TIKTOK" },
     "ghost_host": { "id": "en_male_ghosthost", "name": "Ghost Host", "service": "TIKTOK" },
     
-    "doge": { "id": "jp_006", "name": "Doge", "service": "TIKTOK" },
-    "roosey": { "id": "jp_005", "name": "Roosey", "service": "TIKTOK" },
-    "solveddev": { "id": "de_002", "name": "solvedDev", "service": "TIKTOK" },
-    "warm": { "id": "es_mx_002", "name": "Warm", "service": "TIKTOK" },
-    "cool": { "id": "es_mx_female_supermom", "name": "Cool", "service": "TIKTOK" },
+    "doge": { "id": "jp_006", "name": "Doge (Japanese)", "service": "TIKTOK" },
+    "roosey": { "id": "jp_005", "name": "Roosey (Japanese)", "service": "TIKTOK" },
+    "solveddev": { "id": "de_002", "name": "solvedDev (German)", "service": "TIKTOK" },
+    "pizza_man": { "id": "it_male_m18", "name": "Pizza Man (Italian)", "service": "TIKTOK" },
+    "id_female_noor": { "id": "id_female_noor", "name": "Noor (Indonesian)", "service": "TIKTOK" },
+    "warm": { "id": "es_mx_002", "name": "Warm (Spanish)", "service": "TIKTOK" },
+    "cool": { "id": "es_mx_female_supermom", "name": "Cool (Spanish)", "service": "TIKTOK" },
     
     "carols": { "id": "en_male_sing_deep_jingle", "name": "Carols", "service": "TIKTOK" },
     "classical": { "id": "en_male_m03_classical", "name": "Classical", "service": "TIKTOK" },
