@@ -18,6 +18,6 @@ export default class TiktokService implements AudioService {
         })
         const response = request.data
 
-        ExporterUtils.writeFile(outputDir, response.data)
+        ExporterUtils.writeFile(outputDir, Buffer.from(response.data, 'base64'))
     }
 }

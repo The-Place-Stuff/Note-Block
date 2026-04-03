@@ -19,8 +19,12 @@
                         "STREAMLABS",
                         "FAKEYOU",
                         "ELEVENLABS",
-                        "DECTALK"
+                        "DECTALK",
+                        "SAM"
                     ]
+                },
+                "data": {
+                    "type": "object"
                 }
             }
         }

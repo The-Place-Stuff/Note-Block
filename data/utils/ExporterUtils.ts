@@ -9,7 +9,7 @@ export default class ExporterUtils {
     }
 
     public static writeFile(outputDir: string, data: any): void {
-        FileSystem.writeFileSync(ExporterUtils.getExportDirectory(outputDir), Buffer.from(data, 'base64'))
+        FileSystem.writeFileSync(ExporterUtils.getExportDirectory(outputDir), data)
     }
 
     public static writeFileFromUrl(outputDir: string, url: string): Promise<void> {

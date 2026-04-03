@@ -52,7 +52,14 @@ export class TTS {
             else throw Error(`Service '${serviceId}' does not exist.`)
         }
         catch (error) {
-            console.warn(`Error produced by '${text}': ${error}`)
+            if (error instanceof Error) {
+                console.warn(`Error produced by '${text}': ${error.stack}`)
+            }
+            else {
+                console.warn(`Error produced by '${text}': ${error}`)
+            }
+
+            
             TTS.isPlaying = false
             return
         }
