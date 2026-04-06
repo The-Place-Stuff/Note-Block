@@ -3,31 +3,176 @@
     "type": "object",
     "patternProperties": {
         ".*": {
-            "properties": {
-                "id": {
-                    "type": "string"
+            "allOf": [
+                {
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        }
+                    }
                 },
-                "name": {
-                    "type": "string"
-                },
-                "service": {
-                    "type": "string",
-                    "enum": [
-                        "MICROSOFT",
-                        "TIKTOK",
-                        "SAPI",
-                        "STREAMLABS",
-                        "FAKEYOU",
-                        "ELEVENLABS",
-                        "DECTALK",
-                        "SAM",
-                        "TALKMODACHI"
+                {
+                    "anyOf": [
+                        {
+                            "properties": {
+                                "service": {
+                                    "type": "string",
+                                    "enum": [
+                                        "MICROSOFT",
+                                        "TIKTOK",
+                                        "SAPI",
+                                        "STREAMLABS",
+                                        "FAKEYOU",
+                                        "ELEVENLABS",
+                                        "DECTALK",
+                                        "SAM",
+                                        "TALKMODACHI"
+                                    ]
+                                },
+                                "data": {}
+                            },
+                            "required": ["name", "service", "data"]
+                        },
+                        {
+                            "if": {
+                                "properties": {
+                                    "service": {
+                                        "enum": ["MICROSOFT", "TIKTOK", "SAPI", "STREAMLABS", "FAKEYOU", "ELEVENLABS", "DECTALK"]
+                                    }
+                                },
+                                "required": ["service"]
+                            },
+                            "then": {
+                                "properties": {
+                                    "service": {
+                                        "type": "string",
+                                        "enum": [
+                                            "MICROSOFT",
+                                            "TIKTOK",
+                                            "SAPI",
+                                            "STREAMLABS",
+                                            "FAKEYOU",
+                                            "ELEVENLABS"
+                                        ]
+                                    },
+                                    "data": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": {
+                                    "service": {
+                                        "const": "DECTALK"
+                                    }
+                                },
+                                "required": ["service"]
+                            },
+                            "then": {
+                                "properties": {
+                                    "service": {
+                                        "type": "string",
+                                        "const": "DECTALK"
+                                    },
+                                    "data": {
+                                        "properties": {}
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": {
+                                    "service": {
+                                        "const": "SAM"
+                                    }
+                                },
+                                "required": ["service"]
+                            },
+                            "then": {
+                                "properties": {
+                                    "service": {
+                                        "type": "string",
+                                        "enum": [
+                                            "SAM"
+                                        ]
+                                    },
+                                    "data": {
+                                        "type": "object",
+                                        "properties": {
+                                            "pitch": {
+                                                "type": "number"
+                                            },
+                                            "speed": {
+                                                "type": "number"
+                                            },
+                                            "mouth": {
+                                                "type": "number"
+                                            },
+                                            "throat": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": {
+                                    "service": {
+                                        "const": "TALKMODACHI"
+                                    }
+                                },
+                                "required": ["service"]
+                            },
+                            "then": {
+                                "properties": {
+                                    "service": {
+                                        "type": "string",
+                                        "enum": [
+                                            "TALKMODACHI"
+                                        ]
+                                    },
+                                    "data": {
+                                        "type": "object",
+                                        "properties": {
+                                            "pitch": {
+                                                "type": "number"
+                                            },
+                                            "speed": {
+                                                "type": "number"
+                                            },
+                                            "quality": {
+                                                "type": "number"
+                                            },
+                                            "tone": {
+                                                "type": "number"
+                                            },
+                                            "accent": {
+                                                "type": "number"
+                                            },
+                                            "intonation": {
+                                                "type": "number"
+                                            },
+                                            "lang": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     ]
-                },
-                "data": {
-                    "type": "object"
                 }
-            }
+            ]
         }
     }
 }

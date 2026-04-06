@@ -1,16 +1,18 @@
 import SamJs from "sam-js";
-import { AudioService } from "../../types/basic";
+import { AudioService, SamVoiceData, VoiceData } from "../../types/basic";
 import ExporterUtils from "../utils/ExporterUtils";
 
 export default class SamService implements AudioService {
     public id: string = 'SAM'
     
-    public async export(text: string, voice: string, outputDir: string): Promise<void> {
+    public async export(text: string, voice: VoiceData, outputDir: string): Promise<void> {
+        const samVoice = voice as SamVoiceData
+
         const speech = new SamJs({
-            pitch: 64,
-            speed: 72,
-            mouth: 128,
-            throat: 128
+            pitch: samVoice.pitch,
+            speed: samVoice.speed,
+            mouth: samVoice.mouth,
+            throat: samVoice.throat,
         })
          
         const wavData = await speech.wav(text);

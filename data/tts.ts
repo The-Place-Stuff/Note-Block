@@ -46,7 +46,7 @@ export class TTS {
             const serviceId = this.ttsData.voice.service
             const service = audioServices.get(serviceId)
             if (service) {
-                await service.export(text, this.ttsData.voice.id, 'tts.wav')
+                await service.export(text, this.ttsData.voice.data, 'tts.wav')
                 console.log(`Exporting finished! Now playing: ${text}`)
             }
             else throw Error(`Service '${serviceId}' does not exist.`)

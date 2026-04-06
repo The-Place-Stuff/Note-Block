@@ -1,4 +1,4 @@
-import { AudioService } from "../../types/basic";
+import { AudioService, StandardVoiceData, VoiceData } from "../../types/basic";
 import ExporterUtils from "../utils/ExporterUtils";
 import * as Crypto from 'crypto'
 import axios from 'axios'
@@ -6,8 +6,8 @@ import axios from 'axios'
 export default class FakeYouService implements AudioService {
     public id: string = 'FAKEYOU'
 
-    public async export(text: string, voice: string, outputDir: string): Promise<void> {
-        const inferenceResponse = await this.fetchInference(text, voice)
+    public async export(text: string, voice: VoiceData, outputDir: string): Promise<void> {
+        const inferenceResponse = await this.fetchInference(text, (voice as StandardVoiceData).id)
         if (!inferenceResponse.success) {
             throw Error('Failed to infer text.')
         }

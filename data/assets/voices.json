@@ -1,131 +1,854 @@
 {
-    "outer": { "id": "Microsoft David Desktop", "name": "Outer", "service": "MICROSOFT" },
-    "chiko": { "id": "Microsoft Zira Desktop", "name": "Chiko", "service": "MICROSOFT" },
-
-    "jessie": { "id": "en_us_002", "name": "Jessie", "service": "TIKTOK" },
-    "joey": { "id": "en_us_006", "name": "Joey", "service": "TIKTOK" },
-    "jack": { "id": "en_uk_003", "name": "Jack", "service": "TIKTOK" },
-    "jason": { "id": "en_male_jason", "name": "Jason", "service": "TIKTOK" },
-    "billy": { "id": "en_female_amie", "name": "Billy", "service": "TIKTOK" },
-    "alex": { "id": "en_female_makeup", "name": "Alex", "service": "TIKTOK" },
-    "victory": { "id": "en_female_erika", "name": "Victory", "service": "TIKTOK" },
-    "empathetic": { "id": "en_female_samc", "name": "Empathetic", "service": "TIKTOK" },
-    "calm": { "id": "en_male_deadpool", "name": "calm", "service": "TIKTOK" },
-    "peaceful": { "id": "en_female_emotional", "name": "Peaceful", "service": "TIKTOK" },
-    "excited": { "id": "en_male_adrian", "name": "Excited", "service": "TIKTOK" },
-    "narrator": { "id": "en_male_narration", "name": "Narrator", "service": "TIKTOK" },
-    "scientist": { "id": "en_us_009", "name": "Scientist", "service": "TIKTOK" },
-    "stylist": { "id": "en_male_maxwell", "name": "Stylist", "service": "TIKTOK" },
-    "designer": { "id": "en_male_whitney", "name": "Designer", "service": "TIKTOK" },
-    "professor": { "id": "en_us_007", "name": "Professor", "service": "TIKTOK" },
-    "confident": { "id": "en_us_010", "name": "Confident", "service": "TIKTOK" },
-    "serious": { "id": "en_male_cody", "name": "Serious", "service": "TIKTOK" },
-    "wacky": { "id": "en_male_funny", "name": "Wacky", "service": "TIKTOK" },
-    "author": { "id": "en_male_santa_narration", "name": "Author", "service": "TIKTOK" },
-    "ash_magic": { "id": "en_male_ashmagic", "name": "Ash Magic", "service": "TIKTOK" },
-    "doll": { "id": "en_female_doll", "name": "Doll", "service": "TIKTOK" },
-    "olantekkers": { "id": "en_male_olantekkers", "name": "Olantekkers", "service": "TIKTOK" },
-    "british_narrator": { "id": "en_uk_001", "name": "British Narrator", "service": "TIKTOK" },
-    
-    "neighbor": { "id": "en_male_ukneighbor", "name": "Neighbor", "service": "TIKTOK" },
-    "sports_announcer": { "id": "en_male_jomboy", "name": "Sports Announcer", "service": "TIKTOK" },
-    "granny": { "id": "en_female_grandma", "name": "Granny", "service": "TIKTOK" },
-    "wizard": { "id": "en_male_wizard", "name": "Wizard", "service": "TIKTOK" },
-    "butler": { "id": "en_male_ukbutler", "name": "Butler", "service": "TIKTOK" },
-    "pirate": { "id": "en_male_pirate", "name": "Pirate", "service": "TIKTOK" },
-    "pansino": { "id": "en_female_pansino", "name": "Pansino", "service": "TIKTOK" },
-    "comedian": { "id": "en_male_miki", "name": "Comedian", "service": "TIKTOK" },
-    "gingerchime": { "id": "en_male_david_gingerman", "name": "GingerChime", "service": "TIKTOK" },
-    "betty": { "id": "en_female_betty", "name": "Betty", "service": "TIKTOK" },
-    "chris": { "id": "en_male_chris", "name": "Chris", "service": "TIKTOK" },
-    "shenna": { "id": "en_female_shenna", "name": "Shenna", "service": "TIKTOK" },
-    "rich_girl": { "id": "en_female_richgirl", "name": "Rich Girl", "service": "TIKTOK" },
-    "santa": { "id": "en_male_santa", "name": "Santa", "service": "TIKTOK" },
-    "santa_effect": { "id": "en_male_santa_effect", "name": "Santa (Effects)", "service": "TIKTOK" },
-    "santa_corey": { "id": "en_male_corey_santa", "name": "Santa (Corey)", "service": "TIKTOK" },
-    "adam_elf": { "id": "en_male_adam_elf", "name": "Adam Elf", "service": "TIKTOK" },
-    "werewolf": { "id": "en_female_werewolf", "name": "Werewolf", "service": "TIKTOK" },
-    "witch": { "id": "en_female_witch", "name": "Witch", "service": "TIKTOK" },
-    "zombie": { "id": "en_female_zombie", "name": "Zombie", "service": "TIKTOK" },
-    
-    "grinch": { "id": "en_male_grinch", "name": "Grinch", "service": "TIKTOK" },
-    "cupid": { "id": "en_male_cupid", "name": "Cupid", "service": "TIKTOK" },
-    "trevor": { "id": "en_male_trevor", "name": "Trevor", "service": "TIKTOK" },
-    "jarvis": { "id": "en_male_jarvis", "name": "Jarvis", "service": "TIKTOK" },
-    "ghost_face": { "id": "en_us_ghostface", "name": "Ghost Face", "service": "TIKTOK" },
-    "chewbacca": { "id": "en_us_chewbacca", "name": "Chewbacca", "service": "TIKTOK" },
-    "c3po": { "id": "en_us_c3po", "name": "C3PO", "service": "TIKTOK" },
-    "stormtrooper": { "id": "en_us_stormtrooper", "name": "Stormtrooper", "service": "TIKTOK" },
-    "stitch": { "id": "en_us_stitch", "name": "Stitch", "service": "TIKTOK" },
-    "rocket": { "id": "en_us_rocket", "name": "Rocket", "service": "TIKTOK" },
-    "madame_leota": { "id": "en_female_madam_leota", "name": "Madame Leota", "service": "TIKTOK" },
-    "ghost_host": { "id": "en_male_ghosthost", "name": "Ghost Host", "service": "TIKTOK" },
-    
-    "doge": { "id": "jp_006", "name": "Doge (Japanese)", "service": "TIKTOK" },
-    "roosey": { "id": "jp_005", "name": "Roosey (Japanese)", "service": "TIKTOK" },
-    "solveddev": { "id": "de_002", "name": "solvedDev (German)", "service": "TIKTOK" },
-    "pizza_man": { "id": "it_male_m18", "name": "Pizza Man (Italian)", "service": "TIKTOK" },
-    "noor": { "id": "id_female_noor", "name": "Noor (Indonesian)", "service": "TIKTOK" },
-    "warm": { "id": "es_mx_002", "name": "Warm (Spanish)", "service": "TIKTOK" },
-    "cool": { "id": "es_mx_female_supermom", "name": "Cool (Spanish)", "service": "TIKTOK" },
-    
-    "carols": { "id": "en_male_sing_deep_jingle", "name": "Carols", "service": "TIKTOK" },
-    "classical": { "id": "en_male_m03_classical", "name": "Classical", "service": "TIKTOK" },
-    "alto": { "id": "en_female_f08_salut_damour", "name": "Alto", "service": "TIKTOK" },
-    "christmas": { "id": "en_male_m2_xhxs_m03_christmas", "name": "Christmas", "service": "TIKTOK" },
-    "warmy_breeze": { "id": "en_female_f08_warmy_breeze", "name": "Warmy Breeze", "service": "TIKTOK" },
-    "halloween": { "id": "en_female_ht_f08_halloween", "name": "Halloween", "service": "TIKTOK" },
-    "glorious": { "id": "en_female_ht_f08_glorious", "name": "Glorious", "service": "TIKTOK" },
-    "it_goes_up": { "id": "en_male_sing_funny_it_goes_up", "name": "It Goes Up", "service": "TIKTOK" },
-    "tenor": { "id": "en_male_m03_lobby", "name": "Tenor", "service": "TIKTOK" },
-    "dramatic": { "id": "en_female_ht_f08_wonderful_world", "name": "Dramatic", "service": "TIKTOK" },
-    "new_year": { "id": "en_female_ht_f08_newyear", "name": "New Year", "service": "TIKTOK" },
-    "thanksgiving": { "id": "en_male_sing_funny_thanksgiving", "name": "Thanksgiving", "service": "TIKTOK" },
-    "sunshine_soon": { "id": "en_male_m03_sunshine_soon", "name": "Sunshine Soon", "service": "TIKTOK" },
-    "lullaby": { "id": "en_female_f08_twinkle", "name": "Lullaby", "service": "TIKTOK" },
-    "chipmunk": { "id": "en_male_m2_xhxs_m03_silly", "name": "Chipmunk", "service": "TIKTOK" },
-    
-    "sam": { "id": "Sam", "name": "Sam", "service": "SAPI" },
-    "mike": { "id": "Mike", "name": "Mike", "service": "SAPI" },
-    "mary": { "id": "Mary", "name": "Mary", "service": "SAPI" },
-    "loud_mike": { "id": "Mike in Stadium", "name": "Stadium Mike", "service": "SAPI" },
-    "loud_mary": { "id": "Mary in Stadium", "name": "Stadium Mary", "service": "SAPI" },
-    "echoing_mike": { "id": "Mike in Space", "name": "Echoing Mike", "service": "SAPI" },
-    "echoing_mary": { "id": "Mary in Space", "name": "Echoing Mary", "service": "SAPI" },
-    "whispering_mike": { "id": "Male Whisper", "name": "Whispering Mike", "service": "SAPI" },
-    "whispering_mary": { "id": "Female Whisper", "name": "Whispering Mary", "service": "SAPI" },
-    "robot": { "id": "RoboSoft Five", "name": "Robot", "service": "SAPI" },
-    "evil_ai": { "id": "RoboSoft One", "name": "Evil AI", "service": "SAPI" },
-    
-    "spongebob": { "id": "weight_tq6pwerrbr4mvbjmtyhbsqe6t", "name": "Spongebob Squarepants", "service": "FAKEYOU"},
-    "patrick": { "id": "weight_154man2fzg19nrtc15drner7t", "name": "Patrick Star", "service": "FAKEYOU" },
-    "squidward": { "id": "weight_y9arhnd7wjamezhqd27ksvmaz", "name": "Squidward Tentacles", "service": "FAKEYOU"},
-    "mr_krabs": {"id": "weight_5bxbp9xqy61svfx03b25ezmwx", "name": "Mr. Krabs", "service": "FAKEYOU"},
-    "sandy": {"id": "weight_tzgp5df2xzwz7y7jzz7at96jf", "name": "Sandy Cheeks", "service": "FAKEYOU"},
-    "plankton": {"id": "weight_ahxbf2104ngsgyegncaefyy6j", "name": "Plankton", "service": "FAKEYOU"},
-    "larry_the_lobster": {"id": "weight_k7qvaffwsft6vxbcps4wbyj58", "name": "Larry the Lobster", "service": "FAKEYOU"},
-    "mermaid_man": {"id": "weight_5jsptx9rq14zrffzj23cj3wz2", "name": "Mermaid Man", "service": "FAKEYOU"},
-    "joe_biden": {"id": "weight_7eqbjjrgmyvt0qsfq53bvew2q", "name": "Joe Biden", "service": "FAKEYOU"},
-    "mario": {"id": "weight_rnbmdcgym2tmqs7b3826c1zkf", "name": "Super Mario", "service": "FAKEYOU"},
-    "luigi": {"id": "weight_rw2e7d3bx4f49djpf96ysywn4", "name": "Luigi", "service": "FAKEYOU"},
-    "wario": {"id": "weight_bt5jhyaygn6qrnd996g89krh1", "name": "Wario", "service": "FAKEYOU"},
-    "mickey_mouse": {"id": "weight_hq8xbqzx28w21fmx76tqsdbnd", "name": "Mickey", "service": "FAKEYOU"},
-    "peter_griffin": {"id": "weight_883h5cw4q48cpsmjvjypxs0dc", "name": "Peter Griffin", "service": "FAKEYOU"},
-    "chris_griffin": {"id": "weight_wygfpzg0z42xm8jaxb7wrqwf2", "name": "Chris Griffin", "service": "FAKEYOU"},
-    "muscle_man": {"id": "weight_6k4tkg2nsec6ha2j1zg1xygdc", "name": "Muscle Man", "service": "FAKEYOU"},
-    "baldi": {"id": "weight_a60e9yew8d4k0a14fzjr8qa56", "name": "Baldi", "service": "FAKEYOU"},
-
-    "aeiou_paul": { "id": "0", "name": "Paul (AEIOU)", "service": "DECTALK"},
-
-    "joe": { "id": "Joey", "name": "Joe", "service": "STREAMLABS"},
-    "brian": { "id": "Brian", "name": "Brian", "service": "STREAMLABS" },
-    "amy": { "id": "Amy", "name": "Amy", "service": "STREAMLABS" },
-    "russell": { "id": "Russell", "name": "Russell", "service": "STREAMLABS" },
-    "kendra": { "id": "Kendra", "name": "Kendra", "service": "STREAMLABS" },
-    "justin": { "id": "Justin", "name": "Justin", "service": "STREAMLABS" },
-    "ivy": { "id": "Ivy", "name": "Ivy", "service": "STREAMLABS" },
-    "raveena": { "id": "Raveena", "name": "Raveena", "service": "STREAMLABS" },
-
-    "v1": { "id": "internal", "name": "V1 (Ultrakill)", "service": "SAM" },
-    "tomodachi": { "id": "internal", "name": "Tomodachi", "service": "TALKMODACHI" }
+    "outer": {
+        "name": "Outer",
+        "service": "MICROSOFT",
+        "data": {
+            "id": "Microsoft David Desktop"
+        }
+    },
+    "chiko": {
+        "name": "Chiko",
+        "service": "MICROSOFT",
+        "data": {
+            "id": "Microsoft Zira Desktop"
+        }
+    },
+    "jessie": {
+        "name": "Jessie",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_us_002"
+        }
+    },
+    "joey": {
+        "name": "Joey",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_us_006"
+        }
+    },
+    "jack": {
+        "name": "Jack",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_uk_003"
+        }
+    },
+    "jason": {
+        "name": "Jason",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_jason"
+        }
+    },
+    "billy": {
+        "name": "Billy",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_amie"
+        }
+    },
+    "alex": {
+        "name": "Alex",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_makeup"
+        }
+    },
+    "victory": {
+        "name": "Victory",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_erika"
+        }
+    },
+    "empathetic": {
+        "name": "Empathetic",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_samc"
+        }
+    },
+    "calm": {
+        "name": "Calm",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_deadpool"
+        }
+    },
+    "peaceful": {
+        "name": "Peaceful",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_emotional"
+        }
+    },
+    "excited": {
+        "name": "Excited",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_adrian"
+        }
+    },
+    "narrator": {
+        "name": "Narrator",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_narration"
+        }
+    },
+    "scientist": {
+        "name": "Scientist",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_us_009"
+        }
+    },
+    "stylist": {
+        "name": "Stylist",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_maxwell"
+        }
+    },
+    "designer": {
+        "name": "Designer",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_whitney"
+        }
+    },
+    "professor": {
+        "name": "Professor",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_us_007"
+        }
+    },
+    "confident": {
+        "name": "Confident",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_us_010"
+        }
+    },
+    "serious": {
+        "name": "Serious",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_cody"
+        }
+    },
+    "wacky": {
+        "name": "Wacky",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_funny"
+        }
+    },
+    "author": {
+        "name": "Author",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_santa_narration"
+        }
+    },
+    "ash_magic": {
+        "name": "Ash Magic",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_ashmagic"
+        }
+    },
+    "doll": {
+        "name": "Doll",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_doll"
+        }
+    },
+    "olantekkers": {
+        "name": "Olantekkers",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_olantekkers"
+        }
+    },
+    "british_narrator": {
+        "name": "British Narrator",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_uk_001"
+        }
+    },
+    "neighbor": {
+        "name": "Neighbor",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_ukneighbor"
+        }
+    },
+    "sports_announcer": {
+        "name": "Sports Announcer",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_jomboy"
+        }
+    },
+    "granny": {
+        "name": "Granny",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_grandma"
+        }
+    },
+    "wizard": {
+        "name": "Wizard",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_wizard"
+        }
+    },
+    "butler": {
+        "name": "Butler",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_ukbutler"
+        }
+    },
+    "pirate": {
+        "name": "Pirate",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_pirate"
+        }
+    },
+    "pansino": {
+        "name": "Pansino",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_pansino"
+        }
+    },
+    "comedian": {
+        "name": "Comedian",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_miki"
+        }
+    },
+    "gingerchime": {
+        "name": "GingerChime",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_david_gingerman"
+        }
+    },
+    "betty": {
+        "name": "Betty",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_betty"
+        }
+    },
+    "chris": {
+        "name": "Chris",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_chris"
+        }
+    },
+    "shenna": {
+        "name": "Shenna",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_shenna"
+        }
+    },
+    "rich_girl": {
+        "name": "Rich Girl",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_richgirl"
+        }
+    },
+    "santa": {
+        "name": "Santa",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_santa"
+        }
+    },
+    "santa_effect": {
+        "name": "Santa (Effects)",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_santa_effect"
+        }
+    },
+    "santa_corey": {
+        "name": "Santa (Corey)",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_corey_santa"
+        }
+    },
+    "adam_elf": {
+        "name": "Adam Elf",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_adam_elf"
+        }
+    },
+    "werewolf": {
+        "name": "Werewolf",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_werewolf"
+        }
+    },
+    "witch": {
+        "name": "Witch",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_witch"
+        }
+    },
+    "zombie": {
+        "name": "Zombie",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_zombie"
+        }
+    },
+    "grinch": {
+        "name": "Grinch",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_grinch"
+        }
+    },
+    "cupid": {
+        "name": "Cupid",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_cupid"
+        }
+    },
+    "trevor": {
+        "name": "Trevor",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_trevor"
+        }
+    },
+    "jarvis": {
+        "name": "Jarvis",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_jarvis"
+        }
+    },
+    "ghost_face": {
+        "name": "Ghost Face",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_us_ghostface"
+        }
+    },
+    "chewbacca": {
+        "name": "Chewbacca",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_us_chewbacca"
+        }
+    },
+    "c3po": {
+        "name": "C3PO",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_us_c3po"
+        }
+    },
+    "stormtrooper": {
+        "name": "Stormtrooper",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_us_stormtrooper"
+        }
+    },
+    "stitch": {
+        "name": "Stitch",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_us_stitch"
+        }
+    },
+    "rocket": {
+        "name": "Rocket",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_us_rocket"
+        }
+    },
+    "madame_leota": {
+        "name": "Madame Leota",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_madam_leota"
+        }
+    },
+    "ghost_host": {
+        "name": "Ghost Host",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_ghosthost"
+        }
+    },
+    "doge": {
+        "name": "Doge (Japanese)",
+        "service": "TIKTOK",
+        "data": {
+            "id": "jp_006"
+        }
+    },
+    "roosey": {
+        "name": "Roosey (Japanese)",
+        "service": "TIKTOK",
+        "data": {
+            "id": "jp_005"
+        }
+    },
+    "solveddev": {
+        "name": "solvedDev (German)",
+        "service": "TIKTOK",
+        "data": {
+            "id": "de_002"
+        }
+    },
+    "pizza_man": {
+        "name": "Pizza Man (Italian)",
+        "service": "TIKTOK",
+        "data": {
+            "id": "it_male_m18"
+        }
+    },
+    "darma": {
+        "name": "Darma (Indonesian)",
+        "service": "TIKTOK",
+        "data": {
+            "id": "id_male_darma"
+        }
+    },
+    "noor": {
+        "name": "Noor (Indonesian)",
+        "service": "TIKTOK",
+        "data": {
+            "id": "id_female_noor"
+        }
+    },
+    "putra": {
+        "name": "Putra (Indonesian)",
+        "service": "TIKTOK",
+        "data": {
+            "id": "id_male_putra"
+        }
+    },
+    "warm": {
+        "name": "Warm (Spanish)",
+        "service": "TIKTOK",
+        "data": {
+            "id": "es_mx_002"
+        }
+    },
+    "cool": {
+        "name": "Cool (Spanish)",
+        "service": "TIKTOK",
+        "data": {
+            "id": "es_mx_female_supermom"
+        }
+    },
+    "carols": {
+        "name": "Carols",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_sing_deep_jingle"
+        }
+    },
+    "classical": {
+        "name": "Classical",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_m03_classical"
+        }
+    },
+    "alto": {
+        "name": "Alto",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_f08_salut_damour"
+        }
+    },
+    "christmas": {
+        "name": "Christmas",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_m2_xhxs_m03_christmas"
+        }
+    },
+    "warmy_breeze": {
+        "name": "Warmy Breeze",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_f08_warmy_breeze"
+        }
+    },
+    "halloween": {
+        "name": "Halloween",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_ht_f08_halloween"
+        }
+    },
+    "glorious": {
+        "name": "Glorious",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_ht_f08_glorious"
+        }
+    },
+    "it_goes_up": {
+        "name": "It Goes Up",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_sing_funny_it_goes_up"
+        }
+    },
+    "tenor": {
+        "name": "Tenor",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_m03_lobby"
+        }
+    },
+    "dramatic": {
+        "name": "Dramatic",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_ht_f08_wonderful_world"
+        }
+    },
+    "new_year": {
+        "name": "New Year",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_ht_f08_newyear"
+        }
+    },
+    "thanksgiving": {
+        "name": "Thanksgiving",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_sing_funny_thanksgiving"
+        }
+    },
+    "sunshine_soon": {
+        "name": "Sunshine Soon",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_m03_sunshine_soon"
+        }
+    },
+    "lullaby": {
+        "name": "Lullaby",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_female_f08_twinkle"
+        }
+    },
+    "chipmunk": {
+        "name": "Chipmunk",
+        "service": "TIKTOK",
+        "data": {
+            "id": "en_male_m2_xhxs_m03_silly"
+        }
+    },
+    "sam": {
+        "name": "Sam",
+        "service": "SAPI",
+        "data": {
+            "id": "Sam"
+        }
+    },
+    "mike": {
+        "name": "Mike",
+        "service": "SAPI",
+        "data": {
+            "id": "Mike"
+        }
+    },
+    "mary": {
+        "name": "Mary",
+        "service": "SAPI",
+        "data": {
+            "id": "Mary"
+        }
+    },
+    "loud_mike": {
+        "name": "Stadium Mike",
+        "service": "SAPI",
+        "data": {
+            "id": "Mike in Stadium"
+        }
+    },
+    "loud_mary": {
+        "name": "Stadium Mary",
+        "service": "SAPI",
+        "data": {
+            "id": "Mary in Stadium"
+        }
+    },
+    "echoing_mike": {
+        "name": "Echoing Mike",
+        "service": "SAPI",
+        "data": {
+            "id": "Mike in Space"
+        }
+    },
+    "echoing_mary": {
+        "name": "Echoing Mary",
+        "service": "SAPI",
+        "data": {
+            "id": "Mary in Space"
+        }
+    },
+    "whispering_mike": {
+        "name": "Whispering Mike",
+        "service": "SAPI",
+        "data": {
+            "id": "Male Whisper"
+        }
+    },
+    "whispering_mary": {
+        "name": "Whispering Mary",
+        "service": "SAPI",
+        "data": {
+            "id": "Female Whisper"
+        }
+    },
+    "robot": {
+        "name": "Robot",
+        "service": "SAPI",
+        "data": {
+            "id": "RoboSoft Five"
+        }
+    },
+    "evil_ai": {
+        "name": "Evil AI",
+        "service": "SAPI",
+        "id": "RoboSoft One"
+    },
+    "spongebob": {
+        "name": "Spongebob Squarepants",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_tq6pwerrbr4mvbjmtyhbsqe6t"
+        }
+    },
+    "patrick": {
+        "name": "Patrick Star",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_154man2fzg19nrtc15drner7t"
+        }
+    },
+    "squidward": {
+        "name": "Squidward Tentacles",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_y9arhnd7wjamezhqd27ksvmaz"
+        }
+    },
+    "mr_krabs": {
+        "name": "Mr. Krabs",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_5bxbp9xqy61svfx03b25ezmwx"
+        }
+    },
+    "sandy": {
+        "name": "Sandy Cheeks",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_tzgp5df2xzwz7y7jzz7at96jf"
+        }
+    },
+    "plankton": {
+        "name": "Plankton",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_ahxbf2104ngsgyegncaefyy6j"
+        }
+    },
+    "larry_the_lobster": {
+        "name": "Larry the Lobster",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_k7qvaffwsft6vxbcps4wbyj58"
+        }
+    },
+    "mermaid_man": {
+        "name": "Mermaid Man",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_5jsptx9rq14zrffzj23cj3wz2"
+        }
+    },
+    "joe_biden": {
+        "name": "Joe Biden",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_7eqbjjrgmyvt0qsfq53bvew2q"
+        }
+    },
+    "mario": {
+        "name": "Super Mario",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_rnbmdcgym2tmqs7b3826c1zkf"
+        }
+    },
+    "luigi": {
+        "name": "Luigi",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_rw2e7d3bx4f49djpf96ysywn4"
+        }
+    },
+    "wario": {
+        "name": "Wario",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_bt5jhyaygn6qrnd996g89krh1"
+        }
+    },
+    "mickey_mouse": {
+        "name": "Mickey",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_hq8xbqzx28w21fmx76tqsdbnd"
+        }
+    },
+    "peter_griffin": {
+        "name": "Peter Griffin",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_883h5cw4q48cpsmjvjypxs0dc"
+        }
+    },
+    "chris_griffin": {
+        "name": "Chris Griffin",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_wygfpzg0z42xm8jaxb7wrqwf2"
+        }
+    },
+    "muscle_man": {
+        "name": "Muscle Man",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_6k4tkg2nsec6ha2j1zg1xygdc"
+        }
+    },
+    "baldi": {
+        "name": "Baldi",
+        "service": "FAKEYOU",
+        "data": {
+            "id": "weight_a60e9yew8d4k0a14fzjr8qa56"
+        }
+    },
+    "joe": {
+        "name": "Joe",
+        "service": "STREAMLABS",
+        "data": {
+            "id": "Joey"
+        }
+    },
+    "brian": {
+        "name": "Brian",
+        "service": "STREAMLABS",
+        "data": {
+            "id": "Brian"
+        }
+    },
+    "amy": {
+        "name": "Amy",
+        "service": "STREAMLABS",
+        "data": {
+            "id": "Amy"
+        }
+    },
+    "russell": {
+        "name": "Russell",
+        "service": "STREAMLABS",
+        "data": {
+            "id": "Russell"
+        }
+    },
+    "kendra": {
+        "name": "Kendra",
+        "service": "STREAMLABS",
+        "data": {
+            "id": "Kendra"
+        }
+    },
+    "justin": {
+        "name": "Justin",
+        "service": "STREAMLABS",
+        "data": {
+            "id": "Justin"
+        }
+    },
+    "ivy": {
+        "name": "Ivy",
+        "service": "STREAMLABS",
+        "data": {
+            "id": "Ivy"
+        }
+    },
+    "raveena": {
+        "name": "Raveena",
+        "service": "STREAMLABS",
+        "data": {
+            "id": "Raveena"
+        }
+    },
+    "aeiou_paul": {
+        "name": "Paul (AEIOU)",
+        "service": "DECTALK",
+        "data": {}
+    },
+    "v1": {
+        "name": "V1",
+        "service": "SAM",
+        "data": {
+            "pitch": 64,
+            "speed": 72,
+            "mouth": 128,
+            "throat": 128
+        }
+    },
+    "tomodachi_default": {
+        "name": "Tomodachi Default",
+        "service": "TALKMODACHI",
+        "data": {
+            "pitch": 50,
+            "speed": 50,
+            "quality": 50,
+            "tone": 50,
+            "accent": 50,
+            "intonation": 1,
+            "lang": "useng"
+        }
+    }
 }
