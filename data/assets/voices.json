@@ -126,5 +126,6 @@
     "ivy": { "id": "Ivy", "name": "Ivy", "service": "STREAMLABS" },
     "raveena": { "id": "Raveena", "name": "Raveena", "service": "STREAMLABS" },
 
-    "v1": { "id": "internal", "name": "V1 (Ultrakill)", "service": "SAM" }
+    "v1": { "id": "internal", "name": "V1 (Ultrakill)", "service": "SAM" },
+    "tomodachi": { "id": "internal", "name": "Tomodachi", "service": "TALKMODACHI" }
 }
