@@ -850,5 +850,18 @@
             "intonation": 1,
             "lang": "useng"
         }
+    },
+    "tomodachi_british": {
+        "name": "Tomodachi British",
+        "service": "TALKMODACHI",
+        "data": {
+            "pitch": 20,
+            "speed": 50,
+            "quality": 50,
+            "tone": 50,
+            "accent": 50,
+            "intonation": 3,
+            "lang": "eueng"
+        }
     }
 }
