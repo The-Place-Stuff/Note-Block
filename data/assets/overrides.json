@@ -515,5 +515,10 @@
         "overrand": "hgss",
         "override": "heartgold soulsilver",
         "match_word": true
+    },
+    {
+        "overrand": "ig",
+        "override": "i guess",
+        "match_word": true
     }
 ]

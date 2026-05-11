@@ -26,12 +26,19 @@ export default class VoiceCommand implements SlashCommand {
     // Builds subcommands from the category folder
     //
     private buildSubCommands(cmd: SlashCommandBuilder): SlashCommandBuilder {
-        const categories = readdirSync(path.join(__dirname, '../data/assets/category'), 'utf-8')
+        const registryPath = path.join(__dirname, '../data/assets/category');
+
+        const categories = readdirSync(registryPath, 'utf-8')
 
         // Creates subcommands based off JSON defined categories
         for (const category of categories) {
             console.log(`Category: ${category}`)
-            const data: VoiceCategory = JSON.parse(readFileSync(path.join(__dirname, `../data/assets/category/${category}`), 'utf-8'))
+
+            const entryPath = path.join(registryPath, category);
+
+            const data: VoiceCategory = JSON.parse(readFileSync(entryPath, 'utf-8'))
+            if (typeof data.enabled === 'boolean' && !data.enabled) continue;
+
             const choices = this.getOptions(data.voices)
 
             cmd.addSubcommand(subCmd => {

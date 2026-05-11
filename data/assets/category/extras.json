@@ -2,6 +2,7 @@
     "name": "extras",
     "description": "Extra voices",
     "voices": [
-        "aeiou_paul"
+        "aeiou_paul",
+        "v1"
     ]
 }

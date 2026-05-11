@@ -1,4 +1,4 @@
-import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection } from '@discordjs/voice'
+import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, NoSubscriberBehavior, VoiceConnection, VoiceConnectionStatus } from '@discordjs/voice'
 import { dirname, join } from 'path'
 import { Voice } from '../types/basic'
 import { audioServices } from '..'
@@ -28,15 +28,17 @@ export class TTS {
         }
     }
 
-    public async speak(text: string) {
+    public async speak(text: string, guildId: string) {
+        console.log(guildId)
         console.log('Speak ' + text)
 
         TTS.isPlaying = true
 
         // Play the audio file via discord.js
-        const connection: VoiceConnection = getVoiceConnection(IDConstants.THE_PLACE_SERVER) as VoiceConnection
+        const connection: VoiceConnection = getVoiceConnection(guildId) as VoiceConnection
 
         if (!connection) {
+            console.log("Valid connection not found")
             TTS.isPlaying = false
             return
         }
@@ -44,13 +46,20 @@ export class TTS {
             const serviceId = this.ttsData.voice.service
             const service = audioServices.get(serviceId)
             if (service) {
-                await service.export(text, this.ttsData.voice.id, 'tts.wav')
+                await service.export(text, this.ttsData.voice.data, 'tts.wav')
                 console.log(`Exporting finished! Now playing: ${text}`)
             }
             else throw Error(`Service '${serviceId}' does not exist.`)
         }
         catch (error) {
-            console.warn(`Error produced by '${text}': ${error}`)
+            if (error instanceof Error) {
+                console.warn(`Error produced by '${text}': ${error.stack}`)
+            }
+            else {
+                console.warn(`Error produced by '${text}': ${error}`)
+            }
+
+            
             TTS.isPlaying = false
             return
         }
@@ -62,10 +71,11 @@ export class TTS {
                 inlineVolume: true,
             }
         )
+
         audioFile.volume?.setVolume(this.ttsData.volume)
         audioPlayer.play(audioFile)
         connection.subscribe(audioPlayer)
-
+        
         // @ts-ignore
         await entersState(audioPlayer, AudioPlayerStatus.Playing)
 
@@ -73,5 +83,7 @@ export class TTS {
         await entersState(audioPlayer, AudioPlayerStatus.Idle)
 
         TTS.isPlaying = false
+
+        console.log("finish")
     }
 }

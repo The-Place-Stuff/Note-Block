@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, Client, SlashCommandBuilder, SlashCommandStringOption, TextChannel } from "discord.js";
+import { ChatInputCommandInteraction, Client, Message, SlashCommandBuilder, SlashCommandStringOption, TextChannel } from "discord.js";
 
 interface SlashCommand {
     data: SlashCommandBuilder,
@@ -7,12 +7,11 @@ interface SlashCommand {
 
 interface AudioService {
     id: string,
-    export: (text: string, voice: string, outputDir: string) => Promise<void>
+    export: (text: string, voice: VoiceData, outputDir: string) => Promise<void>
 }
 
 type QueueMessageData = {
-    messageID: string,
-    channel: TextChannel,
+    message: Message,
     isMinecraft: boolean
 }
 
@@ -34,7 +33,8 @@ type User = {
 type VoiceCategory = {
     name: string,
     description: string,
-    voices: string[]
+    voices: string[],
+    enabled?: boolean
 }
 
 type VoiceOption = {
@@ -43,7 +43,32 @@ type VoiceOption = {
 }
 
 type Voice = {
-    id: string,
     name: string,
     service: string
+    data: VoiceData
+}
+
+type VoiceData = StandardVoiceData | EmptyVoiceData | SamVoiceData | TalkmodachiVoiceData
+
+type StandardVoiceData = {
+    id: string
+}
+
+type EmptyVoiceData = {}
+
+type SamVoiceData = {
+    pitch: number,
+    speed: number,
+    mouth: number,
+    throat: number
+}
+
+type TalkmodachiVoiceData = {
+    pitch: number,
+    speed: number,
+    quality: number,
+    tone: number,
+    accent: number,
+    intonation: number,
+    lang: 'useng' | 'eueng'
 }
