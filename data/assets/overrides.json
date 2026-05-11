@@ -495,5 +495,25 @@
         "overrand": "fr",
         "override": "for real",
         "match_word": true
+    },
+    {
+        "overrand": "bob-omb",
+        "override": "bobomb",
+        "match_word": false
+    },
+    {
+        "overrand": "pizzer",
+        "override": "peteser",
+        "match_word": true
+    },
+    {
+        "overrand": "frlg",
+        "override": "firered leafgreen",
+        "match_word": true
+    },
+    {
+        "overrand": "hgss",
+        "override": "heartgold soulsilver",
+        "match_word": true
     }
 ]
